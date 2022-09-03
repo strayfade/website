@@ -11,10 +11,6 @@ function GenerateHeader(Article, Locale) {
     Output += "<h1>" + Locale.header_main + "</h1>"
     Output += "</div>"
 
-    Output += "<div class='HeaderObject HoverAccentColor CursorPointer' onclick='OpenURL(`/Posts`)'>"
-    Output += "<h1>"+ Locale.header_posts + "</h1>"
-    Output += "</div>"
-
     Output += "<div class='HeaderObject HoverAccentColor FloatRight CursorPointer' onclick='OpenURL(`https://github.com/Strayfade`)'>"
     Output += "<i class='fa-brands fa-github HeaderSpecial'></i>"
     Output += "</div>"

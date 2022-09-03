@@ -28,9 +28,9 @@ app.use('/posts', express.static('posts'))
 app.use('/css', express.static('css'))
 
 app.get('/', (req, res) => {
-    const Article = require('./posts/Homepage.json')
+    const Article = require('./posts/P0.json')
     let Lang = require('./localization/en-us.json')
-    res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
+    res.send(pageAssemble.GeneratePage(Article, Lang, Generators, true))
 })
 app.get('/:path', (req, res) => {
     res.redirect("/en-us/" + req.params.path)

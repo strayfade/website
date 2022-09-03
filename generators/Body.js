@@ -1,7 +1,7 @@
 const fs = require('fs')
 const markdown = require("markdown").markdown;
 
-function GenerateArticleBody(Article, Locale) {
+function GenerateBody(Article, Locale, isHomepage) {
 
     // Markdown
     let MdStr = fs.readFileSync(__dirname.replace("generators", "posts/") + Article.markdown).toString()
@@ -17,23 +17,39 @@ function GenerateArticleBody(Article, Locale) {
 
     // Article Title/Subtitle
     Output += "<div class='DisplayWidth'>"
-    if (Article.showTitle) {
-        Output += "<div class='ArticleHeader'>"
-        Output += "<h1 class='ArticleHeaderTitle'>" + Article.title + "</h1>"
-        Output += "<span class='ArticleHeaderSubtitle'>" + Locale.article_author_prefix + Article.author + " •</span>"
-        Output += "<span class='ArticleHeaderSubtitle'> " + ReadingTime + Locale.article_read_time + "</span>"
-        Output += "</div>"
+
+    if (!isHomepage) {
+        if (Article.showTitle) {
+            Output += "<div class='ArticleHeader'>"
+            Output += "<p class='ArticleHeaderDate'>" + Article.date + "</p>"
+            Output += "<h1 class='ArticleHeaderTitle'>" + Article.title + "</h1>"
+            Output += "<span class='ArticleHeaderSubtitle'>" + Locale.article_author_prefix + Article.author + " •</span>"
+            Output += "<span class='ArticleHeaderSubtitle'> " + ReadingTime + Locale.article_read_time + "</span>"
+            Output += "</div>"
+        }
+
+        // Article Content
+        Output += MdHtml
     }
-
-    // Article Content
-    Output += MdHtml
-
-    // Google Form
-    //Output += "<iframe style='filter: invert(1) brightness(2)' src='https://docs.google.com/forms/d/e/1FAIpQLScO17F732wv01xGUAPvEy2Eo965TnhVG733sBJUvPBB9G5UMQ/viewform?embedded=true' frameborder='0' marginheight='0' marginwidth='0' width='100%' height='2000px'>Loading…</iframe>"
+    else {
+        let filenames = fs.readdirSync(__dirname.replace("generators", "posts/"));
+        for (var x = 0; x < filenames.length; x++) {
+            if (filenames[x].endsWith(".json")) {
+                let JSON = require(__dirname.replace("generators", "posts/") + filenames[x])
+                if (JSON.indexed) {
+                    Output += "<div class='ArticleIndexBox' onclick='OpenURL(`/" + filenames[x].replace(".json", "") + "`)'>"
+                    Output += "<span class='ArticleIndexBoxTitle'>" + JSON.title + "</span>"
+                    Output += "<span class='ArticleIndexBoxDate'>" + JSON.date + "</span>"
+                    Output += "<h3 class='ArticleIndexBoxDescription'>" + JSON.description + "</h3>"
+                    Output += "</div>"
+                }
+            }
+        }
+    }
 
     Output += "</div>"
     Output += "</div>"
     return Output
 }
 
-module.exports = { GenerateArticleBody }
+module.exports = { GenerateBody }

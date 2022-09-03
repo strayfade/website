@@ -1,0 +1,18 @@
+:root {
+    --display-width: 75%;
+}
+@media only screen and (max-width: 600px) {
+    :root {
+        --display-width: 90%;
+    } 
+}
+
+body {
+    margin: 0px;
+    margin-top: 7vh;
+    padding-top: 25px;
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+    word-wrap: break-word;
+    text-overflow: clip;
+}

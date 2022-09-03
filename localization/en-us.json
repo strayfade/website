@@ -1,0 +1,14 @@
+{
+    "site_name": "strayfade.com",
+    "site_title_default": "Strayfade",
+    "site_title_extension": " - Strayfade",
+
+    "header_main": "Home",
+    "header_posts": "Posts",
+    "header_login": "Login",
+
+    "copyright_main": "Copyright Strayfade 2019-2022. All Rights Reserved.",
+
+    "article_author_prefix": "by ",
+    "article_read_time": "-minute read"
+}

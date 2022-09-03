@@ -1,0 +1,29 @@
+.ArticleHeader {
+    margin-bottom: 35px;
+    width: 50%;
+    height: 150px;
+    border-bottom: 3px solid var(--accent-color);
+}
+@media only screen and (max-width: 600px) {
+    .ArticleHeader {
+        width: 80%;
+        margin: auto;
+    }
+}
+.ArticleContainer {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.ArticleHeaderTitle {
+    font-size: 65px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.ArticleHeaderSubtitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}

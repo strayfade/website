@@ -1,0 +1,8 @@
+.DisplayWidth {
+    width: var(--display-width);
+    margin: auto;
+}
+.Centered {
+    margin-left: auto;
+    margin-right: auto;
+}

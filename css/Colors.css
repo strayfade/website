@@ -1,0 +1,7 @@
+:root {
+    --header-background-color: rgb(16, 16, 16);
+    --background-color: rgb(16, 16, 16);
+    --foreground-color: rgb(240, 240, 240);
+    --accent-color: rgba(124, 178, 240, 1.0);
+    --accent-color-transparent: rgba(124, 178, 240, 0.3);
+}

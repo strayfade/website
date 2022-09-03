@@ -1,0 +1,6 @@
+.HoverAccentColor {
+    transition: 0.5s;
+}
+.HoverAccentColor:hover {
+    color: var(--accent-color);
+}

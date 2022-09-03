@@ -1,0 +1,53 @@
+.Header {
+    width: 100vw;
+    height: 7vh;
+    color: var(--foreground-color);
+    background-color: var(--header-background-color);
+    position: absolute;
+    top: 0;
+}
+.HeaderInner {
+    display: flex; 
+    padding-bottom: 15px;
+    border-bottom: 5px solid var(--accent-color);
+    transition: 0.5s;
+    margin: 10px;
+}
+.HeaderInner:hover {
+    border-bottom: 15px solid var(--accent-color);
+}
+.HeaderObject {
+    width: auto;
+    height: 4vh;
+    padding: 0.7vh;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 10px;
+}
+.HeaderObject h1 {
+    font-weight: 400;
+    transition: 0.5s;
+}
+.HeaderObject h1:hover {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.HeaderSpecial {
+    width: 20px;
+    height: 20px;
+    margin-top: 20px;
+    transition: 0.5s;
+}
+.HeaderSpecial:hover {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.FloatLeft {
+    float: left;
+    margin-right: auto;
+}
+.FloatRight {
+    float: right;
+    margin-left: auto;
+}

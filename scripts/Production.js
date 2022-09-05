@@ -1,4 +1,4 @@
-await fetch('/api/production', {
+fetch('/api/production', {
     method: 'POST',
     credentials: 'same-origin',
     headers: {

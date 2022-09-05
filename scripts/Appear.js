@@ -47,6 +47,6 @@ setInterval(function () {
     ReplaceEffectBoxes()
 }, 10);
 
-window.addEventListener("click", function() {
+document.addEventListener("load", function() {
     window.navigator.vibrate(100)
 })

@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('fs') // For checking if pages exist on the server
 const config = require("./config/config.json");
 
 // Dynamic Page Creation
@@ -15,6 +15,7 @@ let Generators = {
     Assembler: pageAssemble
 }
 
+// Load list of all languages for checking if a locale exists
 const availableLanguages = require('./localization.json')
 
 const express = require('express')
@@ -37,24 +38,24 @@ app.get('/:path', (req, res) => {
 })
 app.get('/:localization/:path', (req, res) => {
     let ArticlePath = './posts/' + req.params.path + '.json'
-    if (fs.existsSync(ArticlePath)) {
+    if (fs.existsSync(ArticlePath)) { // Page exists, load into Article
         const Article = require('./posts/' + req.params.path + '.json')
-        if (availableLanguages.includes(req.params.localization)) {
+        if (availableLanguages.includes(req.params.localization)) { // Check if localization param is present
             let Lang = require('./localization/' + req.params.localization + '.json')
             res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
         }
-        else {
+        else { // No localization param, default to en-us
             let Lang = require('./localization/en-us.json')
             res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
         }
     }
-    else {
+    else { // Page doesn't exist, send 404
         const Article = require('./posts/404.json')
-        if (availableLanguages.includes(req.params.localization)) {
+        if (availableLanguages.includes(req.params.localization)) { // Check if localization param is present
             let Lang = require('./localization/' + req.params.localization + '.json')
             res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
         }
-        else {
+        else { // No localization param, default to en-us
             let Lang = require('./localization/en-us.json')
             res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
         }

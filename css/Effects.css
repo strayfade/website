@@ -18,13 +18,13 @@
     0% {
         animation-timing-function: cubic-bezier(1, 0, 0, 1);
         width: 100%;
-        transform: skewX(0deg) scaleY(70%);
+        transform: skewX(0deg) scaleY(100%);
         background-color: var(--accent-color);
     }
 
     35% {
         width: 4px;
-        transform: translate(-16px, 0px) scaleY(70%);
+        transform: translate(-16px, 0px) scaleY(100%);
         background-color: var(--accent-color);
     }
 

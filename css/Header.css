@@ -1,24 +1,22 @@
 .Header {
     width: 100vw;
-    height: 7vh;
+    height: 100px;
     color: var(--foreground-color);
     background-color: var(--header-background-color);
     position: absolute;
     top: 0;
 }
 .HeaderInner {
-    display: flex; 
-    padding-bottom: 15px;
+    display: flex;
     border-bottom: 5px solid var(--accent-color);
     transition: 0.5s;
-    margin: 10px;
 }
 .HeaderInner:hover {
     border-bottom: 15px solid var(--accent-color);
 }
 .HeaderObject {
     width: auto;
-    height: 4vh;
+    height: 50px;
     padding: 0.7vh;
     padding-left: 15px;
     padding-right: 15px;

@@ -1,5 +1,6 @@
 const fs = require('fs') // For checking if pages exist on the server
 const config = require("./config/config.json");
+const geoip = require('geoip-lite'); // Geolocation analytics
 
 // Dynamic Page Creation
 const pageHead = require('./generators/Head')
@@ -27,6 +28,18 @@ app.use('/scripts', express.static('scripts'))
 app.use('/fonts', express.static('fonts'))
 app.use('/posts', express.static('posts'))
 app.use('/css', express.static('css'))
+
+// Event Tracking
+app.get('/api/analytics/:more', (req, res) => {
+    let Request = {
+        ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+        userAgent: req.headers['user-agent'],
+        host: req.headers.host,
+        more: req.params.more || null
+    };
+    console.log(Request);
+    //console.log(req)
+})
 
 app.get('/', (req, res) => {
     const Article = require('./posts/P0.json')

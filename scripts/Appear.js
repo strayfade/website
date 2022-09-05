@@ -41,6 +41,8 @@ function ReplaceEffectBoxes() {
         Target[x].style.height = Position.height + "px"
     }
 }
-window.addEventListener("resize", function() {
+
+// This is <REALLY> stupid, but it works
+setInterval(function () {
     ReplaceEffectBoxes()
-})
+}, 10);

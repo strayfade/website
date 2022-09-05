@@ -35,7 +35,7 @@ app.use('/css', express.static('css'))
 
 // Event Tracking
 app.use(express.json())
-app.post('/api/analytics', (req, res) => {
+app.post('/api/production', (req, res) => {
     req.body.ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
     if (!fs.existsSync(config.analytics)) {
         fs.writeFileSync(config.analytics, "[]")

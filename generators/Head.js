@@ -55,7 +55,7 @@ function GenerateHead(Article, Locale) {
     Output += "<script src='/scripts/Appear.js'></script>"
 
     // Analytics
-    Output += "<script src='/scripts/Analytics.js'></script>"
+    Output += "<script src='/scripts/Production.js'></script>"
 
     // URL Redirecting Tools
     Output += "<script src='/scripts/URL.js'></script>"

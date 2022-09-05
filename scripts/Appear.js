@@ -30,7 +30,7 @@ window.addEventListener('load', function () {
     }
     HideObscure();
 })
-window.addEventListener("resize", function() {
+function ReplaceEffectBoxes() {
     let HeaderElements = document.getElementsByTagName("h1")
     let Target = document.getElementsByClassName("EffectBox")
     for (var x = 0; x < Target.length; x++) {
@@ -40,4 +40,7 @@ window.addEventListener("resize", function() {
         Target[x].style.width = Position.width + "px"
         Target[x].style.height = Position.height + "px"
     }
+}
+window.addEventListener("resize", function() {
+    ReplaceEffectBoxes()
 })

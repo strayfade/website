@@ -50,9 +50,6 @@ function GenerateHead(Article, Locale) {
     // FontAwesome Icons
     Output += "<script src='https://kit.fontawesome.com/7ac1d98129.js' crossorigin='anonymous'></script>"
 
-    // Markdown Tools
-    Output += "<script type='module' src='https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js'></script>"
-
     // Appearance Scripts
     Output += "<script src='/scripts/Appear.js'></script>"
 

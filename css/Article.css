@@ -6,7 +6,7 @@
 }
 @media only screen and (max-width: 600px) {
     .ArticleHeader {
-        width: 80%;
+        width: 100%;
         margin: auto;
     }
 }
@@ -23,6 +23,11 @@
     padding-top: 0px;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+@media only screen and (max-width: 600px) {
+    .ArticleHeaderTitle {
+        font-size: 45px;
+    }
 }
 .ArticleHeaderDate {
     font-size: 15px;

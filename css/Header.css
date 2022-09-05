@@ -48,3 +48,7 @@
     float: right;
     margin-left: auto;
 }
+
+.HeaderObject svg {
+    margin-top: 15px;
+}

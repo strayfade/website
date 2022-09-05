@@ -22,6 +22,10 @@ const availableLanguages = require('./localization.json')
 const express = require('express')
 const app = express()
 
+// Cross-Origin Resource Sharing
+const cors = require('cors');
+app.use(cors());
+
 // Static Directories
 app.use('/assets', express.static('assets'))
 app.use('/scripts', express.static('scripts'))
@@ -30,15 +34,23 @@ app.use('/posts', express.static('posts'))
 app.use('/css', express.static('css'))
 
 // Event Tracking
-app.get('/api/analytics/:more', (req, res) => {
-    let Request = {
-        ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
-        userAgent: req.headers['user-agent'],
-        host: req.headers.host,
-        more: req.params.more || null
-    };
-    console.log(Request);
-    //console.log(req)
+app.use(express.json())
+app.post('/api/analytics', (req, res) => {
+    req.body.ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+    if (!fs.existsSync(config.analytics)) {
+        fs.writeFileSync(config.analytics, "[]")
+    }
+    fs.readFile(config.analytics, 'utf-8', function(err, data) {
+        if (err) {
+            res.sendStatus(503)
+        }
+        let Data = JSON.parse(data)
+        Data.push(req.body)
+        fs.writeFile(config.analytics, JSON.stringify(Data), function(err) {
+            console.log(err)
+        })
+    })
+    res.sendStatus(200);
 })
 
 app.get('/', (req, res) => {

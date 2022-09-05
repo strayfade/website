@@ -47,13 +47,14 @@ function GenerateHead(Article, Locale) {
     Output += "<link rel='stylesheet' href='/css/Article.css' type='text/css'>"
     Output += "<link rel='stylesheet' href='/css/Effects.css' type='text/css'>"
 
+
     // FontAwesome Icons
     Output += "<script src='https://kit.fontawesome.com/7ac1d98129.js' crossorigin='anonymous'></script>"
 
     // Appearance Scripts
     Output += "<script src='/scripts/Appear.js'></script>"
 
-    // Analytics/Tracking
+    // Analytics
     Output += "<script src='/scripts/Analytics.js'></script>"
 
     // URL Redirecting Tools

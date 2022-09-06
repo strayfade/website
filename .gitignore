@@ -105,3 +105,4 @@ dist
 
 # Server
 analytics.json
+config/private.json

@@ -34,6 +34,7 @@ app.use('/scripts', express.static('scripts'))
 app.use('/fonts', express.static('fonts'))
 app.use('/posts', express.static('posts'))
 app.use('/css', express.static('css'))
+app.use('/icons', express.static('icons'))
 
 function SendError(errNum, req, res, CustomError) {
     const Article = require('./posts/' + errNum + '.json')
@@ -47,25 +48,7 @@ function SendError(errNum, req, res, CustomError) {
     }
 }
 
-// Event Tracking
-app.use(express.json())
-app.post('/api/production', (req, res) => {
-    req.body.ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
-    req.body.location = geoip.lookup(req.body.ip)
-    if (!fs.existsSync(config.analytics)) {
-        fs.writeFileSync(config.analytics, "[]")
-    }
-    fs.readFile(config.analytics, 'utf-8', function (err, data) {
-        if (err) {
-            res.sendStatus(503)
-        }
-        let Data = JSON.parse(data)
-        Data.push(req.body)
-        fs.writeFile(config.analytics, JSON.stringify(Data), function (err) {})
-    })
-    res.sendStatus(200);
-})
-app.get('/api/analytics', (req, res) => {
+app.get('/api/Analytics', (req, res) => {
     const authorization = req.headers.authorization;
     if (!authorization) {
         res.setHeader("www-authenticate", "Basic");
@@ -95,7 +78,37 @@ app.get('/api/analytics', (req, res) => {
     }
 })
 
+function CollectAnalytics(req, res) {
+    let body = {
+        host: req.headers['host'],
+        path: req.originalUrl,
+        connection: {
+            ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+            userAgent: req.headers['user-agent'],
+            type: req.headers['connection'],
+            accepts: req.headers['accept'],
+            acceptsLanguage: req.headers['accept-language'],
+            encoding: req.client._readableState.defaultEncoding,
+            route: req.route.path,
+            method: req.route.methods
+        },
+        timestamp: new Date().toUTCString().replace(",", "")
+    }
+    body.location = geoip.lookup(body.connection.ip)
+    if (!fs.existsSync(config.analytics)) {
+        fs.writeFileSync(config.analytics, "[]")
+    }
+    fs.readFile(config.analytics, 'utf-8', function (err, data) {
+        if (err) {
+            res.sendStatus(503)
+        }
+        let Data = JSON.parse(data)
+        Data.push(body)
+        fs.writeFile(config.analytics, JSON.stringify(Data), function (err) {})
+    })
+}
 app.get('/', (req, res) => {
+    CollectAnalytics(req, res)
     const Article = require('./posts/P0.json')
     let Lang = require('./localization/en-us.json')
     res.send(pageAssemble.GeneratePage(Article, Lang, Generators, true))
@@ -104,6 +117,7 @@ app.get('/:path', (req, res) => {
     res.redirect("/en-us/" + req.params.path)
 })
 app.get('/:localization/:path', (req, res) => {
+    CollectAnalytics(req, res)
     let ArticlePath = './posts/' + req.params.path + '.json'
     if (fs.existsSync(ArticlePath)) { // Page exists, load into Article
         const Article = require('./posts/' + req.params.path + '.json')

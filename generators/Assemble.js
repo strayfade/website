@@ -1,7 +1,7 @@
 function GeneratePage(Article, Locale, Generators, isHomepage = false, Custom = "") {
     Output = ""
     Output += "<!DOCTYPE html>\n"
-    Output += "<html>\n"
+    Output += "<html lang=" + Locale.short_locale_title + ">\n"
     Output += "<head>\n"
     Output += Generators.Head.GenerateHead(Article, Locale) + "\n"
     Output += "</head>\n"

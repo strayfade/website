@@ -2,6 +2,8 @@ const fs = require('fs') // For checking if pages exist on the server
 const config = require("./config/config.json");
 const geoip = require('geoip-lite'); // Geolocation analytics
 
+const private = require('./config/private.json')
+
 // Dynamic Page Creation
 const pageHead = require('./generators/Head')
 const pageHeader = require('./generators/Header')
@@ -33,6 +35,18 @@ app.use('/fonts', express.static('fonts'))
 app.use('/posts', express.static('posts'))
 app.use('/css', express.static('css'))
 
+function SendError(errNum, req, res) {
+    const Article = require('./posts/' + errNum + '.json')
+    if (availableLanguages.includes(req.params.localization)) { // Check if localization param is present
+        let Lang = require('./localization/' + req.params.localization + '.json')
+        res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
+    }
+    else { // No localization param, default to en-us
+        let Lang = require('./localization/en-us.json')
+        res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
+    }
+}
+
 // Event Tracking
 app.use(express.json())
 app.post('/api/production', (req, res) => {
@@ -40,17 +54,45 @@ app.post('/api/production', (req, res) => {
     if (!fs.existsSync(config.analytics)) {
         fs.writeFileSync(config.analytics, "[]")
     }
-    fs.readFile(config.analytics, 'utf-8', function(err, data) {
+    fs.readFile(config.analytics, 'utf-8', function (err, data) {
         if (err) {
             res.sendStatus(503)
         }
         let Data = JSON.parse(data)
         Data.push(req.body)
-        fs.writeFile(config.analytics, JSON.stringify(Data), function(err) {
+        fs.writeFile(config.analytics, JSON.stringify(Data), function (err) {
             console.log(err)
         })
     })
     res.sendStatus(200);
+})
+app.get('/api/analytics', (req, res) => {
+    const authorization = req.headers.authorization;
+    if (!authorization) {
+        res.setHeader("www-authenticate", "Basic");
+        res.sendStatus(401)
+        return;
+    }
+    else {
+        // Credit https://benborgers.com/posts/express-password-protect
+        const [username, password] = Buffer.from(authorization.replace("Basic ", ""), "base64").toString().split(":");
+        if (!(username === private.adminUser && password === private.adminPass)) {
+            SendError(403, req, res);
+            return;
+        }
+        else {
+            if (!fs.existsSync(config.analytics)) {
+                fs.writeFileSync(config.analytics, "[]")
+            }
+            fs.readFile(config.analytics, 'utf-8', function (err, data) {
+                if (err) {
+                    SendError(503, req, res);
+                    return;
+                }
+                res.send(JSON.parse(data))
+            })
+        }
+    }
 })
 
 app.get('/', (req, res) => {
@@ -75,31 +117,14 @@ app.get('/:localization/:path', (req, res) => {
         }
     }
     else { // Page doesn't exist, send 404
-        const Article = require('./posts/404.json')
-        if (availableLanguages.includes(req.params.localization)) { // Check if localization param is present
-            let Lang = require('./localization/' + req.params.localization + '.json')
-            res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
-        }
-        else { // No localization param, default to en-us
-            let Lang = require('./localization/en-us.json')
-            res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
-        }
+        SendError(404, req, res);
     }
 })
 
 // Handle Server Errors
 app.use(function (error, req, res, next) {
     console.log(error)
-    const Article = require('./posts/500.json')
-    if (req.params.localization) {
-        if (availableLanguages.includes(req.params.localization)) {
-            let Lang = require('./localization/' + req.params.localization + '.json')
-            res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
-            return;
-        }
-    }
-    let Lang = require('./localization/en-us.json')
-    res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
+    SendError(500, req, res);
 });
 
 var Port = process.env.PORT || config.port;

@@ -5,7 +5,10 @@ function GenerateBody(Article, Locale, isHomepage, Custom) {
 
     // Markdown
     let MdStr = fs.readFileSync(__dirname.replace("generators", "posts/") + Article.markdown).toString()
-    let MdHtml = markdown.toHTML(MdStr + "\n\n" + Custom)
+    if (Custom != "") {
+        MdStr += "\n\n# Error\n\n" + Custom
+    }
+    let MdHtml = markdown.toHTML(MdStr)
 
     // Calculate reading time
     // Credit https://infusion.media/content-marketing/how-to-calculate-reading-time/

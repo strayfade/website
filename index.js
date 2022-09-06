@@ -35,15 +35,15 @@ app.use('/fonts', express.static('fonts'))
 app.use('/posts', express.static('posts'))
 app.use('/css', express.static('css'))
 
-function SendError(errNum, req, res) {
+function SendError(errNum, req, res, CustomError) {
     const Article = require('./posts/' + errNum + '.json')
     if (availableLanguages.includes(req.params.localization)) { // Check if localization param is present
         let Lang = require('./localization/' + req.params.localization + '.json')
-        res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
+        res.send(pageAssemble.GeneratePage(Article, Lang, Generators, false, CustomError))
     }
     else { // No localization param, default to en-us
         let Lang = require('./localization/en-us.json')
-        res.send(pageAssemble.GeneratePage(Article, Lang, Generators))
+        res.send(pageAssemble.GeneratePage(Article, Lang, Generators, false, CustomError))
     }
 }
 
@@ -75,7 +75,7 @@ app.get('/api/analytics', (req, res) => {
     else {
         // Credit https://benborgers.com/posts/express-password-protect
         const [username, password] = Buffer.from(authorization.replace("Basic ", ""), "base64").toString().split(":");
-        if (!(username == env.config().parsed.USER || process.env.USER && password == env.config().parsed.PASS || process.env.PASS)) {
+        if (!(username == process.env.USER && password == process.env.PASS)) {
             res.setHeader("www-authenticate", "Basic");
             SendError(403, req, res);
             return;
@@ -124,7 +124,7 @@ app.get('/:localization/:path', (req, res) => {
 // Handle Server Errors
 app.use(function (error, req, res, next) {
     console.log(error)
-    SendError(500, req, res);
+    SendError(500, req, res, error.toString());
 });
 
 var Port = process.env.PORT || config.port;

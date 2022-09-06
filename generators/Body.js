@@ -1,11 +1,11 @@
 const fs = require('fs')
 const markdown = require("markdown").markdown;
 
-function GenerateBody(Article, Locale, isHomepage) {
+function GenerateBody(Article, Locale, isHomepage, Custom) {
 
     // Markdown
     let MdStr = fs.readFileSync(__dirname.replace("generators", "posts/") + Article.markdown).toString()
-    let MdHtml = markdown.toHTML(MdStr)
+    let MdHtml = markdown.toHTML(MdStr + "\n\n" + Custom)
 
     // Calculate reading time
     // Credit https://infusion.media/content-marketing/how-to-calculate-reading-time/

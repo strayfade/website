@@ -75,7 +75,7 @@ app.get('/api/analytics', (req, res) => {
     else {
         // Credit https://benborgers.com/posts/express-password-protect
         const [username, password] = Buffer.from(authorization.replace("Basic ", ""), "base64").toString().split(":");
-        if (!(username == env.config().parsed.USER && password == env.config().parsed.PASS)) {
+        if (!(username == env.config().parsed.USER || process.env.USER && password == env.config().parsed.PASS || process.env.PASS)) {
             res.setHeader("www-authenticate", "Basic");
             SendError(403, req, res);
             return;

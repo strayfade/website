@@ -48,9 +48,9 @@ function GenerateHead(Article, Locale) {
     Output += "<link rel='stylesheet' href='/css/Effects.css' type='text/css'>"
 
     // FontAwesome Icons
-    Output += "<script src='/icons/js/Brands.js'></script>"
-    Output += "<script src='/icons/js/Solid.js'></script>"
-    Output += "<script src='/icons/js/FontAwesome.js'></script>"
+    Output += "<script src='/icons/js/brands.js'></script>"
+    Output += "<script src='/icons/js/solid.js'></script>"
+    Output += "<script src='/icons/js/fontawesome.js'></script>"
 
     // Appearance Scripts
     Output += "<script src='/scripts/Appear.js'></script>"

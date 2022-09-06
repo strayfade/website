@@ -1,8 +1,8 @@
-const fs = require('fs') // For checking if pages exist on the server
-const config = require("./config/config.json");
-const geoip = require('geoip-lite'); // Geolocation analytics
+const fs = require('fs')
+const env = require('dotenv');
+const geoip = require('geoip-lite');
 
-const private = require('./config/private.json')
+const config = require("./config/config.json");
 
 // Dynamic Page Creation
 const pageHead = require('./generators/Head')
@@ -51,6 +51,7 @@ function SendError(errNum, req, res) {
 app.use(express.json())
 app.post('/api/production', (req, res) => {
     req.body.ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+    req.body.location = geoip.lookup(req.body.ip)
     if (!fs.existsSync(config.analytics)) {
         fs.writeFileSync(config.analytics, "[]")
     }
@@ -60,9 +61,7 @@ app.post('/api/production', (req, res) => {
         }
         let Data = JSON.parse(data)
         Data.push(req.body)
-        fs.writeFile(config.analytics, JSON.stringify(Data), function (err) {
-            console.log(err)
-        })
+        fs.writeFile(config.analytics, JSON.stringify(Data), function (err) {})
     })
     res.sendStatus(200);
 })
@@ -76,7 +75,8 @@ app.get('/api/analytics', (req, res) => {
     else {
         // Credit https://benborgers.com/posts/express-password-protect
         const [username, password] = Buffer.from(authorization.replace("Basic ", ""), "base64").toString().split(":");
-        if (!(username === private.adminUser && password === private.adminPass)) {
+        if (!(username == env.config().parsed.USER && password == env.config().parsed.PASS)) {
+            res.setHeader("www-authenticate", "Basic");
             SendError(403, req, res);
             return;
         }

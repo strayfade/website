@@ -1,11 +1,7 @@
-### Strayfade/Website
+# Strayfade/Website
 The public source code of [Strayfade.com](https://strayfade.com)
 
-#
-
-*This repository will not always reflect the current website at times.*
-
-#
+> *This repository will not always reflect the current website at times.*
 
 ### Usage
 

@@ -17,9 +17,10 @@ git clone --recursive https://github.com/Strayfade/Website.git
 cd Website
 ```
 
-3. **Optional:** Create a MongoDB database and tell the server where to find it in `config.json`:
+3. **Optional:** Create a MongoDB database and tell the server where to find it in `config.json` 
+(Leave `databaseUri` empty to run without MongoDB):
 ```JSON
-"databaseUri": "mongodb+srv://YOUR_SERVER_URI", // Leave blank to ignore MongoDB
+"databaseUri": "mongodb+srv://YOUR_SERVER_URI",
 "databaseName": "strayfade",
 "databaseCollectionName": "analytics"
 ```

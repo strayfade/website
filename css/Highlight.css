@@ -3,6 +3,8 @@ pre code.hljs {
     overflow-x: auto;
     padding-top: 1em;
     padding-bottom: 1em;
+    color: var(--lighten-color-codeblock);
+    background-color: #1e1e1e;
 }
 
 .hljs-keyword,

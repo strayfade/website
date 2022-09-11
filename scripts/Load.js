@@ -53,7 +53,7 @@ function CustomStyleExpandedCodeblocks() {
                         LineNumbers.innerHTML += "\n"
                     }
                 }
-                LineNumbers.style.marginTop = (-50 / 3 * Inner.split("\n").length) + "px"
+                LineNumbers.style.marginTop = (-50 / 3 * Inner.split("\n").length + 5) + "px"
                 Current.appendChild(LineNumbers)
             }
             else {

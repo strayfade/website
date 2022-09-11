@@ -11,6 +11,7 @@
     transition: 0.5s;
 }
 .HeaderInner:hover {
+    width: calc(var(--display-width) + 50px);
     border-bottom: 15px solid var(--accent-color);
 }
 .HeaderObject {
@@ -21,13 +22,13 @@
     padding-right: 15px;
     font-size: 10px;
 }
+.HeaderObject:hover {
+    padding-left: 30px;
+    padding-right: 30px;
+}
 .HeaderObject h1 {
     font-weight: 400;
     transition: 0.5s;
-}
-.HeaderObject h1:hover {
-    padding-left: 10px;
-    padding-right: 10px;
 }
 .HeaderSpecial {
     width: 20px;

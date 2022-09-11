@@ -9,15 +9,17 @@ The public source code of [Strayfade.com](https://strayfade.com) made using the 
 
 ### Usage
 
-1.  Install [Node.js](https://nodejs.org/en/download/) (obviously)
+1. Install [Node.js](https://nodejs.org/en/download/) (obviously)
 
-2.  Clone this repository and `cd` into it:
+2. Clone this repository and `cd` into it:
 ```Bash
 git clone --recursive https://github.com/Strayfade/Website.git
 cd Website
 ```
 
-3. **Optional:** Create a MongoDB database and tell the server where to find it in `config.json` 
+3. Install packages using the command `npm i`
+
+4. **Optional:** Create a MongoDB database and tell the server where to find it in `config.json` 
 (Leave `databaseUri` empty to run without MongoDB):
 ```JSON
 "databaseUri": "mongodb+srv://YOUR_SERVER_URI",
@@ -25,6 +27,6 @@ cd Website
 "databaseCollectionName": "analytics"
 ```
 
-4. Run the command `node index.js` to start the server.
+5. Run the command `node index.js` to start the server.
 
-5. Navigate to the site, hosted locally at [localhost:3000](http://localhost:3000) by default.
+6. Navigate to the site, hosted locally at [localhost:3000](http://localhost:3000) by default.

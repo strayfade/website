@@ -14,19 +14,19 @@ window.addEventListener('load', function () {
     }
     let EffectElements = [];
     for (var x = 0; x < HeaderElements.length; x++) {
-        let Position = HeaderElements[x].getBoundingClientRect();
-        let Current = document.createElement("div")
-        Current.className = "EffectBox"
-        Current.style.left = (Position.x + document.documentElement.scrollLeft) + "px"
-        Current.style.top = (Position.y + document.documentElement.scrollTop) + "px"
-        Current.style.width = Position.width + "px"
-        Current.style.height = Position.height + "px"
-        let Child = document.createElement("div")
-        Child.className = "EffectBoxActive"
-        Current.appendChild(Child.cloneNode())
-        EffectElements.push(Child)
-        HeaderElements[x].appendChild(Current)
-        HeaderElements[x].classList.add("AccentColored")
+            let Position = HeaderElements[x].getBoundingClientRect();
+            let Current = document.createElement("div")
+            Current.className = "EffectBox"
+            Current.style.left = (Position.x + document.documentElement.scrollLeft) + "px"
+            Current.style.top = (Position.y + document.documentElement.scrollTop) + "px"
+            Current.style.width = Position.width + "px"
+            Current.style.height = Position.height + "px"
+            let Child = document.createElement("div")
+            Child.className = "EffectBoxActive"
+            Current.appendChild(Child.cloneNode())
+            EffectElements.push(Child)
+            HeaderElements[x].appendChild(Current)
+            HeaderElements[x].classList.add("AccentColored")
     }
     var x = 0;
     let TargetClosing = document.getElementsByClassName("EffectBoxActive")
@@ -45,11 +45,13 @@ window.addEventListener('load', function () {
 function ReplaceEffectBoxes() {
     let Target = document.getElementsByClassName("EffectBox")
     for (var x = 0; x < Target.length; x++) {
-        let Position = HeaderElements[x].getBoundingClientRect();
-        Target[x].style.left = (Position.x + document.documentElement.scrollLeft) + "px"
-        Target[x].style.top = (Position.y + document.documentElement.scrollTop) + "px"
-        Target[x].style.width = Position.width + "px"
-        Target[x].style.height = Position.height + "px"
+        if (HeaderElements[x].parentNode.nodeName != "BLOCKQUOTE") {
+            let Position = HeaderElements[x].getBoundingClientRect();
+            Target[x].style.left = (Position.x + document.documentElement.scrollLeft) + "px"
+            Target[x].style.top = (Position.y + document.documentElement.scrollTop) + "px"
+            Target[x].style.width = Position.width + "px"
+            Target[x].style.height = Position.height + "px"
+        }
     }
 }
 

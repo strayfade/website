@@ -1,4 +1,11 @@
-h1, h2, h3, h4, h5, h6, p, div {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div {
     font-family: "Rajdhani";
     width: -moz-fit-content;
     width: fit-content;
@@ -7,15 +14,19 @@ h1, h2, h3, h4, h5, h6, p, div {
 h1 {
     text-shadow: 0px 0px 50px rgb(255, 255, 255, 0.20);
 }
+
 h2 {
     text-shadow: 0px 0px 50px rgb(255, 255, 255, 0.15);
 }
+
 h3 {
     text-shadow: 0px 0px 50px rgb(255, 255, 255, 0.10);
 }
+
 h4 {
     text-shadow: 0px 0px 50px rgb(255, 255, 255, 0.05);
 }
+
 h5 {
     text-shadow: 0px 0px 50px rgb(255, 255, 255, 0.00);
 }
@@ -43,17 +54,19 @@ code {
 .CodeCopyButton {
     position: absolute;
     transition: 0s;
-    color: var(--foreground-color);   
+    color: var(--foreground-color);
     z-index: 2;
-    opacity: 50%; 
+    opacity: 50%;
     margin: 0px;
     padding: 0px;
     cursor: pointer;
 }
+
 .CodeCopyButton:hover {
     color: var(--foreground-color);
     opacity: 100%;
 }
+
 .CodeLineNumbers {
     opacity: 50%;
     font-family: monospace;
@@ -64,6 +77,15 @@ code {
     padding: 0px;
     width: 13px;
 }
+
 pre {
     width: 100%;
+}
+
+blockquote {
+    border-left: 5px solid var(--accent-color);
+    background-color: var(--accent-color-very-transparent);
+    margin-left: 10px;
+    padding: 10px;
+    padding-left: 20px;
 }

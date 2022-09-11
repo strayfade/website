@@ -19,7 +19,7 @@ cd Website/
 
 3. **Optional:** Create a MongoDB database and tell the server where to find it in `config.json`:
 ```JSON
-"databaseUri": "mongodb+srv://YOUR_SERVER_URI",
+"databaseUri": "mongodb+srv://YOUR_SERVER_URI", // Leave blank to ignore MongoDB
 "databaseName": "strayfade",
 "databaseCollectionName": "analytics"
 ```

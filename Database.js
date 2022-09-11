@@ -1,16 +1,18 @@
 const Config = require('./config/config.json')
 
-const MongoClient = require('mongodb').MongoClient
-const Client = new MongoClient(Config.databaseUri);
-const Database = Client.db(Config.databaseName);
-const Collection = Database.collection(Config.databaseCollectionName);
+let MongoClient = require('mongodb').MongoClient
+let Client = null
+let Database = null
+let Collection = null
+if (Config.databaseUri != "") {
+    Client = new MongoClient(Config.databaseUri);
+    Database = Client.db(Config.databaseName);
+    Collection = Database.collection(Config.databaseCollectionName);
+}
 
 async function MongoPost(JSON) {
-    await Collection.insertOne(JSON);
-}
-async function MongoGet() {
-    const Output = await Collection.findOne({});
-    return Output;
+    if (Config.databaseUri != "")
+        await Collection.insertOne(JSON);
 }
 
-module.exports = { MongoPost, MongoGet }
+module.exports = { MongoPost }

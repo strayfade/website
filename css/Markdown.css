@@ -24,10 +24,46 @@ a {
     color: var(--accent-color);
 }
 
+hr {
+    color: var(--accent-color-transparent);
+}
+
 code {
-    background-color: var(--accent-color-transparent);
+    background: #1e1e1e;
+    color: #dcdcdc;
     padding: 4px;
     padding-bottom: 2px;
     padding-top: 2px;
-    border-radius: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.CodeCopyButton {
+    position: absolute;
+    transition: 0s;
+    color: var(--foreground-color);   
+    z-index: 2;
+    opacity: 50%; 
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+.CodeCopyButton:hover {
+    color: var(--foreground-color);
+    opacity: 100%;
+}
+.CodeLineNumbers {
+    opacity: 50%;
+    font-family: monospace;
+    inline-size: 150px;
+    overflow-wrap: break-word;
+    margin-left: -20px;
+    margin-bottom: 0px;
+    padding: 0px;
+    width: 13px;
+}
+pre {
+    width: 100%;
 }

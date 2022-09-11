@@ -46,17 +46,25 @@ function GenerateHead(Article, Locale) {
     Output += "<link rel='stylesheet' href='/css/Logo.css' type='text/css'>"
     Output += "<link rel='stylesheet' href='/css/Article.css' type='text/css'>"
     Output += "<link rel='stylesheet' href='/css/Effects.css' type='text/css'>"
+    Output += "<link rel='stylesheet' href='/css/Highlight.css' type='text/css'>"
 
     // FontAwesome Icons
     Output += "<script src='/icons/js/brands.js'></script>"
     Output += "<script src='/icons/js/solid.js'></script>"
+    Output += "<script src='/icons/js/regular.js'></script>"
     Output += "<script src='/icons/js/fontawesome.js'></script>"
 
     // Appearance Scripts
     Output += "<script src='/scripts/Appear.js'></script>"
 
-    // URL Redirecting Tools
+    // Utility Scripts
     Output += "<script src='/scripts/URL.js'></script>"
+    Output += "<script src='/scripts/Clipboard.js'></script>"
+
+    // Other Scripts
+    Output += "<script src='/scripts/Load.js'></script>"
+    Output += "<script src='/scripts/Highlight.js'></script>"
+    Output += "<script src='/scripts/ContentLinks.js'></script>"
     return Output
 }
 

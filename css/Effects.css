@@ -1,7 +1,12 @@
+:root {
+    --copy-header-anim-length: 0.25s;
+}
+
 .EffectBox {
     position: absolute;
     z-index: 1;
     width: max-content;
+    pointer-events: none;
 }
 
 .EffectBoxActive {
@@ -37,4 +42,44 @@
 
 .AccentColored {
     color: var(--accent-color);
+}
+
+.HyperlinkIndicator {
+    transition: var(--copy-header-anim-length);
+    position: absolute;
+    transition: 0.5s;
+    color: var(--accent-color-transparent);
+    opacity: 100%;
+    pointer-events: none;
+}
+.HyperlinkIndicatorDisabled {
+    transition: var(--copy-header-anim-length);
+    opacity: 0%;
+}
+.HyperlinkHeader {
+    transition: var(--copy-header-anim-length);
+    color: var(--foreground-color);
+}
+.HyperlinkHeader:hover {
+    color: var(--accent-color);
+}
+.HyperlinkHeader:active {
+    transition: 0s;
+    color: var(--foreground-color);
+}
+
+.CopyText {
+    transition: var(--copy-header-anim-length);
+    position: absolute;
+    padding: 0px;
+    margin: 2px;
+    pointer-events: none;
+    opacity: 30%;
+    color: var(--foreground-color);
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.CopyTextDisabled {
+    opacity: 0%;
 }

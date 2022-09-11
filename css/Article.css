@@ -1,7 +1,7 @@
 .ArticleHeader {
     margin-bottom: 35px;
     padding-bottom: 20px;
-    width: 50%;
+    width: 70%;
     border-bottom: 3px solid var(--accent-color);
 }
 @media only screen and (max-width: 600px) {

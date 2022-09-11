@@ -1,19 +1,18 @@
 const fs = require('fs')
-const markdown = require("markdown").markdown;
+const Markdown = require("markdown").markdown;
 
 function GenerateBody(Article, Locale, isHomepage, Custom) {
 
     // Markdown
-    let MdStr = fs.readFileSync(__dirname.replace("generators", "posts/") + Article.markdown).toString()
+    let MarkdownString = fs.readFileSync(__dirname.replace("generators", "posts/") + Article.markdown).toString()
     if (Custom != "") {
-        MdStr += "\n\n# Error\n\n" + Custom
+        MarkdownString += "\n\n" + Custom
     }
-    let MdHtml = markdown.toHTML(MdStr)
+    let MarkdownHtml = Markdown.toHTML(MarkdownString)
 
-    // Calculate reading time
     // Credit https://infusion.media/content-marketing/how-to-calculate-reading-time/
-    let MdWordCount = MdStr.split(" ").length
-    let ReadingTime = Math.ceil(MdWordCount / 100)
+    let MarkdownWorkCount = MarkdownString.split(" ").length
+    let ReadingTime = Math.ceil(MarkdownWorkCount / 100)
 
     Output = ""
     Output += "<div class='ArticleContainer'>"
@@ -32,7 +31,7 @@ function GenerateBody(Article, Locale, isHomepage, Custom) {
         }
 
         // Article Content
-        Output += MdHtml
+        Output += MarkdownHtml
     }
     else {
         let filenames = fs.readdirSync(__dirname.replace("generators", "posts/"));

@@ -1,7 +1,11 @@
 # Strayfade/Website
-The public source code of [Strayfade.com](https://strayfade.com)
+The public source code of [Strayfade.com](https://strayfade.com) made using the **MEN** stack (MongoDB, Express, NodeJS)
 
-> *This repository will not always reflect the current website at times.*
+> Do you know a language that isn't English? You can contribute to this site by translating for us!
+>
+> The site's language files are in the `localization` directory. Simply copy one of the existing ones, rename it to the locale you are translating for, and translate the values in the JSON file. 
+>
+> You can submit a new localization file by opening a pull request.
 
 ### Usage
 
@@ -13,10 +17,11 @@ git clone --recursive https://github.com/Strayfade/Website.git
 cd Website/
 ```
 
-3. **Optional**: If you wish to have the ability to view website analytics, create a `.env` file with the following contents (You will be prompted for credentials when viewing the website anaytics):
-```
-USER=YourUserName
-PASS=YourPassWord
+3. **Optional:** Create a MongoDB database and tell the server where to find it in `config.json`:
+```JSON
+"databaseUri": "mongodb+srv://<user>:<pass>@cluster0.bch0ttx.mongodb.net/?retryWrites=true&w=majority", // Replace "user" and "pass" with your credentials (leave blank to skip MongoDB)
+"databaseName": "strayfade",
+"databaseCollectionName": "analytics"
 ```
 
 4. Run the command `node index.js` to start the server.

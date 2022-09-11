@@ -1,5 +1,17 @@
+let TagsToAffect = ["h1"]
+if (!window.location.toString().endsWith("/")) {
+    TagsToAffect.push("h2")
+    TagsToAffect.push("h3")
+}
+
+var HeaderElements = [];
 window.addEventListener('load', function () {
-    let HeaderElements = document.getElementsByTagName("h1")
+    for (let x = 0; x < TagsToAffect.length; x++) {
+        var Found = document.getElementsByTagName(TagsToAffect[x])
+        for (let y = 0; y < Found.length; y++) {
+            HeaderElements.push(Found[y])
+        }
+    }
     let EffectElements = [];
     for (var x = 0; x < HeaderElements.length; x++) {
         let Position = HeaderElements[x].getBoundingClientRect();
@@ -31,7 +43,6 @@ window.addEventListener('load', function () {
     HideObscure();
 })
 function ReplaceEffectBoxes() {
-    let HeaderElements = document.getElementsByTagName("h1")
     let Target = document.getElementsByClassName("EffectBox")
     for (var x = 0; x < Target.length; x++) {
         let Position = HeaderElements[x].getBoundingClientRect();
@@ -45,4 +56,6 @@ function ReplaceEffectBoxes() {
 // This is <REALLY> stupid, but it works
 setInterval(function () {
     ReplaceEffectBoxes()
+    PositionLinkElements()
+    PositionCopyElements()
 }, 10);

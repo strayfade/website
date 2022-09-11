@@ -8,7 +8,7 @@ async function SetLightMode(Enabled) {
         document.getElementById("LightModeToggle").classList.add('fa-moon')
     }
     else {
-        document.getElementById("LightModeToggle").classList.add('fa-sun')
+        document.getElementById("LightModeToggle").classList.add('fa-lightbulb')
     }
 
     let LightColor = getComputedStyle(document.documentElement).getPropertyValue("--lighten-color")

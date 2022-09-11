@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-    const Article = require('./posts/P0.json')
+    const Article = require('./posts/_None.json')
     let Lang = require(GetLanguagePath(req))
     res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, true))
 })

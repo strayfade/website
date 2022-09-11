@@ -14,7 +14,7 @@ The public source code of [Strayfade.com](https://strayfade.com) made using the 
 2.  Clone this repository and `cd` into it:
 ```Bash
 git clone --recursive https://github.com/Strayfade/Website.git
-cd Website/
+cd Website
 ```
 
 3. **Optional:** Create a MongoDB database and tell the server where to find it in `config.json`:
@@ -27,5 +27,3 @@ cd Website/
 4. Run the command `node index.js` to start the server.
 
 5. Navigate to the site, hosted locally at [localhost:3000](http://localhost:3000) by default.
-
-6. **Optional**: To view analytics, navigate to [/api/Analytics](http://localhost:3000/api/Analytics)

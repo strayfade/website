@@ -56,6 +56,9 @@ function CustomStyleExpandedCodeblocks() {
                 LineNumbers.style.marginTop = (-50 / 3 * Inner.split("\n").length) + "px"
                 Current.appendChild(LineNumbers)
             }
+            else {
+                Current.style.paddingLeft = "15px";
+            }
         }
     }
 }

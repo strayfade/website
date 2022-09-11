@@ -105,3 +105,4 @@ dist
 
 # Server
 config.json
+config/config.json

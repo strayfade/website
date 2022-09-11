@@ -1,10 +1,11 @@
 :root {
     --lighten-percentage: 20%;
     --darken-percentage: 20%;
+
+    --lighten-color: rgb(240, 240, 240);
+    --darken-color: rgb(16, 16, 16);
     
-    --header-background-color: rgb(16, 16, 16);
     --background-color: rgb(16, 16, 16);
-    --background-color-alt: rgb(30, 30, 30);
     --foreground-color: rgb(240, 240, 240);
 
     --accent-color-hue: 190;

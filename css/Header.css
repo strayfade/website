@@ -35,10 +35,6 @@
     margin-top: 20px;
     transition: 0.5s;
 }
-.HeaderSpecial:hover {
-    padding-left: 10px;
-    padding-right: 10px;
-}
 
 .FloatLeft {
     float: left;

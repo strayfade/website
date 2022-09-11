@@ -56,6 +56,7 @@ function GenerateHead(Article, Locale) {
 
     // Appearance Scripts
     Output += "<script src='/scripts/Appear.js'></script>"
+    Output += "<script src='/scripts/AppearanceMode.js'></script>"
 
     // Utility Scripts
     Output += "<script src='/scripts/URL.js'></script>"

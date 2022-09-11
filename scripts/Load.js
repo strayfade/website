@@ -32,8 +32,8 @@ function CustomStyleExpandedCodeblocks() {
     for (var x = 0; x < Codeblocks.length; x++) {
         let Current = Codeblocks[x];
         if (Current.parentElement.nodeName == "PRE") {
-            Current.style.width = "100%"
             Current.style.display = "inline-block"
+            Current.style.width = "95%"
             let Inner = Current.textContent
             let CopyButton = document.createElement("i");
             CopyButton.classList = ["fa-regular fa-copy CodeCopyButton"]
@@ -44,7 +44,7 @@ function CustomStyleExpandedCodeblocks() {
             // Setup Line Numbers
             if (Inner.split("\n").length > 1) {
                 Current.style.paddingLeft = "35px"
-                Current.style.width = "calc(100% - 29px)"
+                Current.style.width = "calc(95% - 20px)"
                 let LineNumbers = document.createElement("p")
                 LineNumbers.className = "CodeLineNumbers";
                 for (var y = 0; y < Inner.split("\n").length; y++) {

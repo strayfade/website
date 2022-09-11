@@ -104,4 +104,4 @@ dist
 .tern-port
 
 # Server
-config/config.json
+config.json

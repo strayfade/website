@@ -2,9 +2,7 @@
 
 The public source code of [Strayfade.com](https://strayfade.com)
 
-<img src="https://img.shields.io/badge/MongoDB-%2347A24800?style=for-the-badge&logo=MongoDB&logoColor=%23FFF">
-<img src="https://img.shields.io/badge/Express-%231c1c1c00?style=for-the-badge&logo=Express&logoColor=%23FFF">
-<img src="https://img.shields.io/badge/Node.js-%2333993300?style=for-the-badge&logo=Node.js&logoColor=%23FFF">
+<img src="https://img.shields.io/badge/MongoDB-%2347A24800?style=for-the-badge&logo=MongoDB&logoColor=%23FFF"><img src="https://img.shields.io/badge/Express-%231c1c1c00?style=for-the-badge&logo=Express&logoColor=%23FFF"><img src="https://img.shields.io/badge/Node.js-%2333993300?style=for-the-badge&logo=Node.js&logoColor=%23FFF">
 
 #
 > Do you know a language that isn't English? You can contribute to this repository by translating for us!

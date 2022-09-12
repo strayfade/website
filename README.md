@@ -1,9 +1,15 @@
 # Strayfade/Website
-The public source code of [Strayfade.com](https://strayfade.com) made using the **MEN** stack (MongoDB, Express, NodeJS)
 
-> Do you know a language that isn't English? You can contribute to this site by translating for us!
+The public source code of [Strayfade.com](https://strayfade.com)
+
+<img src="https://img.shields.io/badge/MongoDB-%2347A24800?style=for-the-badge&logo=MongoDB&logoColor=%23FFF">
+<img src="https://img.shields.io/badge/Express-%231c1c1c00?style=for-the-badge&logo=Express&logoColor=%23FFF">
+<img src="https://img.shields.io/badge/Node.js-%2333993300?style=for-the-badge&logo=Node.js&logoColor=%23FFF">
+
+#
+> Do you know a language that isn't English? You can contribute to this repository by translating for us!
 >
-> The site's language files are in the `localization` directory. Simply copy one of the existing ones, rename it to the locale you are translating for, and translate the values in the JSON file. 
+> The project's localization files are in the `localization` directory. Simply copy one of the existing ones, rename it to the locale you are translating for, and translate the values in the JSON file. 
 >
 > You can submit a new localization file by opening a pull request.
 

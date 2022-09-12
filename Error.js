@@ -1,4 +1,6 @@
 const { Generators } = require('./Generators')
+const { GetLanguagePath } = require('./Analytics')
+
 function SendError(errNum, req, res, CustomError, Languages) {
     const Article = require('./posts/' + errNum + '.json')
     if (Languages.includes(req.params.localization)) { // Check if localization param is present
@@ -6,7 +8,7 @@ function SendError(errNum, req, res, CustomError, Languages) {
         res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, false, CustomError))
     }
     else { // No localization param, default to en-us
-        let Lang = require('./localization/en-us.json')
+        let Lang = require(GetLanguagePath(req))
         res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, false, CustomError))
     }
 }

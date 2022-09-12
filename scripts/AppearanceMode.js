@@ -3,12 +3,13 @@ let UseLightMode = false;
 async function SetLightMode(Enabled) {
     UseLightMode = Enabled;
 
-    await new Promise(resolve => setTimeout(resolve, 1));
     if (!Enabled) {
-        document.getElementById("LightModeToggle").classList.add('fa-moon')
+        document.getElementById("LightModeToggleLight").classList.add('Hidden')
+        document.getElementById("LightModeToggleDark").classList.remove('Hidden')
     }
     else {
-        document.getElementById("LightModeToggle").classList.add('fa-lightbulb')
+        document.getElementById("LightModeToggleLight").classList.remove('Hidden')
+        document.getElementById("LightModeToggleDark").classList.add('Hidden')
     }
 
     let LightColor = getComputedStyle(document.documentElement).getPropertyValue("--lighten-color")

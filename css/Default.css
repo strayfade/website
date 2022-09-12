@@ -16,3 +16,7 @@ body {
     word-wrap: break-word;
     text-overflow: clip;
 }
+
+.Hidden {
+    display: none;
+}

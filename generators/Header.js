@@ -10,8 +10,11 @@ function GenerateHeader(Article, Locale) {
     Output += "<div class='HeaderObject HoverAccentColor CursorPointer' onclick='OpenURL(`/`)'>"
     Output += "<h1>" + Locale.header_main + "</h1>"
     Output += "</div>"
-    Output += "<div class='HeaderObject HoverAccentColor CursorPointer' onclick='SetLightMode(!UseLightMode)'>"
-    Output += "<i id='LightModeToggle' class='fa-regular fa-lightbulb HeaderSpecial'></i>"
+    Output += "<div id='LightModeToggleLight' class='HeaderObject HoverAccentColor CursorPointer Hidden' onclick='SetLightMode(!UseLightMode)'>"
+    Output += "<i class='fa-solid fa-lightbulb HeaderSpecial'></i>"
+    Output += "</div>"
+    Output += "<div id='LightModeToggleDark' class='HeaderObject HoverAccentColor CursorPointer' onclick='SetLightMode(!UseLightMode)'>"
+    Output += "<i class='fa-solid fa-moon HeaderSpecial'></i>"
     Output += "</div>"
 
     Output += "<div class='HeaderObject HoverAccentColor FloatRight CursorPointer' onclick='OpenURL(`https://github.com/Strayfade`)'>"

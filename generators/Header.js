@@ -1,4 +1,4 @@
-function GenerateHeader(Article, Locale) {
+function GenerateHeader(Article, Locale, isHomepage = false) {
     Output = ""
     Output += "<header>\n"
     Output += "<div class='Header'>"
@@ -17,16 +17,22 @@ function GenerateHeader(Article, Locale) {
     Output += "<i class='fa-solid fa-moon HeaderSpecial'></i>"
     Output += "</div>"
 
-    Output += "<div class='HeaderObject HoverAccentColor FloatRight CursorPointer' onclick='OpenURL(`https://github.com/Strayfade`)'>"
+    Output += "<div class='HeaderObject HoverAccentColor FloatRight CursorPointer'>"
+    if (isHomepage) {
+        Output += "<input id='PageSearchBox' type='text' placeholder='Search' oninput='SearchArticle()'>"
+        Output += "</div>"
+        Output += "<div class='HeaderObject HoverAccentColor CursorPointer MobileHidden' onclick='OpenURL(`https://github.com/Strayfade`)'>"
+    }
+
     Output += "<i class='fa-brands fa-github HeaderSpecial'></i>"
     Output += "</div>"
-    Output += "<div class='HeaderObject HoverAccentColor CursorPointer' onclick='OpenURL(`https://github.com/Strayfade/Website`)'>"
+    Output += "<div class='HeaderObject HoverAccentColor CursorPointer MobileHidden' onclick='OpenURL(`https://github.com/Strayfade/Website`)'>"
     Output += "<i class='fa-solid fa-code-branch HeaderSpecial'></i>"
     Output += "</div>"
-    Output += "<div class='HeaderObject HoverAccentColor CursorPointer' onclick='OpenURL(`https://twitter.com/Strayfade`)'>"
+    Output += "<div class='HeaderObject HoverAccentColor CursorPointer MobileHidden' onclick='OpenURL(`https://twitter.com/Strayfade`)'>"
     Output += "<i class='fa-brands fa-twitter HeaderSpecial'></i>"
     Output += "</div>"
-    Output += "<div class='HeaderObject HoverAccentColor CursorPointer' onclick='OpenURL(`https://youtube.com/Strayfade`)'>"
+    Output += "<div class='HeaderObject HoverAccentColor CursorPointer MobileHidden' onclick='OpenURL(`https://youtube.com/Strayfade`)'>"
     Output += "<i class='fa-brands fa-youtube HeaderSpecial'></i>"
     Output += "</div>"
 

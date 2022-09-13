@@ -47,6 +47,7 @@ function GenerateHead(Article, Locale) {
     Output += "<link rel='stylesheet' href='/css/Article.css' type='text/css'>"
     Output += "<link rel='stylesheet' href='/css/Effects.css' type='text/css'>"
     Output += "<link rel='stylesheet' href='/css/Highlight.css' type='text/css'>"
+    Output += "<link rel='stylesheet' href='/css/Input.css' type='text/css'>"
 
     // FontAwesome Icons
     Output += "<script src='/icons/js/brands.js'></script>"
@@ -60,6 +61,7 @@ function GenerateHead(Article, Locale) {
 
     // Utility Scripts
     Output += "<script src='/scripts/URL.js'></script>"
+    Output += "<script src='/scripts/Search.js'></script>"
     Output += "<script src='/scripts/Clipboard.js'></script>"
 
     // Other Scripts

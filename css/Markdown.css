@@ -54,6 +54,7 @@ pre code {
     width: 90%;
 }
 
+
 .CodeCopyButton {
     position: absolute;
     transition: 0s;
@@ -101,5 +102,8 @@ blockquote {
     .CodeCopyButton {
         display: none;
         pointer-events: none;
+    }
+    .CodeLineNumbers {
+        display: none;
     }
 }

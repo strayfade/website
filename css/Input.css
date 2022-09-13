@@ -1,0 +1,13 @@
+input {
+    width: 90%;
+    background-color: var(--background-color);
+    margin-top: 6px;
+    padding: 8px;
+    font-family: Rajdhani;
+    font-size: 16px;
+    color: var(--foreground-color);
+    border: 2px solid var(--accent-color-transparent);
+}
+input:focus {
+    outline: none;
+}

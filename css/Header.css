@@ -45,6 +45,11 @@
     float: right;
     margin-left: auto;
 }
+@media only screen and (max-width: 600px) {
+    .FloatRight {
+        float: none;
+    } 
+}
 
 .HeaderObject svg {
     margin-top: 15px;

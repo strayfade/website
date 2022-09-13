@@ -26,7 +26,12 @@ function GenerateHead(Article, Locale) {
     Output += "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"
 
     // Favicon
-    Output += "<link rel='shortcut icon' href='/assets/Icon.png' type='image/x-icon'>"
+    Output += "<link rel='icon' href='/assets/Icon.svg' type='image/x-icon' color='#ffffff'>"
+    Output += "<link rel='mask-icon' href=”/assets/Icon.svg' color='#ffffff'>"
+    Output += "<link rel='apple-touch-icon' href=”/assets/Icon.png'>"
+    
+    // Colors
+    Output += "<meta name='theme-color' content='#ffffff'>"
 
     // Font Imports
     Output += "<link rel='stylesheet' href='/fonts/Rajdhani/Rajdhani.css' type='text/css'>"

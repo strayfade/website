@@ -57,7 +57,7 @@ pre code {
 .CodeCopyButton {
     position: absolute;
     transition: 0s;
-    color: var(--foreground-color);
+    color: var(--lighten-color-codeblock);
     z-index: 2;
     opacity: 50%;
     margin: 0px;
@@ -66,7 +66,6 @@ pre code {
 }
 
 .CodeCopyButton:hover {
-    color: var(--foreground-color);
     opacity: 100%;
 }
 

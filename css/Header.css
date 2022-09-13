@@ -33,7 +33,7 @@
 .HeaderSpecial {
     width: 20px;
     height: 20px;
-    margin-top: 20px;
+    margin-top: 15px;
     transition: 0.5s;
 }
 
@@ -49,8 +49,4 @@
     .FloatRight {
         float: none;
     } 
-}
-
-.HeaderObject svg {
-    margin-top: 15px;
 }

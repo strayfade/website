@@ -9,3 +9,6 @@
 .WidthAuto {
     width: auto;
 }
+.Flexbox {
+    display: flex;
+}

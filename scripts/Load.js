@@ -40,25 +40,7 @@ function CustomStyleExpandedCodeblocks() {
             Current.appendChild(CopyButton);
             Inners.push(Inner);
             CodeElements.push(Current);
-
-            // Setup Line Numbers
-            if (Inner.split("\n").length > 1) {
-                Current.style.paddingLeft = "35px"
-                Current.style.width = "calc(95% - 20px)"
-                let LineNumbers = document.createElement("p")
-                LineNumbers.className = "CodeLineNumbers";
-                for (var y = 0; y < Inner.split("\n").length; y++) {
-                    LineNumbers.innerHTML += (y + 1).toString();
-                    if (y < Inner.split("\n").length) {
-                        LineNumbers.innerHTML += "\n"
-                    }
-                }
-                LineNumbers.style.marginTop = (-50 / 3 * Inner.split("\n").length - 2) + "px"
-                Current.appendChild(LineNumbers)
-            }
-            else {
-                Current.style.paddingLeft = "15px";
-            }
+            Current.style.paddingLeft = "10px"
         }
     }
 }

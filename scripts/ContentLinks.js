@@ -48,7 +48,7 @@ if (!window.location.toString().endsWith("/")) {
             HyperlinkIndicator.classList = ["fa-solid fa-link HyperlinkIndicator"]
             HyperlinkIndicator.id = "HyperlinkIndicator" + x
             let CopyText = document.createElement("p")
-            CopyText.innerHTML = "Copy Link"
+            CopyText.innerHTML = "Copy Link to Section"
             CopyText.className = "CopyText"
             CopyText.id = "CopyTextIndicator" + x
             Element.appendChild(HyperlinkIndicator)
@@ -58,7 +58,7 @@ if (!window.location.toString().endsWith("/")) {
             Element.addEventListener("mouseover", (event) => {
                 document.getElementById(("HyperlinkIndicator" + x).toString()).classList.remove("HyperlinkIndicatorDisabled")
 
-                document.getElementById(("CopyTextIndicator" + x).toString()).innerHTML = "Copy Link"
+                document.getElementById(("CopyTextIndicator" + x).toString()).innerHTML = "Copy Link to Section"
                 document.getElementById(("CopyTextIndicator" + x).toString()).classList.remove("CopyTextDisabled")
             })
             Element.addEventListener("mouseleave", (event) => {
@@ -68,7 +68,7 @@ if (!window.location.toString().endsWith("/")) {
             })
             Element.addEventListener("click", (event) => {
                 CopyToClipboard(window.location.toString().split("#")[0] + "#" + Element.id);
-                document.getElementById(("CopyTextIndicator" + x).toString()).innerHTML = "Copied!"
+                document.getElementById(("CopyTextIndicator" + x).toString()).innerHTML = "Link Copied!"
             })
             HyperlinkIndicatorElements.push(HyperlinkIndicator)
             CopyTextIndicatorElements.push(CopyText)

@@ -40,7 +40,8 @@ function CustomStyleExpandedCodeblocks() {
             Current.appendChild(CopyButton);
             Inners.push(Inner);
             CodeElements.push(Current);
-            Current.style.paddingLeft = "10px"
+            Current.style.paddingTop = "15px"
+            Current.style.paddingLeft = "15px"
         }
     }
 }

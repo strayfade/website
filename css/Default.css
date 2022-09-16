@@ -1,5 +1,7 @@
 :root {
     --display-width: 75%;
+    
+    --display-font: Rajdhani;
 }
 @media only screen and (max-width: 600px) {
     :root {
@@ -15,6 +17,7 @@ body {
     color: var(--foreground-color);
     word-wrap: break-word;
     text-overflow: clip;
+    font-family: var(--display-font);
 }
 
 .Hidden {

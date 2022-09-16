@@ -6,7 +6,7 @@ h5,
 h6,
 p,
 div {
-    font-family: "Rajdhani";
+    font-family: var(--display-font);
     width: -moz-fit-content;
     width: fit-content;
 }

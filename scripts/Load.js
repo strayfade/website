@@ -45,7 +45,16 @@ function CustomStyleExpandedCodeblocks() {
         }
     }
 }
+function RandomizeColors() {
+    document.querySelector(':root').style.setProperty('--accent-color-hue', Math.floor(Math.random() * 360));
+}
+
+var enableRandomColors = false;
+
 window.addEventListener("load", function () {
     CreateSyntaxHighlighting();
     CustomStyleExpandedCodeblocks();
+
+    if (enableRandomColors)
+        RandomizeColors()
 })

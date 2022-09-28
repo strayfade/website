@@ -10,6 +10,9 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     Output += "<div class='HeaderObject HoverAccentColor CursorPointer' onclick='OpenURL(`/`)'>"
     Output += "<h1>" + Locale.header_main + "</h1>"
     Output += "</div>"
+    Output += "<div class='HeaderObject HoverAccentColor CursorPointer' onclick='OpenURL(`/About`)'>"
+    Output += "<h1>" + Locale.header_about + "</h1>"
+    Output += "</div>"
     Output += "<div id='LightModeToggleLight' class='HeaderObject HoverAccentColor CursorPointer Hidden' onclick='SetLightMode(!UseLightMode)'>"
     Output += "<i class='fa-solid fa-lightbulb HeaderSpecial'></i>"
     Output += "</div>"
@@ -17,7 +20,7 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     Output += "<i class='fa-solid fa-moon HeaderSpecial'></i>"
     Output += "</div>"
 
-    Output += "<div class='HeaderObject HoverAccentColor FloatRight CursorPointer'>"
+    Output += "<div class='HeaderObject HoverAccentColor FloatRight CursorPointer MobileHidden'>"
     if (isHomepage) {
         Output += "<input id='PageSearchBox' type='text' placeholder='Search' oninput='SearchArticle()'>"
         Output += "</div>"

@@ -1,15 +1,21 @@
 const fs = require('fs')
+const { getEmoji } = require('language-flag-colors')
 
 const config = require("./config/config.json");
 
 // Imported Functions
 const { SendError } = require('./Error')
 const { Generators } = require('./Generators')
-const { CollectAnalytics, GetLanguagePath } = require('./Analytics')
+const { CollectAnalytics, GetLanguagePath, GetLanguage } = require('./Analytics')
 const Languages = require('./Localization').GetAvailableLanguages(config)
 
 const express = require('express')
 const app = express()
+
+const AvailablePages = {
+    Home: "/",
+    Dynamic: "..."
+}
 
 require('./security/Security').Setup(app)
 
@@ -39,7 +45,7 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
     const Article = require('./posts/_None.json')
     let Lang = require(GetLanguagePath(req))
-    res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, true))
+    res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Home, "", getEmoji(GetLanguage(req))))
 })
 app.get('/:path', (req, res) => {
     res.redirect("/en-us/" + req.params.path)
@@ -48,17 +54,14 @@ app.get('/:localization/:path', (req, res) => {
     let ArticlePath = './posts/' + req.params.path + '.json'
     if (fs.existsSync(ArticlePath)) { // Page exists, load into Article
         const Article = require('./posts/' + req.params.path + '.json')
+        var Lang = require(GetLanguagePath(req))
         if (Languages.includes(req.params.localization)) { // Check if localization param is present
-            let Lang = require('./localization/' + req.params.localization + '.json')
-            res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators))
+            Lang = require('./localization/' + req.params.localization + '.json')
         }
-        else { // No localization param, default to header-specified language
-            let Lang = require(GetLanguagePath(req))
-            res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators))
-        }
+        res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Dynamic, "", getEmoji(GetLanguage(req))))
     }
     else {
-        SendError(404, req, res, "", Languages);
+        SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, "", Languages);
     }
 })
 
@@ -69,14 +72,14 @@ function ErrorLogger(error, req, res, next) {
 }
 function ErrorHandler(error, req, res, next) {
     if (error.type == 'redirect')
-        SendError(404, req, res, error.toString(), Languages);
+        SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, error.toString(), Languages);
     else if (error.type == 'time-out')
-        SendError(408, req, res, error.toString(), Languages);
+        SendError(408, req, res, AvailablePages, AvailablePages.Dynamic, error.toString(), Languages);
     else
         next(error)
 }
 function ErrorHandlerGeneric(error, req, res, next) {
-    SendError(500, req, res, error, Languages);
+    SendError(500, req, res, AvailablePages, AvailablePages.Dynamic, error, Languages);
 }
 app.use(ErrorLogger)
 app.use(ErrorHandler)

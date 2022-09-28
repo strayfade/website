@@ -1,5 +1,6 @@
 const GeoLookup = require('geoip-lite').lookup
 const { MongoPost } = require('./Database')
+const fs = require('fs')
 function GetAnalyticsFromRequest(req) {
     let ip = (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace("::ffff:", "")
     if (ip == "127.0.0.1") {
@@ -28,6 +29,7 @@ function GetLanguage(req) {
     return req.headers["accept-language"].split(",")[0].toLowerCase();
 }
 function GetLanguagePath(req) {
-    return "./localization/" + GetLanguage(req) + ".json"
+    var LocalePath = "./localization/" + GetLanguage(req).split("-")[0] + ".json"
+    return fs.existsSync(LocalePath) ? LocalePath : "./localization/en.json"
 }
 module.exports = { CollectAnalytics, GetLanguagePath, GetLanguage }

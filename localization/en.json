@@ -1,12 +1,12 @@
 {
-    "locale_title": "en-us",
-    "short_locale_title": "en",
+    "locale_title": "en",
 
     "site_name": "strayfade.com",
     "site_title_default": "Strayfade",
     "site_title_extension": " - Strayfade",
 
     "header_main": "Home",
+    "header_about": "About",
 
     "copyright_main": "Copyright Strayfade 2019-2022. All Rights Reserved.",
 

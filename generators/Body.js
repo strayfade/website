@@ -1,7 +1,7 @@
 const fs = require('fs')
 const Markdown = require("markdown").markdown;
 
-function GenerateBody(Article, Locale, isHomepage, Custom) {
+function GenerateBody(Article, Locale, Homepage, Custom) {
 
     // Markdown
     let MarkdownString = fs.readFileSync(__dirname.replace("generators", "posts/") + Article.markdown).toString()
@@ -20,7 +20,7 @@ function GenerateBody(Article, Locale, isHomepage, Custom) {
     // Article Title/Subtitle
     Output += "<div class='DisplayWidth'>"
 
-    if (!isHomepage) {
+    if (!Homepage) {
         if (Article.showTitle) {
             Output += "<div class='ArticleHeader'>"
             Output += "<p class='ArticleHeaderDate'>" + Article.date + "</p>"

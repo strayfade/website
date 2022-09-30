@@ -4,6 +4,7 @@ const { getEmoji } = require('language-flag-colors')
 const config = require("./config/config.json");
 
 // Imported Functions
+const { Log } = require('./Log')
 const { SendError } = require('./Error')
 const { Generators } = require('./Generators')
 const { CollectAnalytics } = require('./Database')
@@ -35,11 +36,13 @@ app.use('/icons', express.static('icons'))
 // Analytics Middleware
 app.use((req, res, next) => {
     try {
+        Log("Serving page at \"" + req.originalUrl + "\"")
         CollectAnalytics(req, res, config);
     }
     catch(error) {
-        console.error(error)
+        Log("ERROR: Error encountered while serving static page at \"" + req.originalUrl + "\":\n" + error)
         SendError(500, req, res, error, Languages);
+        Log("Serving error page [500]")
     }
     next();
 })
@@ -50,6 +53,7 @@ app.get('/', (req, res) => {
     res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Home, "", getEmoji(GetLanguage(req))))
 })
 app.get('/:path', (req, res) => {
+    Log("NOTICE: Redirecting to \"/" + GetLanaguageShort(req) + "/" + req.params.path + "\"")
     res.redirect("/" + GetLanaguageShort(req) + "/" + req.params.path)
 })
 app.get('/:localization/:path', (req, res) => {
@@ -69,7 +73,7 @@ app.get('/:localization/:path', (req, res) => {
 
 // Error Handling Middleware
 function ErrorLogger(error, req, res, next) {
-    console.error(error)
+    Log("ERROR: Internal Server [500]:\n" + error)
     next(error)
 }
 function ErrorHandler(error, req, res, next) {
@@ -90,6 +94,6 @@ app.use(ErrorHandlerGeneric)
 // Start Server
 var Port = process.env.PORT || config.port;
 app.listen(Port, () => {
-    console.log('Listening on port ' + Port)
-    console.log('Link: http://localhost:' + Port)
+    Log('Listening on port ' + Port)
+    Log('Link: http://localhost:' + Port)
 })

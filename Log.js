@@ -1,7 +1,18 @@
+function P(Input) {
+    return Input.toString().length < 2 ? "0" + Input : Input
+}
+function Q(Input) {
+    for (var x = 0; x < 4; x++) {
+        if (Input.toString().length < 4) {
+            Input = "0" + Input
+        }
+    }
+    return Input
+}
 function GetFormattingTag() {
     var D = new Date(Date.now())
-    var FormattingTag = D.getDay() + "/" + D.getMonth() + "/" + D.getFullYear()
-    FormattingTag += " | " + D.getHours() + ":" + D.getMinutes() + ":" + D.getSeconds() + "." + D.getMilliseconds()
+    var FormattingTag = P(D.getDay()) + "/" + P(D.getMonth()) + "/" + D.getFullYear()
+    FormattingTag += " | " + P(D.getHours()) + ":" + P(D.getMinutes()) + ":" + P(D.getSeconds()) + "." + Q(D.getMilliseconds())
     return "[" + FormattingTag + "]"
 }
 function Log(String) {

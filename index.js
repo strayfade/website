@@ -6,7 +6,7 @@ const config = require("./config/config.json");
 // Imported Functions
 const { SendError } = require('./Error')
 const { Generators } = require('./Generators')
-const { CollectAnalytics, GetLanguagePath, GetLanguage } = require('./Analytics')
+const { CollectAnalytics, GetLanguagePath, GetLanguage, GetLanaguageShort } = require('./Analytics')
 const Languages = require('./Localization').GetAvailableLanguages(config)
 
 const express = require('express')
@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
     res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Home, "", getEmoji(GetLanguage(req))))
 })
 app.get('/:path', (req, res) => {
-    res.redirect("/en-us/" + req.params.path)
+    res.redirect("/" + GetLanaguageShort(req) + "/" + req.params.path)
 })
 app.get('/:localization/:path', (req, res) => {
     let ArticlePath = './posts/' + req.params.path + '.json'

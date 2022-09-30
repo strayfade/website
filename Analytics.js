@@ -28,8 +28,12 @@ function CollectAnalytics(req, res, config) {
 function GetLanguage(req) {
     return req.headers["accept-language"].split(",")[0].toLowerCase();
 }
+function GetLanaguageShort(req) {
+    var LocalePath = GetLanguage(req).split("-")[0]
+    return LocalePath
+}
 function GetLanguagePath(req) {
     var LocalePath = "./localization/" + GetLanguage(req).split("-")[0] + ".json"
     return fs.existsSync(LocalePath) ? LocalePath : "./localization/en.json"
 }
-module.exports = { CollectAnalytics, GetLanguagePath, GetLanguage }
+module.exports = { CollectAnalytics, GetLanguagePath, GetLanguage, GetLanaguageShort }

@@ -6,12 +6,14 @@ const config = require("./config/config.json");
 // Imported Functions
 const { SendError } = require('./Error')
 const { Generators } = require('./Generators')
-const { CollectAnalytics, GetLanguagePath, GetLanguage, GetLanaguageShort } = require('./Analytics')
-const Languages = require('./Localization').GetAvailableLanguages(config)
+const { CollectAnalytics } = require('./Database')
+const { GetAvailableLanguages, GetLanguage, GetLanaguageShort, GetLanguagePath } = require('./Localization')
 
+// Create App
 const express = require('express')
 const app = express()
 
+const Languages = GetAvailableLanguages(config)
 const AvailablePages = {
     Home: "/",
     Dynamic: "..."

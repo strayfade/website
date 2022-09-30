@@ -30,6 +30,6 @@ cd Website
 "databaseCollectionName": "analytics"
 ```
 
-5. Run the command `node index.js` to start the server.
+5. Run the command `node App.js` to start the server.
 
 6. Navigate to the site, hosted locally at [localhost:3000](http://localhost:3000) by default.

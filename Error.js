@@ -1,5 +1,5 @@
 const { Generators } = require('./Generators')
-const { GetLanguagePath } = require('./Analytics')
+const { GetLanguagePath } = require('./Localization')
 
 function SendError(errNum, req, res, AvailablePages, AvailablePageSelection, CustomError, Languages) {
     const Article = require('./posts/' + errNum + '.json')

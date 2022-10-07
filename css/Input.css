@@ -11,3 +11,13 @@ input {
 input:focus {
     outline: none;
 }
+select {
+    background-color: var(--background-color);
+    margin-top: 6px;
+    padding: 8px;
+    font-family: var(--display-font);
+    font-size: 16px;
+    color: var(--foreground-color);
+    border: none;
+    border-bottom: 2px solid var(--accent-color-transparent);
+}

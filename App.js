@@ -16,12 +16,13 @@ const app = express()
 
 const Languages = GetAvailableLanguages(config)
 const AvailablePages = {
-    Home: "/",
-    Dynamic: "..."
+    Home: "1",
+    Shop: "2",
+    Dynamic: "3",
+    NonstandardPages: [""]
 }
 
 require('./security/Security').Setup(app)
-
 app.disable('x-powered-by')
 
 // Static Directories
@@ -50,24 +51,40 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
     const Article = require('./posts/_None.json')
     let Lang = require(GetLanguagePath(req))
-    res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Home, "", getEmoji(GetLanguage(req))))
+    res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Home, ""))
 })
 app.get('/:path', (req, res) => {
     Log("NOTICE: Redirecting to \"/" + GetLanaguageShort(req) + "/" + req.params.path + "\"")
     res.redirect("/" + GetLanaguageShort(req) + "/" + req.params.path)
 })
 app.get('/:localization/:path', (req, res) => {
-    let ArticlePath = './posts/' + req.params.path + '.json'
-    if (fs.existsSync(ArticlePath)) { // Page exists, load into Article
-        const Article = require('./posts/' + req.params.path + '.json')
-        var Lang = require(GetLanguagePath(req))
-        if (Languages.includes(req.params.localization)) { // Check if localization param is present
-            Lang = require('./localization/' + req.params.localization + '.json')
+
+    var Lang = require(GetLanguagePath(req))
+    if (Languages.includes(req.params.localization)) { // Check if localization param is present
+        Lang = require('./localization/' + req.params.localization + '.json')
+    }
+
+    let IsNotArticle = AvailablePages.NonstandardPages.includes(req.params.path);
+    if (IsNotArticle) {
+        let Article = require('./posts/_None.json')
+        Log("Requested page tagged: IsNotArticle")
+        switch(req.params.path) {
+            case "Shop":
+                res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Shop, ""))
+                break;
         }
-        res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Dynamic, "", getEmoji(GetLanguage(req))))
     }
     else {
-        SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, "", Languages);
+        Log("Requested page tagged: IsArticle")
+        let ArticlePath = './posts/' + req.params.path + '.json'
+        if (fs.existsSync(ArticlePath)) { // Page exists, load into Article
+            let Article = require('./posts/' + req.params.path + '.json')
+            res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Dynamic, ""))
+        }
+        else {
+            Log("Requested page not found (404)!")
+            SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, "", Languages);
+        }
     }
 })
 

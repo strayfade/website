@@ -1,4 +1,4 @@
-function GeneratePage(Article, Locale, Generators, AvailablePages, AvailablePageSelector, Custom = "", Flag = " ") {
+function GeneratePage(Article, Locale, Generators, AvailablePages, AvailablePageSelector, Custom = "") {
     Output = ""
     Output += "<!DOCTYPE html>\n"
     Output += "<html lang=" + Locale.short_locale_title + ">\n"
@@ -7,8 +7,8 @@ function GeneratePage(Article, Locale, Generators, AvailablePages, AvailablePage
     Output += "</head>\n"
     Output += "<body>\n"
     Output += Generators.Header.GenerateHeader(Article, Locale, AvailablePageSelector == AvailablePages.Home) + "\n"
-    Output += Generators.Body.GenerateBody(Article, Locale, AvailablePageSelector == AvailablePages.Home, Custom) + "\n"
-    Output += Generators.Footer.GenerateFooter(Article, Locale, Flag) + "\n"
+    Output += Generators.Body.GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) + "\n"
+    Output += Generators.Footer.GenerateFooter(Article, Locale) + "\n"
     Output += "</body>\n"
     Output += "</html>"
     return Output

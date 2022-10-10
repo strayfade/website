@@ -5,7 +5,7 @@
 }
 
 .Footer {
-    width: 100vw;
+    width: 98vw;
     height: 7vh;
     color: var(--foreground-color);
     background-color: var(--header-background-color);

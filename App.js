@@ -34,11 +34,16 @@ app.use('/posts', express.static('posts'))
 app.use('/css', express.static('css'))
 app.use('/icons', express.static('icons'))
 
+// Packaging
+const BuildTools = require('./Build')
+
 // Analytics Middleware
 app.use((req, res, next) => {
     try {
-        Log("Serving page at \"" + req.originalUrl + "\"")
-        CollectAnalytics(req, res, config);
+        if (!req.originalUrl.endsWith(".css") && !req.originalUrl.endsWith(".js")) {
+            Log("Serving page at \"" + req.originalUrl + "\"")
+            CollectAnalytics(req, res, config);
+        }
     }
     catch(error) {
         Log("ERROR: Error encountered while serving static page at \"" + req.originalUrl + "\":\n" + error)
@@ -48,13 +53,22 @@ app.use((req, res, next) => {
     next();
 })
 
+// Source
+app.get('/Production.css', (req, res) => {
+    res.sendFile(BuildTools.GetStylesheets())
+})
+app.get('/Production.js', (req, res) => {
+    res.sendFile(BuildTools.GetScripts())
+})
+
+// Default Routing
 app.get('/', (req, res) => {
     const Article = require('./posts/_None.json')
     let Lang = require(GetLanguagePath(req))
     res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Home, ""))
 })
 app.get('/:path', (req, res) => {
-    Log("NOTICE: Redirecting to \"/" + GetLanaguageShort(req) + "/" + req.params.path + "\"")
+    //Log("NOTICE: Redirecting to \"/" + GetLanaguageShort(req) + "/" + req.params.path + "\"")
     res.redirect("/" + GetLanaguageShort(req) + "/" + req.params.path)
 })
 app.get('/:localization/:path', (req, res) => {
@@ -67,7 +81,7 @@ app.get('/:localization/:path', (req, res) => {
     let IsNotArticle = AvailablePages.NonstandardPages.includes(req.params.path);
     if (IsNotArticle) {
         let Article = require('./posts/_None.json')
-        Log("Requested page tagged: IsNotArticle")
+        //Log("Requested page tagged: IsNotArticle")
         switch(req.params.path) {
             case "Shop":
                 res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Shop, ""))
@@ -75,7 +89,7 @@ app.get('/:localization/:path', (req, res) => {
         }
     }
     else {
-        Log("Requested page tagged: IsArticle")
+        //Log("Requested page tagged: IsArticle")
         let ArticlePath = './posts/' + req.params.path + '.json'
         if (fs.existsSync(ArticlePath)) { // Page exists, load into Article
             let Article = require('./posts/' + req.params.path + '.json')

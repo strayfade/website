@@ -76,9 +76,10 @@
     padding: 0px;
     margin: 2px;
     pointer-events: none;
-    opacity: 30%;
+    opacity: 50%;
     color: var(--foreground-color);
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: 600;
     text-transform: uppercase;
 }
 

@@ -34,45 +34,9 @@ function GenerateHead(Article, Locale) {
     Output += "<link rel='mask-icon' href='/assets/Icon.svg' color='#ffffff'>"
     Output += "<link rel='apple-touch-icon' href='/assets/Icon.png'>"
 
-    // Font Imports
-    Output += "<link rel='stylesheet' href='/fonts/Rajdhani/Rajdhani.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/fonts/Xirod/Xirod.css' type='text/css'>"
-
-    // Stylesheet Imports
-    Output += "<link rel='stylesheet' href='/css/Default.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/Colors.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/Markdown.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/NoSelect.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/NoSpacing.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/OnHover.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/Header.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/Footer.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/Cursor.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/Layout.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/Logo.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/Article.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/Effects.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/Highlight.css' type='text/css'>"
-    Output += "<link rel='stylesheet' href='/css/Input.css' type='text/css'>"
-
-    // FontAwesome Icons
-    Output += "<script src='/icons/js/brands.js'></script>"
-    Output += "<script src='/icons/js/solid.js'></script>"
-    Output += "<script src='/icons/js/regular.js'></script>"
-    Output += "<script src='/icons/js/fontawesome.js'></script>"
-
-    // Appearance Scripts
-    Output += "<script src='/scripts/Appear.js'></script>"
-    Output += "<script src='/scripts/AppearanceMode.js'></script>"
-
-    // Utility Scripts
-    Output += "<script src='/scripts/Search.js'></script>"
-    Output += "<script src='/scripts/Clipboard.js'></script>"
-
-    // Other Scripts
-    Output += "<script src='/scripts/Load.js'></script>"
-    Output += "<script src='/scripts/Highlight.js'></script>"
-    Output += "<script src='/scripts/ContentLinks.js'></script>"
+    // Imports
+    Output += "<link rel='stylesheet' href='/Production.css' type='text/css'>"
+    Output += "<script src='/Production.js'></script>"
 
     return Output
 }

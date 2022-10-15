@@ -1,15 +1,17 @@
+const { Localize } = require('./tools/LocaleTools')
+
 function GenerateHead(Article, Locale) {
     Output = ""
     Output += "<link rel='manifest' href='/manifest/manifest.json'>"
 
-    let SiteTitle = Article.title + Locale.site_title_extension
+    let SiteTitle = Article.title + Localize(Locale, "site_title_extension")
     if (Article.title == "") {
-        SiteTitle = Locale.site_title_default
+        SiteTitle = Localize(Locale, "site_title_default")
     }
     // Site Name/URL Tags
-    Output += "<meta property='og:site_name' content='" + Locale.site_name + "'>"
-    Output += "<meta property='og:url' content='" + Locale.site_name + "'>"
-    Output += "<meta name='twitter:url' content='" + Locale.site_name + "'>"
+    Output += "<meta property='og:site_name' content='" + Localize(Locale, "site_name") + "'>"
+    Output += "<meta property='og:url' content='" + Localize(Locale, "site_name") + "'>"
+    Output += "<meta name='twitter:url' content='" + Localize(Locale, "site_name") + "'>"
 
     // Title Tags
     Output += "<title>" + SiteTitle + "</title>"

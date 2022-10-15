@@ -82,7 +82,7 @@ app.get('/:localization/:path', (req, res) => {
             res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Dynamic, ""))
         }
         else {
-            Log("Requested page not found (404)!")
+            Log("Requested page not found (404): " + req.path)
             SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, "", Languages);
         }
     }

@@ -1,6 +1,6 @@
 const fs = require('fs')
 const Markdown = require("markdown").markdown;
-
+const { Localize } = require('./tools/LocaleTools')
 function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) {
 
     // Markdown
@@ -47,8 +47,8 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                 Output += "<div class='ArticleHeader'>"
                 Output += "<p class='ArticleHeaderDate'>" + Article.date + "</p>"
                 Output += "<h1 class='ArticleHeaderTitle'>" + Article.title + "</h1>"
-                Output += "<span class='ArticleHeaderSubtitle'>" + Locale.article_author_prefix + Article.author + " •</span>"
-                Output += "<span class='ArticleHeaderSubtitle'> " + ReadingTime + Locale.article_read_time + "</span>"
+                Output += "<span class='ArticleHeaderSubtitle'>" + Localize(Locale, "article_author_prefix") + Article.author + " •</span>"
+                Output += "<span class='ArticleHeaderSubtitle'> " + ReadingTime + Localize(Locale, "article_read_time") + "</span>"
                 Output += "</div>"
             }
             Output += MarkdownHtml // Article MD

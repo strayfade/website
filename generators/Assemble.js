@@ -1,7 +1,9 @@
+const { Localize } = require('./tools/LocaleTools')
+
 function GeneratePage(Article, Locale, Generators, AvailablePages, AvailablePageSelector, Custom = "") {
     Output = ""
     Output += "<!DOCTYPE html>\n"
-    Output += "<html lang=" + Locale.short_locale_title + ">\n"
+    Output += "<html lang=" + Localize(Locale, "short_locale_title") + ">\n"
     Output += "<head>\n"
     Output += Generators.Head.GenerateHead(Article, Locale) + "\n"
     Output += "</head>\n"

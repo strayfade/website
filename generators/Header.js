@@ -1,3 +1,5 @@
+const { Localize } = require('./tools/LocaleTools')
+
 function GenerateHeader(Article, Locale, isHomepage = false) {
     Output = ""
     Output += "<header>\n"
@@ -9,11 +11,11 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     Output += "</div>"
 
     Output += "<div class='HeaderObject HoverAccentColor'>"
-    Output += "<h1><a class='LinkNormal' href='/'>" + Locale.header_main + "</a></h1>"
+    Output += "<h1><a class='LinkNormal' href='/'>" + Localize(Locale, "header_main") + "</a></h1>"
     Output += "</div>"
 
     Output += "<div class='HeaderObject HoverAccentColor'>"
-    Output += "<h1><a class='LinkNormal' href='/About'>" + Locale.header_about + "</a></h1>"
+    Output += "<h1><a class='LinkNormal' href='/About'>" + Localize(Locale, "header_about") + "</a></h1>"
     Output += "</div>"
 
     Output += "<div id='LightModeToggleLight' class='HeaderObject HoverAccentColor CursorPointer Hidden' onclick='SetLightMode(!UseLightMode)'>"

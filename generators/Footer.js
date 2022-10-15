@@ -1,3 +1,5 @@
+const { Localize } = require('./tools/LocaleTools')
+
 function GenerateFooter(Article, Locale) {
 
     Output = ""
@@ -6,11 +8,11 @@ function GenerateFooter(Article, Locale) {
     Output += "<div class='FooterInner DisplayWidth'>"
     
     Output += "<div class='FooterObject'>"
-    Output += "<a class='LinkNormal Underline' href='https://github.com/Strayfade/Website'>" + Locale.source_code + "</a>"
+    Output += "<a class='LinkNormal Underline' href='https://github.com/Strayfade/Website'>" + Localize(Locale, "source_code") + "</a>"
     Output += "</div>"
 
     Output += "<div class='FooterObject FloatRight'>"
-    Output += "<h1>" + Locale.copyright_main + "</h1>"
+    Output += "<h1>" + Localize(Locale, "copyright_main") + "</h1>"
     Output += "</div>"
 
     Output += "<div class='FooterObject'>"

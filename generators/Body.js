@@ -15,13 +15,13 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
     let ReadingTime = Math.ceil(MarkdownWorkCount / 100)
 
     Output = ""
-    Output += "<div class='ArticleContainer'>"
-
-    // Article Title/Subtitle
-    Output += "<div class='DisplayWidth'>"
 
     switch (AvailablePageSelector) {
         case AvailablePages.Home:
+            Output += "<div class='ArticleContainer'>"
+        
+            // Article Title/Subtitle
+            Output += "<div class='DisplayWidth'>"
             let filenames = fs.readdirSync(__dirname.replace("generators", "posts/"));
             for (var x = 0; x < filenames.length; x++) {
                 if (filenames[x].endsWith(".json")) {
@@ -39,10 +39,18 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                     }
                 }
             }
+            Output += "</div>"
+            Output += "</div>"
+
             break;
-        case AvailablePages.Shop:
+        case AvailablePages.R:
+            Output += fs.readFileSync(__dirname.replace("generators", "assets") + "/Rem")
             break;
         case AvailablePages.Dynamic:
+            Output += "<div class='ArticleContainer'>"
+        
+            // Article Title/Subtitle
+            Output += "<div class='DisplayWidth'>"
             if (Article.showTitle) {
                 Output += "<div class='ArticleHeader'>"
                 Output += "<p class='ArticleHeaderDate'>" + Article.date + "</p>"
@@ -52,11 +60,11 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                 Output += "</div>"
             }
             Output += MarkdownHtml // Article MD
+            Output += "</div>"
+            Output += "</div>"
+
             break;
     }
-
-    Output += "</div>"
-    Output += "</div>"
     return Output
 }
 

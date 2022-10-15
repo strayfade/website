@@ -4,7 +4,7 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     Output = ""
     Output += "<header>\n"
     Output += "<div class='Header'>"
-    Output += "<div class='HeaderInner DisplayWidth'>"
+    Output += "<div class='HeaderInner DisplayWidth Centered'>"
 
     Output += "<div class='HeaderObject HoverAccentColor'>"
     Output += "<p class='Icon NoSelect NoSpacing'><a class='LinkNormal' href='/'>S</a></p>"

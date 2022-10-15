@@ -17,9 +17,9 @@ const app = express()
 const Languages = GetAvailableLanguages(config)
 const AvailablePages = {
     Home: "1",
-    Shop: "2",
+    R: "2",
     Dynamic: "3",
-    NonstandardPages: [""]
+    NonstandardPages: ["R"]
 }
 
 require('./security/Security').Setup(app)
@@ -83,8 +83,8 @@ app.get('/:localization/:path', (req, res) => {
         let Article = require('./posts/_None.json')
         //Log("Requested page tagged: IsNotArticle")
         switch(req.params.path) {
-            case "Shop":
-                res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Shop, ""))
+            case "R":
+                res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.R, ""))
                 break;
         }
     }

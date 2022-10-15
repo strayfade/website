@@ -16,7 +16,6 @@
     padding-bottom: 15px;
     border-top: 5px solid var(--accent-color);
     transition: 0.5s;
-    margin: 10px;
 }
 .FooterObject {
     width: auto;

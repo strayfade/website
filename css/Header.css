@@ -10,10 +10,6 @@
     border-bottom: 5px solid var(--accent-color);
     transition: 0.5s;
 }
-.HeaderInner:hover {
-    width: calc(var(--display-width) + 50px);
-    border-bottom: 15px solid var(--accent-color);
-}
 .HeaderObject {
     width: auto;
     height: 50px;
@@ -22,13 +18,19 @@
     padding-right: 15px;
     font-size: 10px;
 }
-.HeaderObject:hover {
-    padding-left: 30px;
-    padding-right: 30px;
-}
 .HeaderObject h1 {
     font-weight: 500;
+}
+.LinkNormal {
+    text-decoration: none;
+    color: var(--foreground-color);
     transition: 0.5s;
+}
+.LinkNormal:hover {
+    color: var(--accent-color);
+}
+.Underline {
+    border-bottom: 1px solid;
 }
 .HeaderSpecial {
     width: 20px;

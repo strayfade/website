@@ -27,13 +27,15 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                 if (filenames[x].endsWith(".json")) {
                     let JSON = require(__dirname.replace("generators", "posts/") + filenames[x])
                     if (JSON.indexed) {
-                        Output += "<div class='ArticleIndexBox' onclick='OpenURL(`/" + filenames[x].replace(".json", "") + "`)'>"
+                        Output += "<a class='LinkNormal' href='/" + filenames[x].replace(".json", "") + "'>"
+                        Output += "<div class='ArticleIndexBox'>"
                         Output += "<div class='Flexbox'>"
                         Output += "<h1 class='ArticleIndexBoxTitle FloatLeft'>" + JSON.title + "</h1>"
                         Output += "<p class='ArticleIndexBoxDate FloatLeft'>" + JSON.date + "</p>"
                         Output += "</div>"
                         Output += "<h3 class='ArticleIndexBoxDescription'>" + JSON.description + "</h3>"
                         Output += "</div>"
+                        Output += "</a>"
                     }
                 }
             }

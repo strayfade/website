@@ -39,3 +39,11 @@
     width: max-content;
     font-size: var(--footer-font-size);
 }
+
+.FooterButton {
+    color: var(--foreground-color);
+    transition: 0.5s;
+}
+.FooterButton:hover {
+    color: var(--accent-color);
+}

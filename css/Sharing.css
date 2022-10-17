@@ -1,0 +1,40 @@
+.ShareSection {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 80%;
+    border-top: 1px solid var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+}
+.ShareHeader {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+.ShareButtonContainer {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ShareItem {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background-color: var(--accent-color-transparent);
+    padding: 0px;
+    width: 50px;
+    height: 50px;
+    transition: 0.25s;
+}
+.ShareItem:hover {
+    border-radius: 25%;
+}
+.ShareItemInner {
+    width: 20px;
+    height: 20px;
+    margin: 15px;
+}

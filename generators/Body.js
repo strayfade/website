@@ -1,6 +1,36 @@
 const fs = require('fs')
 const Markdown = require("markdown").markdown;
 const { Localize } = require('./tools/LocaleTools')
+function GenerateShareSection(Locale) {
+    let Output = "";
+
+    Output += "<div class='ShareSection'>"
+    Output += "<p class='ShareHeader'>" + Localize(Locale, "share_section_header") + "</p>"
+    Output += "<div class='ShareButtonContainer'>"
+
+    Output += "<a href='SITEHERE'>"
+    Output += "<div class='ShareItem'>"
+    Output += "<i class='fa-brands fa-github ShareItemInner'></i>"
+    Output += "</div>"
+    Output += "</a>"
+
+    Output += "<a href='SITEHERE'>"
+    Output += "<div class='ShareItem'>"
+    Output += "<i class='fa-brands fa-github ShareItemInner'></i>"
+    Output += "</div>"
+    Output += "</a>"
+
+    Output += "<a href='SITEHERE'>"
+    Output += "<div class='ShareItem'>"
+    Output += "<i class='fa-brands fa-github ShareItemInner'></i>"
+    Output += "</div>"
+    Output += "</a>"
+
+    Output += "</div>"
+    Output += "</div>"
+
+    return Output;
+}
 function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) {
 
     // Markdown
@@ -60,6 +90,9 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                 Output += "</div>"
             }
             Output += MarkdownHtml // Article MD
+
+            if (Article.indexed)
+                Output += GenerateShareSection(Locale)
             Output += "</div>"
             Output += "</div>"
 

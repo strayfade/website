@@ -36,6 +36,8 @@ app.use('/icons', express.static('icons'))
 
 // Packaging
 const BuildTools = require('./Build')
+let StylesheetPath = BuildTools.GetStylesheets();
+let ScriptPath = BuildTools.GetScripts();
 
 // Analytics Middleware
 app.use((req, res, next) => {
@@ -55,10 +57,10 @@ app.use((req, res, next) => {
 
 // Source
 app.get('/Production.css', (req, res) => {
-    res.sendFile(BuildTools.GetStylesheets())
+    res.sendFile(StylesheetPath)
 })
 app.get('/Production.js', (req, res) => {
-    res.sendFile(BuildTools.GetScripts())
+    res.sendFile(ScriptPath)
 })
 
 // Default Routing

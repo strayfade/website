@@ -4,9 +4,10 @@ const ExtraStylesheets = ["./fonts/Rajdhani/Rajdhani.css", "./fonts/Xirod/Xirod.
 const ExtraScripts = ["./icons/js/brands.js", "./icons/js/solid.js", "./icons/js/regular.js", "./icons/js/fontawesome.js"]
 function GetStylesheets() {
     let Stylesheet = "";
-    let filenames = fs.readdirSync(__dirname + "\\css\\");
+    console.log(__dirname)
+    let filenames = fs.readdirSync(path.resolve(__dirname.toString(), "css"));
     for (var x = 0; x < filenames.length; x++) {
-        filenames[x] = __dirname + "\\css\\" + filenames[x];
+        filenames[x] = __dirname + "/css/" + filenames[x];
     }
     for (var x = 0; x < ExtraStylesheets.length; x++) {
         filenames.push(ExtraStylesheets[x])
@@ -25,9 +26,9 @@ function GetStylesheets() {
 
 function GetScripts() {
     let Script = "";
-    let filenames = fs.readdirSync(__dirname + "\\scripts\\");
+    let filenames = fs.readdirSync(path.resolve(__dirname.toString(), "scripts"));
     for (var x = 0; x < filenames.length; x++) {
-        filenames[x] = __dirname + "\\scripts\\" + filenames[x];
+        filenames[x] = __dirname + "/scripts/" + filenames[x];
     }
     for (var x = 0; x < ExtraScripts.length; x++) {
         filenames.push(ExtraScripts[x])

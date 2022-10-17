@@ -6,17 +6,23 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     Output += "<div class='Header'>"
     Output += "<div class='HeaderInner DisplayWidth Centered'>"
 
+    Output += "<a class='LinkNormal' href='/'>"
     Output += "<div class='HeaderObject HoverAccentColor'>"
-    Output += "<p class='Icon NoSelect NoSpacing'><a class='LinkNormal' href='/'>S</a></p>"
+    Output += "<p class='Icon NoSelect NoSpacing'>S</p>"
     Output += "</div>"
+    Output += "</a>"
 
+    Output += "<a class='LinkNormal' href='/'>"
     Output += "<div class='HeaderObject HoverAccentColor'>"
-    Output += "<h1><a class='LinkNormal' href='/'>" + Localize(Locale, "header_main") + "</a></h1>"
+    Output += "<h1>" + Localize(Locale, "header_main") + "</h1>"
     Output += "</div>"
+    Output += "</a>"
 
+    Output += "<a class='LinkNormal' href='/About'>"
     Output += "<div class='HeaderObject HoverAccentColor'>"
-    Output += "<h1><a class='LinkNormal' href='/About'>" + Localize(Locale, "header_about") + "</a></h1>"
+    Output += "<h1>" + Localize(Locale, "header_about") + "</h1>"
     Output += "</div>"
+    Output += "</a>"
 
     Output += "<div id='LightModeToggleLight' class='HeaderObject HoverAccentColor CursorPointer Hidden' onclick='SetLightMode(!UseLightMode)'>"
     Output += "<i class='fa-solid fa-lightbulb HeaderSpecial'></i>"
@@ -26,26 +32,37 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     Output += "<i class='fa-solid fa-moon HeaderSpecial'></i>"
     Output += "</div>"
 
-    Output += "<div class='HeaderObject HoverAccentColor FloatRight MobileHidden'>"
+    if (!isHomepage) {
+        Output += "<a class='LinkNormal FloatRight' href='https://github.com/Strayfade'>"
+    }
+    Output += "<div class='HeaderObject HoverAccentColor MobileHidden FloatRight'>"
     if (isHomepage) {
         Output += "<input id='PageSearchBox' type='text' placeholder='Search' oninput='SearchArticle()'>"
         Output += "</div>"
+        Output += "<a class='LinkNormal' href='https://github.com/Strayfade'>"
         Output += "<div class='HeaderObject HoverAccentColor MobileHidden'>"
     }
-    Output += "<a class='LinkNormal' href='https://github.com/Strayfade'><i class='fa-brands fa-github HeaderSpecial'></i></a>"
+    Output += "<i class='fa-brands fa-github HeaderSpecial'></i>"
     Output += "</div>"
+    Output += "</a>"
 
+    Output += "<a class='LinkNormal' href='https://github.com/Strayfade/Website'>"
     Output += "<div class='HeaderObject HoverAccentColor MobileHidden'>"
-    Output += "<a class='LinkNormal' href='https://github.com/Strayfade/Website'><i class='fa-solid fa-code-branch HeaderSpecial'></i></a>"
+    Output += "<i class='fa-solid fa-code-branch HeaderSpecial'></i>"
     Output += "</div>"
+    Output += "</a>"
 
+    Output += "<a class='LinkNormal' href='https://twitter.com/Strayfade'>"
     Output += "<div class='HeaderObject HoverAccentColor MobileHidden'>"
-    Output += "<a class='LinkNormal' href='https://twitter.com/Strayfade'><i class='fa-brands fa-twitter HeaderSpecial'></i></a>"
+    Output += "<i class='fa-brands fa-twitter HeaderSpecial'></i>"
     Output += "</div>"
+    Output += "</a>"
     
+    Output += "<a class='LinkNormal' href='https://youtube.com/Strayfade'>"
     Output += "<div class='HeaderObject HoverAccentColor MobileHidden'>"
-    Output += "<a class='LinkNormal' href='https://youtube.com/Strayfade'><i class='fa-brands fa-youtube HeaderSpecial'></i></a>"
+    Output += "<i class='fa-brands fa-youtube HeaderSpecial'></i>"
     Output += "</div>"
+    Output += "</a>"
 
     Output += "</div>"
     Output += "</div>"

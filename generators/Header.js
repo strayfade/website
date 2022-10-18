@@ -6,7 +6,7 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     Output += "<div class='Header'>"
     Output += "<div class='HeaderInner DisplayWidth Centered'>"
 
-    Output += "<a class='LinkNormal' href='/'>"
+    Output += "<a class='LinkNormal' href='/' data-tooltip='Home'>"
     Output += "<div class='HeaderObject HoverAccentColor'>"
     Output += "<p class='Icon NoSelect NoSpacing'>S</p>"
     Output += "</div>"
@@ -24,41 +24,41 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     Output += "</div>"
     Output += "</a>"
 
-    Output += "<div id='LightModeToggleLight' class='HeaderObject HoverAccentColor CursorPointer Hidden' onclick='SetLightMode(!UseLightMode)'>"
+    Output += "<div id='LightModeToggleLight' class='HeaderObject HoverAccentColor CursorPointer Hidden' onclick='SetLightMode(!UseLightMode)' data-tooltip='Dark Mode'>"
     Output += "<i class='fa-solid fa-lightbulb HeaderSpecial'></i>"
     Output += "</div>"
 
-    Output += "<div id='LightModeToggleDark' class='HeaderObject HoverAccentColor CursorPointer' onclick='SetLightMode(!UseLightMode)'>"
+    Output += "<div id='LightModeToggleDark' class='HeaderObject HoverAccentColor CursorPointer' onclick='SetLightMode(!UseLightMode)' data-tooltip='Light Mode'>"
     Output += "<i class='fa-solid fa-moon HeaderSpecial'></i>"
     Output += "</div>"
 
     if (!isHomepage) {
-        Output += "<a class='LinkNormal FloatRight' href='https://github.com/Strayfade'>"
+        Output += "<a class='LinkNormal FloatRight' href='https://github.com/Strayfade' data-tooltip='GitHub'>"
     }
     Output += "<div class='HeaderObject HoverAccentColor MobileHidden FloatRight'>"
     if (isHomepage) {
         Output += "<input id='PageSearchBox' type='text' placeholder='Search' oninput='SearchArticle()'>"
         Output += "</div>"
-        Output += "<a class='LinkNormal' href='https://github.com/Strayfade'>"
+        Output += "<a class='LinkNormal' href='https://github.com/Strayfade' data-tooltip='GitHub'>"
         Output += "<div class='HeaderObject HoverAccentColor MobileHidden'>"
     }
     Output += "<i class='fa-brands fa-github HeaderSpecial'></i>"
     Output += "</div>"
     Output += "</a>"
 
-    Output += "<a class='LinkNormal' href='https://github.com/Strayfade/Website'>"
+    Output += "<a class='LinkNormal' href='https://github.com/Strayfade/Website' data-tooltip='Source Code'>"
     Output += "<div class='HeaderObject HoverAccentColor MobileHidden'>"
     Output += "<i class='fa-solid fa-code-branch HeaderSpecial'></i>"
     Output += "</div>"
     Output += "</a>"
 
-    Output += "<a class='LinkNormal' href='https://twitter.com/Strayfade'>"
+    Output += "<a class='LinkNormal' href='https://twitter.com/Strayfade' data-tooltip='Twitter'>"
     Output += "<div class='HeaderObject HoverAccentColor MobileHidden'>"
     Output += "<i class='fa-brands fa-twitter HeaderSpecial'></i>"
     Output += "</div>"
     Output += "</a>"
     
-    Output += "<a class='LinkNormal' href='https://youtube.com/Strayfade'>"
+    Output += "<a class='LinkNormal' href='https://youtube.com/Strayfade' data-tooltip='YouTube'>"
     Output += "<div class='HeaderObject HoverAccentColor MobileHidden'>"
     Output += "<i class='fa-brands fa-youtube HeaderSpecial'></i>"
     Output += "</div>"

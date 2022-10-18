@@ -37,6 +37,14 @@ function GenerateShareSection(Locale) {
 
     return Output;
 }
+function CreateTooltip() {
+    let Output = "";
+    Output += "<div id='TooltipContainer' class='TooltipContainer MobileHidden AccentBloomBox'>"
+    Output += "<p id='TooltipText' class='TooltipText'>"
+    Output += "</p>"
+    Output += "</div>"
+    return Output;
+}
 function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) {
 
     // Markdown
@@ -104,6 +112,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
 
             break;
     }
+    Output += CreateTooltip()
     return Output
 }
 

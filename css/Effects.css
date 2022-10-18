@@ -86,3 +86,7 @@
 .CopyTextDisabled {
     opacity: 0%;
 }
+
+.AccentBloomBox {
+    box-shadow: 0px 0px 25px var(--accent-color-transparent);
+}

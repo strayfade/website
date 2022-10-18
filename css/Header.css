@@ -44,7 +44,7 @@
     float: right;
     margin-left: auto;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 960px) {
     .FloatRight {
         float: none;
     } 

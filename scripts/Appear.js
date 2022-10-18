@@ -22,7 +22,7 @@ window.addEventListener('load', function () {
             Current.style.width = Position.width + "px"
             Current.style.height = Position.height + "px"
             let Child = document.createElement("div")
-            Child.className = "EffectBoxActive"
+            Child.className = "EffectBoxActive AccentBloomBox"
             Current.appendChild(Child.cloneNode())
             EffectElements.push(Child)
             HeaderElements[x].appendChild(Current)

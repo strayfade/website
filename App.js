@@ -1,5 +1,4 @@
 const fs = require('fs')
-const { getEmoji } = require('language-flag-colors')
 
 const config = require("./config/config.json");
 
@@ -28,11 +27,8 @@ app.disable('x-powered-by')
 // Static Directories
 app.use('/manifest', express.static('manifest'))
 app.use('/assets', express.static('assets'))
-app.use('/scripts', express.static('scripts'))
 app.use('/fonts', express.static('fonts'))
 app.use('/posts', express.static('posts'))
-app.use('/css', express.static('css'))
-app.use('/icons', express.static('icons'))
 
 // Packaging
 const BuildTools = require('./Build')

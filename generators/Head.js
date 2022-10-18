@@ -3,6 +3,7 @@ const { Localize } = require('./tools/LocaleTools')
 function GenerateHead(Article, Locale) {
     Output = ""
     Output += "<link rel='manifest' href='/manifest/manifest.json'>"
+    Output += "<meta charset='utf-8'>"
 
     let SiteTitle = Article.title + Localize(Locale, "site_title_extension")
     if (Article.title == "") {
@@ -32,7 +33,6 @@ function GenerateHead(Article, Locale) {
     Output += "<meta name='theme-color' content='#f0f0f0'>"
     Output += "<link rel='icon' href='/assets/Icon.svg' color='#ffffff>"
     Output += "<link rel='mask-icon' href='/assets/Icon.svg' color='#ffffff'>"
-    Output += "<link rel='apple-touch-icon' href='/assets/Icon.png'>"
 
     // Imports
     Output += "<link rel='stylesheet' href='/Production.css' type='text/css'>"

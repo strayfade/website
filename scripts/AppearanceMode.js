@@ -16,10 +16,10 @@ async function SetLightMode(Enabled) {
     let DarkColor = getComputedStyle(document.documentElement).getPropertyValue("--darken-color")
     document.documentElement.style.setProperty("--foreground-color", Enabled ? DarkColor : LightColor)
     document.documentElement.style.setProperty("--background-color", Enabled ? LightColor : DarkColor)
+    document.getElementsByTagName("body")[0].style.backgroundImage = Enabled ? "var(--darkmode-background-image)" : "var(--lightmode-background-image)"
 
     localStorage.setItem("UseLightMode", Enabled)
 }
-
 window.addEventListener("load", async function() {
     if (localStorage.getItem("UseLightMode")) {
         UseLightMode = localStorage.getItem("UseLightMode") === 'true'

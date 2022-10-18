@@ -25,9 +25,7 @@
     text-decoration: none;
     color: var(--foreground-color);
     transition: 0.5s;
-}
-.LinkNormal:hover {
-    color: var(--accent-color);
+    width: min-content;
 }
 .Underline {
     border-bottom: 1px solid;

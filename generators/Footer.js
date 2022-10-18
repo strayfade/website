@@ -7,8 +7,8 @@ function GenerateFooter(Article, Locale) {
     Output += "<div class='Footer'>"
     Output += "<div class='FooterInner DisplayWidth'>"
     
-    Output += "<div class='FooterObject'>"
-    Output += "<a class='LinkNormal Underline' href='https://github.com/Strayfade/Website'>" + Localize(Locale, "source_code") + "</a>"
+    Output += "<div class='FooterObject MobileHidden'>"
+    Output += "<a class='LinkNormal Underline HoverAccentColor' href='https://github.com/Strayfade/Website'>" + Localize(Locale, "source_code") + "</a>"
     Output += "</div>"
 
     Output += "<div class='FooterObject FloatRight'>"

@@ -1,6 +1,6 @@
 input {
     width: 90%;
-    background-color: var(--background-color);
+    background-color: rgba(128, 128, 128, 0.05);
     margin-top: 6px;
     padding: 8px;
     font-family: var(--display-font);

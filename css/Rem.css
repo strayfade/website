@@ -1,9 +1,9 @@
 .RemContainer {
-    background-color: rgba(0, 0, 0, 0);
-    color: rgba(0, 0, 0, 0);
+    background-color: transparent;
+    color: transparent;
     text-align: center;
     font-family: monospace;
-    font-size: 10px;
+    font-size: 1vw;
     margin: 0px;
 }
 .RemContainer span {

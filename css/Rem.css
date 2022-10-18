@@ -3,7 +3,7 @@
     color: transparent;
     text-align: center;
     font-family: monospace;
-    font-size: 1vw;
+    font-size: calc(0.5vw);
     margin: 0px;
 }
 .RemContainer span {

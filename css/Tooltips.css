@@ -16,15 +16,19 @@
     color: white;
     transition: 0.5s;
     text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .TooltipActive {
     opacity: 1.0;
     transition: 0.5s;
     background-color: var(--accent-color);
+    border-radius: 0px;
 }
 
 .TooltipInactive {
     opacity: 0.0;
     transition: 0.5s;
     background-color: var(--accent-color-transparent);
+    border-radius: 20px;
 }

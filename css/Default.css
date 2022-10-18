@@ -2,8 +2,8 @@
     --display-width: 75%;
     --display-font: Rajdhani;
 
-    --lightmode-background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsEAAAAAAMhg3qAAAB9UlEQVR42u3VMREAAAwCMSzg32w19K7dkgEJfAI/WmvvF0AKrRQCSKGVQgAptFIIIIVWCgGk0EohgBRaKQSQQiuFAFJopRBACq0UAkihlUIAKbRSCCCFVgoBpNBKIYAUWikEkEIrhQBSaKUQQAqtFAJIoZVCACm0UggghVYKAaTQSiGAFFopBJBCK4UAUmilEEAKrRQCSKGVQgAptFIIIIVWCgGk0EohgBRaKQSQQiuFAFJopRBACq0UAkihlUIAKbRSCCCFVgoBpNBKIYAUWikEkEIrhQBSaKUQQAqtFAJIoZVCACm0UggghVYKAaTQSiGAFFopBJBCK4UAUmilEEAKrRQCSKGVQgAptFIIIIVWCgGk0EohgBRaKQSQQiuFAFJopRDAaVspBHDaVgoBKbRWCgEptFYKASm0VgoBKbRWCgEptFYKASm0VgoBKbRWCgEptFYKASm0VgoBKbRWCgEptFYKASm0VgoBKbRWCgEptFYKASm0VgoBKbRWCgEptFYKASm0VgoBKbRWCgEptFYKASm0VgoBKbRWCgEptFYKASm0VgoBKbRWCgEptFYKASm0FkAKrQWQQiuFAFJopRBACq0UAkihlUIAKbRSCCCFVgoBpNBKIYAUWikEkEIrhQBSaKUQQAqtFAJIoZVCACm0UggbA/eOMGwzcgPvAAAAAElFTkSuQmCC');
-    --darkmode-background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsEAAAAAAMhg3qAAACfUlEQVR42u3VQREAMAgDwVD/XpFATdBPZ+8RBQxbM5HWO0l3Yu3ulo+lRx9LQqFFoVAoodCiUCiUUGhRKBRKKLQoFAolFFoUCoUSCi0KhUIJhRaFQqGEQotCoVBCoUWhUCih0KJQKJRQaFEoFEootCgUCiUUWhQKhRIKLQqFQgmFFoVCoYRCi0KhUEKhRaFQKKHQolAolFBoUSgUSii0KBQKJRRaFAqFEgotCoVCCYUWhUKhhEKLQqFQQqFFoVAoodCiUCiUUGhRKBRKKLQoFArlsLxui0KhUCj0ui0KhUKh0FoUCoVCobUoFAqFQmtRKBQKhdaiUCgUCq1FoVAoFFqLQqFQKLQWhUKhUGgtCoVCodBaFAqFQqG1KBQKhUJrUSgUCoXWolAoFAqtRaFQKBRai0KhUCi0FoVCoVBoLQqFQqHQWhQKhUKhtSgUCoVCa1EoFAqF1qJQKBQKrUWhUCgUWotCoVAotBaFQqFQaC0KhUKh0FoUCoVCobUoFAqFQotCFAqFQqFFoYRCodCiUEKhUGhRKKFQKLQolFAoFFoUSigUCi0KJRQKhRaFEgqFQotCCYVCoUWhhEKh0KJQQqFQaFEooVAotCiUUCgUWhRKKBQKLQolFAqFFoUSCoVCi0IJhUKhRaGEQqHQolBCoVBoUSihUCi0KJRQKBRaFEooFAotCiUUCoUWhRIKhUKLQgmFQqFFoYRCodCiUEKhUGhRKKFQKLQolFAoFFoUyseSUGhRKBRKKLQoFAolFFoUCoUSCi0KhUIJhRaFQqGEQotCoVBCoUWhUCih0KJQKJRQaFEoFEootCgUCiUUWhQKhRIKLQqFQgmFFoX6tQsIWr9RP1v4lQAAAABJRU5ErkJggg==')
+    --lightmode-background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADEAAAAAAj0zYgAAAAD0lEQVQI12NggAFBQTgTAAF6ACNCN0YPAAAAAElFTkSuQmCC');
+    --darkmode-background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADEAAAAAAj0zYgAAAAGUlEQVQI12P8/5+BgYGBiYHh/XsGBkYIDwBFtgXfDwfkEAAAAABJRU5ErkJggg==');
 }
 @media only screen and (max-width: 600px) {
     :root {
@@ -18,6 +18,7 @@ body {
     background-color: var(--background-color);
     background-image: var(--darkmode-background-image);
     background-repeat: repeat;
+    background-size: 5px;
 
     color: var(--foreground-color);
     word-wrap: break-word;
@@ -38,4 +39,14 @@ body {
     .MobileOnly {
         display: block;
     }
+}
+
+.DisableAntialiasing {
+    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;          /* Firefox                        */
+    image-rendering: -o-crisp-edges;            /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated;                 /* Universal support since 2021   */
+    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
 }

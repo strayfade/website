@@ -28,6 +28,7 @@ app.disable('x-powered-by')
 app.use('/manifest', express.static('manifest'))
 app.use('/assets', express.static('assets'))
 app.use('/fonts', express.static('fonts'))
+app.use('/icons', express.static('icons'))
 app.use('/posts', express.static('posts'))
 
 // Packaging

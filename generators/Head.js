@@ -38,6 +38,11 @@ function GenerateHead(Article, Locale) {
     Output += "<link rel='stylesheet' href='/Production.css' type='text/css'>"
     Output += "<script src='/Production.js'></script>"
 
+    // FontAwesome Icons
+    Output += "<script src='/icons/js/brands.js'></script>"
+    Output += "<script src='/icons/js/solid.js'></script>"
+    Output += "<script src='/icons/js/fontawesome.js'></script>"
+
     return Output
 }
 

@@ -26,14 +26,12 @@ window.addEventListener('load', function () {
             Current.appendChild(Child.cloneNode())
             EffectElements.push(Child)
             HeaderElements[x].appendChild(Current)
-            HeaderElements[x].classList.add("AccentColored")
     }
     var x = 0;
     let TargetClosing = document.getElementsByClassName("EffectBoxActive")
     function HideObscure() {
         setTimeout(function () {
             TargetClosing[x].classList.add("EffectBoxInactive")
-            HeaderElements[x].classList.remove("AccentColored")
             x++;
             if (x < TargetClosing.length) {
                 HideObscure();

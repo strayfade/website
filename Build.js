@@ -4,7 +4,7 @@ const config = require('./config/config.json')
 var jsobf = require('javascript-obfuscator');
 const { randomInt } = require('crypto');
 const ExtraStylesheets = ["./fonts/Rajdhani/Rajdhani.css", "./fonts/Xirod/Xirod.css"]
-const ExtraScripts = ["./icons/js/brands.js", "./icons/js/solid.js", "./icons/js/regular.js", "./icons/js/fontawesome.js"]
+const ExtraScripts = []
 
 const ObfuscationOptions = {
     compact: true,

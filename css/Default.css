@@ -50,3 +50,7 @@ body {
     image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
     -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
 }
+.EnableAntialiasing {
+    image-rendering: auto;
+    image-rendering: optimizeQuality;
+}

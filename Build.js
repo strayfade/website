@@ -3,7 +3,7 @@ const path = require('path');
 const config = require('./config/config.json')
 var jsobf = require('javascript-obfuscator');
 const { randomInt } = require('crypto');
-const ExtraStylesheets = ["./fonts/Rajdhani/Rajdhani.css", "./fonts/Xirod/Xirod.css"]
+const ExtraStylesheets = ["./fonts/Rajdhani/Rajdhani.css"]
 const ExtraScripts = []
 
 const ObfuscationOptions = {

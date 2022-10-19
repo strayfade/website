@@ -6,7 +6,7 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     Output += "<div class='Header'>"
     Output += "<div class='HeaderInner DisplayWidth Centered'>"
 
-    Output += "<a class='LinkNormal' href='/' data-tooltip='Home'>"
+    Output += "<a class='LinkNormal' href='/' data-tooltip='" + Localize(Locale, "header_main") + "'>"
     Output += "<div class='HeaderObject HoverAccentColor'>"
     Output += "<svg class='Icon NoSelect NoSpacing' version='1.0' xmlns='http://www.w3.org/2000/svg' width='300.000000pt' height='300.000000pt' viewBox='0 0 300.000000 300.000000' preserveAspectRatio='xMidYMid meet'>"
     Output += "<g transform='translate(0.000000,300.000000) scale(0.050000,-0.050000)'>"
@@ -28,11 +28,11 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     Output += "</div>"
     Output += "</a>"
 
-    Output += "<div id='LightModeToggleLight' class='HeaderObject HoverAccentColor CursorPointer Hidden' onclick='SetLightMode(!UseLightMode)' data-tooltip='Dark Mode'>"
+    Output += "<div id='LightModeToggleLight' class='HeaderObject HoverAccentColor CursorPointer Hidden' onclick='SetLightMode(!UseLightMode)' data-tooltip='" + Localize(Locale, "tooltip_darkmode") + "'>"
     Output += "<i class='fa-solid fa-lightbulb HeaderSpecial'></i>"
     Output += "</div>"
 
-    Output += "<div id='LightModeToggleDark' class='HeaderObject HoverAccentColor CursorPointer' onclick='SetLightMode(!UseLightMode)' data-tooltip='Light Mode'>"
+    Output += "<div id='LightModeToggleDark' class='HeaderObject HoverAccentColor CursorPointer' onclick='SetLightMode(!UseLightMode)' data-tooltip='" + Localize(Locale, "tooltip_lightmode") + "'>"
     Output += "<i class='fa-solid fa-moon HeaderSpecial'></i>"
     Output += "</div>"
 
@@ -50,7 +50,7 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     Output += "</div>"
     Output += "</a>"
 
-    Output += "<a class='LinkNormal' href='https://github.com/Strayfade/Website' data-tooltip='Source Code'>"
+    Output += "<a class='LinkNormal' href='https://github.com/Strayfade/Website' data-tooltip='" + Localize(Locale, "source_code") + "'>"
     Output += "<div class='HeaderObject HoverAccentColor MobileHidden'>"
     Output += "<i class='fa-solid fa-code-branch HeaderSpecial'></i>"
     Output += "</div>"

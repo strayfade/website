@@ -17,6 +17,7 @@
     padding-left: 15px;
     padding-right: 15px;
     font-size: 10px;
+    white-space: nowrap;
 }
 .HeaderObject h1 {
     font-weight: 500;

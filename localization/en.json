@@ -7,6 +7,8 @@
 
     "header_main": "Home",
     "header_about": "About",
+    "tooltip_lightmode": "Light Mode",
+    "tooltip_darkmode": "Dark Mode",
 
     "copyright_main": "Copyright Strayfade 2019-2022. All Rights Reserved.",
 

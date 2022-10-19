@@ -17,6 +17,13 @@
     border-top: 5px solid var(--accent-color);
     transition: 0.5s;
 }
+.FooterText {
+    width: 100%;
+    color: var(--accent-color);
+    font-weight: 600;
+    text-align: center;
+    margin: 6px;
+}
 .FooterObject {
     width: auto;
     height: 4vh;

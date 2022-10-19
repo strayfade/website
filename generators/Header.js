@@ -18,13 +18,13 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
 
     Output += "<a class='LinkNormal' href='/'>"
     Output += "<div class='HeaderObject HoverAccentColor'>"
-    Output += "<h1>" + Localize(Locale, "header_main") + "</h1>"
+    Output += "<h1 class='AccentBloomText'>" + Localize(Locale, "header_main") + "</h1>"
     Output += "</div>"
     Output += "</a>"
 
     Output += "<a class='LinkNormal' href='/About'>"
     Output += "<div class='HeaderObject HoverAccentColor'>"
-    Output += "<h1>" + Localize(Locale, "header_about") + "</h1>"
+    Output += "<h1 class='AccentBloomText'>" + Localize(Locale, "header_about") + "</h1>"
     Output += "</div>"
     Output += "</a>"
 

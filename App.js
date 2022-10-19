@@ -1,5 +1,6 @@
 // Import Packages
 const fs = require('fs')
+const path = require('path')
 
 // Imported Functions
 const { Log } = require('./Log')
@@ -61,7 +62,7 @@ app.get('/Production.js', (req, res) => {
     res.sendFile(ScriptPath)
 })
 app.get('/robots.txt', (req, res) => {
-    res.sendFile('robots.txt')
+    res.sendFile(path.resolve(__dirname, 'robots.txt'))
 })
 
 // Default Routing

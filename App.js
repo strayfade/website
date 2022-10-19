@@ -52,12 +52,15 @@ app.use((req, res, next) => {
     next();
 })
 
-// Source
+// Sources
 app.get('/Production.css', (req, res) => {
     res.sendFile(StylesheetPath)
 })
 app.get('/Production.js', (req, res) => {
     res.sendFile(ScriptPath)
+})
+app.get('/robots.txt', (req, res) => {
+    res.sendFile('robots.txt')
 })
 
 // Default Routing

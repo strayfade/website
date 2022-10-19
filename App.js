@@ -1,6 +1,5 @@
+// Import Packages
 const fs = require('fs')
-
-const config = require("./config/config.json");
 
 // Imported Functions
 const { Log } = require('./Log')
@@ -8,6 +7,9 @@ const { SendError } = require('./Error')
 const { Generators } = require('./Generators')
 const { CollectAnalytics } = require('./Database')
 const { GetAvailableLanguages, GetLanguage, GetLanaguageShort, GetLanguagePath } = require('./Localization')
+
+// Import Webserver Config
+const config = require("./config/config.json")
 
 // Create App
 const express = require('express')
@@ -21,14 +23,13 @@ const AvailablePages = {
     NonstandardPages: ["R"]
 }
 
+// Basic Security Measures
 require('./security/Security').Setup(app)
 app.disable('x-powered-by')
 
 // Static Directories
-app.use('/manifest', express.static('manifest'))
 app.use('/assets', express.static('assets'))
 app.use('/fonts', express.static('fonts'))
-app.use('/icons', express.static('icons'))
 app.use('/posts', express.static('posts'))
 
 // Packaging

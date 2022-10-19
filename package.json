@@ -4,7 +4,7 @@
   "description": "The public source code of Strayfade.com",
   "main": "App.js",
   "scripts": {
-    "start": "node App.js"
+    "start": "node ."
   },
   "author": "Strayfade",
   "license": "MIT",
@@ -13,7 +13,6 @@
     "express-session": "^1.17.3",
     "geoip-lite": "^1.4.6",
     "helmet": "^6.0.0",
-    "javascript-obfuscator": "^4.0.0",
     "markdown": "^0.5.0",
     "mongodb": "^4.9.1"
   }

@@ -2,13 +2,14 @@ const { Localize } = require('./tools/LocaleTools')
 
 function GenerateHead(Article, Locale) {
     Output = ""
-    Output += "<link rel='manifest' href='/manifest/manifest.json'>"
+    Output += "<link rel='manifest' href='/assets/manifest.json'>"
     Output += "<meta charset='utf-8'>"
 
     let SiteTitle = Article.title + Localize(Locale, "site_title_extension")
     if (Article.title == "") {
         SiteTitle = Localize(Locale, "site_title_default")
     }
+
     // Site Name/URL Tags
     Output += "<meta property='og:site_name' content='" + Localize(Locale, "site_name") + "'>"
     Output += "<meta property='og:url' content='" + Localize(Locale, "site_name") + "'>"
@@ -20,6 +21,7 @@ function GenerateHead(Article, Locale) {
     Output += "<meta property='twitter:title' content='" + SiteTitle + "'>"
 
     // Description Tags
+    Output += "<meta name='description' content='" + Article.description + "'>"
     Output += "<meta property='og:description' content='" + Article.description + "'>"
     Output += "<meta property='twitter:description' content='" + Article.description + "'>"
 
@@ -37,11 +39,6 @@ function GenerateHead(Article, Locale) {
     // Imports
     Output += "<link rel='stylesheet' href='/Production.css' type='text/css'>"
     Output += "<script src='/Production.js'></script>"
-
-    // FontAwesome Icons
-    Output += "<script src='/icons/js/brands.js'></script>"
-    Output += "<script src='/icons/js/solid.js'></script>"
-    Output += "<script src='/icons/js/fontawesome.js'></script>"
 
     return Output
 }

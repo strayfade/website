@@ -1,6 +1,6 @@
 const { Localize } = require('./tools/LocaleTools')
 
-function GenerateFooter(Article, Locale, ExtraText = "Test Text") {
+function GenerateFooter(Article, Locale, ExtraText = "") {
 
     Output = ""
     Output += "<footer>\n"
@@ -9,7 +9,7 @@ function GenerateFooter(Article, Locale, ExtraText = "Test Text") {
     Output += "<div class='FooterInner DisplayWidth'>"
     
     Output += "<div class='FooterObject MobileHidden'>"
-    Output += "<a class='LinkNormal Underline HoverAccentColor AccentBloomText' href='https://github.com/Strayfade/Website'>" + Localize(Locale, "source_code") + "</a>"
+    Output += "<a aria-label='" + Localize(Locale, "source_code") + "' class='LinkNormal Underline HoverAccentColor AccentBloomText' href='https://github.com/Strayfade/Website'>" + Localize(Locale, "source_code") + "</a>"
     Output += "</div>"
 
     Output += "<div class='FooterObject FloatRight'>"

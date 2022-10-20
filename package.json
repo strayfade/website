@@ -13,6 +13,7 @@
     "express-session": "^1.17.3",
     "geoip-lite": "^1.4.6",
     "helmet": "^6.0.0",
+    "javascript-obfuscator": "^4.0.0",
     "markdown": "^0.5.0",
     "mongodb": "^4.9.1"
   }

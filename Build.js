@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path');
 const config = require('./config/config.json')
+const jsobf = require('javascript-obfuscator')
 const { randomInt } = require('crypto');
 const ExtraStylesheets = ["./fonts/Rajdhani.css"]
 const ExtraScripts = []
@@ -50,6 +51,7 @@ function GetStylesheets() {
 
     for (var x = 0; x < Stylesheet.length; x++) {
         Stylesheet = Stylesheet.replace("\n", "");
+        Stylesheet = Stylesheet.replace("    ", "");
     }
 
     fs.mkdir("./src", (err) => { });
@@ -72,6 +74,8 @@ function GetScripts() {
             Script += fs.readFileSync(filenames[x], { encoding: 'utf8', flag: 'r' }) + "\n\n";
         }
     }
+
+    Script = jsobf.obfuscate(Script.toString(), ObfuscationOptions).getObfuscatedCode().toString()
 
     fs.mkdir("./src", (err) => { });
     fs.writeFileSync(__dirname + "/src/Production.js", Script, { recursive: true })

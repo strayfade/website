@@ -54,5 +54,4 @@ function OnResize() {
     ReplaceEffectBoxes()
     PositionLinkElements()
 }
-setInterval(OnResize, 500);
-window.addEventListener("resize", OnResize)
+setInterval(OnResize, 20);

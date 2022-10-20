@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Rajdhani';
-    src: url('./fonts/Rajdhani-Medium.ttf') format('truetype');
+    src: url('/fonts/Rajdhani-Medium.woff2') format('woff2'), url('/fonts/Rajdhani-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
     font-family: 'Rajdhani';
-    src: url('./fonts/Rajdhani-Bold.ttf') format('truetype');
+    src: url('/fonts/Rajdhani-Bold.woff2') format('woff2'), url('/fonts/Rajdhani-Bold.woff') format('woff');
     font-weight: 700;
     font-style: normal;
     font-display: swap;

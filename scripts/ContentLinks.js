@@ -2,24 +2,15 @@ const HyperlinkTags = ["h1", "h2", "h3"]
 const BlacklistedParentNodeClassnames = ["HeaderObject", "FooterObject", "ArticleHeader"]
 
 let HyperlinkElements = [];
-let HyperlinkIndicatorElements = []
 let CopyTextIndicatorElements = []
 let Padding = 5;
-let IconPadding = 5;
 function PositionLinkElements() {
     for (let x = 0; x < HyperlinkElements.length; x++) {
-        let Position = HyperlinkElements[x].getBoundingClientRect();
-        let Size = (Position.height - IconPadding)
-        let SizeFormatted = Size + "px"
-        let Element = HyperlinkIndicatorElements[x]
+        let Position = HyperlinkElements[x].getBoundingClientRect()
         let CopyElement = CopyTextIndicatorElements[x]
         let CopyElementPosition = CopyElement.getBoundingClientRect();
-        Element.style.width = SizeFormatted;
-        Element.style.height = SizeFormatted;
-        Element.style.marginLeft = (Padding + 2) + "px"
-        Element.style.marginTop = IconPadding / 2 + "px"
-        CopyElement.style.left = (Position.x + Position.width + Padding * 2 + Size + document.documentElement.scrollLeft) + "px"
-        CopyElement.style.top = (Position.y + Position.height / 2 - CopyElementPosition.height / 2 + document.documentElement.scrollTop) + "px"
+        CopyElement.style.left = (Position.x + Position.width + Padding * 2 + document.documentElement.scrollLeft) + "px"
+        CopyElement.style.top = (Position.y + Position.height / 1.85 - CopyElementPosition.height / 2 + document.documentElement.scrollTop) + "px"
     }
 }
 if (!window.location.toString().endsWith("/")) {
@@ -44,33 +35,23 @@ if (!window.location.toString().endsWith("/")) {
             Element.style.cursor = "pointer";
             Element.classList.add("HyperlinkHeader")
 
-            let HyperlinkIndicator = document.createElement("i")
-            HyperlinkIndicator.classList = ["fa-solid fa-link HyperlinkIndicator"]
-            HyperlinkIndicator.id = "HyperlinkIndicator" + x
             let CopyText = document.createElement("p")
             CopyText.innerHTML = "Copy Link to Section"
             CopyText.className = "CopyText"
             CopyText.id = "CopyTextIndicator" + x
-            Element.appendChild(HyperlinkIndicator)
             Element.appendChild(CopyText)
-            document.getElementById(("HyperlinkIndicator" + x).toString()).classList.add("HyperlinkIndicatorDisabled")
             document.getElementById(("CopyTextIndicator" + x).toString()).classList.add("CopyTextDisabled")
             Element.addEventListener("mouseover", (event) => {
-                document.getElementById(("HyperlinkIndicator" + x).toString()).classList.remove("HyperlinkIndicatorDisabled")
-
                 document.getElementById(("CopyTextIndicator" + x).toString()).innerHTML = "Copy Link to Section"
                 document.getElementById(("CopyTextIndicator" + x).toString()).classList.remove("CopyTextDisabled")
             })
             Element.addEventListener("mouseleave", (event) => {
-                document.getElementById(("HyperlinkIndicator" + x).toString()).classList.add("HyperlinkIndicatorDisabled")
-
                 document.getElementById(("CopyTextIndicator" + x).toString()).classList.add("CopyTextDisabled")
             })
             Element.addEventListener("click", (event) => {
                 CopyToClipboard(window.location.toString().split("#")[0] + "#" + Element.id);
                 document.getElementById(("CopyTextIndicator" + x).toString()).innerHTML = "Link Copied!"
             })
-            HyperlinkIndicatorElements.push(HyperlinkIndicator)
             CopyTextIndicatorElements.push(CopyText)
         }
         PositionLinkElements();

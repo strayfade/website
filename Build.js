@@ -48,6 +48,10 @@ function GetStylesheets() {
         }
     }
 
+    for (var x = 0; x < Stylesheet.length; x++) {
+        Stylesheet = Stylesheet.replace("\n", "");
+    }
+
     fs.mkdir("./src", (err) => { });
     fs.writeFileSync(__dirname + "/src/Production.css", Stylesheet)
 

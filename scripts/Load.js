@@ -1,6 +1,3 @@
-function CreateSyntaxHighlighting() {
-    hljs.highlightAll();
-}
 let CopyElements = [];
 let CodeElements = [];
 let Inners = [];
@@ -40,8 +37,7 @@ function CustomStyleExpandedCodeblocks() {
             Current.appendChild(CopyButton);
             Inners.push(Inner);
             CodeElements.push(Current);
-            Current.style.paddingTop = "15px"
-            Current.style.paddingLeft = "15px"
+            Current.style.padding = "15px"
         }
     }
 }
@@ -52,7 +48,6 @@ function RandomizeColors() {
 var enableRandomColors = false;
 
 window.addEventListener("load", function () {
-    CreateSyntaxHighlighting();
     CustomStyleExpandedCodeblocks();
 
     if (enableRandomColors)

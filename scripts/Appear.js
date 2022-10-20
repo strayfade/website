@@ -27,18 +27,10 @@ window.addEventListener('load', function () {
             EffectElements.push(Child)
             HeaderElements[x].appendChild(Current)
     }
-    var x = 0;
     let TargetClosing = document.getElementsByClassName("EffectBoxActive")
-    function HideObscure() {
-        setTimeout(function () {
-            TargetClosing[x].classList.add("EffectBoxInactive")
-            x++;
-            if (x < TargetClosing.length) {
-                HideObscure();
-            }
-        }, 50)
+    for (var x = 0; x < TargetClosing.length; x++) {
+        TargetClosing[x].classList.add("EffectBoxInactive")
     }
-    HideObscure();
 })
 function ReplaceEffectBoxes() {
     let Target = document.getElementsByClassName("EffectBox")
@@ -53,9 +45,14 @@ function ReplaceEffectBoxes() {
     }
 }
 
+function RandomizeColors() {
+    document.querySelector(':root').style.setProperty('--accent-color-hue', Math.floor(Math.random() * 360));
+}
+
 // This is <REALLY> stupid, but it works
-setInterval(function () {
+function OnResize() {
     ReplaceEffectBoxes()
     PositionLinkElements()
-    PositionCopyElements()
-}, 10);
+}
+setInterval(OnResize, 500);
+window.addEventListener("resize", OnResize)

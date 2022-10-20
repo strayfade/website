@@ -36,9 +36,9 @@ function GenerateHead(Article, Locale) {
     Output += "<link rel='icon' href='/assets/Icon.svg' color='#ffffff>"
     Output += "<link rel='mask-icon' href='/assets/Icon.svg' color='#ffffff'>"
 
-    // Imports
+    // Imports/Preloads
     Output += "<link rel='stylesheet' href='/Production.css' type='text/css'>"
-    Output += "<script src='/Production.js'></script>"
+    Output += "<link rel='preload' href='/Production.js' as='script'>"
 
     return Output
 }

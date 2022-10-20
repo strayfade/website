@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path');
 const config = require('./config/config.json')
 const { randomInt } = require('crypto');
-const ExtraStylesheets = ["./fonts/Rajdhani/Rajdhani.css"]
+const ExtraStylesheets = ["./fonts/Rajdhani.css"]
 const ExtraScripts = []
 
 const ObfuscationOptions = {

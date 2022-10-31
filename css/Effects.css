@@ -22,13 +22,11 @@
         transform: skewX(0deg) scaleY(100%);
         background-color: var(--accent-color);
     }
-
     35% {
         width: 4px;
         transform: translate(-16px, 0px) scaleY(100%);
         background-color: var(--accent-color);
     }
-
     100% {
         width: 4px;
         transform: skewX(0deg) translate(-16px, 0px) scaleY(60%);
@@ -39,15 +37,18 @@
 .AccentColored {
     color: var(--accent-color);
 }
+
 .HyperlinkHeader {
     margin-top: 15px;
     padding-top: 0px;
     transition: 0.25s;
     color: var(--foreground-color);
 }
+
 .HyperlinkHeader:hover {
     color: var(--accent-color);
 }
+
 .HyperlinkHeader:active {
     transition: 0s;
     color: var(--foreground-color);
@@ -71,12 +72,21 @@
 }
 
 .AccentBloomBox {
-    box-shadow: 0px 0px 25px var(--accent-color-transparent);
-}
-.AccentBloomText {
-    text-shadow: 0px 0px 25px var(--accent-color);
+    box-shadow: 0px 0px 150px var(--accent-color-transparent);
 }
 
-h1, h2, h3, h4, h5, a, p, em, li {
+.AccentBloomText {
+    text-shadow: 0px 0px 50px var(--accent-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+a,
+p,
+em,
+li {
     text-shadow: 0px 0px 100px var(--accent-color);
 }

@@ -10,9 +10,11 @@ div {
     width: -moz-fit-content;
     width: fit-content;
 }
+
 p {
     font-weight: 500;
 }
+
 a {
     font-weight: 500;
     color: var(--accent-color);
@@ -32,13 +34,13 @@ code {
     border-radius: 5px;
     display: inline-block;
 }
+
 pre code {
     border: 2px solid #1e1e1e;
     display: inline-block;
     width: 95%;
     padding: 15px;
 }
-
 
 .CodeCopyButton {
     position: absolute;
@@ -69,6 +71,7 @@ pre code {
 pre {
     width: 100%;
 }
+
 blockquote {
     border-left: 5px solid var(--accent-color);
     background-color: var(--accent-color-very-transparent);
@@ -77,10 +80,11 @@ blockquote {
     padding-left: 20px;
     width: 90%;
 }
+
 @media only screen and (max-width: 800px) {
     blockquote {
         width: 82%;
-    } 
+    }
     pre {
         width: 95%;
     }

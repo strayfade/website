@@ -1,7 +1,7 @@
 :root {
     --display-width: 75%;
     --display-width-inner: 75%;
-    --display-font: Rajdhani;
+    --display-font: Rajdhani, Arial, Helvetica, sans-serif;
     --lightmode-background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADEAAAAAAj0zYgAAAAD0lEQVQI12NggAFBQTgTAAF6ACNCN0YPAAAAAElFTkSuQmCC');
     --darkmode-background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADEAAAAAAj0zYgAAAAGUlEQVQI12P8/5+BgYGBiYHh/XsGBkYIDwBFtgXfDwfkEAAAAABJRU5ErkJggg==');
 }

@@ -54,10 +54,10 @@ function GetStylesheets() {
         Stylesheet = Stylesheet.replace("    ", "");
     }
 
-    fs.mkdir("./src", (err) => { });
-    fs.writeFileSync(__dirname + "/src/Production.css", Stylesheet)
+    fs.mkdir("./Production", (err) => {});
+    fs.writeFileSync(__dirname + "/Production/Production.css", Stylesheet)
 
-    return __dirname + "/src/Production.css"
+    return __dirname + "/Production/Production.css"
 }
 
 function GetScripts() {
@@ -77,10 +77,10 @@ function GetScripts() {
 
     Script = jsobf.obfuscate(Script.toString(), ObfuscationOptions).getObfuscatedCode().toString()
 
-    fs.mkdir("./src", (err) => { });
-    fs.writeFileSync(__dirname + "/src/Production.js", Script, { recursive: true })
+    fs.mkdir("./Production", (err) => {});
+    fs.writeFileSync(__dirname + "/Production/Production.js", Script, { recursive: true })
 
-    return __dirname + "/src/Production.js"
+    return __dirname + "/Production/Production.js"
 }
 
 module.exports = { GetStylesheets, GetScripts }

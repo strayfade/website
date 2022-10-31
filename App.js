@@ -20,7 +20,7 @@ const Languages = GetAvailableLanguages(config)
 const AvailablePages = {
     Home: "1",
     R: "2",
-    Dynamic: "3",
+    Dynamic: "4",
     NonstandardPages: ["R"]
 }
 
@@ -45,8 +45,7 @@ app.use((req, res, next) => {
             Log("Serving page at \"" + req.originalUrl + "\"")
             CollectAnalytics(req, res, config);
         }
-    }
-    catch(error) {
+    } catch (error) {
         Log("ERROR: Error encountered while serving static page at \"" + req.originalUrl + "\":\n" + error)
         SendError(500, req, res, error, Languages);
         Log("Serving error page [500]")
@@ -85,21 +84,20 @@ app.get('/:localization/:path', (req, res) => {
     let IsNotArticle = AvailablePages.NonstandardPages.includes(req.params.path);
     if (IsNotArticle) {
         let Article = require('./posts/_None.json')
-        //Log("Requested page tagged: IsNotArticle")
-        switch(req.params.path) {
+        switch (req.params.path) {
             case "R":
                 res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.R, ""))
                 break;
+            case "Shop":
+                res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Shop, ""))
+                break;
         }
-    }
-    else {
-        //Log("Requested page tagged: IsArticle")
+    } else {
         let ArticlePath = './posts/' + req.params.path + '.json'
         if (fs.existsSync(ArticlePath)) { // Page exists, load into Article
             let Article = require('./posts/' + req.params.path + '.json')
             res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Dynamic, ""))
-        }
-        else {
+        } else {
             Log("Requested page not found (404): " + req.path)
             SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, "", Languages);
         }
@@ -111,6 +109,7 @@ function ErrorLogger(error, req, res, next) {
     Log("ERROR: Internal Server [500]:\n" + error)
     next(error)
 }
+
 function ErrorHandler(error, req, res, next) {
     if (error.type == 'redirect')
         SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, error.toString(), Languages);
@@ -119,6 +118,7 @@ function ErrorHandler(error, req, res, next) {
     else
         next(error)
 }
+
 function ErrorHandlerGeneric(error, req, res, next) {
     SendError(500, req, res, AvailablePages, AvailablePages.Dynamic, error, Languages);
 }

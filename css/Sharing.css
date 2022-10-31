@@ -1,29 +1,31 @@
 .ShareSection {
-    margin-top: 100px;
-    margin-bottom: 25px;
+    margin: 50px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 35px;
     text-align: center;
-    width: 50%;
-    border-top: 1px solid var(--accent-color);
-    border-bottom: 1px solid var(--accent-color);
+    width: 65%;
 }
+
 @media only screen and (max-width: 960px) {
     .ShareSection {
-        width: 100%;
-    } 
+        width: 85%;
+    }
 }
+
 .ShareHeader {
     width: 100%;
     font-size: 20px;
     font-weight: 600;
     text-align: center;
 }
+
 .ShareButtonContainer {
     display: flex;
     margin-left: auto;
     margin-right: auto;
 }
+
 .ShareItem {
     margin-left: 10px;
     margin-right: 10px;
@@ -35,15 +37,16 @@
     border: 1px solid var(--accent-color-transparent);
     padding: 0px;
 }
+
 .ShareItem:hover {
     border-radius: 25%;
     border: 1px solid transparent;
 }
+
 .ShareItemLink {
     margin-bottom: 20px;
     cursor: pointer;
 }
-
 
 .ShareItemInner {
     width: 20px;
@@ -55,14 +58,17 @@
     background-color: gray;
     color: white;
 }
+
 .ShareButtonFacebook:hover {
     background-color: #3b5998;
     color: white;
 }
+
 .ShareButtonTwitter:hover {
     background-color: #1DA1F2;
     color: white;
 }
+
 .ShareButtonReddit:hover {
     background-color: #FF4500;
     color: white;

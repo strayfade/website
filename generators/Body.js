@@ -1,6 +1,7 @@
 const fs = require('fs')
 const Markdown = require("markdown").markdown;
 const { Localize } = require('./tools/LocaleTools')
+
 function GenerateShareSection(Locale) {
     let Output = "";
 
@@ -37,14 +38,16 @@ function GenerateShareSection(Locale) {
 
     return Output;
 }
+
 function CreateTooltip() {
     let Output = "";
     Output += "<div id='TooltipContainer' class='TooltipContainer MobileHidden AccentBloomBox'>"
-    Output += "<p id='TooltipText' class='TooltipText'>"
+    Output += "<p id='TooltipText' class='TooltipText' aria-hidden='true'>"
     Output += "</p>"
     Output += "</div>"
     return Output;
 }
+
 function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) {
 
     // Markdown
@@ -63,9 +66,9 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
     switch (AvailablePageSelector) {
         case AvailablePages.Home:
             Output += "<div class='ArticleContainer'>"
-        
+
             // Article Title/Subtitle
-            Output += "<div class='DisplayWidth'>"
+            Output += "<div class='ArticleWidth'>"
             let filenames = fs.readdirSync(__dirname.replace("generators", "posts/"));
             for (var x = 0; x < filenames.length; x++) {
                 if (filenames[x].endsWith(".json")) {
@@ -92,9 +95,9 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
             break;
         case AvailablePages.Dynamic:
             Output += "<div class='ArticleContainer'>"
-        
+
             // Article Title/Subtitle
-            Output += "<div class='DisplayWidth'>"
+            Output += "<div class='ArticleWidth'>"
             if (Article.showTitle) {
                 Output += "<div class='ArticleHeader'>"
                 Output += "<p class='ArticleHeaderDate'>" + Article.date + "</p>"

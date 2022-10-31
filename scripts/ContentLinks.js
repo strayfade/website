@@ -4,6 +4,7 @@ const BlacklistedParentNodeClassnames = ["HeaderObject", "FooterObject", "Articl
 let HyperlinkElements = [];
 let CopyTextIndicatorElements = []
 let Padding = 5;
+
 function PositionLinkElements() {
     for (let x = 0; x < HyperlinkElements.length; x++) {
         let Position = HyperlinkElements[x].getBoundingClientRect()
@@ -14,7 +15,7 @@ function PositionLinkElements() {
     }
 }
 if (!window.location.toString().endsWith("/")) {
-    window.addEventListener("load", function () {
+    window.addEventListener("load", function() {
         for (let x = 0; x < TagsToAffect.length; x++) {
             var Found = document.getElementsByTagName(TagsToAffect[x])
             for (let y = 0; y < Found.length; y++) {
@@ -36,6 +37,7 @@ if (!window.location.toString().endsWith("/")) {
             Element.classList.add("HyperlinkHeader")
 
             let CopyText = document.createElement("p")
+            CopyText.ariaHidden = "true"
             CopyText.innerHTML = "Copy Link to Section"
             CopyText.className = "CopyText"
             CopyText.id = "CopyTextIndicator" + x

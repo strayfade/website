@@ -1,24 +1,29 @@
 .ArticleHeader {
-    margin-bottom: 35px;
-    padding-bottom: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
     width: 70%;
     border-bottom: 3px solid var(--accent-color);
 }
+
 @media only screen and (max-width: 960px) {
     .ArticleHeader {
         width: 100%;
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
+
 .ArticleContainer {
     width: 95%;
     margin: auto;
     margin-bottom: 50px;
     min-height: 700px;
 }
+
 .DisplayWidth a {
     width: min-content;
 }
+
 .ArticleHeaderTitle {
     font-size: 65px;
     font-weight: normal;
@@ -26,6 +31,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 @media only screen and (max-width: 960px) {
     .ArticleHeaderTitle {
         font-size: 45px;
@@ -39,6 +45,7 @@
     padding-bottom: 0px;
     opacity: 0.5;
 }
+
 .ArticleHeaderSubtitle {
     font-size: 20px;
     font-weight: bold;
@@ -56,6 +63,7 @@
     transition: 0.25s;
     margin-left: 5px;
 }
+
 .ArticleIndexBox:hover {
     margin-left: 15px;
     color: var(--accent-color);
@@ -66,6 +74,7 @@
     font-size: 35px;
     margin: 0px;
 }
+
 .ArticleIndexBoxDate {
     font-weight: normal;
     font-size: 15px;
@@ -74,8 +83,9 @@
     margin-top: 20px;
     opacity: 0.5;
 }
+
 .ArticleIndexBoxDescription {
     margin: 0px;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 18px;
 }

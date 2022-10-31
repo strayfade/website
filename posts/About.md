@@ -2,10 +2,5 @@
 
 Hello! I am Noah, a software developer (mainly front-end web development) and musician from the United States.
 
-### Social Media
- - [YouTube](https://youtube.com/Strayfade)
- - [Twitter](https://twitter.com/Strayfade)
- - [Instagram](https://instagram.com/Strayfade)
-
 ### Contact Me
- - [Discord Server](https://discord.gg/YdDddFn)
+You can send me an email at [`me@strayfade.com`](mailto:me@strayfade.com) and I might read it, or you can shoot me a message on [Twitter](https://twitter.com/Strayfade) or [Instagram](https://instagram.com/Strayfade).

@@ -1,14 +1,16 @@
 :root {
     --display-width: 75%;
+    --display-width-inner: 75%;
     --display-font: Rajdhani;
-
     --lightmode-background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADEAAAAAAj0zYgAAAAD0lEQVQI12NggAFBQTgTAAF6ACNCN0YPAAAAAElFTkSuQmCC');
     --darkmode-background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADEAAAAAAj0zYgAAAAGUlEQVQI12P8/5+BgYGBiYHh/XsGBkYIDwBFtgXfDwfkEAAAAABJRU5ErkJggg==');
 }
+
 @media only screen and (max-width: 960px) {
-    :root {
+     :root {
         --display-width: 90%;
-    } 
+        --display-width-inner: 90%;
+    }
 }
 
 body {
@@ -19,7 +21,6 @@ body {
     background-image: var(--darkmode-background-image);
     background-repeat: repeat;
     background-size: 5px;
-
     color: var(--foreground-color);
     word-wrap: break-word;
     text-overflow: clip;
@@ -29,27 +30,37 @@ body {
 .Hidden {
     display: none;
 }
+
 .MobileOnly {
     display: none;
 }
+
 @media only screen and (max-width: 960px) {
     .MobileHidden {
         display: none;
-    } 
+    }
     .MobileOnly {
         display: block;
     }
 }
 
 .DisableAntialiasing {
-    image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
-    image-rendering: -moz-crisp-edges;          /* Firefox                        */
-    image-rendering: -o-crisp-edges;            /* Opera                          */
-    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
-    image-rendering: pixelated;                 /* Universal support since 2021   */
-    image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
-    -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+    image-rendering: optimizeSpeed;
+    /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges;
+    /* Firefox                        */
+    image-rendering: -o-crisp-edges;
+    /* Opera                          */
+    image-rendering: -webkit-optimize-contrast;
+    /* Chrome (and eventually Safari) */
+    image-rendering: pixelated;
+    /* Universal support since 2021   */
+    image-rendering: optimize-contrast;
+    /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor;
+    /* IE8+                           */
 }
+
 .EnableAntialiasing {
     image-rendering: auto;
     image-rendering: optimizeQuality;

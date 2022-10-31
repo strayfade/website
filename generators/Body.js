@@ -80,7 +80,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                         Output += "<h1 class='ArticleIndexBoxTitle FloatLeft'>" + JSON.title + "</h1>"
                         Output += "<p class='ArticleIndexBoxDate FloatLeft'>" + JSON.date + "</p>"
                         Output += "</div>"
-                        Output += "<h1 class='ArticleIndexBoxDescription'>" + JSON.description + "</h1>"
+                        Output += "<p class='ArticleIndexBoxDescription'>" + JSON.description + "</p>"
                         Output += "</div>"
                         Output += "</a>"
                     }

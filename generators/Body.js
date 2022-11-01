@@ -100,10 +100,10 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
             Output += "<div class='ArticleWidth'>"
             if (Article.showTitle) {
                 Output += "<div class='ArticleHeader'>"
-                Output += "<p class='ArticleHeaderDate'>" + Article.date + "</p>"
+                Output += "<p class='ArticleHeaderDate' aria-hidden='true'>" + Article.date + "</p>"
                 Output += "<h1 class='ArticleHeaderTitle'>" + Article.title + "</h1>"
-                Output += "<span class='ArticleHeaderSubtitle'>" + Localize(Locale, "article_author_prefix") + Article.author + " •</span>"
-                Output += "<span class='ArticleHeaderSubtitle'> " + ReadingTime + Localize(Locale, "article_read_time") + "</span>"
+                Output += "<span class='ArticleHeaderSubtitle' aria-hidden='true'>" + Localize(Locale, "article_author_prefix") + Article.author + " •</span>"
+                Output += "<span class='ArticleHeaderSubtitle' aria-hidden='true'> " + ReadingTime + Localize(Locale, "article_read_time") + "</span>"
                 Output += "</div>"
             }
             Output += MarkdownHtml // Article MD

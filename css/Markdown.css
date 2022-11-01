@@ -33,6 +33,7 @@ code {
     padding-right: 3px;
     border-radius: 5px;
     display: inline-block;
+    white-space: pre-line;
 }
 
 pre code {

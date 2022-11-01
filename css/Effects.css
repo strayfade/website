@@ -12,7 +12,7 @@
 }
 
 .EffectBoxInactive {
-    animation: HideEffectLayer 1s forwards;
+    animation: HideEffectLayer 0.49s forwards;
 }
 
 @keyframes HideEffectLayer {
@@ -22,7 +22,7 @@
         transform: skewX(0deg) scaleY(100%);
         background-color: var(--accent-color);
     }
-    35% {
+    65% {
         width: 4px;
         transform: translate(-16px, 0px) scaleY(100%);
         background-color: var(--accent-color);

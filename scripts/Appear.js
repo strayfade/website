@@ -32,7 +32,7 @@ function PlaceEffectBoxes() {
         TargetClosing[x].classList.add("EffectBoxInactive")
     }
 }
-//window.addEventListener('load', PlaceEffectBoxes)
+window.addEventListener('load', PlaceEffectBoxes)
 function ReplaceEffectBoxes() {
     let Target = document.getElementsByClassName("EffectBox")
     for (var x = 0; x < Target.length; x++) {
@@ -52,7 +52,7 @@ function RandomizeColors() {
 
 // This is <REALLY> stupid, but it works
 function OnResize() {
-    //ReplaceEffectBoxes()
-    //PositionLinkElements()
+    ReplaceEffectBoxes()
+    PositionLinkElements()
 }
 setInterval(OnResize, 20);

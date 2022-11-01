@@ -11,7 +11,7 @@ function GeneratePage(Article, Locale, Generators, AvailablePages, AvailablePage
     Output += "<div class='EnableAntialiasing'>"
     Output += Generators.Header.GenerateHeader(Article, Locale, AvailablePageSelector == AvailablePages.Home) + "\n"
     Output += Generators.Body.GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) + "\n"
-    Output += Generators.Footer.GenerateFooter(Article, Locale, "") + "\n"
+    Output += Generators.Footer.GenerateFooter(Article, Locale) + "\n"
     Output += "</div>"
     Output += "<script src='/Production.js'></script>"
     Output += "</body>\n"

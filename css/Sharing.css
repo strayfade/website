@@ -1,8 +1,8 @@
 .ShareSection {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 25px;
-    margin-top: 75px;
+    margin-bottom: -25px;
+    margin-top: 50px;
     text-align: center;
     width: 65%;
 }

@@ -61,7 +61,7 @@ app.get('/Production.js', (req, res) => {
     res.sendFile(ScriptPath)
 })
 app.get('/robots.txt', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'robots.txt'))
+    res.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
 })
 
 // Default Routing

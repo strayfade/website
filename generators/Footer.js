@@ -1,11 +1,10 @@
 const { Localize } = require('./tools/LocaleTools')
 
-function GenerateFooter(Article, Locale, ExtraText = "") {
+function GenerateFooter(Article, Locale) {
 
     Output = ""
     Output += "<footer>\n"
     Output += "<div class='Footer'>"
-    Output += "<p class='FooterText'>" + ExtraText + "</p>"
     Output += "<div class='FooterInner DisplayWidth'>"
 
     Output += "<div class='FooterObject MobileHidden'>"

@@ -39,7 +39,7 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     if (!isHomepage) {
         Output += "<a aria-label='GitHub' class='LinkNormal FloatRight' href='https://github.com/Strayfade' data-tooltip='GitHub'>"
     }
-    Output += "<div class='HeaderObject HoverAccentColor MobileHidden FloatRight'>"
+    Output += "<div class='HeaderObject HoverAccentColor MobileHidden FloatRight' data-tooltip='Search Articles'>"
     if (isHomepage) {
         Output += "<input id='PageSearchBox' type='text' placeholder='Search' oninput='SearchArticle()'>"
         Output += "</div>"

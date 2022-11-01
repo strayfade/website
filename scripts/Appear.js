@@ -5,7 +5,7 @@ if (!window.location.toString().endsWith("/")) {
 }
 
 var HeaderElements = [];
-window.addEventListener('load', function () {
+function PlaceEffectBoxes() {
     for (let x = 0; x < TagsToAffect.length; x++) {
         var Found = document.getElementsByTagName(TagsToAffect[x])
         for (let y = 0; y < Found.length; y++) {
@@ -22,7 +22,7 @@ window.addEventListener('load', function () {
             Current.style.width = Position.width + "px"
             Current.style.height = Position.height + "px"
             let Child = document.createElement("div")
-            Child.className = "EffectBoxActive AccentBloomBox"
+            Child.className = "EffectBoxActive"
             Current.appendChild(Child.cloneNode())
             EffectElements.push(Child)
             HeaderElements[x].appendChild(Current)
@@ -31,7 +31,8 @@ window.addEventListener('load', function () {
     for (var x = 0; x < TargetClosing.length; x++) {
         TargetClosing[x].classList.add("EffectBoxInactive")
     }
-})
+}
+//window.addEventListener('load', PlaceEffectBoxes)
 function ReplaceEffectBoxes() {
     let Target = document.getElementsByClassName("EffectBox")
     for (var x = 0; x < Target.length; x++) {
@@ -51,7 +52,7 @@ function RandomizeColors() {
 
 // This is <REALLY> stupid, but it works
 function OnResize() {
-    ReplaceEffectBoxes()
-    PositionLinkElements()
+    //ReplaceEffectBoxes()
+    //PositionLinkElements()
 }
 setInterval(OnResize, 20);

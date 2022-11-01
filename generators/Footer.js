@@ -5,15 +5,15 @@ function GenerateFooter(Article, Locale, ExtraText = "") {
     Output = ""
     Output += "<footer>\n"
     Output += "<div class='Footer'>"
-    Output += "<p class='FooterText AccentBloomText'>" + ExtraText + "</p>"
+    Output += "<p class='FooterText'>" + ExtraText + "</p>"
     Output += "<div class='FooterInner DisplayWidth'>"
 
     Output += "<div class='FooterObject MobileHidden'>"
-    Output += "<a aria-label='" + Localize(Locale, "source_code") + "' class='LinkNormal Underline HoverAccentColor AccentBloomText' href='https://github.com/Strayfade/Website'>" + Localize(Locale, "source_code") + "</a>"
+    Output += "<a aria-label='" + Localize(Locale, "source_code") + "' class='LinkNormal Underline HoverAccentColor' href='https://github.com/Strayfade/Website'>" + Localize(Locale, "source_code") + "</a>"
     Output += "</div>"
 
     Output += "<div class='FooterObject FloatRight'>"
-    Output += "<h1 class='AccentBloomText'>" + Localize(Locale, "copyright_main") + "</h1>"
+    Output += "<h1>" + Localize(Locale, "copyright_main") + "</h1>"
     Output += "</div>"
 
     Output += "<div class='FooterObject'>"

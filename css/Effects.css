@@ -72,21 +72,9 @@
 }
 
 .AccentBloomBox {
-    box-shadow: 0px 0px 150px var(--accent-color-transparent);
+    box-shadow: 0px 0px 250px var(--accent-color-transparent);
 }
 
 .AccentBloomText {
-    text-shadow: 0px 0px 50px var(--accent-color);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-a,
-p,
-em,
-li {
-    text-shadow: 0px 0px 100px var(--accent-color);
+    text-shadow: 0px 0px 250px var(--accent-color);
 }

@@ -69,6 +69,32 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
 
             // Article Title/Subtitle
             Output += "<div class='ArticleWidth'>"
+
+            // Homepage Hero Header
+            Output += "<div class='HeroBanner'>"
+            Output += "<div class='Flexbox'>"
+
+            Output += "<div class='HeroBannerLeft'>"
+            Output += "<h1>About Me</h1>"
+            Output += "<p>Hello! I am Noah, a software developer (primarily web development) and musician from the United States.</p>"
+            Output += "<p>You can send me an email at <a href='mailto:me@strayfade.com'>me@strayfade.com</a> and I might read it, or you can shoot me a message on <a href='https://twitter.com/Strayfade'>Twitter</a> or <a href='https://instagram.com/Strayfade'>Instagram</a>.</p>"
+            Output += "<p>My current Discord tag is <a href='https://discord.com/users/455790298082181120'>Strayfade #8472</a>, although I do not usually respond to direct messages on Discord.</p>"
+            Output += "</div>"
+
+            Output += "<div class='HeroBannerRight'>"
+            Output += "<svg class='Icon NoSelect Centered' version='1.0' xmlns='http://www.w3.org/2000/svg' width='300.000000pt' height='300.000000pt' viewBox='0 0 300.000000 300.000000' preserveAspectRatio='xMidYMid meet'>"
+            Output += "<title>Strayfade Logo</title>"
+            Output += "<g transform='translate(0.000000,300.000000) scale(0.050000,-0.050000)'>"
+            Output += "<path d='M2707 5344 c-178 -217 -563 -686 -857 -1043 -609 -741 -676 -830 -786 -1052 -265 -529 -186 -1034 228 -1460 114 -117 678 -590 702 -588 9 1 372 434 806 964 1176 1433 1361 1655 1376 1655 73 0 193 -307 179 -459 -16 -176 -34 -201 -1014 -1389 -506 -615 -920 -1123 -920 -1130 2 -19 587 -490 606 -487 9 1 194 217 410 480 216 263 596 725 844 1027 679 823 798 1012 870 1376 103 514 -94 878 -779 1439 l-277 227 -46 -47 c-42 -43 -814 -980 -1749 -2122 -203 -249 -380 -453 -393 -454 -40 -2 -147 163 -180 276 -75 257 -63 276 863 1400 429 521 842 1022 917 1114 75 92 131 176 124 187 -17 28 -549 463 -577 472 -13 4 -169 -169 -347 -386z'/>"
+            Output += "</g>"
+            Output += "</svg>"
+            Output += "</div>"
+
+            Output += "</div>"
+            Output += "</div>"
+
+            // Articles
+            Output += "<div class='HomepageArticleContainer'>"
             let filenames = fs.readdirSync(__dirname.replace("generators", "posts/"));
             for (var x = 0; x < filenames.length; x++) {
                 if (filenames[x].endsWith(".json")) {
@@ -88,7 +114,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
             }
             Output += "</div>"
             Output += "</div>"
-
+            Output += "</div>"
             break;
         case AvailablePages.R:
             Output += fs.readFileSync(__dirname.replace("generators", "assets") + "/Rem")

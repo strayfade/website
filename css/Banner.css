@@ -1,0 +1,39 @@
+.HeroBanner {
+    border-bottom: 4px solid var(--accent-color);
+    padding: 25px;
+    margin: 25px;
+    padding-top: 0px;
+    margin-bottom: 50px;
+    margin-top: 15px;
+    padding-bottom: 50px;
+}
+
+.HeroBanner p {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.HeroBannerLeft {
+    float: left;
+}
+
+.HeroBannerRight {
+    float: right;
+    opacity: 1;
+}
+
+.HeroBannerRight .Icon {
+    width: 50%;
+    margin-left: 25%;
+}
+
+@media only screen and (max-width: 960px) {
+    .HeroBannerLeft {
+        width: 100%;
+    }
+    .HeroBannerRight {
+        opacity: 0;
+        width: 0%;
+    }
+}

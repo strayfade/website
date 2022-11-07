@@ -1,5 +1,4 @@
 .Icon {
-    margin-top: 10px;
     font-size: 25px;
     font-weight: 100;
     width: 100%;
@@ -7,14 +6,17 @@
     fill: var(--foreground-color);
     transition: 0.5s;
 }
+
 .Icon:hover {
     fill: var(--accent-color);
 }
+
 .HeaderObject .Icon {
     margin-top: 10px;
     width: 35px;
     height: 35px;
 }
+
 .FooterObject .Icon {
     margin-top: 0px;
     width: 22px;

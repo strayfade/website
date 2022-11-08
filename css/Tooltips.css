@@ -4,9 +4,9 @@
     top: 0;
     left: 0;
     pointer-events: none;
-    transition: 0.5s;
     text-align: center;
 }
+
 .TooltipText {
     position: absolute;
     margin-top: -100%;
@@ -14,11 +14,11 @@
     font-size: 15px;
     padding: 5px;
     color: white;
-    transition: 0.5s;
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
 }
+
 .TooltipActive {
     opacity: 1.0;
     transition: 0.5s;

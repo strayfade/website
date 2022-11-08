@@ -1,20 +1,15 @@
 :root {
-    --lighten-percentage: 20%;
-    --darken-percentage: 20%;
-
+    --transparency-percentage: 20%;
     --lighten-color: rgb(240, 240, 240);
     --darken-color: rgb(16, 16, 16);
     --lighten-color-codeblock: rgb(240, 240, 240);
     --darken-color-codeblock: #1e1e1e;
-    
     --background-color: rgb(16, 16, 16);
     --foreground-color: rgb(240, 240, 240);
-
     --accent-color-hue: 190;
-    --accent-color-saturation: 90%;
+    --accent-color-saturation: 100%;
     --accent-color-value: 50%;
-
     --accent-color: hsl(var(--accent-color-hue), var(--accent-color-saturation), var(--accent-color-value));
-    --accent-color-transparent: hsla(var(--accent-color-hue), var(--accent-color-saturation), calc(var(--accent-color-value) - var(--darken-percentage)), 0.5);
-    --accent-color-very-transparent: hsla(var(--accent-color-hue), var(--accent-color-saturation), calc(var(--accent-color-value) - var(--darken-percentage)), 0.2);
+    --accent-color-transparent: hsla(var(--accent-color-hue), var(--accent-color-saturation), calc(var(--accent-color-value) - var(--transparency-percentage)), 0.5);
+    --accent-color-very-transparent: hsla(var(--accent-color-hue), var(--accent-color-saturation), calc(var(--accent-color-value) - var(--transparency-percentage)), 0.2);
 }

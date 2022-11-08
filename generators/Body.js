@@ -48,6 +48,13 @@ function CreateTooltip() {
     return Output;
 }
 
+// Credit https://stackoverflow.com/questions/8152426/how-can-i-calculate-the-number-of-years-between-two-dates
+function CalculateAge() {
+    var AgeDifMs = Date.now() - Date.UTC(2005, 11, 14);
+    var AgeDate = new Date(AgeDifMs);
+    return Math.abs(AgeDate.getUTCFullYear() - 1970);
+}
+
 function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) {
 
     // Markdown
@@ -76,7 +83,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
 
             Output += "<div class='HeroBannerLeft'>"
             Output += "<h1>About Me</h1>"
-            Output += "<p>Hello! I am Noah, a software developer (primarily web development) and musician from the United States.</p>"
+            Output += "<p><span>Hello! I am Noah, a </span><span>" + CalculateAge() + "-year-old </span><span>software developer (primarily web development) and musician from the United States.</span></p>"
             Output += "<p>You can send me an email at <a href='mailto:me@strayfade.com'>me@strayfade.com</a> and I might read it, or you can shoot me a message on <a href='https://twitter.com/Strayfade'>Twitter</a> or <a href='https://instagram.com/Strayfade'>Instagram</a>.</p>"
             Output += "<p>My current Discord tag is <a href='https://discord.com/users/455790298082181120'>Strayfade#8472</a>, although I do not usually respond to direct messages on Discord.</p>"
             Output += "</div>"

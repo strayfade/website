@@ -142,5 +142,5 @@ After some time, the correct password will be found!
 
     Time left: 24 minutes, 3 seconds                           0.31%
 
-    PASSWORD FOUND: [Students]
+    KEY FOUND! [ Students ]
     ...

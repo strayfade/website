@@ -1,7 +1,7 @@
 .ShareSection {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: -25px;
+    margin-bottom: 0px;
     margin-top: 50px;
     text-align: center;
     width: 65%;
@@ -72,4 +72,22 @@
 .ShareButtonReddit:hover {
     background-color: #FF4500;
     color: white;
+}
+
+.ShareButtonContainer .LinkNormal {
+    width: max-content;
+}
+
+.ShareMaxWidth {
+    width: 100%;
+}
+
+.ShareMaxWidth .Spaced {
+    margin-left: 18px;
+}
+
+.ShareMaxWidth a {
+    margin-bottom: -5px;
+    font-size: 15px;
+    font-weight: bold;
 }

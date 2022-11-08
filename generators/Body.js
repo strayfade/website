@@ -2,7 +2,7 @@ const fs = require('fs')
 const Markdown = require("markdown").markdown;
 const { Localize } = require('./tools/LocaleTools')
 
-function GenerateShareSection(Locale) {
+function GenerateShareSection(Locale, Article) {
     let Output = "";
 
     Output += "<div class='ShareSection'>"
@@ -35,6 +35,12 @@ function GenerateShareSection(Locale) {
 
     Output += "</div>"
     Output += "</div>"
+
+    Output += "<div class='ShareButtonContainer ShareMaxWidth'>"
+    Output += "<a class='LinkNormal HoverAccentColor FloatRight' href='https://github.com/Strayfade/Website/blob/main/posts/" + Article.markdown + "'>View on GitHub</a>"
+    Output += "<a class='LinkNormal HoverAccentColor Spaced' href='https://raw.githubusercontent.com/Strayfade/Website/main/posts/" + Article.markdown + "'>View Raw</a>"
+    Output += "</div>"
+
 
     return Output;
 }
@@ -142,7 +148,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
             Output += MarkdownHtml // Article MD
 
             if (Article.indexed)
-                Output += GenerateShareSection(Locale)
+                Output += GenerateShareSection(Locale, Article)
             Output += "</div>"
             Output += "</div>"
 

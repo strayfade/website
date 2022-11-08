@@ -72,7 +72,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
 
     // Credit https://infusion.media/content-marketing/how-to-calculate-reading-time/
     let MarkdownWorkCount = MarkdownString.split(" ").length
-    let ReadingTime = Math.ceil(MarkdownWorkCount / 100)
+    let ReadingTime = Math.ceil(MarkdownWorkCount / 200)
 
     Output = ""
 

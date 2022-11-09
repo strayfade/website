@@ -167,7 +167,7 @@ Here's the command:
 
     hashcat -m 22000 WPA.hc22000 -1 ?d?l?u -a 3 ?1?1?1?1?1?1?1?1
 
-And, after running for around 5 minutes, I got the result I was looking for.
+And, after running for around 3 minutes, I got the result I was looking for.
 
     Session..........: hashcat
     Status...........: Cracked

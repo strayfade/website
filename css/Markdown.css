@@ -83,6 +83,7 @@ blockquote {
     background-color: var(--accent-color-very-transparent);
     margin-left: 10px;
     padding: 10px;
+    padding-left: 15px;
     width: 90%;
 }
 

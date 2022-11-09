@@ -89,5 +89,6 @@
 .ShareMaxWidth a {
     margin-bottom: -5px;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: normal;
+    text-decoration: underline;
 }

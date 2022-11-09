@@ -37,7 +37,8 @@ function GenerateShareSection(Locale, Article) {
     Output += "</div>"
 
     Output += "<div class='ShareButtonContainer ShareMaxWidth'>"
-    Output += "<a class='LinkNormal HoverAccentColor FloatRight' href='https://github.com/Strayfade/Website/blob/main/posts/" + Article.markdown + "'>View on GitHub</a>"
+    Output += "<p class='FooterAboveText FloatRight'>I made this!</p>"
+    Output += "<a class='LinkNormal HoverAccentColor Spaced' href='https://github.com/Strayfade/Website/blob/main/posts/" + Article.markdown + "'>View on GitHub</a>"
     Output += "<a class='LinkNormal HoverAccentColor Spaced' href='https://raw.githubusercontent.com/Strayfade/Website/main/posts/" + Article.markdown + "'>View Raw</a>"
     Output += "</div>"
 

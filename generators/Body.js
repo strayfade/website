@@ -55,11 +55,9 @@ function CreateTooltip() {
     return Output;
 }
 
-// Credit https://stackoverflow.com/questions/8152426/how-can-i-calculate-the-number-of-years-between-two-dates
 function CalculateAge() {
-    var AgeDifMs = Date.now() - Date.UTC(2005, 11, 14);
-    var AgeDate = new Date(AgeDifMs);
-    return Math.abs(AgeDate.getUTCFullYear() - 1970);
+    var AgeDif = new Date(Date.now() - new Date(1131950100000))
+    return Math.abs(AgeDif.getUTCFullYear() - 1970);
 }
 
 function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) {

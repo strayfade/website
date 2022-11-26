@@ -1,7 +1,7 @@
 const fs = require('fs')
 
 function GetLanguage(req) {
-    return req.headers["accept-language"].split(",")[0].toLowerCase();
+    return (req.headers["accept-language"] ? req.headers["accept-language"] : "en-US").split(",")[0].toLowerCase();
 }
 function GetLanaguageShort(req) {
     var LocalePath = GetLanguage(req).split("-")[0]

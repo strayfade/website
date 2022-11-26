@@ -1,7 +1,7 @@
 .HeroBanner {
     border-bottom: 4px solid var(--accent-color);
     padding: 25px;
-    margin: 25px;
+    margin: auto;
     padding-top: 0px;
     margin-bottom: 25px;
     margin-top: 15px;
@@ -12,6 +12,9 @@
     margin-top: 0px;
     margin-bottom: 10px;
     font-size: 20px;
+}
+.HeroBanner .Flexbox {
+    width: 100%;
 }
 
 .HeroBannerLeft {
@@ -25,7 +28,7 @@
 
 .HeroBannerRight .Icon {
     width: 50%;
-    margin-left: 25%;
+    margin-left: 50%;
 }
 
 @media only screen and (max-width: 960px) {

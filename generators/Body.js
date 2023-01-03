@@ -153,11 +153,11 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
 
             break;
         case AvailablePages.Shop:
-            let ShopProducts = require('../cache/products.json')
             Output += "<div class='ArticleContainer'>"
             Output += "<div class='ArticleWidth'>"
-            Output += "<div class='ShopItemsContainer' id='ShopItemsContainer'>"
-
+            
+            Output += "<h1 style='width: 100%; text-align: center; font-size: 45px; margin-top: 60px;'>Coming Soon!</h1>"
+            /*Output += "<div class='ShopItemsContainer' id='ShopItemsContainer'>"
             for (let x = 0; x < ShopProducts.result.length; x++) {
                 let Current = ShopProducts.result[x]
                 Output += "<div class='ShopItem'>"
@@ -170,6 +170,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                 Output += Current.name
                 Output += "</div>"
                 Output += "<div class='ShopItemPrice'>"
+                console.log(Current.more.sync_variants)
                 Output += "$" + Current.more.sync_variants[0].retail_price
                 Output += "</div>"
                 Output += "</div>"
@@ -178,7 +179,6 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                 Output += "</a>"
                 Output += "</div>"
             }
-
             Output += "</div>"
             Output += "<div class='ShopItemContainer' id='Item'>"
             Output += "<div class='Flexbox'>"
@@ -188,7 +188,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
             Output += "<div class='ShopSelectedItemPrice' id='ShopSelectedItemPrice'></div>"
             Output += "</div>"
             Output += "</div>"
-            Output += "</div>"
+            Output += "</div>"*/
             Output += "</div>"
             Output += "</div>"
             break;

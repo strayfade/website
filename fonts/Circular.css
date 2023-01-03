@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'Circular';
+    src: url('/fonts/Circular-Light.woff') format('woff'), url('/fonts/Circular-Light.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Circular';
+    src: url('/fonts/Circular-Medium.woff') format('woff'), url('/fonts/Circular-Medium.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Circular';
+    src: url('/fonts/Circular-Book.woff') format('woff'), url('/fonts/Circular-Book.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Circular';
+    src: url('/fonts/Circular-Bold.woff') format('woff'), url('/fonts/Circular-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Circular';
+    src: url('/fonts/Circular-Black.woff') format('woff'), url('/fonts/Circular-Black.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}

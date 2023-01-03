@@ -4,6 +4,8 @@ const path = require('path')
 
 // Imported Functions
 const { Log } = require('./Log')
+const BuildTools = require('./Build')
+//BuildTools.CacheShopResponses() // Must be done very early
 const { SendError } = require('./Error')
 const { Generators } = require('./Generators')
 const { CollectAnalytics } = require('./Database')
@@ -20,8 +22,9 @@ const Languages = GetAvailableLanguages(config)
 const AvailablePages = {
     Home: "1",
     R: "2",
+    Shop: "3",
     Dynamic: "4",
-    NonstandardPages: ["R"]
+    NonstandardPages: ["R", "Shop"]
 }
 
 // Basic Security Measures
@@ -34,7 +37,6 @@ app.use('/fonts', express.static('fonts'))
 app.use('/posts', express.static('posts'))
 
 // Packaging
-const BuildTools = require('./Build')
 let StylesheetPath = BuildTools.GetStylesheets();
 let ScriptPath = BuildTools.GetScripts();
 
@@ -51,6 +53,24 @@ app.use((req, res, next) => {
         Log("Serving error page [500]")
     }
     next();
+})
+
+// Shop API
+app.get('/API/Product/:id', (req, res) => {
+    let SentResponse = false;
+    let Products = require('./cache/products.json')
+    for (let x = 0; x < Products.result.length; x++) {
+        if (Products.result[x].id.toString() == req.params.id.toString()) {
+            Products.result[x].status = 200
+            res.json(Products.result[x])
+            SentResponse = true;
+        }
+    }
+    if (!SentResponse) {
+        res.json({
+            status: 400
+        })
+    }
 })
 
 // Sources

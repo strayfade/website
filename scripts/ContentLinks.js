@@ -1,5 +1,5 @@
 const HyperlinkTags = ["h1", "h2", "h3"]
-const BlacklistedParentNodeClassnames = ["HeaderObject", "FooterObject", "ArticleHeader"]
+const BlacklistedParentNodeClassnames = ["HeaderObject", "FooterObject", "ArticleHeader", "ShopItemName"]
 
 let HyperlinkElements = [];
 let CopyTextIndicatorElements = []

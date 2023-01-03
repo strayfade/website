@@ -7,6 +7,8 @@ function Setup(app) {
     helmet.hsts which sets the Strict-Transport-Security header. This helps enforce secure (HTTPS) connections to the server.
     helmet.frameguard which sets the X-Frame-Options header. This provides clickjacking protection.
     */
+
+    /*
     const Helmet = require("helmet")
     app.use(Helmet({
         contentSecurityPolicy: {
@@ -17,6 +19,7 @@ function Setup(app) {
             },
         },
     }))
+    */
 
     /* From https://expressjs.com/en/advanced/best-practice-security.html
     Reduce Fingerprinting

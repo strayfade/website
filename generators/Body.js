@@ -152,6 +152,46 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
             Output += "</div>"
 
             break;
+        case AvailablePages.Shop:
+            let ShopProducts = require('../cache/products.json')
+            Output += "<div class='ArticleContainer'>"
+            Output += "<div class='ArticleWidth'>"
+            Output += "<div class='ShopItemsContainer' id='ShopItemsContainer'>"
+
+            for (let x = 0; x < ShopProducts.result.length; x++) {
+                let Current = ShopProducts.result[x]
+                Output += "<div class='ShopItem'>"
+                Output += "<a onclick='window.location.replace(window.location.pathname + `#" + Current.id + "`)'>"
+                Output += "<div class='ShopItemInner'>"
+
+                Output += "<img class='ShopItemImage' src='" + Current.thumbnail_url + "'>"
+                Output += "<div class='Flexbox'>"
+                Output += "<div class='ShopItemName'>"
+                Output += Current.name
+                Output += "</div>"
+                Output += "<div class='ShopItemPrice'>"
+                Output += "$" + Current.more.sync_variants[0].retail_price
+                Output += "</div>"
+                Output += "</div>"
+
+                Output += "</div>"
+                Output += "</a>"
+                Output += "</div>"
+            }
+
+            Output += "</div>"
+            Output += "<div class='ShopItemContainer' id='Item'>"
+            Output += "<div class='Flexbox'>"
+            Output += "<img class='ShopSelectedItemImage' id='ShopSelectedItemImage'>"
+            Output += "<div class='ShopSelectedItemContainer'>"
+            Output += "<div class='ShopSelectedItemTitle' id='ShopSelectedItemTitle'></div>"
+            Output += "<div class='ShopSelectedItemPrice' id='ShopSelectedItemPrice'></div>"
+            Output += "</div>"
+            Output += "</div>"
+            Output += "</div>"
+            Output += "</div>"
+            Output += "</div>"
+            break;
     }
     Output += CreateTooltip()
     return Output

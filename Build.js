@@ -1,9 +1,11 @@
+require('dotenv').config() // Used for shop API key
 const fs = require('fs')
+const Log = require('./Log').Log
 const path = require('path');
-const config = require('./config/config.json')
+const request = require('request'); // Shop
 const jsobf = require('javascript-obfuscator')
 const { randomInt } = require('crypto');
-const ExtraStylesheets = ["./fonts/Rajdhani.css"]
+const ExtraStylesheets = ["./fonts/Rajdhani.css", "./fonts/Circular.css"]
 const ExtraScripts = []
 
 const ObfuscationOptions = {
@@ -35,6 +37,7 @@ const ObfuscationOptions = {
 }
 
 function GetStylesheets() {
+    Log("[BUILD] - Merging stylesheet files...")
     let Stylesheet = "";
     let filenames = fs.readdirSync(path.resolve(__dirname.toString(), "css"));
     for (var x = 0; x < filenames.length; x++) {
@@ -54,13 +57,16 @@ function GetStylesheets() {
         Stylesheet = Stylesheet.replace("    ", "");
     }
 
-    fs.mkdir("./Production", (err) => {});
-    fs.writeFileSync(__dirname + "/Production/Production.css", Stylesheet)
+    fs.mkdir("./Production", (err) => { });
+    let p = __dirname + "/Production/Production.css";
+    fs.writeFileSync(p, Stylesheet)
 
-    return __dirname + "/Production/Production.css"
+    Log("[BUILD] - Finished file: " + p)
+    return p
 }
 
 function GetScripts() {
+    Log("[BUILD] - Merging Javascript files...")
     let Script = "";
     let filenames = fs.readdirSync(path.resolve(__dirname.toString(), "scripts"));
     for (var x = 0; x < filenames.length; x++) {
@@ -75,12 +81,58 @@ function GetScripts() {
         }
     }
 
+    Log("[BUILD] - Obfuscating production Javascript...")
     Script = jsobf.obfuscate(Script.toString(), ObfuscationOptions).getObfuscatedCode().toString()
 
-    fs.mkdir("./Production", (err) => {});
-    fs.writeFileSync(__dirname + "/Production/Production.js", Script, { recursive: true })
+    fs.mkdir("./Production", (err) => { });
+    let p = __dirname + "/Production/Production.js";
+    fs.writeFileSync(p, Script, { recursive: true })
 
-    return __dirname + "/Production/Production.js"
+    Log("[BUILD] - Finished file: " + p)
+    return p
 }
 
-module.exports = { GetStylesheets, GetScripts }
+function CacheShopResponses() {
+    let Counter = 0;
+    Log("[BUILD] - Fetching Shop Responses...")
+    request({
+        url: 'https://api.printful.com/store/products',
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + process.env.PRINTFUL_TOKEN,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-PF-Store-Id': '9239885'
+        }
+    }, (error, response, body) => {
+        body = JSON.parse(body.toString())
+        for (let x = 0; x < body.result.length; x++) {
+            request({
+                url: 'https://api.printful.com/store/products/' + body.result[x].id,
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + process.env.PRINTFUL_TOKEN,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-PF-Store-Id': '9239885'
+                }
+            }, (error, response, bd) => {
+                bd = JSON.parse(bd)
+                Log("[BUILD] - Fetched item information... [" + (x + 1) + " of " + body.result.length + "]")
+                body.result[x].more = bd.result;
+                Counter++;
+                if (Counter == body.result.length) {
+                    Log("[BUILD] - Saving all shop responses...")
+                    fs.mkdir("./cache", (err) => { });
+                    fs.writeFile("./cache/products.json", JSON.stringify(body), function (err) {
+                        if (err)
+                            console.log(err)
+                    })
+                    Log("[BUILD] - Cached Shop Responses!")
+                }
+            })
+        }
+    });
+}
+
+module.exports = { GetStylesheets, GetScripts, CacheShopResponses }

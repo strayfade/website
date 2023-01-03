@@ -12,7 +12,9 @@
         --display-width-inner: 90%;
     }
 }
-
+html {
+    scroll-behavior: smooth;
+}
 body {
     margin: 0px;
     margin-top: 80px;

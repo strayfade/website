@@ -56,6 +56,26 @@ app.use((req, res, next) => {
     next();
 })
 
+let BlacklistedPaths = [".env", "wp-", "php", "config", "xss", "sendgrid", "feed", "daemon", "boaform", "portal", "autodiscover", "vendor", "www", "api"]
+// Prevents requests
+app.use((req, res, next) => {
+    let Found = false;
+    try {
+        for (let x = 0; x < BlacklistedPaths.length; x++) {
+            if (req.path.toString().toLowerCase().includes(BlacklistedPaths[x].toLowerCase())) {
+                Log("Blacklisted path: " + BlacklistedPaths[x])
+                res.sendStatus(404);
+                Found = true;
+            }
+        }
+    }
+    catch (error) {
+        Log("ERROR: Error encountered while checking path: \n" + error)
+    }
+    if (!Found)
+        next();
+})
+
 // Shop API
 app.get('/API/Product/:id', (req, res) => {
     let SentResponse = false;

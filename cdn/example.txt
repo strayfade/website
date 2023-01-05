@@ -1,0 +1,1 @@
+This file should be accessible from the /cdn/example.txt path, also accessible at https://cdn.strayfade.com/example.txt

@@ -32,6 +32,7 @@ require('./security/Security').Setup(app)
 app.disable('x-powered-by')
 
 // Static Directories
+app.use('/cdn', express.static('cdn'))
 app.use('/assets', express.static('assets'))
 app.use('/fonts', express.static('fonts'))
 app.use('/posts', express.static('posts'))

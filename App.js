@@ -5,7 +5,7 @@ const path = require('path')
 // Imported Functions
 const { Log } = require('./Log')
 const BuildTools = require('./Build')
-BuildTools.CacheShopResponses() // Must be done very early
+//BuildTools.CacheShopResponses() // Must be done very early
 const { SendError } = require('./Error')
 const { Generators } = require('./Generators')
 const { CollectAnalytics } = require('./Database')

@@ -23,7 +23,7 @@ function GenerateHeader(Article, Locale, isHomepage = false) {
     Output += "</div>"
     Output += "</a>"
 
-    Output += "<a aria-label='" + Localize(Locale, "header_shop") + "' class='LinkNormal' href='/Shop'>"
+    Output += "<a aria-label='" + Localize(Locale, "header_shop") + "' class='LinkNormal' href='https://shop.strayfade.com'>"
     Output += "<div class='HeaderObject HoverAccentColor'>"
     Output += "<h1>" + Localize(Locale, "header_shop") + "</h1>"
     Output += "</div>"

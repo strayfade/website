@@ -12,7 +12,7 @@ function GenerateFooter(Article, Locale) {
     Output += "</div>"
 
     Output += "<div class='FooterObject FloatRight'>"
-    Output += "<h1>" + Localize(Locale, "copyright_main") + "</h1>"
+    Output += "<h1>" + Localize(Locale, "copyright_main").replace("2022", new Date(Date.now()).getFullYear()) + "</h1>"
     Output += "</div>"
 
     Output += "<div class='FooterObject'>"

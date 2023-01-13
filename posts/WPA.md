@@ -2,7 +2,7 @@
 
 > **Do not try anything you see done here!** *Don't do as I say **or** as I do.*
 > 
-> WPA2-PSK "cracking" is unethical, and in many cases even **illegal**. Make sure you have permission to mess with networks (which I had).
+> WPA2-PSK "cracking", "hacking", or whatever you wish to call this is unethical, and in many cases even **illegal**. Make sure you have permission before you mess with networks (which I had).
 
 ### *Why do you want access to the school's internet, anyways?*
 

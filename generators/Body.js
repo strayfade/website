@@ -164,6 +164,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                 Output += GenerateShareSection(Locale, Article)
             Output += "</div>"
             Output += "</div>"
+            Output += "<script>hljs.highlightAll()</script>"
 
             break;
         case AvailablePages.Shop:

@@ -119,6 +119,13 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                         Output += "<p class='ArticleIndexBoxDate FloatLeft'>" + JSON.date + "</p>"
                         Output += "</div>"
                         Output += "<p class='ArticleIndexBoxDescription'>" + JSON.description + "</p>"
+                        if (JSON.tags) {
+                            Output += "<div class='ArticleTagContainer'>"
+                            for (var y = 0; y < JSON.tags.length; y++) {
+                                Output += "<span class='ArticleTag'>" + JSON.tags[y] + "</span>"
+                            }
+                            Output += "</div>"
+                        }
                         Output += "</div>"
                         Output += "</a>"
                     }
@@ -142,6 +149,13 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                 Output += "<h1 class='ArticleHeaderTitle'>" + Article.title + "</h1>"
                 Output += "<span class='ArticleHeaderSubtitle' aria-hidden='true'>" + Localize(Locale, "article_author_prefix") + Article.author + " •</span>"
                 Output += "<span class='ArticleHeaderSubtitle' aria-hidden='true'> " + ReadingTime + Localize(Locale, "article_read_time") + "</span>"
+                if (Article.tags) {
+                    Output += "<div class='ArticleTagContainer'>"
+                    for (var y = 0; y < Article.tags.length; y++) {
+                        Output += "<span class='ArticleTag'>" + Article.tags[y] + "</span>"
+                    }
+                    Output += "</div>"
+                }
                 Output += "</div>"
             }
             Output += MarkdownHtml // Article MD

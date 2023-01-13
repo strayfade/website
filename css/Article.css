@@ -16,7 +16,7 @@
 .ArticleContainer {
     width: 95%;
     margin: auto;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     min-height: 74vh;
 }
 
@@ -88,4 +88,20 @@
     margin: 0px;
     font-weight: normal;
     font-size: 18px;
+}
+
+.ArticleTagContainer {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.ArticleTag {
+    background-color: var(--accent-color-transparent);
+    color: white;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-right: 10px;
+    border-left: 3px solid var(--accent-color);
+    transition: 0.25s;
+    font-size: 14px;
 }

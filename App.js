@@ -57,7 +57,7 @@ app.use((req, res, next) => {
     next();
 })
 
-let BlacklistedPaths = [".env", "wp-", "php", "config", "xss", "sendgrid", "feed", "daemon", "boaform", "portal", "autodiscover", "vendor", "www", "api", "config", "telescope", "misc", "shell", ""]
+let BlacklistedPaths = [".env", "wp-", "php", "config", "xss", "sendgrid", "feed", "daemon", "boaform", "portal", "autodiscover", "vendor", "www", "api", "config", "telescope", "misc", "shell"]
 // Prevents requests
 app.use((req, res, next) => {
     let Found = false;

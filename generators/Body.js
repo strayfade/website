@@ -164,7 +164,15 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                 Output += GenerateShareSection(Locale, Article)
             Output += "</div>"
             Output += "</div>"
-            Output += "<script>hljs.highlightAll()</script>"
+            if (Article.codeLanguage) {
+                Output += "<script>"
+                Output += "document.addEventListener('DOMContentLoaded', (event) => {"
+                Output += "    document.querySelectorAll('pre code').forEach((el) => {"
+                Output += "        hljs.highlightElement(el, \"" + Article.codeLanguage + "\");"
+                Output += "    });"
+                Output += "});"
+                Output += "</script>"
+            }
 
             break;
         case AvailablePages.Shop:

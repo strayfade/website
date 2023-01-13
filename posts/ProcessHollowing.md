@@ -39,7 +39,7 @@ Next, we have to read the response into the array
             WinHttpReadData(hRequest, (LPVOID)buffer, contentLength, &bytesRead);
 
 ### Creating a process
-> I learned about most of this from the [adamhlt/Process-Hollowing](https://github.com/adamhlt/Process-Hollowing) repository on GitHub, so credit them for some bits of this code.
+> I learned about most of this from the [adamhlt/Process-Hollowing](https://github.com/adamhlt/Process-Hollowing) repository on GitHub, so credit goes to them for some bits of this code.
 
 First, we have to create a dummy process to be "hollowed":
 

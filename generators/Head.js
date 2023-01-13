@@ -39,8 +39,6 @@ function GenerateHead(Article, Locale) {
     // Imports/Preloads
     Output += "<link rel='stylesheet' href='/Production.css' type='text/css'>"
     Output += "<link rel='preload' href='/Production.js' as='script'>"
-    Output += "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css'>"
-    Output += "<script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js'></script>"
 
     return Output
 }

@@ -42,12 +42,13 @@ let StylesheetPath = BuildTools.GetStylesheets();
 let ScriptPath = BuildTools.GetScripts();
 
 // Analytics Middleware
+let TotalRequestsServed = 0;
+let TotalRequestsBlocked = 0;
 app.use((req, res, next) => {
+    TotalRequestsServed++;
     try {
-        if (!req.originalUrl.endsWith(".css") && !req.originalUrl.endsWith(".js")) {
-            Log("Serving page at \"" + req.originalUrl + "\"")
-            CollectAnalytics(req, res, config);
-        }
+        CollectAnalytics(req, res, config);
+        Log("Serving page at path \"" + req.originalUrl + "\" [" + TotalRequestsServed + " served, " + TotalRequestsBlocked + " blocked]")
     } catch (error) {
         Log("ERROR: Error encountered while serving static page at \"" + req.originalUrl + "\":\n" + error)
         SendError(500, req, res, error, Languages);
@@ -56,7 +57,7 @@ app.use((req, res, next) => {
     next();
 })
 
-let BlacklistedPaths = [".env", "wp-", "php", "config", "xss", "sendgrid", "feed", "daemon", "boaform", "portal", "autodiscover", "vendor", "www", "api"]
+let BlacklistedPaths = [".env", "wp-", "php", "config", "xss", "sendgrid", "feed", "daemon", "boaform", "portal", "autodiscover", "vendor", "www", "api", "config", "telescope", "misc", "shell", ""]
 // Prevents requests
 app.use((req, res, next) => {
     let Found = false;
@@ -74,24 +75,8 @@ app.use((req, res, next) => {
     }
     if (!Found)
         next();
-})
-
-// Shop API
-app.get('/API/Product/:id', (req, res) => {
-    let SentResponse = false;
-    let Products = require('./cache/products.json')
-    for (let x = 0; x < Products.result.length; x++) {
-        if (Products.result[x].id.toString() == req.params.id.toString()) {
-            Products.result[x].status = 200
-            res.json(Products.result[x])
-            SentResponse = true;
-        }
-    }
-    if (!SentResponse) {
-        res.json({
-            status: 400
-        })
-    }
+    else
+        TotalRequestsBlocked++;
 })
 
 // Sources

@@ -1,4 +1,3 @@
-require('dotenv').config() // Used for shop API key
 const fs = require('fs')
 const Log = require('./Log').Log
 const path = require('path');

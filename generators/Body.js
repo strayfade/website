@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('fs');
 const Markdown = require("markdown").markdown;
 const { Localize } = require('./tools/LocaleTools')
 

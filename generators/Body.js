@@ -84,14 +84,33 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
 
             // Articles
             Output += "<div class='HomepageArticleContainer'>"
+
+            // Index
+            let Posts = []
             let indexed = [];
+
             let filenames = fs.readdirSync(__dirname.replace("generators", "posts/"));
             for (var x = 0; x < filenames.length; x++) {
                 if (filenames[x].endsWith(".json")) {
                     let JSON = require(__dirname.replace("generators", "posts/") + filenames[x])
+                    if (JSON.indexed) {
+                        Posts.push({ data: JSON, file: filenames[x] })
+                    }
+                }
+            }
+            Posts.sort(function(a, b) {
+                const FirstDate = new Date(a.data.date) 
+                const SecondDate = new Date(b.data.date) 
+            
+                return SecondDate - FirstDate
+            })
+            
+            Posts.forEach(Post => {
+                if (Post.file.endsWith(".json")) {
+                    let JSON = Post.data
                     if (JSON.pinned) {
                         if (JSON.indexed) {
-                            Output += "<a aria-label='" + JSON.title + "' class='LinkNormal' href='/" + filenames[x].replace(".json", "") + "'>"
+                            Output += "<a aria-label='" + JSON.title + "' class='LinkNormal' href='/" + Post.file.replace(".json", "") + "'>"
                             Output += "<div class='ArticleIndexBox ArticlePinned'>"
                             Output += "<div class='Flexbox'>"
                             Output += "<h1 class='ArticleIndexBoxTitle FloatLeft'>" + JSON.title + "</h1>"
@@ -109,34 +128,35 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                             Output += "</div>"
                             Output += "</a>"
                         }
-                        indexed.push(filenames[x])
+                        indexed.push(Post.file)
                     }
                 }
-            }
-            for (var x = 0; x < filenames.length; x++) {
-                if (indexed.includes(filenames[x])) continue;
-                if (filenames[x].endsWith(".json")) {
-                    let JSON = require(__dirname.replace("generators", "posts/") + filenames[x])
-                    if (JSON.indexed) {
-                        Output += "<a aria-label='" + JSON.title + "' class='LinkNormal' href='/" + filenames[x].replace(".json", "") + "'>"
-                        Output += "<div class='ArticleIndexBox'>"
-                        Output += "<div class='Flexbox'>"
-                        Output += "<h1 class='ArticleIndexBoxTitle FloatLeft'>" + JSON.title + "</h1>"
-                        Output += "<p class='ArticleIndexBoxDate FloatLeft'>" + JSON.date + "</p>"
-                        Output += "</div>"
-                        Output += "<p class='ArticleIndexBoxDescription'>" + JSON.description + "</p>"
-                        if (JSON.tags) {
-                            Output += "<div class='ArticleTagContainer'>"
-                            for (var y = 0; y < JSON.tags.length; y++) {
-                                Output += "<span class='ArticleTag'>" + JSON.tags[y] + "</span>"
+            })
+            Posts.forEach(Post => {
+                if (!indexed.includes(Post.file)) {
+                    if (Post.file.endsWith(".json")) {
+                        let JSON = Post.data
+                        if (JSON.indexed) {
+                            Output += "<a aria-label='" + JSON.title + "' class='LinkNormal' href='/" + Post.file.replace(".json", "") + "'>"
+                            Output += "<div class='ArticleIndexBox'>"
+                            Output += "<div class='Flexbox'>"
+                            Output += "<h1 class='ArticleIndexBoxTitle FloatLeft'>" + JSON.title + "</h1>"
+                            Output += "<p class='ArticleIndexBoxDate FloatLeft'>" + JSON.date + "</p>"
+                            Output += "</div>"
+                            Output += "<p class='ArticleIndexBoxDescription'>" + JSON.description + "</p>"
+                            if (JSON.tags) {
+                                Output += "<div class='ArticleTagContainer'>"
+                                for (var y = 0; y < JSON.tags.length; y++) {
+                                    Output += "<span class='ArticleTag'>" + JSON.tags[y] + "</span>"
+                                }
+                                Output += "</div>"
                             }
                             Output += "</div>"
+                            Output += "</a>"
                         }
-                        Output += "</div>"
-                        Output += "</a>"
                     }
                 }
-            }
+            })
             Output += "</div>"
             Output += "</div>"
             Output += "</div>"            

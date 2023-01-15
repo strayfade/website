@@ -3,7 +3,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    pointer-events: none;
     text-align: center;
 }
 
@@ -42,7 +41,6 @@
 }
 .TooltipActiveSmall {
     background-color: rgb(70, 70, 70);
-    transition: 0.1s;
 }
 
 .TooltipInactive {
@@ -51,6 +49,5 @@
     background-color: var(--accent-color-transparent);
 }
 .TooltipInactiveSmall {
-    transition: 0.0s;
-    transition: 0.1s;
+    background-color: rgb(0, 0, 0);
 }

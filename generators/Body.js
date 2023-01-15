@@ -49,7 +49,7 @@ function GenerateShareSection(Locale, Article) {
 function CreateTooltip() {
     let Output = "";
     Output += "<div class='TooltipContainer MobileHidden'>"
-    Output += "<p id='TooltipText' class='TooltipText' aria-hidden='true'>"
+    Output += "<p id='TooltipText' class='TooltipText NoSelect' aria-hidden='true'>"
     Output += "</p>"
     Output += "</div>"
     return Output;
@@ -57,7 +57,7 @@ function CreateTooltip() {
 function CreateTooltipSmall() {
     let Output = "";
     Output += "<div class='TooltipContainer MobileHidden'>"
-    Output += "<p id='TooltipText2' class='TooltipText TooltipTextSmall' aria-hidden='true'>"
+    Output += "<p id='TooltipText2' class='TooltipText TooltipTextSmall NoSelect' aria-hidden='true'>"
     Output += "</p>"
     Output += "</div>"
     return Output;

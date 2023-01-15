@@ -1,10 +1,10 @@
 function SetupTooltips() {
     const El = document.querySelectorAll('[data-tooltip]');
+    let Tooltip = document.getElementById("TooltipText");
     for (var x = 0; x < El.length; x++) {
         let Curr = El[x]
         Curr.addEventListener("mouseover", function () {
             document.getElementById("TooltipText").innerHTML = Curr.getAttribute("data-tooltip")
-            let Tooltip = document.getElementById("TooltipText");
             let Size = Tooltip.getBoundingClientRect();
             let ParentSize = Curr.getBoundingClientRect()
             Tooltip.style.left = (ParentSize.width / 2 + ParentSize.x - Size.width / 2) + "px"
@@ -17,13 +17,22 @@ function SetupTooltips() {
             document.getElementById("TooltipText").classList.add("TooltipInactive")
         })
     }
+    Tooltip.addEventListener("mouseleave", function () {
+        document.getElementById("TooltipText").classList.remove("TooltipActive")
+        document.getElementById("TooltipText").classList.add("TooltipInactive")
+    })
+    Tooltip.addEventListener("mouseover", function () {
+        document.getElementById("TooltipText").classList.remove("TooltipInactive")
+        document.getElementById("TooltipText").classList.add("TooltipActive")
+    })
 }
 function SetupSmallTooltips() {
     const El = document.querySelectorAll('[data-tooltipsmall]');
     for (var x = 0; x < El.length; x++) {
         let Curr = El[x]
         Curr.style.cursor = "pointer"
-        Curr.classList.add("TooltipSmallIndicator")
+        if (Curr.tagName != "A")
+            Curr.classList.add("TooltipSmallIndicator")
         Curr.addEventListener("mouseover", function () {
             document.getElementById("TooltipText2").innerHTML = Curr.getAttribute("data-tooltipsmall")
             let Tooltip = document.getElementById("TooltipText2");

@@ -6,7 +6,7 @@
     --darken-color-codeblock: #1e1e1e;
     --background-color: rgb(16, 16, 16);
     --foreground-color: rgb(240, 240, 240);
-    --accent-color-hue: 190;
+    --accent-color-hue: 200;
     --accent-color-saturation: 100%;
     --accent-color-value: 50%;
     --accent-color: hsl(var(--accent-color-hue), var(--accent-color-saturation), var(--accent-color-value));

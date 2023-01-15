@@ -8,7 +8,7 @@ function GenerateFooter(Article, Locale) {
     Output += "<div class='FooterInner DisplayWidth'>"
 
     Output += "<div class='FooterObject MobileHidden'>"
-    Output += "<a aria-label='" + Localize(Locale, "source_code") + "' class='LinkNormal Underline HoverAccentColor' href='https://github.com/Strayfade/Website' data-tooltipsmall='Updated 1/14/2023'>" + Localize(Locale, "source_code") + "</a>"
+    Output += "<a aria-label='" + Localize(Locale, "source_code") + "' class='LinkNormal Underline HoverAccentColor' href='https://github.com/Strayfade/Website'>" + Localize(Locale, "source_code") + "</a>"
     Output += "</div>"
 
     Output += "<div class='FooterObject FloatRight'>"

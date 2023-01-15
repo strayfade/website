@@ -1,5 +1,5 @@
 const HyperlinkTags = ["h1", "h2", "h3"]
-const BlacklistedParentNodeClassnames = ["HeaderObject", "FooterObject", "ArticleHeader", "ShopItemName"]
+const BlacklistedParentNodeClassnames = ["HeaderObject", "FooterObject", "ArticleHeader", "Flexbox"]
 
 let HyperlinkElements = [];
 let CopyTextIndicatorElements = []
@@ -14,7 +14,7 @@ function PositionLinkElements() {
         CopyElement.style.top = (Position.y + Position.height / 1.85 - CopyElementPosition.height / 2 + document.documentElement.scrollTop) + "px"
     }
 }
-if (!window.location.toString().endsWith("/")) {
+if (true) {
     window.addEventListener("load", function() {
         for (let x = 0; x < TagsToAffect.length; x++) {
             var Found = document.getElementsByTagName(TagsToAffect[x])

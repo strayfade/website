@@ -41,51 +41,56 @@ app.use('/posts', express.static('posts'))
 let StylesheetPath = BuildTools.GetStylesheets();
 let ScriptPath = BuildTools.GetScripts();
 
+// Disabling 429
+let Use429 = false;
+
 // 429 Middleware
 let TotalRequestsServed = 0;
 let TotalRequestsBlocked = 0;
-let RequestBlocking = [];
-app.use((req, res, next) => {
-    TotalRequestsServed++;
-    let Responded = false;
-    try {
-        let Analytics = GetAnalyticsFromRequest(req);
-        RequestBlocking.push(Analytics);
-        let Found = 0;
-        if (req.path.includes(".js") || req.path.includes(".css") || req.path.includes("cdn") || req.path.includes("assets")) {
-
-        }
-        else {
-            for (let x = 0; x < RequestBlocking.length; x++) {
-                if (RequestBlocking[x].ip == Analytics.ip) {
-                    if (Date.now() - new Date(RequestBlocking[x].timestamp).getTime() < 3000) {
-                        Found++;
-                    }
-                    else {
-                        RequestBlocking.splice(x, 1);
-                    }
-                }
-            }
-            if (Found > 20) {
-                Responded = true;
-                TotalRequestsBlocked++
-                Log("Blocked (429) page at path \"" + req.originalUrl + "\" [" + TotalRequestsServed + " served, " + TotalRequestsBlocked + " blocked]")
-                SendError(429, req, res, AvailablePages, AvailablePages.Dynamic, "", Languages);
+if (Use429) {
+    let RequestBlocking = [];
+    app.use((req, res, next) => {
+        TotalRequestsServed++;
+        let Responded = false;
+        try {
+            let Analytics = GetAnalyticsFromRequest(req);
+            RequestBlocking.push(Analytics);
+            let Found = 0;
+            if (req.path.includes(".js") || req.path.includes(".css") || req.path.includes("cdn") || req.path.includes("assets") || req.path.includes(".svg")) {
+    
             }
             else {
-                Log("Serving page at path \"" + req.originalUrl + "\" [" + TotalRequestsServed + " served, " + TotalRequestsBlocked + " blocked]")
+                for (let x = 0; x < RequestBlocking.length; x++) {
+                    if (RequestBlocking[x].ip == Analytics.ip) {
+                        if (Date.now() - new Date(RequestBlocking[x].timestamp).getTime() < 3000) {
+                            Found++;
+                        }
+                        else {
+                            RequestBlocking.splice(x, 1);
+                        }
+                    }
+                }
+                if (Found > 4) {
+                    Responded = true;
+                    TotalRequestsBlocked++
+                    Log("Blocked (429) page at path \"" + req.originalUrl + "\" [" + TotalRequestsServed + " served, " + TotalRequestsBlocked + " blocked]")
+                    SendError(429, req, res, AvailablePages, AvailablePages.Dynamic, "", Languages);
+                }
+                else {
+                    Log("Serving page at path \"" + req.originalUrl + "\" [" + TotalRequestsServed + " served, " + TotalRequestsBlocked + " blocked]")
+                }
             }
+        } 
+        catch (error) {
+            Log("ERROR: Error encountered while checking [429] at \"" + req.originalUrl + "\":\n" + error)
+            SendError(500, req, res, error, Languages);
+            Responded = true;
+            Log("Serving error page [500]")
         }
-    } 
-    catch (error) {
-        Log("ERROR: Error encountered while checking [429] at \"" + req.originalUrl + "\":\n" + error)
-        SendError(500, req, res, error, Languages);
-        Responded = true;
-        Log("Serving error page [500]")
-    }
-    if (!Responded)
-        next();
-})
+        if (!Responded)
+            next();
+    })
+}
 
 // Analytics Middleware
 app.use((req, res, next) => {

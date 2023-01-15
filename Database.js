@@ -1,6 +1,5 @@
 const Config = require('./config/config.json')
 const MongoClient = require('mongodb').MongoClient
-const GeoLookup = require('geoip-lite').lookup
 
 let Client = null
 let Database = null
@@ -21,10 +20,9 @@ function GetAnalyticsFromRequest(req) {
         ip += " (Local)"
     }
     return {
-        host: req.headers['host'],
+        ip: ip,
         path: req.originalUrl,
         connection: {
-            ip: ip,
             userAgent: req.headers['user-agent'],
             type: req.headers['connection'],
             accepts: req.headers['accept'],
@@ -35,9 +33,7 @@ function GetAnalyticsFromRequest(req) {
     }
 }
 function CollectAnalytics(req, res, config) {
-    const Body = GetAnalyticsFromRequest(req)
-    Body.location = GeoLookup(Body.connection.ip)
-    MongoPost(Body)
+    MongoPost(GetAnalyticsFromRequest(req))
 }
 
-module.exports = { CollectAnalytics }
+module.exports = { CollectAnalytics, GetAnalyticsFromRequest }

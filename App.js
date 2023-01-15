@@ -8,7 +8,7 @@ const BuildTools = require('./Build')
 //BuildTools.CacheShopResponses() // Must be done very early
 const { SendError } = require('./Error')
 const { Generators } = require('./Generators')
-const { CollectAnalytics } = require('./Database')
+const { CollectAnalytics, GetAnalyticsFromRequest } = require('./Database')
 const { GetAvailableLanguages, GetLanguage, GetLanaguageShort, GetLanguagePath } = require('./Localization')
 
 // Import Webserver Config
@@ -27,7 +27,7 @@ const AvailablePages = {
     NonstandardPages: ["R", "Shop"]
 }
 
-// Basic Security Measures
+// Basic Security
 require('./security/Security').Setup(app)
 app.disable('x-powered-by')
 
@@ -41,33 +41,79 @@ app.use('/posts', express.static('posts'))
 let StylesheetPath = BuildTools.GetStylesheets();
 let ScriptPath = BuildTools.GetScripts();
 
-// Analytics Middleware
+// 429 Middleware
 let TotalRequestsServed = 0;
 let TotalRequestsBlocked = 0;
+let RequestBlocking = [];
 app.use((req, res, next) => {
     TotalRequestsServed++;
+    let Responded = false;
     try {
-        CollectAnalytics(req, res, config);
-        Log("Serving page at path \"" + req.originalUrl + "\" [" + TotalRequestsServed + " served, " + TotalRequestsBlocked + " blocked]")
-    } catch (error) {
-        Log("ERROR: Error encountered while serving static page at \"" + req.originalUrl + "\":\n" + error)
+        let Analytics = GetAnalyticsFromRequest(req);
+        RequestBlocking.push(Analytics);
+        let Found = 0;
+        if (req.path.includes(".js") || req.path.includes(".css") || req.path.includes("cdn") || req.path.includes("assets")) {
+
+        }
+        else {
+            for (let x = 0; x < RequestBlocking.length; x++) {
+                if (RequestBlocking[x].ip == Analytics.ip) {
+                    if (Date.now() - new Date(RequestBlocking[x].timestamp).getTime() < 3000) {
+                        Found++;
+                    }
+                    else {
+                        RequestBlocking.splice(x, 1);
+                    }
+                }
+            }
+            if (Found > 20) {
+                Responded = true;
+                TotalRequestsBlocked++
+                Log("Blocked (429) page at path \"" + req.originalUrl + "\" [" + TotalRequestsServed + " served, " + TotalRequestsBlocked + " blocked]")
+                SendError(429, req, res, AvailablePages, AvailablePages.Dynamic, "", Languages);
+            }
+            else {
+                Log("Serving page at path \"" + req.originalUrl + "\" [" + TotalRequestsServed + " served, " + TotalRequestsBlocked + " blocked]")
+            }
+        }
+    } 
+    catch (error) {
+        Log("ERROR: Error encountered while checking [429] at \"" + req.originalUrl + "\":\n" + error)
         SendError(500, req, res, error, Languages);
+        Responded = true;
         Log("Serving error page [500]")
     }
-    next();
+    if (!Responded)
+        next();
 })
 
-let BlacklistedPaths = [".env", "wp-", "php", "config", "xss", "sendgrid", "feed", "daemon", "boaform", "portal", "autodiscover", "vendor", "www", "api", "config", "telescope", "misc", "shell"]
-// Prevents requests
+// Analytics Middleware
 app.use((req, res, next) => {
-    let Found = false;
+    let Responded = false;
+    try {
+        CollectAnalytics(req, res, config);
+    } 
+    catch (error) {
+        Log("ERROR: Error encountered while collecting usage data at path \"" + req.originalUrl + "\":\n" + error)
+        SendError(500, req, res, error, Languages);
+        Responded = true;
+        Log("Serving error page [500]")
+    }
+    if (!Responded)
+        next();
+})
+
+// Simple request blacklisting
+let BlacklistedPaths = [".env", "wp-", "php", "config", "xss", "sendgrid", "feed", "daemon", "boaform", "portal", "autodiscover", "vendor", "www", "api", "config", "telescope", "misc", "shell"]
+app.use((req, res, next) => {
+    let Responded = false;
     try {
         for (let x = 0; x < BlacklistedPaths.length; x++) {
             if (req.path.toString().toLowerCase().includes(BlacklistedPaths[x].toLowerCase())) {
                 Log("Blacklisted path: " + BlacklistedPaths[x])
-                if (!Found) {
+                if (!Responded) {
                     res.sendStatus(404);
-                    Found = true;
+                    Responded = true;
                 }
             }
         }
@@ -75,7 +121,7 @@ app.use((req, res, next) => {
     catch (error) {
         Log("ERROR: Error encountered while checking path: \n" + error)
     }
-    if (!Found)
+    if (!Responded)
         next();
     else
         TotalRequestsBlocked++;

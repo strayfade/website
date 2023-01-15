@@ -81,7 +81,7 @@ function GetScripts() {
     }
 
     Log("[BUILD] - Obfuscating production Javascript...")
-    Script = jsobf.obfuscate(Script.toString(), ObfuscationOptions).getObfuscatedCode().toString()
+    //Script = jsobf.obfuscate(Script.toString(), ObfuscationOptions).getObfuscatedCode().toString()
 
     fs.mkdir("./Production", (err) => { });
     let p = __dirname + "/Production/Production.js";

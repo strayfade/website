@@ -65,8 +65,10 @@ app.use((req, res, next) => {
         for (let x = 0; x < BlacklistedPaths.length; x++) {
             if (req.path.toString().toLowerCase().includes(BlacklistedPaths[x].toLowerCase())) {
                 Log("Blacklisted path: " + BlacklistedPaths[x])
-                res.sendStatus(404);
-                Found = true;
+                if (!Found) {
+                    res.sendStatus(404);
+                    Found = true;
+                }
             }
         }
     }

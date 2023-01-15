@@ -43,11 +43,14 @@ function DecryptElements(Elements) {
             for (let x = 0; x < Elements.length; x++) {
                 let NewString = "";
                 for (let y = 0; y < SavedStrings[x].length; y++) {
-                    if (y < i) {
+                    let Index = Math.floor(Math.random() * ReplacementLetters.length);
+                    if (y == i) {
+                        NewString += "█"
+                    }
+                    else if (y < i) {
                         NewString += SavedStrings[x][y]
                     }
                     else {
-                        let Index = Math.floor(Math.random() * ReplacementLetters.length);
                         NewString += ReplacementLetters[Index]
                     }
                 }
@@ -65,14 +68,14 @@ function DecryptElements(Elements) {
                 DoContentLinks();
                 setInterval(OnResize, 20);
             }
-        }, 5)
+        }, 10)
     }
     DecryptLoop(0);
 }
 
 // This is <REALLY> stupid, but it works
 function OnResize() {
-    ReplaceEffectBoxes()
+    //ReplaceEffectBoxes()
     PositionLinkElements()
 }
 

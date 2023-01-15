@@ -118,3 +118,7 @@
     border-bottom: 3px solid var(--accent-color);
     height: fit-content;
 }
+
+.ArticlePinned {
+    border-bottom: 4px solid var(--accent-color);
+}

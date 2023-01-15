@@ -84,8 +84,37 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
 
             // Articles
             Output += "<div class='HomepageArticleContainer'>"
+            let indexed = [];
             let filenames = fs.readdirSync(__dirname.replace("generators", "posts/"));
             for (var x = 0; x < filenames.length; x++) {
+                if (filenames[x].endsWith(".json")) {
+                    let JSON = require(__dirname.replace("generators", "posts/") + filenames[x])
+                    if (JSON.pinned) {
+                        if (JSON.indexed) {
+                            Output += "<a aria-label='" + JSON.title + "' class='LinkNormal' href='/" + filenames[x].replace(".json", "") + "'>"
+                            Output += "<div class='ArticleIndexBox ArticlePinned'>"
+                            Output += "<div class='Flexbox'>"
+                            Output += "<h1 class='ArticleIndexBoxTitle FloatLeft'>" + JSON.title + "</h1>"
+                            Output += "<div class='ArticleIndexPin'>Pinned</div>"
+                            Output += "<p class='ArticleIndexBoxDate FloatLeft'>" + JSON.date + "</p>"
+                            Output += "</div>"
+                            Output += "<p class='ArticleIndexBoxDescription'>" + JSON.description + "</p>"
+                            if (JSON.tags) {
+                                Output += "<div class='ArticleTagContainer'>"
+                                for (var y = 0; y < JSON.tags.length; y++) {
+                                    Output += "<span class='ArticleTag'>" + JSON.tags[y] + "</span>"
+                                }
+                                Output += "</div>"
+                            }
+                            Output += "</div>"
+                            Output += "</a>"
+                        }
+                        indexed.push(filenames[x])
+                    }
+                }
+            }
+            for (var x = 0; x < filenames.length; x++) {
+                if (indexed.includes(filenames[x])) continue;
                 if (filenames[x].endsWith(".json")) {
                     let JSON = require(__dirname.replace("generators", "posts/") + filenames[x])
                     if (JSON.indexed) {
@@ -93,7 +122,6 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                         Output += "<div class='ArticleIndexBox'>"
                         Output += "<div class='Flexbox'>"
                         Output += "<h1 class='ArticleIndexBoxTitle FloatLeft'>" + JSON.title + "</h1>"
-                        Output += "<div class='ArticleIndexPin'>Pinned</div>"
                         Output += "<p class='ArticleIndexBoxDate FloatLeft'>" + JSON.date + "</p>"
                         Output += "</div>"
                         Output += "<p class='ArticleIndexBoxDescription'>" + JSON.description + "</p>"

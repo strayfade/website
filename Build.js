@@ -81,7 +81,7 @@ function GetScripts() {
     }
 
     Log("[BUILD] - Obfuscating production Javascript...")
-    //Script = jsobf.obfuscate(Script.toString(), ObfuscationOptions).getObfuscatedCode().toString()
+    Script = jsobf.obfuscate(Script.toString(), ObfuscationOptions).getObfuscatedCode().toString()
 
     fs.mkdir("./Production", (err) => { });
     let p = __dirname + "/Production/Production.js";
@@ -91,47 +91,4 @@ function GetScripts() {
     return p
 }
 
-function CacheShopResponses() {
-    let Counter = 0;
-    Log("[BUILD] - Fetching Shop Responses...")
-    request({
-        url: 'https://api.printful.com/store/products',
-        method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + process.env.PRINTFUL_TOKEN,
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'X-PF-Store-Id': '9239885'
-        }
-    }, (error, response, body) => {
-        body = JSON.parse(body.toString())
-        for (let x = 0; x < body.result.length; x++) {
-            request({
-                url: 'https://api.printful.com/store/products/' + body.result[x].id,
-                method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer ' + process.env.PRINTFUL_TOKEN,
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'X-PF-Store-Id': '9239885'
-                }
-            }, (error, response, bd) => {
-                bd = JSON.parse(bd)
-                Log("[BUILD] - Fetched item information... [" + (x + 1) + " of " + body.result.length + "]")
-                body.result[x].more = bd.result;
-                Counter++;
-                if (Counter == body.result.length) {
-                    Log("[BUILD] - Saving all shop responses...")
-                    fs.mkdir("./cache", (err) => { });
-                    fs.writeFile("./cache/products.json", JSON.stringify(body), function (err) {
-                        if (err)
-                            console.log(err)
-                    })
-                    Log("[BUILD] - Cached Shop Responses!")
-                }
-            })
-        }
-    });
-}
-
-module.exports = { GetStylesheets, GetScripts, CacheShopResponses }
+module.exports = { GetStylesheets, GetScripts }

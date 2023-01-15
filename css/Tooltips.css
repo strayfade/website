@@ -7,6 +7,16 @@
     text-align: center;
 }
 
+.TooltipSmallIndicator {
+	--tooltip-small-spacing: 2px;
+	background-color: var(--accent-color-transparent);
+	padding-left: calc(var(--tooltip-small-spacing) + 2px);
+	padding-right: calc(var(--tooltip-small-spacing) + 2px);
+	padding-top: var(--tooltip-small-spacing);
+	padding-bottom: var(--tooltip-small-spacing);
+	margin-right: 3px;
+}
+
 .TooltipText {
     position: absolute;
     margin-top: -100%;
@@ -17,6 +27,12 @@
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
+    text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+.TooltipTextSmall {
+    padding: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .TooltipActive {
@@ -24,9 +40,17 @@
     transition: 0.5s;
     background-color: var(--accent-color);
 }
+.TooltipActiveSmall {
+    background-color: rgb(70, 70, 70);
+    transition: 0.1s;
+}
 
 .TooltipInactive {
     opacity: 0.0;
     transition: 0.5s;
     background-color: var(--accent-color-transparent);
+}
+.TooltipInactiveSmall {
+    transition: 0.0s;
+    transition: 0.1s;
 }

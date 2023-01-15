@@ -11,6 +11,9 @@
     border-bottom: 5px solid var(--accent-color);
     transition: 0.5s;
 }
+.HeaderInner:hover {
+    border-bottom: 5px solid var(--accent-color-transparent);
+}
 .HeaderObject {
     width: auto;
     height: 50px;

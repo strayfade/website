@@ -18,6 +18,9 @@
     margin: auto;
     margin-bottom: 50px;
 }
+.ArticleContainerShort {
+    margin-bottom: 20px;
+}
 
 .DisplayWidth a {
     width: min-content;

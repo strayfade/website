@@ -104,7 +104,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
             
                 return SecondDate - FirstDate
             })
-            
+
             Posts.forEach(Post => {
                 if (Post.file.endsWith(".json")) {
                     let JSON = Post.data
@@ -190,7 +190,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
             Output += fs.readFileSync(__dirname.replace("generators", "assets") + "/Rem")
             break;
         case AvailablePages.Dynamic:
-            Output += "<div class='ArticleContainer'>"
+            Output += "<div class='ArticleContainer ArticleContainerShort'>"
 
             // Article Title/Subtitle
             Output += "<div class='ArticleWidth'>"

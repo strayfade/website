@@ -4,6 +4,7 @@
     color: var(--foreground-color);
     position: absolute;
     top: 0;
+    margin: auto;
 }
 .HeaderInner {
     display: flex;

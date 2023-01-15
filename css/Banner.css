@@ -1,17 +1,19 @@
 .HeroBanner {
-    border-bottom: 4px solid var(--accent-color);
-    padding: 25px;
+    border-top: 4px solid var(--accent-color);
     margin: auto;
-    padding-top: 0px;
-    margin-bottom: 25px;
-    margin-top: 15px;
-    padding-bottom: 50px;
+    width: var(--display-width);
+    transition: 0.5s;
+}
+
+.HeroBannerInner {
+    padding: 25px;
+    padding-bottom: 40px;
 }
 
 .HeroBanner p {
     margin-top: 0px;
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 15px;
 }
 .HeroBanner .Flexbox {
     width: 100%;
@@ -27,7 +29,7 @@
 }
 
 .HeroBannerRight .Icon {
-    width: 50%;
+    width: 30%;
     margin-left: 50%;
 }
 

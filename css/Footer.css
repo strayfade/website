@@ -9,6 +9,7 @@
     height: 7vh;
     color: var(--foreground-color);
     background-color: var(--header-background-color);
+    margin: auto;
 }
 
 .FooterInner {

@@ -7,6 +7,5 @@
     "markdown": "ProcessHollowing.md",
     "showTitle": true,
     "indexed": true,
-    "codeLanguage": "cpp",
-    "pinned": true
+    "codeLanguage": "cpp"
 }

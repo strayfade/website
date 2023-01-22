@@ -1,6 +1,6 @@
-# Strayfade/Website
+# [strayfade.com](https://strayfade.com)
 
-The public source code of [Strayfade.com](https://strayfade.com)
+Strayfade/Website is the public source code of [Strayfade.com](https://strayfade.com)
 
 > Do you know a language that isn't English? You can contribute to this repository by translating for us!
 >
@@ -20,14 +20,16 @@ cd Website
 
 3. Install packages using the command `npm i`
 
-4. **Optional:** Create a MongoDB database and tell the server where to find it in `config.json` 
-(Leave `databaseUri` empty to run without MongoDB):
-```JSON
-"databaseUri": "mongodb+srv://YOUR_SERVER_URI",
-"databaseName": "strayfade",
-"databaseCollectionName": "analytics"
+4. **Optional:** Create a MongoDB database and tell the server where to find it in `Config.js` 
+(Leave `MongoDB.URI` empty to run without MongoDB):
+```JS
+MongoDB: {
+    URI: "YOUR DATABASE URI",
+    Name: "strayfade",
+    Collection: "analytics"
+}
 ```
 
-5. Run the command `node App.js` to start the server.
+5. Run the command `npm start` to start the server (this automatically builds static files and listens on the port defined in `Config.js`).
 
 6. Navigate to the site, hosted locally at [localhost:3000](http://localhost:3000) by default.

@@ -1,21 +1,20 @@
 const { Localize } = require('./tools/LocaleTools')
 
 function GeneratePage(Article, Locale, Generators, AvailablePages, AvailablePageSelector, Custom = "") {
-    Output = ""
-    Output += "<!DOCTYPE html>\n"
-    Output += "<html lang=" + Localize(Locale, "locale_title") + ">\n"
-    Output += "<head>\n"
-    Output += Generators.Head.GenerateHead(Article, Locale) + "\n"
-    Output += "</head>\n"
-    Output += "<body class='DisableAntialiasing'>\n"
-    Output += "<main class='EnableAntialiasing'>"
-    Output += Generators.Header.GenerateHeader(Article, Locale, AvailablePageSelector == AvailablePages.Home) + "\n"
-    Output += Generators.Body.GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) + "\n"
-    Output += Generators.Footer.GenerateFooter(Article, Locale) + "\n"
-    Output += "</main>"
-    Output += "<script src='/Production.js'></script>"
-    Output += "</body>\n"
-    Output += "</html>"
+    Output = `
+        <!DOCTYPE html>
+        <html lang="` + Localize(Locale, "locale_title") + `">
+            <head>` + Generators.Head.GenerateHead(Article, Locale) + `</head>
+            <body class="DisableAntialiasing">
+                <main class="EnableAntialiasing">
+                    ` + Generators.Header.GenerateHeader(Article, Locale, AvailablePageSelector == AvailablePages.Home) + `
+                    ` + Generators.Body.GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) + `
+                    ` + Generators.Footer.GenerateFooter(Article, Locale) + `
+                </main>
+            <script src="/Production.js"></script>
+            </body>
+        </html>
+    `
     return Output
 }
 

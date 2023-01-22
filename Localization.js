@@ -1,4 +1,5 @@
 const fs = require('fs')
+const Config = require('./Config')
 
 function GetLanguage(req) {
     return (req.headers["accept-language"] ? req.headers["accept-language"] : "en-US").split(",")[0].toLowerCase();
@@ -11,11 +12,11 @@ function GetLanguagePath(req) {
     var LocalePath = "./localization/" + GetLanguage(req).split("-")[0] + ".json"
     return fs.existsSync(LocalePath) ? LocalePath : "./localization/en.json"
 }
-function GetAvailableLanguages(config) {
-    var availableLanguages = require('fs').readdirSync(config.localization)
-    for (var x = 0; x < availableLanguages.length; x++) {
-        availableLanguages[x] = availableLanguages[x].replace(".json", "")
+function GetAvailableLanguages() {
+    var AvailableLanguages = fs.readdirSync(Config.Localization.Directory)
+    for (var x = 0; x < AvailableLanguages.length; x++) {
+        AvailableLanguages[x] = AvailableLanguages[x].replace(".json", "")
     }
-    return availableLanguages;
+    return AvailableLanguages;
 }
 module.exports = { GetAvailableLanguages, GetLanguage, GetLanaguageShort, GetLanguagePath }

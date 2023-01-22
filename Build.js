@@ -1,44 +1,12 @@
 const fs = require('fs')
 const Log = require('./Log').Log
-const path = require('path');
-const request = require('request'); // Shop
-const jsobf = require('javascript-obfuscator')
-const { randomInt } = require('crypto');
 const ExtraStylesheets = ["./fonts/Rajdhani.css", "./fonts/Circular.css"]
 const ExtraScripts = []
 
-const ObfuscationOptions = {
-    compact: true,
-    controlFlowFlattening: false,
-    controlFlowFlatteningThreshold: 0.75,
-    deadCodeInjection: false,
-    deadCodeInjectionThreshold: 0.4,
-    debugProtection: false,
-    debugProtectionInterval: 1,
-    disableConsoleOutput: false,
-    domainLock: [],
-    log: false,
-    mangle: false,
-    renameGlobals: false,
-    reservedNames: [],
-    rotateStringArray: true,
-    seed: randomInt(32767),
-    selfDefending: false,
-    sourceMap: false,
-    sourceMapBaseUrl: '',
-    sourceMapFileName: '',
-    sourceMapMode: 'separate',
-    stringArray: false,
-    stringArrayEncoding: [],
-    stringArrayThreshold: 0.75,
-    target: 'browser',
-    unicodeEscapeSequence: false
-}
-
-function GetStylesheets() {
-    Log("[BUILD] - Merging stylesheet files...")
+function PackStylesheets() {
+    Log("[BUILD] - Merging CSS files...")
     let Stylesheet = "";
-    let filenames = fs.readdirSync(path.resolve(__dirname.toString(), "css"));
+    let filenames = fs.readdirSync(__dirname + "/css");
     for (var x = 0; x < filenames.length; x++) {
         filenames[x] = __dirname + "/css/" + filenames[x];
     }
@@ -61,13 +29,12 @@ function GetStylesheets() {
     fs.writeFileSync(p, Stylesheet)
 
     Log("[BUILD] - Finished file: " + p)
-    return p
 }
 
-function GetScripts() {
+function PackScripts() {
     Log("[BUILD] - Merging Javascript files...")
     let Script = "";
-    let filenames = fs.readdirSync(path.resolve(__dirname.toString(), "scripts"));
+    let filenames = fs.readdirSync(__dirname + "/scripts");
     for (var x = 0; x < filenames.length; x++) {
         filenames[x] = __dirname + "/scripts/" + filenames[x];
     }
@@ -80,15 +47,12 @@ function GetScripts() {
         }
     }
 
-    Log("[BUILD] - Obfuscating production Javascript...")
-    Script = jsobf.obfuscate(Script.toString(), ObfuscationOptions).getObfuscatedCode().toString()
-
     fs.mkdir("./Production", (err) => { });
     let p = __dirname + "/Production/Production.js";
     fs.writeFileSync(p, Script, { recursive: true })
 
     Log("[BUILD] - Finished file: " + p)
-    return p
 }
 
-module.exports = { GetStylesheets, GetScripts }
+PackStylesheets()
+PackScripts();

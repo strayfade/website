@@ -1,24 +1,22 @@
 // Import Packages
 const fs = require('fs')
 const path = require('path')
+const express = require('express')
 
 // Imported Functions
 const { Log } = require('./Log')
-const BuildTools = require('./Build')
-//BuildTools.CacheShopResponses() // Must be done very early
 const { SendError } = require('./Error')
 const { Generators } = require('./Generators')
 const { CollectAnalytics, GetAnalyticsFromRequest } = require('./Database')
 const { GetAvailableLanguages, GetLanguage, GetLanaguageShort, GetLanguagePath } = require('./Localization')
 
 // Import Webserver Config
-const config = require("./config/config.json")
+const Config = require("./Config")
 
 // Create App
-const express = require('express')
-const app = express()
+const App = express()
 
-const Languages = GetAvailableLanguages(config)
+const Languages = GetAvailableLanguages()
 const AvailablePages = {
     Home: "1",
     R: "2",
@@ -28,132 +26,42 @@ const AvailablePages = {
 }
 
 // Basic Security
-require('./security/Security').Setup(app)
-app.disable('x-powered-by')
+require('./security/Security').Setup(App)
+App.disable('x-powered-by')
 
 // Static Directories
-app.use('/cdn', express.static('cdn'))
-app.use('/assets', express.static('assets'))
-app.use('/fonts', express.static('fonts'))
-app.use('/posts', express.static('posts'))
+App.use('/cdn', express.static('cdn'))
+App.use('/assets', express.static('assets'))
+App.use('/fonts', express.static('fonts'))
 
-// Packaging
-let StylesheetPath = BuildTools.GetStylesheets();
-let ScriptPath = BuildTools.GetScripts();
-
-// Disabling 429
-let Use429 = false;
-
-// 429 Middleware
-let TotalRequestsServed = 0;
-let TotalRequestsBlocked = 0;
-if (Use429) {
-    let RequestBlocking = [];
-    app.use((req, res, next) => {
-        TotalRequestsServed++;
-        let Responded = false;
-        try {
-            let Analytics = GetAnalyticsFromRequest(req);
-            RequestBlocking.push(Analytics);
-            let Found = 0;
-            if (req.path.includes(".js") || req.path.includes(".css") || req.path.includes("cdn") || req.path.includes("assets") || req.path.includes(".svg")) {
-    
-            }
-            else {
-                for (let x = 0; x < RequestBlocking.length; x++) {
-                    if (RequestBlocking[x].ip == Analytics.ip) {
-                        if (Date.now() - new Date(RequestBlocking[x].timestamp).getTime() < 3000) {
-                            Found++;
-                        }
-                        else {
-                            RequestBlocking.splice(x, 1);
-                        }
-                    }
-                }
-                if (Found > 4) {
-                    Responded = true;
-                    TotalRequestsBlocked++
-                    Log("Blocked (429) page at path \"" + req.originalUrl + "\" [" + TotalRequestsServed + " served, " + TotalRequestsBlocked + " blocked]")
-                    SendError(429, req, res, AvailablePages, AvailablePages.Dynamic, "", Languages);
-                }
-                else {
-                    Log("Serving page at path \"" + req.originalUrl + "\" [" + TotalRequestsServed + " served, " + TotalRequestsBlocked + " blocked]")
-                }
-            }
-        } 
-        catch (error) {
-            Log("ERROR: Error encountered while checking [429] at \"" + req.originalUrl + "\":\n" + error)
-            SendError(500, req, res, error, Languages);
-            Responded = true;
-            Log("Serving error page [500]")
-        }
-        if (!Responded)
-            next();
-    })
-}
-
-// Analytics Middleware
-app.use((req, res, next) => {
-    let Responded = false;
-    try {
-        CollectAnalytics(req, res, config);
-    } 
-    catch (error) {
-        Log("ERROR: Error encountered while collecting usage data at path \"" + req.originalUrl + "\":\n" + error)
-        SendError(500, req, res, error, Languages);
-        Responded = true;
-        Log("Serving error page [500]")
-    }
-    if (!Responded)
-        next();
-})
-
-// Simple request blacklisting
-let BlacklistedPaths = [".env", "wp-", "php", "config", "xss", "sendgrid", "feed", "daemon", "boaform", "portal", "autodiscover", "vendor", "www", "api", "config", "telescope", "misc", "shell"]
-app.use((req, res, next) => {
-    let Responded = false;
-    try {
-        for (let x = 0; x < BlacklistedPaths.length; x++) {
-            if (req.path.toString().toLowerCase().includes(BlacklistedPaths[x].toLowerCase())) {
-                Log("Blacklisted path: " + BlacklistedPaths[x])
-                if (!Responded) {
-                    res.sendStatus(404);
-                    Responded = true;
-                }
-            }
-        }
-    }
-    catch (error) {
-        Log("ERROR: Error encountered while checking path: \n" + error)
-    }
-    if (!Responded)
-        next();
-    else
-        TotalRequestsBlocked++;
-})
+// Middleware
+const Analytics = require("./middleware/Analytics")
+App.use(Analytics.Middleware)
+const RequestBlocking = require("./middleware/RequestBlocking")
+App.use(RequestBlocking.Middleware)
 
 // Sources
-app.get('/Production.css', (req, res) => {
-    res.sendFile(StylesheetPath)
+App.get('/Production.css', (req, res) => {
+    res.sendFile(__dirname + "/Production/Production.css")
 })
-app.get('/Production.js', (req, res) => {
-    res.sendFile(ScriptPath)
+App.get('/Production.js', (req, res) => {
+    res.sendFile(__dirname + "/Production/Production.js")
 })
-app.get('/robots.txt', (req, res) => {
+App.get('/robots.txt', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
 })
 
 // Default Routing
-app.get('/', (req, res) => {
+App.get('/', (req, res) => {
     const Article = require('./posts/_None.json')
     let Lang = require(GetLanguagePath(req))
     res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Home, ""))
 })
-app.get('/:path', (req, res) => {
+App.get('/:path', (req, res) => {
     //Log("NOTICE: Redirecting to \"/" + GetLanaguageShort(req) + "/" + req.params.path + "\"")
     res.redirect("/" + GetLanaguageShort(req) + "/" + req.params.path)
 })
-app.get('/:localization/:path', (req, res) => {
+App.get('/:localization/:path', (req, res) => {
 
     var Lang = require(GetLanguagePath(req))
     if (Languages.includes(req.params.localization)) { // Check if localization param is present
@@ -201,13 +109,13 @@ function ErrorHandler(error, req, res, next) {
 function ErrorHandlerGeneric(error, req, res, next) {
     SendError(500, req, res, AvailablePages, AvailablePages.Dynamic, error, Languages);
 }
-app.use(ErrorLogger)
-app.use(ErrorHandler)
-app.use(ErrorHandlerGeneric)
+App.use(ErrorLogger)
+App.use(ErrorHandler)
+App.use(ErrorHandlerGeneric)
 
 // Start Server
-var Port = process.env.PORT || config.port;
-app.listen(Port, () => {
+var Port = process.env.PORT || Config.App.Port;
+App.listen(Port, () => {
     Log('Listening on port ' + Port)
     Log('Link: http://localhost:' + Port)
 })

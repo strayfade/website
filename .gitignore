@@ -105,3 +105,6 @@ dist
 
 # Production Files
 /Production
+
+# We do love MacOS
+.DS_Store

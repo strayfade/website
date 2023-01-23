@@ -1,6 +1,6 @@
 const fs = require('fs')
 const Log = require('./Log').Log
-const ExtraStylesheets = ["./fonts/Rajdhani.css", "./fonts/Circular.css"]
+const ExtraStylesheets = ["./fonts/Rajdhani.css"]
 const ExtraScripts = []
 
 function PackStylesheets() {

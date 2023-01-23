@@ -60,7 +60,7 @@ App.get('/robots.txt', (req, res) => {
 App.get('/', WrapAsync(async function (req, res) {
     const Article = await fs.readFile('./posts/_None.md', {encoding: "utf-8"})
     let Lang = require(GetLanguagePath(req))
-    let Page = await PageBuilder.GeneratePage(Article, Lang, AvailablePages, AvailablePages.Home, "")
+    let Page = await PageBuilder.GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Home, "")
     res.send(Page)
 }))
 App.get('/:path', WrapAsync(async function (req, res) {
@@ -79,7 +79,7 @@ App.get('/:localization/:path', WrapAsync(async function (req, res) {
         switch (req.params.path) {
             case "R":
                 let Article = await fs.readFile('./posts/_None.md', {encoding: "utf-8"})
-                let Page = await PageBuilder.GeneratePage(Article, Lang, AvailablePages, AvailablePages.R, "");
+                let Page = await PageBuilder.GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.R, "");
                 res.send(Page)
                 break;
         }
@@ -87,7 +87,7 @@ App.get('/:localization/:path', WrapAsync(async function (req, res) {
         let ArticlePath = './posts/' + req.params.path + '.md'
         if (fsdir.existsSync(ArticlePath) && req.params.path != "_None") { // Page exists, load into Article
             let Article = await fs.readFile('./posts/' + req.params.path + '.md', {encoding: "utf-8"})
-            let Page = await PageBuilder.GeneratePage(Article, Lang, AvailablePages, AvailablePages.Dynamic, "")
+            let Page = await PageBuilder.GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Dynamic, "")
             res.send(Page)
         } else {
             Log("Requested page not found (404): " + req.path)

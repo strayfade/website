@@ -12,7 +12,7 @@ async function SendError(errNum = 500, req, res, AvailablePages, AvailablePageSe
     else 
         Lang = require(GetLanguagePath(req))
 
-    let Page = await PageBuilder.GeneratePage(Article, Lang, AvailablePages, AvailablePageSelection, CustomError);
+    let Page = await PageBuilder.GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePageSelection, CustomError);
     res.send(Page)
 }
 module.exports = { SendError }

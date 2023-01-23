@@ -13,7 +13,7 @@ function GetElements() {
             }
             if (Found[y].children.length == 0 || (HasEffectBox && Found[y].children.length == 1)) {
                 if (Found[y].innerHTML != "") {
-                    if (Found[y].innerHTML.split("<div class=")[0].toString().length < 100) {
+                    if (Found[y].innerHTML.split("<div class=")[0].toString().length < 75) {
                         Output.push(Found[y]);
                     }
                 }

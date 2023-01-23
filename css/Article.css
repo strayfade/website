@@ -34,12 +34,13 @@
     margin-bottom: 0px;
 }
 .ArticleHeaderDescription {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: normal;
     padding-top: 0px;
     margin-top: -10px;
     margin-bottom: 20px;
     opacity: 0.75;
+    font-weight: lighter;
 }
 
 @media only screen and (max-width: 960px) {

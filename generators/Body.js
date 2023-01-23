@@ -206,6 +206,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                 Output += "<div class='ArticleHeader'>"
                 Output += "<p class='ArticleHeaderDate' aria-hidden='true'>" + Article.date + "</p>"
                 Output += "<h1 class='ArticleHeaderTitle'>" + Article.title + "</h1>"
+                Output += "<h1 class='ArticleHeaderDescription'>" + Article.description + "</h1>"
                 Output += "<span class='ArticleHeaderSubtitle' aria-hidden='true'>" + Localize(Locale, "article_author_prefix") + Article.author + " •</span>"
                 Output += "<span class='ArticleHeaderSubtitle' aria-hidden='true'> " + ReadingTime + Localize(Locale, "article_read_time") + "</span>"
                 if (Article.tags) {
@@ -233,46 +234,6 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
                 Output += "</script>"
             }
 
-            break;
-        case AvailablePages.Shop:
-            Output += "<div class='ArticleContainer'>"
-            Output += "<div class='ArticleWidth'>"
-            
-            Output += "<h1 style='width: 100%; text-align: center; font-size: 45px; margin-top: 60px;'>Coming Soon!</h1>"
-            /*Output += "<div class='ShopItemsContainer' id='ShopItemsContainer'>"
-            for (let x = 0; x < ShopProducts.result.length; x++) {
-                let Current = ShopProducts.result[x]
-                Output += "<div class='ShopItem'>"
-                Output += "<a onclick='window.location.replace(window.location.pathname + `#" + Current.id + "`)'>"
-                Output += "<div class='ShopItemInner'>"
-
-                Output += "<img class='ShopItemImage' src='" + Current.thumbnail_url + "'>"
-                Output += "<div class='Flexbox'>"
-                Output += "<div class='ShopItemName'>"
-                Output += Current.name
-                Output += "</div>"
-                Output += "<div class='ShopItemPrice'>"
-                console.log(Current.more.sync_variants)
-                Output += "$" + Current.more.sync_variants[0].retail_price
-                Output += "</div>"
-                Output += "</div>"
-
-                Output += "</div>"
-                Output += "</a>"
-                Output += "</div>"
-            }
-            Output += "</div>"
-            Output += "<div class='ShopItemContainer' id='Item'>"
-            Output += "<div class='Flexbox'>"
-            Output += "<img class='ShopSelectedItemImage' id='ShopSelectedItemImage'>"
-            Output += "<div class='ShopSelectedItemContainer'>"
-            Output += "<div class='ShopSelectedItemTitle' id='ShopSelectedItemTitle'></div>"
-            Output += "<div class='ShopSelectedItemPrice' id='ShopSelectedItemPrice'></div>"
-            Output += "</div>"
-            Output += "</div>"
-            Output += "</div>"*/
-            Output += "</div>"
-            Output += "</div>"
             break;
     }
     Output += CreateTooltip()

@@ -1,5 +1,5 @@
-let TextTags = ["h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "em", "strong", "a", "code", "span"]
-let ReplacementLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+let TextTags = ["h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "em", "strong", "a", "code"]
+let ReplacementLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890░░░░░░░░░░░░░░░"
 
 function GetElements() {
     let Output = [];
@@ -13,7 +13,7 @@ function GetElements() {
             }
             if (Found[y].children.length == 0 || (HasEffectBox && Found[y].children.length == 1)) {
                 if (Found[y].innerHTML != "") {
-                    if (Found[y].innerHTML.split("<div class=")[0].toString().length < 25) {
+                    if (Found[y].innerHTML.split("<div class=")[0].toString().length < 100) {
                         Output.push(Found[y]);
                     }
                 }
@@ -44,6 +44,7 @@ function DecryptElements(Elements) {
                 let NewString = "";
                 for (let y = 0; y < SavedStrings[x].length; y++) {
                     let Index = Math.floor(Math.random() * ReplacementLetters.length);
+                    const Adding = 10;
                     if (y == i) {
                         NewString += "█"
                     }

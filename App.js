@@ -22,7 +22,7 @@ const AvailablePages = {
     R: "2",
     Shop: "3",
     Dynamic: "4",
-    NonstandardPages: ["R", "Shop"]
+    NonstandardPages: ["R"]
 }
 
 // Basic Security
@@ -74,9 +74,6 @@ App.get('/:localization/:path', (req, res) => {
         switch (req.params.path) {
             case "R":
                 res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.R, ""))
-                break;
-            case "Shop":
-                res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Shop, ""))
                 break;
         }
     } else {

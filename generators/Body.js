@@ -47,23 +47,6 @@ function GenerateShareSection(Locale, Article) {
     return Output;
 }
 
-function CreateTooltip() {
-    let Output = "";
-    Output += "<div class='TooltipContainer MobileHidden'>"
-    Output += "<p id='TooltipText' class='TooltipText NoSelect' aria-hidden='true'>"
-    Output += "</p>"
-    Output += "</div>"
-    return Output;
-}
-function CreateTooltipSmall() {
-    let Output = "";
-    Output += "<div class='TooltipContainer MobileHidden'>"
-    Output += "<p id='TooltipText2' class='TooltipText TooltipTextSmall NoSelect' aria-hidden='true'>"
-    Output += "</p>"
-    Output += "</div>"
-    return Output;
-}
-
 function CalculateAge() {
     var AgeDif = new Date(Date.now() - new Date(1131950100000))
     return Math.abs(AgeDif.getUTCFullYear() - 1970);
@@ -244,8 +227,6 @@ async function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelect
 
             break;
     }
-    Output += CreateTooltip()
-    Output += CreateTooltipSmall()
     return Output
 }
 

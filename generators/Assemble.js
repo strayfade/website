@@ -40,6 +40,19 @@ const GeneratePageCached = async function (req, Article, Locale, AvailablePages,
     }
 
 }
+
+function CreateTooltips() {
+    let Output = "";
+    Output += "<div class='TooltipContainer MobileHidden'>"
+    Output += "<p id='TooltipText' class='TooltipText NoSelect' aria-hidden='true'>"
+    Output += "</p>"
+    Output += "</div>"
+    Output += "<div class='TooltipContainer MobileHidden'>"
+    Output += "<p id='TooltipText2' class='TooltipText TooltipTextSmall NoSelect' aria-hidden='true'>"
+    Output += "</p>"
+    Output += "</div>"
+    return Output;
+}
 const GeneratePage = async function (Article, Locale, AvailablePages, AvailablePageSelector, Custom = "") {
     let HeadStr = await Head.GenerateHead(Article, Locale)
     let HeaderStr = await Header.GenerateHeader(Article, Locale, AvailablePageSelector == AvailablePages.Home)
@@ -49,15 +62,17 @@ const GeneratePage = async function (Article, Locale, AvailablePages, AvailableP
     Output = `
         <!DOCTYPE html>
         <html lang="` + Localize(Locale, "locale_title") + `">
-            <head>` + HeadStr + `</head>
-            <body class="DisableAntialiasing">
-                <main class="EnableAntialiasing">
-                    ` + HeaderStr + `
-                    ` + BodyStr + `
-                    ` + FooterStr + `
-                </main>
-            <script src="/Production.js"></script>
-            </body>
+        <head>` + HeadStr + `</head>
+        <body class="DisableAntialiasing">
+        <main class="EnableAntialiasing">
+        ` + HeaderStr + `
+        ` + BodyStr + `
+        ` + FooterStr + `
+        </main>
+        <div id="GlowOverlay" class="Overlay"/>
+    ` + CreateTooltips() + `
+        <script src="/Production.js"></script>
+        </body>
         </html>
     `
     return Output

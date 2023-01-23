@@ -1,5 +1,5 @@
 const Log = require("../Log").Log
-const BlacklistedPaths = [".env", "wp-", "php", "config", "xss", "sendgrid", "feed", "daemon", "boaform", "portal", "autodiscover", "vendor", "www", "api", "config", "telescope", "misc", "shell"]
+const BlacklistedPaths = [".env", "wp-", "php", "config", "xss", "sendgrid", "feed", "daemon", "boaform", "portal", "autodiscover", "vendor", "www", "api", "telescope", "misc", "shell"]
 
 const Middleware = function (Request, Response, Next) {
     for (let x = 0; x < BlacklistedPaths.length; x++) {

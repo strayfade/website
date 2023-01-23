@@ -1,3 +1,12 @@
+{
+    "title": "Process Hollowing",
+    "description": "Executing protected C++ code from memory",
+    "tags": ["Hacking", "Windows", "C++"],
+    "author": "Noah",
+    "date": "1/13/2023",
+    "showTitle": true,
+    "indexed": true
+}
 ### Introduction
 > Process hollowing is a technique to run executable, binary code, while disguised as a different process. It is mainly used by malware to replace the code of a running, trusted program with its own, making it very difficult to detect. Although its main use is to evade detection by anti-viruses, process hollowing also has a legitimate use.
 >

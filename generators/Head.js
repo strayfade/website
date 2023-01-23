@@ -1,6 +1,7 @@
 const { Localize } = require('./tools/LocaleTools')
 
-function GenerateHead(Article, Locale) {
+async function GenerateHead(Article, Locale) {
+    Article = JSON.parse(Article.split("}")[0] + "}")
     Output = `
         <link rel="manifest" href="/assets/manifest.json">
         <meta charset="utf-8">

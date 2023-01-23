@@ -1,15 +1,24 @@
 const { Localize } = require('./tools/LocaleTools')
+const Head = require('./Head')
+const Header = require('./Header')
+const Body = require('./Body')
+const Footer = require('./Footer')
 
-function GeneratePage(Article, Locale, Generators, AvailablePages, AvailablePageSelector, Custom = "") {
+async function GeneratePage(Article, Locale, AvailablePages, AvailablePageSelector, Custom = "") {
+    let HeadStr = await Head.GenerateHead(Article, Locale)
+    let HeaderStr = await Header.GenerateHeader(Article, Locale, AvailablePageSelector == AvailablePages.Home)
+    let BodyStr = await Body.GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom)
+    let FooterStr = await Footer.GenerateFooter(Article, Locale)
+
     Output = `
         <!DOCTYPE html>
         <html lang="` + Localize(Locale, "locale_title") + `">
-            <head>` + Generators.Head.GenerateHead(Article, Locale) + `</head>
+            <head>` + HeadStr + `</head>
             <body class="DisableAntialiasing">
                 <main class="EnableAntialiasing">
-                    ` + Generators.Header.GenerateHeader(Article, Locale, AvailablePageSelector == AvailablePages.Home) + `
-                    ` + Generators.Body.GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) + `
-                    ` + Generators.Footer.GenerateFooter(Article, Locale) + `
+                    ` + HeaderStr + `
+                    ` + BodyStr + `
+                    ` + FooterStr + `
                 </main>
             <script src="/Production.js"></script>
             </body>

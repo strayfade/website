@@ -1,3 +1,11 @@
+{
+    "title": "Error Code Test",
+    "description": "Every error code page that can be shown",
+    "author": "Noah",
+    "date": "08/31/2022",
+    "showTitle": true,
+    "indexed": false
+}
 # All Error Code Pages
 
  - [Error 100](./100)

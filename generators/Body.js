@@ -1,4 +1,5 @@
-const fs = require('fs');
+const fs = require('fs/promises');
+const fsdir = require('fs');
 const Markdown = require("markdown").markdown;
 const { Localize } = require('./tools/LocaleTools')
 
@@ -68,10 +69,10 @@ function CalculateAge() {
     return Math.abs(AgeDif.getUTCFullYear() - 1970);
 }
 
-function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) {
-
+async function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) {
+    let MarkdownString = Article.split("}")[1]
+    Article = JSON.parse(Article.split("}")[0] + "}")
     // Markdown
-    let MarkdownString = fs.readFileSync(__dirname.replace("generators", "posts/") + Article.markdown).toString()
     if (Custom != "") {
         MarkdownString += "\n\n" + Custom
     }
@@ -95,12 +96,13 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
             let Posts = []
             let indexed = [];
 
-            let filenames = fs.readdirSync(__dirname.replace("generators", "posts/"));
+            let filenames = fsdir.readdirSync(__dirname.replace("generators", "posts/"));
             for (var x = 0; x < filenames.length; x++) {
-                if (filenames[x].endsWith(".json")) {
-                    let JSON = require(__dirname.replace("generators", "posts/") + filenames[x])
-                    if (JSON.indexed) {
-                        Posts.push({ data: JSON, file: filenames[x] })
+                if (filenames[x].endsWith(".md")) {
+                    let JSONstr = await fs.readFile(__dirname.replace("generators", "posts/") + filenames[x], {encoding: "utf-8"})
+                    let Current = JSON.parse(JSONstr.split("}")[0] + "}")
+                    if (Current.indexed) {
+                        Posts.push({ data: Current, file: filenames[x] })
                     }
                 }
             }
@@ -112,12 +114,12 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
             })
 
             Posts.forEach(Post => {
-                if (Post.file.endsWith(".json")) {
+                if (Post.file.endsWith(".md")) {
                     let JSON = Post.data
                     if (JSON.pinned) {
                         if (JSON.indexed) {
                             Output += `
-                                <a aria-label="` + JSON.title + `" class="LinkNormal" href="/` + Post.file.replace(".json", "") + `">
+                                <a aria-label="` + JSON.title + `" class="LinkNormal" href="/` + Post.file.replace(".md", "") + `">
                                 <div class="ArticleIndexBox ArticlePinned">
                                 <div class="Flexbox">
                                 <h1 class="ArticleIndexBoxTitle FloatLeft">` + JSON.title + `</h1>
@@ -144,11 +146,11 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
             })
             Posts.forEach(Post => {
                 if (!indexed.includes(Post.file)) {
-                    if (Post.file.endsWith(".json")) {
+                    if (Post.file.endsWith(".md")) {
                         let JSON = Post.data
                         if (JSON.indexed) {
                             Output += `
-                                <a aria-label="` + JSON.title + `" class="LinkNormal" href="/` + Post.file.replace(".json", "") + `">
+                                <a aria-label="` + JSON.title + `" class="LinkNormal" href="/` + Post.file.replace(".md", "") + `">
                                 <div class="ArticleIndexBox ArticlePinned">
                                 <div class="Flexbox">
                                 <h1 class="ArticleIndexBoxTitle FloatLeft">` + JSON.title + `</h1>
@@ -206,7 +208,7 @@ function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Cu
 
             break;
         case AvailablePages.R:
-            Output += fs.readFileSync(__dirname.replace("generators", "assets") + "/Rem")
+            Output += await fs.readFile(__dirname.replace("generators", "assets") + "/Rem", {encoding: "utf-8"})
             break;
         case AvailablePages.Dynamic:
             Output += `<div class="ArticleContainer ArticleContainerShort">`

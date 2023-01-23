@@ -1,3 +1,13 @@
+{
+    "title": "Seeing Everything",
+    "description": "Directory enumeration with Gobuster",
+    "tags": ["Hacking", "Linux", "Web"],
+    "author": "Noah",
+    "date": "1/18/2023",
+    "showTitle": true,
+    "indexed": true,
+    "pinned": true
+}
 > **Before we get started**, it's important to know that Gobuster should only be used against systems you have permission to scan. Gobuster is **NOT** a silent scan, and is easily noticable.
 
 ### Introduction

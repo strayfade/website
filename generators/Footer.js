@@ -1,7 +1,8 @@
 const { Localize } = require('./tools/LocaleTools')
 
-function GenerateFooter(Article, Locale) {
-
+async function GenerateFooter(Article, Locale) {
+    Article = JSON.parse(Article.split("}")[0] + "}")
+    
     Output = ""
     Output += "<footer>\n"
     Output += "<div class='Footer'>"

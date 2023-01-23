@@ -1,6 +1,8 @@
 const { Localize } = require('./tools/LocaleTools')
 
-function GenerateHeader(Article, Locale, isHomepage = false) {
+async function GenerateHeader(Article, Locale, isHomepage = false) {
+    Article = JSON.parse(Article.split("}")[0] + "}")
+    
     Output = ""
     Output += "<header>\n"
     Output += "<div class='Header'>"

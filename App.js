@@ -1,12 +1,13 @@
 // Import Packages
-const fs = require('fs')
+const fs = require('fs/promises')
+const fsdir = require('fs')
 const path = require('path')
 const express = require('express')
 
 // Imported Functions
 const { Log } = require('./Log')
 const { SendError } = require('./Error')
-const { Generators } = require('./Generators')
+const PageBuilder = require("./generators/Assemble")
 const { CollectAnalytics, GetAnalyticsFromRequest } = require('./Database')
 const { GetAvailableLanguages, GetLanguage, GetLanaguageShort, GetLanguagePath } = require('./Localization')
 
@@ -24,6 +25,10 @@ const AvailablePages = {
     Dynamic: "4",
     NonstandardPages: ["R"]
 }
+
+const WrapAsync = (Function) => {
+    return (req, res, next) => { const FunctionOut = Function(req, res, next); return Promise.resolve(FunctionOut).catch(next); }
+};
 
 // Basic Security
 require('./security/Security').Setup(App)
@@ -52,59 +57,62 @@ App.get('/robots.txt', (req, res) => {
 })
 
 // Default Routing
-App.get('/', (req, res) => {
-    const Article = require('./posts/_None.json')
+App.get('/', WrapAsync(async function (req, res) {
+    const Article = await fs.readFile('./posts/_None.md', {encoding: "utf-8"})
     let Lang = require(GetLanguagePath(req))
-    res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Home, ""))
-})
-App.get('/:path', (req, res) => {
-    //Log("NOTICE: Redirecting to \"/" + GetLanaguageShort(req) + "/" + req.params.path + "\"")
+    let Page = await PageBuilder.GeneratePage(Article, Lang, AvailablePages, AvailablePages.Home, "")
+    res.send(Page)
+}))
+App.get('/:path', WrapAsync(async function (req, res) {
     res.redirect("/" + GetLanaguageShort(req) + "/" + req.params.path)
-})
-App.get('/:localization/:path', (req, res) => {
+}))
+App.get('/:localization/:path', WrapAsync(async function (req, res) {
 
-    var Lang = require(GetLanguagePath(req))
-    if (Languages.includes(req.params.localization)) { // Check if localization param is present
+    var Lang = {}
+    if (Languages.includes(req.params.localization))
         Lang = require('./localization/' + req.params.localization + '.json')
-    }
+    else 
+        Lang = require(GetLanguagePath(req))
 
     let IsNotArticle = AvailablePages.NonstandardPages.includes(req.params.path);
     if (IsNotArticle) {
-        let Article = require('./posts/_None.json')
         switch (req.params.path) {
             case "R":
-                res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.R, ""))
+                let Article = await fs.readFile('./posts/_None.md', {encoding: "utf-8"})
+                let Page = await PageBuilder.GeneratePage(Article, Lang, AvailablePages, AvailablePages.R, "");
+                res.send(Page)
                 break;
         }
     } else {
-        let ArticlePath = './posts/' + req.params.path + '.json'
-        if (fs.existsSync(ArticlePath)) { // Page exists, load into Article
-            let Article = require('./posts/' + req.params.path + '.json')
-            res.send(Generators.Assembler.GeneratePage(Article, Lang, Generators, AvailablePages, AvailablePages.Dynamic, ""))
+        let ArticlePath = './posts/' + req.params.path + '.md'
+        if (fsdir.existsSync(ArticlePath)) { // Page exists, load into Article
+            let Article = await fs.readFile('./posts/' + req.params.path + '.md', {encoding: "utf-8"})
+            let Page = await PageBuilder.GeneratePage(Article, Lang, AvailablePages, AvailablePages.Dynamic, "")
+            res.send(Page)
         } else {
             Log("Requested page not found (404): " + req.path)
-            SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, "", Languages);
+            await SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, "", Languages);
         }
     }
-})
+}))
 
 // Error Handling Middleware
 function ErrorLogger(error, req, res, next) {
-    Log("ERROR: Internal Server [500]:\n" + error)
+    Log("ERROR: Internal Server [500]: " + error)
     next(error)
 }
 
-function ErrorHandler(error, req, res, next) {
+async function ErrorHandler(error, req, res, next) {
     if (error.type == 'redirect')
-        SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, error.toString(), Languages);
+        await SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, error.toString(), Languages);
     else if (error.type == 'time-out')
-        SendError(408, req, res, AvailablePages, AvailablePages.Dynamic, error.toString(), Languages);
+        await SendError(408, req, res, AvailablePages, AvailablePages.Dynamic, error.toString(), Languages);
     else
         next(error)
 }
 
-function ErrorHandlerGeneric(error, req, res, next) {
-    SendError(500, req, res, AvailablePages, AvailablePages.Dynamic, error, Languages);
+async function ErrorHandlerGeneric(error, req, res, next) {
+    await SendError(500, req, res, AvailablePages, AvailablePages.Dynamic, error, Languages);
 }
 App.use(ErrorLogger)
 App.use(ErrorHandler)

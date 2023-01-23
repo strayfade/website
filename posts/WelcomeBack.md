@@ -1,3 +1,12 @@
+{
+    "title": "New Website",
+    "description": "Some interesting things about how my website was made",
+    "tags": ["JavaScript", "NodeJS", "Web"],
+    "author": "Noah",
+    "date": "08/31/2022",
+    "showTitle": true,
+    "indexed": true
+}
 As you may have noticed, I decided to rewrite [strayfade.com](https://strayfade.com) to focus more on the usability and aesthetic aspects of the website.
 
 Here are some high points of the new website

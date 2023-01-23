@@ -1,3 +1,12 @@
+{
+    "title": "Breaking WPA2",
+    "description": "Hacking into my school's private network",
+    "tags": ["Hacking", "Linux", "WPA"],
+    "author": "Noah",
+    "date": "11/08/2022",
+    "showTitle": true,
+    "indexed": true
+}
 ### Disclaimer
 
 > **Do not try anything you see done here!** *Don't do as I say **or** as I do.*

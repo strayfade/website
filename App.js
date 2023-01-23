@@ -32,7 +32,7 @@ const WrapAsync = (Function) => {
 
 // Basic Security
 require('./security/Security').Setup(App)
-App.disable('x-powered-by')
+App.disable('x-powered-by') // epic fingerprinting gone
 
 // Static Directories
 App.use('/cdn', express.static('cdn'))
@@ -85,7 +85,7 @@ App.get('/:localization/:path', WrapAsync(async function (req, res) {
         }
     } else {
         let ArticlePath = './posts/' + req.params.path + '.md'
-        if (fsdir.existsSync(ArticlePath)) { // Page exists, load into Article
+        if (fsdir.existsSync(ArticlePath) && req.params.path != "_None") { // Page exists, load into Article
             let Article = await fs.readFile('./posts/' + req.params.path + '.md', {encoding: "utf-8"})
             let Page = await PageBuilder.GeneratePage(Article, Lang, AvailablePages, AvailablePages.Dynamic, "")
             res.send(Page)

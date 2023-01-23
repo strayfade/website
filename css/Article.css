@@ -77,6 +77,7 @@
 .ArticleIndexBox:hover {
     margin-left: 15px;
     color: var(--accent-color);
+    text-shadow: var(--glow-text);
 }
 
 .ArticleIndexBoxTitle {

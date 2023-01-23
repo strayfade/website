@@ -1,12 +1,10 @@
-# [strayfade.com](https://strayfade.com)
+# [**strayfade.com**](https://strayfade.com)
 
 Strayfade/Website is the public source code of [Strayfade.com](https://strayfade.com)
 
 > Do you know a language that isn't English? You can contribute to this repository by translating for us!
 >
 > The project's localization files are in the `localization` directory. Simply copy one of the existing ones, rename it to the locale you are translating for, and translate the values in the JSON file. 
->
-> You can submit a new localization file by opening a pull request.
 
 ### Usage
 

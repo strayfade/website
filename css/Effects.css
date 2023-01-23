@@ -41,7 +41,7 @@
 .HyperlinkHeader {
     margin-top: 15px;
     padding-top: 0px;
-    transition: 0.25s;
+    transition: var(--transition-length);
     color: var(--foreground-color);
 }
 
@@ -50,12 +50,12 @@
 }
 
 .HyperlinkHeader:active {
-    transition: 0s;
+    transition: var(--transition-length);
     color: var(--foreground-color);
 }
 
 .CopyText {
-    transition: 0.25s;
+    transition: var(--transition-length);
     position: absolute;
     padding: 0px;
     margin: 0px;

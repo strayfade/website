@@ -9,7 +9,7 @@
 .HeaderInner {
     display: flex;
     border-bottom: 5px solid var(--accent-color);
-    transition: 0.5s;
+    transition: var(--transition-length);
 }
 .HeaderInner:hover {
     border-bottom: 5px solid var(--accent-color-transparent);
@@ -29,7 +29,7 @@
 .LinkNormal {
     text-decoration: none;
     color: var(--foreground-color);
-    transition: 0.5s;
+    transition: var(--transition-length);
     width: min-content;
 }
 .Underline {

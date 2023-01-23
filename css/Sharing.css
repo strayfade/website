@@ -33,7 +33,7 @@
     background-color: rgba(255, 255, 255, 0.025);
     width: 50px;
     height: 50px;
-    transition: 0.25s;
+    transition: var(--transition-length);
     border: 1px solid var(--accent-color-transparent);
     padding: 0px;
 }

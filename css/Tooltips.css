@@ -36,7 +36,7 @@
 
 .TooltipActive {
     opacity: 1.0;
-    transition: 0.5s;
+    transition: var(--transition-length);
     background-color: var(--accent-color);
 }
 .TooltipActiveSmall {
@@ -45,7 +45,7 @@
 
 .TooltipInactive {
     opacity: 0.0;
-    transition: 0.5s;
+    transition: var(--transition-length);
     background-color: var(--accent-color-transparent);
 }
 .TooltipInactiveSmall {

@@ -67,3 +67,7 @@ body {
     image-rendering: auto;
     image-rendering: optimizeQuality;
 }
+
+:root {
+    --transition-length: 0.0s
+}

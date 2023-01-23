@@ -43,7 +43,7 @@ pre code {
 
 .CodeCopyButton {
     position: absolute;
-    transition: 0s;
+    transition: var(--transition-length);
     color: var(--lighten-color-codeblock);
     z-index: 2;
     opacity: 50%;

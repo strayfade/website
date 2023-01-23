@@ -17,7 +17,7 @@
     display: flex;
     padding-bottom: 15px;
     border-top: 5px solid var(--accent-color);
-    transition: 0.5s;
+    transition: var(--transition-length);
 }
 
 .FooterText {
@@ -58,7 +58,7 @@
 
 .FooterButton {
     color: var(--foreground-color);
-    transition: 0.5s;
+    transition: var(--transition-length);
 }
 
 .FooterButton:hover {

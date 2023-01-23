@@ -2,7 +2,7 @@
     border-top: 4px solid var(--accent-color);
     margin: auto;
     width: var(--display-width);
-    transition: 0.5s;
+    transition: var(--transition-length);
 }
 
 .HeroBannerInner {

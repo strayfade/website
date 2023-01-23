@@ -70,7 +70,7 @@
     margin-bottom: 15px;
     margin-top: 10px;
     cursor: pointer;
-    transition: 0.25s;
+    transition: var(--transition-length);
     margin-left: 5px;
 }
 
@@ -115,7 +115,7 @@
     padding-right: 8px;
     margin-right: 10px;
     border-left: 3px solid var(--accent-color);
-    transition: 0.25s;
+    transition: var(--transition-length);
     font-size: 14px;
 }
 
@@ -126,7 +126,7 @@
 	padding-left: 12px;
 	padding-right: 12px;
 	margin: 10px;
-	transition: 0.25s;
+	transition: var(--transition-length);
 	font-size: 14px;
 	margin-right: 0px;
     border-bottom: 3px solid var(--accent-color);

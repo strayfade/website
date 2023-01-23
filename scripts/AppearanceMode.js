@@ -1,6 +1,7 @@
 let UseLightMode = false;
 
 async function SetLightMode(Enabled) {
+    document.documentElement.style.setProperty("--transition-length", "0.0s")
     UseLightMode = Enabled;
 
     if (!Enabled) {
@@ -19,6 +20,7 @@ async function SetLightMode(Enabled) {
     document.getElementsByTagName("body")[0].style.backgroundImage = Enabled ? "var(--darkmode-background-image)" : "var(--lightmode-background-image)"
 
     localStorage.setItem("UseLightMode", Enabled)
+    document.documentElement.style.setProperty("--transition-length", "0.25s")
 }
 window.addEventListener("load", async function() {
     if (localStorage.getItem("UseLightMode")) {

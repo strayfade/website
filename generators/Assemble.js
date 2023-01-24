@@ -1,4 +1,5 @@
 const { Localize } = require('./tools/LocaleTools')
+const RequestInfo = require("../middleware/RequestBlocking")
 const { Log } = require('../Log')
 const Head = require('./Head')
 const Header = require('./Header')
@@ -7,6 +8,7 @@ const Footer = require('./Footer')
 
 let Cache = []
 const GeneratePageCached = async function (req, Article, Locale, AvailablePages, AvailablePageSelector, Custom = "", Filename) {
+    let ServeInfo = " (" + RequestInfo.RequestAnalytics.TotalRequestsServed + " served, " + RequestInfo.RequestAnalytics.TotalRequestsBlocked + " blocked)"
     let CacheObject = {
         A: Article,
         B: Locale,
@@ -29,13 +31,13 @@ const GeneratePageCached = async function (req, Article, Locale, AvailablePages,
         }
     }
     if (Found.A == Article) {
-        Log("Found page in cache: " + req.url)
+        Log("Found page in cache: " + req.url + ServeInfo)
         return Found.F
     }
     else {
         CacheObject.F = GeneratePage(Article, Locale, AvailablePages, AvailablePageSelector, Custom, Filename);
         Cache.push(CacheObject)
-        Log("Rendered page for cache: " + req.url)
+        Log("Rendered page for cache: " + req.url + ServeInfo)
         return CacheObject.F
     }
 

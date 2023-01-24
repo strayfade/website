@@ -3,7 +3,7 @@ const fsdir = require('fs');
 const Markdown = require("markdown").markdown;
 const { Localize } = require('./tools/LocaleTools')
 
-function GenerateShareSection(Locale, Article) {
+function GenerateShareSection(Locale, Filename) {
     let Output = `
 
     <div class="ShareSection">
@@ -39,8 +39,8 @@ function GenerateShareSection(Locale, Article) {
 
     <div class="ShareButtonContainer ShareMaxWidth">
     <p class="FooterAboveText FloatRight">I made this!</p>
-    <a class="LinkNormal HoverAccentColor Spaced" href="https://github.com/Strayfade/Website/blob/main/posts/` + Article.markdown + `">View on GitHub</a>
-    <a class="LinkNormal HoverAccentColor Spaced" href="https://raw.githubusercontent.com/Strayfade/Website/main/posts/` + Article.markdown + `">View Raw</a>
+    <a class="LinkNormal HoverAccentColor Spaced" href="https://github.com/Strayfade/Website/blob/main/posts/` + Filename + `">View on GitHub</a>
+    <a class="LinkNormal HoverAccentColor Spaced" href="https://raw.githubusercontent.com/Strayfade/Website/main/posts/` + Filename + `">View Raw</a>
     </div>
     `
 
@@ -52,7 +52,7 @@ function CalculateAge() {
     return Math.abs(AgeDif.getUTCFullYear() - 1970);
 }
 
-async function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom) {
+async function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom, Filename) {
     let MarkdownString = Article.split("}")[1]
     Article = JSON.parse(Article.split("}")[0] + "}")
     // Markdown
@@ -219,7 +219,7 @@ async function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelect
             Output += MarkdownHtml // Article MD
 
             if (Article.indexed)
-                Output += GenerateShareSection(Locale, Article)
+                Output += GenerateShareSection(Locale, Filename)
             Output += `
                 </div>
                 </div>

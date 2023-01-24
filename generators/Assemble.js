@@ -6,7 +6,7 @@ const Body = require('./Body')
 const Footer = require('./Footer')
 
 let Cache = []
-const GeneratePageCached = async function (req, Article, Locale, AvailablePages, AvailablePageSelector, Custom = "") {
+const GeneratePageCached = async function (req, Article, Locale, AvailablePages, AvailablePageSelector, Custom = "", Filename) {
     let CacheObject = {
         A: Article,
         B: Locale,
@@ -33,7 +33,7 @@ const GeneratePageCached = async function (req, Article, Locale, AvailablePages,
         return Found.F
     }
     else {
-        CacheObject.F = GeneratePage(Article, Locale, AvailablePages, AvailablePageSelector, Custom);
+        CacheObject.F = GeneratePage(Article, Locale, AvailablePages, AvailablePageSelector, Custom, Filename);
         Cache.push(CacheObject)
         Log("Rendered page for cache: " + req.url)
         return CacheObject.F
@@ -53,10 +53,10 @@ function CreateTooltips() {
     Output += "</div>"
     return Output;
 }
-const GeneratePage = async function (Article, Locale, AvailablePages, AvailablePageSelector, Custom = "") {
+const GeneratePage = async function (Article, Locale, AvailablePages, AvailablePageSelector, Custom = "", Filename = "_None.md") {
     let HeadStr = await Head.GenerateHead(Article, Locale)
     let HeaderStr = await Header.GenerateHeader(Article, Locale, AvailablePageSelector == AvailablePages.Home)
-    let BodyStr = await Body.GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom)
+    let BodyStr = await Body.GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom, Filename)
     let FooterStr = await Footer.GenerateFooter(Article, Locale)
 
     Output = `

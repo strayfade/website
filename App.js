@@ -87,7 +87,7 @@ App.get('/:localization/:path', WrapAsync(async function (req, res) {
         let ArticlePath = './posts/' + req.params.path + '.md'
         if (fsdir.existsSync(ArticlePath) && req.params.path != "_None") { // Page exists, load into Article
             let Article = await fs.readFile('./posts/' + req.params.path + '.md', {encoding: "utf-8"})
-            let Page = await PageBuilder.GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Dynamic, "")
+            let Page = await PageBuilder.GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Dynamic, "", req.params.path + '.md')
             res.send(Page)
         } else {
             Log("Requested page not found (404): " + req.path)

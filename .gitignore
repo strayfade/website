@@ -108,3 +108,6 @@ dist
 
 # We do love MacOS
 .DS_Store
+
+# NPM?
+report.xml

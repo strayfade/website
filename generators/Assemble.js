@@ -71,7 +71,6 @@ const GeneratePage = async function (Article, Locale, AvailablePages, AvailableP
         ` + BodyStr + `
         ` + FooterStr + `
         </main>
-        <div id="GlowOverlay" class="Overlay"/>
     ` + CreateTooltips() + `
         <script src="/Production.js"></script>
         </body>

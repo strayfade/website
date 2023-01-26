@@ -17,7 +17,7 @@ async function SetLightMode(Enabled) {
     let DarkColor = getComputedStyle(document.documentElement).getPropertyValue("--darken-color")
     document.documentElement.style.setProperty("--foreground-color", Enabled ? DarkColor : LightColor)
     document.documentElement.style.setProperty("--background-color", Enabled ? LightColor : DarkColor)
-    document.getElementsByTagName("body")[0].style.backgroundImage = Enabled ? "var(--darkmode-background-image)" : "var(--lightmode-background-image)"
+    document.getElementsByTagName("body")[0].style.background = Enabled ? "var(--darkmode-background)" : "var(--lightmode-background)"
 
     localStorage.setItem("UseLightMode", Enabled)
     document.documentElement.style.setProperty("--transition-length", "0.25s")

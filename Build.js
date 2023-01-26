@@ -1,7 +1,5 @@
 const fs = require('fs')
 const Log = require('./Log').Log
-const ExtraStylesheets = ["./fonts/Rajdhani.css"]
-const ExtraScripts = []
 
 function PackStylesheets() {
     Log("[BUILD] - Merging CSS files...")
@@ -9,9 +7,6 @@ function PackStylesheets() {
     let filenames = fs.readdirSync(__dirname + "/css");
     for (var x = 0; x < filenames.length; x++) {
         filenames[x] = __dirname + "/css/" + filenames[x];
-    }
-    for (var x = 0; x < ExtraStylesheets.length; x++) {
-        filenames.push(ExtraStylesheets[x])
     }
     for (var x = 0; x < filenames.length; x++) {
         if (filenames[x].endsWith(".css")) {
@@ -37,9 +32,6 @@ function PackScripts() {
     let filenames = fs.readdirSync(__dirname + "/scripts");
     for (var x = 0; x < filenames.length; x++) {
         filenames[x] = __dirname + "/scripts/" + filenames[x];
-    }
-    for (var x = 0; x < ExtraScripts.length; x++) {
-        filenames.push(ExtraScripts[x])
     }
     for (var x = 0; x < filenames.length; x++) {
         if (filenames[x].endsWith(".js")) {

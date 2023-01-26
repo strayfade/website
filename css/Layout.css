@@ -25,6 +25,7 @@
 }
 
 .HomepageArticleContainer {
-    padding-left: 60px;
-    padding-right: 60px;
+    padding: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

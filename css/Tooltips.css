@@ -41,7 +41,7 @@
     background-color: var(--accent-color);
 }
 .TooltipActiveSmall {
-    background-color: rgb(70, 70, 70);
+    background-color: var(--accent-color-very-transparent);
 }
 
 .TooltipInactive {

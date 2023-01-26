@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('/fonts/Rajdhani-Bold.woff2') format('woff2'), url('/fonts/Rajdhani-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+    font-size: large;
+}
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('/fonts/Rajdhani-Medium.woff2') format('woff2'), url('/fonts/Rajdhani-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    font-size: large;
+}
+
+.Monospace {
+    font-family: var(--display-font-code);
+}

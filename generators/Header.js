@@ -45,10 +45,10 @@ async function GenerateHeader(Article, Locale, isHomepage = false) {
     if (!isHomepage) {
         Output += `<a aria-label="GitHub" class="LinkNormal FloatRight" href="https://github.com/Strayfade" data-tooltip="GitHub">`
     }
-    Output += `<div class="HeaderObject HoverAccentColor MobileHidden FloatRight" data-tooltip="Search Articles">`
+    Output += `<div class="HeaderObject HoverAccentColor MobileHidden FloatRight" data-tooltip="Search Articles" style="padding-left: 0px; padding-right: 0px;">`
     if (isHomepage) {
         Output += `
-            <input id="PageSearchBox" type="text" placeholder="Search" oninput="SearchArticle()">
+            <input id="PageSearchBox" class="Hidden" type="text" placeholder="Search" oninput="SearchArticle()">
             </div>
             <a aria-label="GitHub" class="LinkNormal" href="https://github.com/Strayfade" data-tooltip="GitHub">
             <div class="HeaderObject HoverAccentColor MobileHidden">

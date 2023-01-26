@@ -38,9 +38,8 @@ function GenerateShareSection(Locale, Filename) {
     </div>
 
     <div class="ShareButtonContainer ShareMaxWidth">
-    <p class="FooterAboveText FloatRight">I made this!</p>
-    <a class="LinkNormal HoverAccentColor Spaced" href="https://github.com/Strayfade/Website/blob/main/posts/` + Filename + `">View on GitHub</a>
-    <a class="LinkNormal HoverAccentColor Spaced" href="https://raw.githubusercontent.com/Strayfade/Website/main/posts/` + Filename + `">View Raw</a>
+    <a class="LinkNormal HoverAccentColor Spaced Monospace" href="https://github.com/Strayfade/Website/blob/main/posts/` + Filename + `">View on GitHub</a>
+    <a class="LinkNormal HoverAccentColor Spaced Monospace" href="https://raw.githubusercontent.com/Strayfade/Website/main/posts/` + Filename + `">View Raw</a>
     </div>
     `
 
@@ -107,14 +106,14 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
                                 <div class="Flexbox">
                                 <h1 class="ArticleIndexBoxTitle FloatLeft">` + JSON.title + `</h1>
                                 <div class="ArticleIndexPin">Pinned</div>
-                                <p class="ArticleIndexBoxDate FloatLeft">` + JSON.date + `</p>
+                                <p class="ArticleIndexBoxDate FloatLeft Monospace">` + JSON.date + `</p>
                                 </div>
                                 <p class="ArticleIndexBoxDescription">` + JSON.description + `</p>
                             `
                             if (JSON.tags) {
                                 Output += `<div class="ArticleTagContainer">`
                                 for (var y = 0; y < JSON.tags.length; y++) {
-                                    Output += `<span class="ArticleTag">` + JSON.tags[y] + `</span>`
+                                    Output += `<span class="ArticleTag Monospace">` + JSON.tags[y] + `</span>`
                                 }
                                 Output += `</div>`
                             }
@@ -144,7 +143,7 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
                             if (JSON.tags) {
                                 Output += `<div class="ArticleTagContainer">`
                                 for (var y = 0; y < JSON.tags.length; y++) {
-                                    Output += `<span class="ArticleTag">` + JSON.tags[y] + `</span>`
+                                    Output += `<span class="ArticleTag Monospace">` + JSON.tags[y] + `</span>`
                                 }
                                 Output += `</div>`
                             }
@@ -175,14 +174,7 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
                 <p>My current Discord tag is <a href="https://discord.com/users/455790298082181120">Strayfade#8472</a>, although I do not usually respond to direct messages on Discord.</p>
                 </div>
             `
-                //<div class="HeroBannerRight">
-                //<svg class="Icon NoSelect Centered" version="1.0" xmlns="http://www.w3.org/2000/svg" width="300.000000pt" height="300.000000pt" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet">
-                //<title>Strayfade Logo</title>
-                //<g transform="translate(0.000000,300.000000) scale(0.050000,-0.050000)">
-                //<path d="M2707 5344 c-178 -217 -563 -686 -857 -1043 -609 -741 -676 -830 -786 -1052 -265 -529 -186 -1034 228 -1460 114 -117 678 -590 702 -588 9 1 372 434 806 964 1176 1433 1361 1655 1376 1655 73 0 193 -307 179 -459 -16 -176 -34 -201 -1014 -1389 -506 -615 -920 -1123 -920 -1130 2 -19 587 -490 606 -487 9 1 194 217 410 480 216 263 596 725 844 1027 679 823 798 1012 870 1376 103 514 -94 878 -779 1439 l-277 227 -46 -47 c-42 -43 -814 -980 -1749 -2122 -203 -249 -380 -453 -393 -454 -40 -2 -147 163 -180 276 -75 257 -63 276 863 1400 429 521 842 1022 917 1114 75 92 131 176 124 187 -17 28 -549 463 -577 472 -13 4 -169 -169 -347 -386z"/>
-                //</g>
-                //</svg>
-                //</div>
+
             Output += `
                 </div>
                 </div>
@@ -201,7 +193,7 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
             if (Article.showTitle) {
                 Output += `
                     <div class="ArticleHeader">
-                    <p class="ArticleHeaderDate" aria-hidden="true">` + Article.date + `</p>
+                    <p class="ArticleHeaderDate Monospace" aria-hidden="true">` + Article.date + `</p>
                     <h1 class="ArticleHeaderTitle">` + Article.title + `</h1>
                     <h1 class="ArticleHeaderDescription">` + Article.description + `</h1>
                     <span class="ArticleHeaderSubtitle" aria-hidden="true">` + Localize(Locale, "article_author_prefix") + Article.author + ` •</span>
@@ -210,7 +202,7 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
                 if (Article.tags) {
                     Output += `<div class="ArticleTagContainer">`
                     for (var y = 0; y < Article.tags.length; y++) {
-                        Output += `<span class="ArticleTag">` + Article.tags[y] + `</span>`
+                        Output += `<span class="ArticleTag Monospace">` + Article.tags[y] + `</span>`
                     }
                     Output += `</div>`
                 }

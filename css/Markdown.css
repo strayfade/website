@@ -41,32 +41,6 @@ pre code {
     padding: 15px;
 }
 
-.CodeCopyButton {
-    position: absolute;
-    transition: var(--transition-length);
-    color: var(--lighten-color-codeblock);
-    z-index: 2;
-    opacity: 50%;
-    margin: 0px;
-    padding: 0px;
-    cursor: pointer;
-}
-
-.CodeCopyButton:hover {
-    opacity: 100%;
-}
-
-.CodeLineNumbers {
-    opacity: 50%;
-    font-family: monospace;
-    inline-size: 150px;
-    overflow-wrap: break-word;
-    margin-left: -20px;
-    margin-bottom: 0px;
-    padding: 0px;
-    width: 13px;
-}
-
 pre {
     width: 100%;
 }

@@ -1,5 +1,5 @@
 const Log = require("../Log").Log
-const BlacklistedPaths = [".env", "wp-", "php", "config", "xss", "sendgrid", "feed", "daemon", "boaform", "portal", "autodiscover", "vendor", "www", "api", "telescope", "misc", "shell"]
+const BlacklistedPaths = [".env", "wp-", "php", "config", "xss", "sendgrid", "feeds", "daemon", "boaform", "portal", "autodiscover", "vendor", "www", "api", "telescope", "misc", "shell"]
 
 let RequestAnalytics = {
     TotalRequestsBlocked: 0,

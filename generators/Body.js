@@ -52,9 +52,9 @@ function CalculateAge() {
     return Math.abs(AgeDif.getUTCFullYear() - 1970);
 }
 
-async function GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom, Filename) {
-    let MarkdownString = Article.split("}")[1]
-    Article = JSON.parse(Article.split("}")[0] + "}")
+async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelector, Custom, Filename) {
+    Article = JSON.parse(Article2.split("}")[0] + "}")
+    let MarkdownString = Article2.replace(Article2.split("}")[0] + "}", "")
     // Markdown
     if (Custom != "") {
         MarkdownString += "\n\n" + Custom

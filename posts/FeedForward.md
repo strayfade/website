@@ -9,12 +9,12 @@
     "pinned": true
 }
 
-> The source code for this project can be found at [**Strayfade/FNN**](https://github.com/Strayfade/FNN)
+> *The source code for this project can be found at [Strayfade/FNN](https://github.com/Strayfade/FNN)*
 
 > Feed-forward Neural Networks (FNNs) are used to change data in an intelligent way, and they are very easy to set up and use. Although this article will be applying their use to evading simple anti-cheat detection, FNNs are an invaluable resource for automating complex systems and evaluating information.
 
 ### Starting from scratch
-To begin coding, we will create a `NeuralNetwork` class, which holds values
+To begin coding, we will create a `NeuralNetwork` class, which holds values from our neural network
 
     class NeuralNetwork {
     private:
@@ -24,7 +24,7 @@ To begin coding, we will create a `NeuralNetwork` class, which holds values
         V3(float) Weights;
     }
 
- > `V/V2/V3(T)` is just a wrapper for the std::vector object. For example, `V2(float)` is the same as `vector<vector<float>>`
+> `V/V2/V3(T)` is just a wrapper for the std::vector object. For example, `V2(float)` is the same as `vector<vector<float>>`
 
 This class holds values for our input/output "neurons", biases, and weights. It also holds a vector containing our `Layers` layout, which defines how many neurons should be in each layer of the network. An example of this is `{ 2, 4, 2 }`, which has two input values and two output values, as well as a computation layer of 4 neurons.
 

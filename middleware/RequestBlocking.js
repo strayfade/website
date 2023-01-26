@@ -9,11 +9,9 @@ const Middleware = function (Request, Response, Next) {
     for (let x = 0; x < BlacklistedPaths.length; x++) {
         if (Request.path.toString().toLowerCase().includes(BlacklistedPaths[x].toLowerCase())) {
             Log("Blacklisted path: " + BlacklistedPaths[x])
-            if (!Responded) {
-                RequestAnalytics.TotalRequestsBlocked++;
-                Response.sendStatus(404);
-                return;
-            }
+            RequestAnalytics.TotalRequestsBlocked++;
+            Response.sendStatus(404);
+            return;
         }
     }
     RequestAnalytics.TotalRequestsServed++

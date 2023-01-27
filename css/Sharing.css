@@ -85,17 +85,27 @@
 .ShareMaxWidth .Spaced {
     margin-left: 18px;
 }
+.ShareMaxWidth .SpacedMobile {
+    margin-right: 0px;
+}
+@media only screen and (max-width: 960px) {
+    .ShareMaxWidth .SpacedMobile {
+        margin-right: auto;
+    }
+}
+
 
 .ShareMaxWidth a {
     margin-bottom: -5px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: normal;
     text-decoration: none;
-    padding-bottom: 2px;
+    padding: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     color: var(--foreground-color);
-    border-bottom: 1px solid var(--foreground-color);
+    background-color: var(--accent-color-transparent);
 }
 .ShareMaxWidth a:hover {
-    color: var(--accent-color);
-    border-bottom: 1px solid var(--accent-color);
+    background-color: var(--accent-color);
 }

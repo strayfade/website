@@ -3,13 +3,14 @@
     padding-bottom: 30px;
     width: 70%;
     border-bottom: 3px solid var(--accent-color);
+    white-space: nowrap;
 }
-
 @media only screen and (max-width: 960px) {
     .ArticleHeader {
         width: 100%;
         margin-left: auto;
         margin-right: auto;
+        white-space: normal;
     }
 }
 
@@ -33,6 +34,7 @@
     margin-top: 10px;
     margin-bottom: 0px;
 }
+
 .ArticleHeaderDescription {
     font-size: 26px;
     font-weight: normal;
@@ -46,6 +48,9 @@
 @media only screen and (max-width: 960px) {
     .ArticleHeaderTitle {
         font-size: 45px;
+    }
+    .ArticleHeaderDescription {
+        font-size: 18px;
     }
 }
 

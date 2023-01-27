@@ -1,5 +1,5 @@
 .HeroBanner {
-    border-top: 4px solid var(--accent-color);
+    border-top: 5px solid var(--accent-color);
     margin: auto;
     width: var(--display-width);
     transition: var(--transition-length);

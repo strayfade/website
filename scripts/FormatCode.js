@@ -10,17 +10,21 @@ window.addEventListener("load", function() {
         let Lines = CurrentInner.split("\n");
         let Depth = 0;
         for (var y = 0; y < Lines.length; y++) {
-            if (Lines[y].endsWith("{")) {
-                Depth++;
+            if (Lines[y].includes("	")) {
+                Lines[y] = Lines[y].substring(1, Lines[y].length)
             }
-            else if (Lines[y].endsWith("}")) {
+        }
+        for (var y = 0; y < Lines.length; y++) {
+            if (Lines[y].includes("}")) {
                 Depth--;
             }
-
             if (Depth != 0) {
                 for (let z = 0; z < Depth; z++) {
-                    NewInner += "&emsp;"
+                    NewInner += "&emsp;&emsp;&emsp;&emsp;"
                 }
+            }
+            if (Lines[y].includes("{")) {
+                Depth++;
             }
             NewInner += Lines[y] + "\n";
         }

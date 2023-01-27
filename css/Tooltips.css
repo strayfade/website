@@ -14,7 +14,7 @@
 	padding-top: var(--tooltip-small-spacing);
 	padding-bottom: var(--tooltip-small-spacing);
 	margin-right: 3px;
-    color: var(--lighten-color);
+    color: var(--foreground-color);
 }
 
 .TooltipText {

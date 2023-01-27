@@ -64,7 +64,3 @@
 .FooterButton:hover {
     color: var(--accent-color);
 }
-
-.FooterAboveText {
-    margin: 0px;
-}

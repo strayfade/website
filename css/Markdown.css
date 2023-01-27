@@ -1,5 +1,11 @@
-p, div {
-    font-family: var(--display-font);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div {
     width: -moz-fit-content;
     width: fit-content;
 }

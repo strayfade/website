@@ -38,8 +38,8 @@ function GenerateShareSection(Locale, Filename) {
     </div>
 
     <div class="ShareButtonContainer ShareMaxWidth">
-    <a class="LinkNormal HoverAccentColor Spaced Monospace" href="https://github.com/Strayfade/Website/blob/main/posts/` + Filename + `" style="margin-left: auto;">View on GitHub</a>
-    <a class="LinkNormal HoverAccentColor Spaced Monospace" href="https://raw.githubusercontent.com/Strayfade/Website/main/posts/` + Filename + `">View Raw</a>
+    <a class="LinkNormal Spaced Monospace" href="https://github.com/Strayfade/Website/blob/main/posts/` + Filename + `" style="margin-left: auto;">View on GitHub</a>
+    <a class="LinkNormal Spaced Monospace" href="https://raw.githubusercontent.com/Strayfade/Website/main/posts/` + Filename + `">View Raw</a>
     </div>
     `
 

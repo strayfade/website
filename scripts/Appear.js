@@ -9,7 +9,8 @@ function PlaceEffectBoxes() {
     for (let x = 0; x < TagsToAffect.length; x++) {
         var Found = document.getElementsByTagName(TagsToAffect[x])
         for (let y = 0; y < Found.length; y++) {
-            HeaderElements.push(Found[y])
+            if (HeaderElements[x].parentNode.nodeName != "BLOCKQUOTE")
+                HeaderElements.push(Found[y])
         }
     }
     let EffectElements = [];

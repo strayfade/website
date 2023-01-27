@@ -28,7 +28,3 @@ window.addEventListener("load", async function() {
     }
     await SetLightMode(UseLightMode);
 })
-window.addEventListener("scroll", async function() {
-    document.getElementById("GlowOverlay").style.top = document.documentElement.scrollTop + "px";
-    document.getElementById("GlowOverlay").style.left = document.documentElement.scrollLeft + "px";
-})

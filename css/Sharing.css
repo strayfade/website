@@ -90,5 +90,12 @@
     margin-bottom: -5px;
     font-size: 15px;
     font-weight: normal;
-    text-decoration: underline;
+    text-decoration: none;
+    padding-bottom: 2px;
+    color: var(--foreground-color);
+    border-bottom: 1px solid var(--foreground-color);
+}
+.ShareMaxWidth a:hover {
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
 }

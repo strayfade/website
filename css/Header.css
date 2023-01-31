@@ -1,9 +1,6 @@
 .Header {
-    width: 100vw;
     height: 100px;
     color: var(--foreground-color);
-    position: absolute;
-    top: 0;
     margin: auto;
 }
 .HeaderInner {

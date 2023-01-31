@@ -103,7 +103,7 @@
     padding: 5px;
     padding-top: 3px;
     padding-bottom: 3px;
-    color: var(--foreground-color);
+    color: var(--lighten-color);
     background-color: var(--accent-color-transparent);
 }
 .ShareMaxWidth a:hover {

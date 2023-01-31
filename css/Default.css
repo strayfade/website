@@ -19,8 +19,7 @@ html {
 }
 body {
     margin: 0px;
-    margin-top: 80px;
-    padding-top: 25px;
+    padding-top: 10px;
     background: var(--darkmode-background);
     background-repeat: repeat;
     background-size: 5px;

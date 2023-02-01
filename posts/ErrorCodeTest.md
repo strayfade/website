@@ -2,8 +2,8 @@
     "title": "Error Code Test",
     "description": "Every error code page that can be shown",
     "author": "Noah",
-    "date": "08/31/2022",
-    "showTitle": true,
+    "date": "8/31/2022",
+    "showTitle": false,
     "indexed": false
 }
 # All Error Code Pages

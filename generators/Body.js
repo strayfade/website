@@ -136,7 +136,7 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
                                 <div class="ArticleIndexBox ArticlePinned">
                                 <div class="Flexbox">
                                 <h1 class="ArticleIndexBoxTitle FloatLeft">` + JSON.title + `</h1>
-                                <p class="ArticleIndexBoxDate FloatLeft">` + JSON.date + `</p>
+                                <p class="ArticleIndexBoxDate FloatLeft Monospace">` + JSON.date + `</p>
                                 </div>
                                 <p class="ArticleIndexBoxDescription">` + JSON.description + `</p>
                             `

@@ -7,7 +7,7 @@ const express = require('express')
 // Imported Functions
 const { Log } = require('./Log')
 const { SendError } = require('./Error')
-const PageBuilder = require("./generators/Assemble")
+const { GeneratePageCached } = require("./generators/Assemble")
 const { CollectAnalytics, GetAnalyticsFromRequest } = require('./Database')
 const { GetAvailableLanguages, GetLanguage, GetLanaguageShort, GetLanguagePath } = require('./Localization')
 
@@ -60,7 +60,7 @@ App.get('/robots.txt', (req, res) => {
 App.get('/', WrapAsync(async function (req, res) {
     const Article = await fs.readFile('./posts/_None.md', {encoding: "utf-8"})
     let Lang = require(GetLanguagePath(req))
-    let Page = await PageBuilder.GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Home, "")
+    let Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Home, "")
     res.send(Page)
 }))
 App.get('/:path', WrapAsync(async function (req, res) {
@@ -79,15 +79,15 @@ App.get('/:localization/:path', WrapAsync(async function (req, res) {
         switch (req.params.path) {
             case "R":
                 let Article = await fs.readFile('./posts/_None.md', {encoding: "utf-8"})
-                let Page = await PageBuilder.GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.R, "");
+                let Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.R, "");
                 res.send(Page)
                 break;
         }
     } else {
         let ArticlePath = './posts/' + req.params.path + '.md'
-        if (fsdir.existsSync(ArticlePath) && req.params.path != "_None") { // Page exists, load into Article
+        if (fsdir.existsSync(ArticlePath) && req.params.path != "_None") {
             let Article = await fs.readFile('./posts/' + req.params.path + '.md', {encoding: "utf-8"})
-            let Page = await PageBuilder.GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Dynamic, "", req.params.path + '.md')
+            let Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Dynamic, "", req.params.path + '.md')
             res.send(Page)
         } else {
             Log("Requested page not found (404): " + req.path)

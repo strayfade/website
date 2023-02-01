@@ -3,7 +3,7 @@
     "description": "Some interesting things about how my website was made",
     "tags": ["JavaScript", "NodeJS", "Web"],
     "author": "Noah",
-    "date": "08/31/2022",
+    "date": "8/31/2022",
     "showTitle": true,
     "indexed": true
 }

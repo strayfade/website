@@ -3,7 +3,7 @@
     "description": "Hacking into my school's private network",
     "tags": ["Hacking", "Linux", "WPA"],
     "author": "Noah",
-    "date": "11/08/2022",
+    "date": "11/8/2022",
     "showTitle": true,
     "indexed": true
 }

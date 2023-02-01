@@ -2,7 +2,7 @@
     "title": "Markdown Test",
     "description": "Test Markdown",
     "author": "Noah",
-    "date": "09/10/2022",
+    "date": "9/10/2022",
     "showTitle": true,
     "indexed": false
 }

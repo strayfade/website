@@ -60,11 +60,8 @@ blockquote {
 }
 
 @media only screen and (max-width: 800px) {
-    blockquote {
-        width: 82%;
-    }
-    pre {
-        width: 95%;
+    blockquote,pre {
+        width: 92%;
     }
     .CodeCopyButton {
         display: none;

@@ -50,6 +50,9 @@ App.get('/Production.css', WrapAsync(async function(req, res) {
 App.get('/Production.js', WrapAsync(async function(req, res) {
     res.sendFile(__dirname + "/Production/Production.js")
 }))
+App.get('/favicon.ico', WrapAsync(async function(req, res) {
+    res.sendFile(path.resolve(__dirname, 'assets/Icon.ico'))
+}))
 App.get('/robots.txt', WrapAsync(async function(req, res) {
     res.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
 }))

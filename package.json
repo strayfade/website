@@ -15,6 +15,7 @@
     "js-obfuscator": "^0.1.4",
     "markdown": "^0.5.0",
     "mongodb": "^4.13.0",
+    "prismjs": "^1.29.0",
     "request": "^2.88.2"
   }
 }

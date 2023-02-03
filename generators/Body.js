@@ -1,7 +1,9 @@
 const fs = require('fs/promises');
 const fsdir = require('fs');
 const Markdown = require("markdown").markdown;
-const { Localize } = require('./tools/LocaleTools')
+const { Localize } = require('./tools/LocaleTools');
+const { IncomingMessage } = require('http');
+const Prism = require('prismjs');
 
 function GenerateShareSection(Locale, Filename) {
     let Output = `
@@ -58,11 +60,30 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
     if (Custom != "") {
         MarkdownString += "\n\n" + Custom
     }
-    let MarkdownHtml = Markdown.toHTML(MarkdownString)
+    
+    let NewMarkdown = "";
+    let Lines = MarkdownString.split("\n");
+    let CurrentCode = "";
+    for (let i = 0; i < Lines.length; i++) {
+        if (Lines[i].startsWith("    ") || Lines[i].includes("    ")) {
+            CurrentCode += Lines[i]
+        }
+        else {
+            if (CurrentCode != "") {
+                NewMarkdown += Prism.highlight(CurrentCode, Prism.languages.javascript, 'javascript');
+                console.log(NewMarkdown)
+                CurrentCode = "";
+            }
+            else {
+                NewMarkdown += Lines[i] + "\n"
+            }
+        }
+    }
+    let MarkdownHtml = Markdown.toHTML(NewMarkdown)
 
     // Credit https://infusion.media/content-marketing/how-to-calculate-reading-time/
-    let MarkdownWorkCount = MarkdownString.split(" ").length
-    let ReadingTime = Math.ceil(MarkdownWorkCount / 200)
+    let MarkdownWordCount = MarkdownString.split(" ").length
+    let ReadingTime = Math.ceil(MarkdownWordCount / 200)
 
     Output = ""
 
@@ -205,6 +226,7 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
                 Output += `</div>`
             }
             Output += MarkdownHtml // Article MD
+            fs.writeFile("test.html", MarkdownHtml, {encoding: "utf-8"})
 
             if (Article.indexed)
                 Output += GenerateShareSection(Locale, Filename)

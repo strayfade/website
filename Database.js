@@ -5,7 +5,7 @@ let Client = null
 let Database = null
 let Collection = null
 if (Config.MongoDB.URI != "") {
-    Client = new MongoClient(Config.MongoDBL.URI);
+    Client = new MongoClient(Config.MongoDB.URI);
     Database = Client.db(Config.MongoDB.Name);
     Collection = Database.collection(Config.MongoDB.Collection);
 }

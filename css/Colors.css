@@ -5,8 +5,8 @@
     --background-color: rgb(10, 10, 10);
     --foreground-color: rgb(240, 240, 240);
     --accent-color-hue: 220;
-    --accent-color-saturation: 50%;
-    --accent-color-value: 50%;
+    --accent-color-saturation: 40%;
+    --accent-color-value: 70%;
     --accent-color: hsl(var(--accent-color-hue), var(--accent-color-saturation), var(--accent-color-value));
     --accent-color-transparent: hsla(var(--accent-color-hue), var(--accent-color-saturation), calc(var(--accent-color-value) - var(--transparency-percentage)), 0.5);
     --accent-color-very-transparent: hsla(var(--accent-color-hue), var(--accent-color-saturation), calc(var(--accent-color-value) - var(--transparency-percentage)), 0.2);

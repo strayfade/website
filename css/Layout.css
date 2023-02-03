@@ -29,3 +29,13 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
+@media only screen and (max-width: 960px) {
+    .HomepageArticleContainer {
+        padding: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: max-content;
+        margin-left: auto;
+        margin-right: auto;
+    } 
+}

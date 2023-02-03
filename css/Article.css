@@ -77,7 +77,6 @@
     margin-top: 10px;
     cursor: pointer;
     transition: var(--transition-length);
-    margin-left: 5px;
 }
 
 .ArticleIndexBox:hover {

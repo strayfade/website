@@ -165,18 +165,14 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
             Output += `
                 <div class="HeroBanner DisplayWidth">
                 <div class="HeroBannerInner">
-                <div class="Flexbox">
 
-                <div class="HeroBannerLeft">
                 <h1>About Me</h1>
                 <p><span>Hello! I am Noah, a </span><span data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</span><span>software developer (primarily web development) and musician from the United States.</span></p>
                 <p>You can send me an email at <a href="mailto:me@strayfade.com">me@strayfade.com</a> and I might read it, or you can shoot me a message on <a href="https://twitter.com/Strayfade">Twitter</a> or <a href="https://instagram.com/Strayfade">Instagram</a>.</p>
                 <p>My current Discord tag is <a href="https://discord.com/users/455790298082181120">Strayfade#8472</a>, although I do not usually respond to direct messages on Discord.</p>
-                </div>
             `
 
             Output += `
-                </div>
                 </div>
                 </div>
             `

@@ -1,7 +1,7 @@
 :root {
     --transparency-percentage: 20%;
     --lighten-color: rgb(240, 240, 240);
-    --darken-color: rgb(10, 10, 10);
+    --darken-color: rgb(15, 15, 15);
     --background-color: rgb(10, 10, 10);
     --foreground-color: rgb(240, 240, 240);
     --accent-color-hue: 220;

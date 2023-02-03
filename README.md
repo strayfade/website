@@ -12,7 +12,7 @@ Strayfade/Website is the public source code of [Strayfade.com](https://strayfade
 
 2. Clone this repository and `cd` into it:
 ```Bash
-git clone --recursive https://github.com/Strayfade/Website.git
+git clone https://github.com/Strayfade/Website.git
 cd Website
 ```
 

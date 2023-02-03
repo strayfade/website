@@ -19,10 +19,9 @@ const App = express()
 
 const Languages = GetAvailableLanguages()
 const AvailablePages = {
-    Home: "1",
-    R: "2",
-    Shop: "3",
-    Dynamic: "4",
+    Home: Symbol("Home"),
+    Dynamic: Symbol("Article"),
+    R: Symbol("R"),
     NonstandardPages: ["R"]
 }
 
@@ -32,7 +31,6 @@ const WrapAsync = (Function) => {
 
 // Basic Security
 require('./security/Security').Setup(App)
-App.disable('x-powered-by') // epic fingerprinting gone
 
 // Static Directories
 App.use('/cdn', express.static('cdn'))
@@ -46,15 +44,20 @@ const RequestBlocking = require("./middleware/RequestBlocking")
 App.use(RequestBlocking.Middleware)
 
 // Sources
-App.get('/Production.css', (req, res) => {
+App.get('/Production.css', WrapAsync(async function(req, res) {
     res.sendFile(__dirname + "/Production/Production.css")
-})
-App.get('/Production.js', (req, res) => {
+}))
+App.get('/Production.js', WrapAsync(async function(req, res) {
     res.sendFile(__dirname + "/Production/Production.js")
-})
-App.get('/robots.txt', (req, res) => {
+}))
+App.get('/robots.txt', WrapAsync(async function(req, res) {
     res.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
-})
+}))
+
+// CSP Violation Reporting
+App.get('/csp', WrapAsync(async function(req, res) {
+    console.log(req)
+}))
 
 // Default Routing
 App.get('/', WrapAsync(async function (req, res) {

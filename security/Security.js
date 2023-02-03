@@ -1,5 +1,5 @@
 // Implementation of https://expressjs.com/en/advanced/best-practice-security.html
-function Setup(app) {
+function Setup(App) {
 
     /* From https://expressjs.com/en/advanced/best-practice-security.html
     Helmet can help protect your app from some well-known web vulnerabilities by setting HTTP headers appropriately.
@@ -8,38 +8,40 @@ function Setup(app) {
     helmet.frameguard which sets the X-Frame-Options header. This provides clickjacking protection.
     */
 
-    /*
     const Helmet = require("helmet")
-    app.use(Helmet({
+    App.use(Helmet({
         contentSecurityPolicy: {
             directives: {
                 ...Helmet.contentSecurityPolicy.getDefaultDirectives(),
-                "script-src": ["'self'", "'unsafe-inline'"], // Allow inline scripts
-                "script-src-attr": null // Fixes errors in unsupported browsers (I'm looking at you, Firefox)
+                "script-src": ["'self'", "'unsafe-inline'"],
+                "script-src-attr": null // Fixes errors in some browsers (I'm looking at you, Firefox)
             },
         },
     }))
-    */
 
     /* From https://expressjs.com/en/advanced/best-practice-security.html
     Reduce Fingerprinting
     By default, Express.js sends the X-Powered-By response header banner. This can be disabled using the app.disable() method:
     */
-    app.disable("x-powered-by")
+    App.disable("x-powered-by")
 
     /* From https://expressjs.com/en/advanced/best-practice-security.html
     Don’t use the default session cookie name
     Using the default session cookie name can open your app to attacks. The security issue posed is similar to X-Powered-By: a potential attacker can use it to fingerprint the server and target attacks accordingly.
     */
     const session = require("express-session")
-    app.set("trust proxy", 1)
-    app.use(session({
-        secret: require("./Utilities").RandomStringWithLength(32),
-        name: "sessionId",
-        resave: true,
+    App.set("trust proxy", 1)
+    App.use(session({
+        secret: require('./Utilities').RandomStringWithLength(32),
+        resave: false,
         saveUninitialized: true,
-        sameSite: "strict"
-    }))
+        cookie: {
+            secure: true,
+            httpOnly: false,
+            sameSite: 'none',
+            maxAge: 60 * 60 * 24 * 1000
+        }
+    }));
 }
 
 module.exports = { Setup }

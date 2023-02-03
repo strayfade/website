@@ -54,11 +54,6 @@ App.get('/robots.txt', WrapAsync(async function(req, res) {
     res.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
 }))
 
-// CSP Violation Reporting
-App.get('/csp', WrapAsync(async function(req, res) {
-    console.log(req)
-}))
-
 // Default Routing
 App.get('/', WrapAsync(async function (req, res) {
     const Article = await fs.readFile('./posts/_None.md', {encoding: "utf-8"})

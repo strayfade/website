@@ -11,7 +11,7 @@ const { GeneratePageCached } = require("./generators/Assemble")
 const { CollectAnalytics, GetAnalyticsFromRequest } = require('./Database')
 const { GetAvailableLanguages, GetLanguage, GetLanaguageShort, GetLanguagePath } = require('./Localization')
 
-// Import Webserver Config
+// Import Config
 const Config = require("./Config")
 
 // Create App
@@ -95,26 +95,9 @@ App.get('/:localization/:path', WrapAsync(async function (req, res) {
 }))
 
 // Error Handling Middleware
-function ErrorLogger(error, req, res, next) {
-    Log("ERROR: Internal Server [500]: " + error)
-    next(error)
-}
-
-async function ErrorHandler(error, req, res, next) {
-    if (error.type == 'redirect')
-        await SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, error.toString(), Languages);
-    else if (error.type == 'time-out')
-        await SendError(408, req, res, AvailablePages, AvailablePages.Dynamic, error.toString(), Languages);
-    else
-        next(error)
-}
-
-async function ErrorHandlerGeneric(error, req, res, next) {
-    await SendError(500, req, res, AvailablePages, AvailablePages.Dynamic, error, Languages);
-}
+const { ErrorLogger, ErrorHandler } = require('./middleware/ErrorHandling')
 App.use(ErrorLogger)
 App.use(ErrorHandler)
-App.use(ErrorHandlerGeneric)
 
 // Start Server
 var Port = process.env.PORT || Config.App.Port;

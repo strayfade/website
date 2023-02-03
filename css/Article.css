@@ -69,10 +69,11 @@
 }
 
 .ArticleIndexBox {
-    border-bottom: 2px solid var(--accent-color-transparent);
+    border-bottom: 4px solid var(--accent-color-transparent);
     padding: 10px;
     padding-left: 0px;
     padding-right: 0px;
+    padding-bottom: 20px;
     margin-bottom: 15px;
     margin-top: 10px;
     cursor: pointer;
@@ -87,28 +88,32 @@
     font-weight: bold;
     font-size: 35px;
     margin: 0px;
+    height: fit-content;
 }
 
 .ArticleIndexBoxDate {
     font-weight: normal;
     font-size: 15px;
-    margin: 0px;
     padding-left: 10px;
-    margin-top: 20px;
+    margin: 0px;
+    margin-top: 15px;
     opacity: 0.5;
+    height: fit-content;
 }
 
 .ArticleIndexBoxDescription {
     margin: 0px;
+    margin-top: -5px;
     font-weight: normal;
     font-size: 18px;
 }
 
 .ArticleTagContainer {
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 .ArticleTagContainerArticle {
+    margin-top: 20px;
     margin-left: 20px;
 }
 .ArticleTag {
@@ -130,13 +135,14 @@
 	padding-left: 12px;
 	padding-right: 12px;
 	margin: 10px;
+	margin-right: 0px;
+    margin-bottom: 0px;
 	transition: var(--transition-length);
 	font-size: 14px;
-	margin-right: 0px;
     border-bottom: 3px solid var(--accent-color);
     height: fit-content;
 }
 
 .ArticlePinned {
-    border-bottom: 4px solid var(--accent-color);
+    border-bottom: 4px solid var(--accent-color-transparent);
 }

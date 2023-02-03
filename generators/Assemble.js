@@ -65,8 +65,8 @@ const GeneratePage = async function (Article, Locale, AvailablePages, AvailableP
         <!DOCTYPE html>
         <html lang="` + Localize(Locale, "locale_title") + `">
         <head>` + HeadStr + `</head>
-        <body class="DisableAntialiasing">
-        <main class="EnableAntialiasing">
+        <body>
+        <main>
         ` + HeaderStr + `
         ` + BodyStr + `
         ` + FooterStr + `

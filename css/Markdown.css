@@ -36,7 +36,7 @@ code {
 pre code {
     border: 2px solid #1e1e1e;
     display: inline-block;
-    width: 95%;
+    width: 100%;
     padding: 15px;
 }
 
@@ -52,10 +52,11 @@ blockquote p {
 blockquote {
     border-left: 5px solid var(--accent-color);
     background-color: var(--accent-color-very-transparent);
-    margin-left: 10px;
     padding: 10px;
     padding-left: 15px;
-    width: 90%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media only screen and (max-width: 800px) {

@@ -45,7 +45,10 @@ function DecryptElements(Elements) {
                 for (let y = 0; y < SavedStrings[x].length; y++) {
                     let Index = Math.floor(Math.random() * ReplacementLetters.length);
                     const Adding = 10;
-                    if (y == i) {
+                    if (SavedStrings[x][y] == "\n") {
+                        NewString += "\n"
+                    }
+                    else if (y == i) {
                         NewString += "█"
                     }
                     else if (y < i) {

@@ -17,9 +17,6 @@ Every graphic shown on the entire site is made and displayed using **SVG**, or S
 
 The main reason for making this change was the un-optimized images on the last site. The 50x50px header logo was actually a 1080p image, and the banner shown on each page was 2560x1440, if I remember correctly. Having images is not always bad if they are optimized and loaded correctly, but I still prefer using SVG for the faster loading times.
 
-> **Correction**:
-> There actually are two more images; they are both 3x3px and are used for the background of the page (one for light mode, and one for dark mode).
-
 ### Maximum server-side, minimum client-side
 
 The last website loaded the `body` first, then used scripts to request the header and footer from different files. Although this allowed me to change the header on all of the website's pages at once, it was nowhere near fast, since extra requests had to be made to load the header and footer.
@@ -28,7 +25,9 @@ The last website loaded the `body` first, then used scripts to request the heade
 
 This also means that there are no static HTML files on the server!
 
-[Here is the perfect Lighthouse test score for the site](https://www.webpagetest.org/result/221101_AiDcYJ_24J/).
+> [Here](https://www.webpagetest.org/result/221101_AiDcYJ_24J/) is the perfect Lighthouse test score for the site. 
+> 
+> It's likely outdated now, but the site still performs relatively well.
 
 ### No inline styles
 

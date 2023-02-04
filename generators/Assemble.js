@@ -15,7 +15,6 @@ const AvailablePages = {
 
 let Cache = []
 const GeneratePageCached = async function (req, Article, Locale, AvailablePages, AvailablePageSelector, Custom = "", Filename) {
-    return GeneratePage(Article, Locale, AvailablePages, AvailablePageSelector, Custom, Filename)
     let ServeInfo = " (" + RequestInfo.RequestAnalytics.TotalRequestsServed + " served, " + RequestInfo.RequestAnalytics.TotalRequestsBlocked + " blocked)"
     let CacheObject = {
         A: Article,

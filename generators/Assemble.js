@@ -14,13 +14,14 @@ const AvailablePages = {
 }
 
 let Cache = []
-const GeneratePageCached = async function (req, Article, Locale, AvailablePageSelector, Custom = "", Filename) {
+const GeneratePageCached = async function (req, Article, Locale, AvailablePages, AvailablePageSelector, Custom = "", Filename) {
     let ServeInfo = " (" + RequestInfo.RequestAnalytics.TotalRequestsServed + " served, " + RequestInfo.RequestAnalytics.TotalRequestsBlocked + " blocked)"
     let CacheObject = {
         A: Article,
         B: Locale,
         C: AvailablePageSelector,
-        D: Custom
+        D: Custom,
+        E: Filename
     }
     let Found = {};
     for (var x = 0; x < Cache.length; x++) {
@@ -28,7 +29,9 @@ const GeneratePageCached = async function (req, Article, Locale, AvailablePageSe
             if (Cache[x].B == CacheObject.B) {
                 if (Cache[x].C == CacheObject.C) {
                     if (Cache[x].D == CacheObject.D) {
-                        Found = Cache[x]
+                        if (Cache[x].E == CacheObject.E) {
+                            Found = Cache[x]
+                        }
                     }
                 }
             }
@@ -36,13 +39,13 @@ const GeneratePageCached = async function (req, Article, Locale, AvailablePageSe
     }
     if (Found.A == Article) {
         Log("Found page in cache: " + req.url + ServeInfo)
-        return Found.E
+        return Found.F
     }
     else {
-        CacheObject.E = GeneratePage(Article, Locale, AvailablePageSelector, Custom, Filename);
+        CacheObject.F = GeneratePage(Article, Locale, AvailablePages, AvailablePageSelector, Custom, Filename);
         Cache.push(CacheObject)
         Log("Rendered page for cache: " + req.url + ServeInfo)
-        return CacheObject.E
+        return CacheObject.F
     }
 
 }
@@ -59,10 +62,10 @@ function CreateTooltips() {
     Output += "</div>"
     return Output;
 }
-const GeneratePage = async function (Article, Locale, AvailablePageSelector, Custom = "", Filename = "_None.md") {
+const GeneratePage = async function (Article, Locale, AvailablePages, AvailablePageSelector, Custom = "", Filename = "_None.md") {
     let HeadStr = await Head.GenerateHead(Article, Locale)
     let HeaderStr = await Header.GenerateHeader(Article, Locale, AvailablePageSelector == AvailablePages.Home)
-    let BodyStr = await Body.GenerateBody(Article, Locale, AvailablePageSelector, Custom, Filename)
+    let BodyStr = await Body.GenerateBody(Article, Locale, AvailablePages, AvailablePageSelector, Custom, Filename)
     let FooterStr = await Footer.GenerateFooter(Article, Locale)
 
     Output = `

@@ -5,7 +5,8 @@
     "author": "Noah",
     "date": "11/8/2022",
     "showTitle": true,
-    "indexed": true
+    "indexed": true,
+    "disableHighlighting": true
 }
 ### Disclaimer
 

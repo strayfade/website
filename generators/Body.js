@@ -80,7 +80,13 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
             }
         }
     }
-    let MarkdownHtml = Markdown.toHTML(NewMarkdown)
+    let MarkdownHtml = ""
+    if (Article.disableHighlighting) {
+        MarkdownHtml = Markdown.toHTML(MarkdownString);
+    }
+    else {
+        MarkdownHtml = Markdown.toHTML(NewMarkdown)
+    }
 
     // Credit https://infusion.media/content-marketing/how-to-calculate-reading-time/
     let MarkdownWordCount = MarkdownString.split(" ").length

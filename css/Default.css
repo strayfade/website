@@ -1,6 +1,6 @@
 :root {
-    --display-width: 75vw;
-    --display-width-inner: 75vw;
+    --display-width: 60vw;
+    --display-width-inner: 60vw;
     --display-font: Rajdhani, Arial, Helvetica, sans-serif;
     --display-font-code: monospace, Arial, Helvetica, sans-serif;
     --lightmode-background: var(--darken-color);

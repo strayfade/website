@@ -24,7 +24,7 @@ To begin coding, we will create a `NeuralNetwork` class, which holds values from
         V3(float) Weights;
     }
 
-> `V/V2/V3(T)` is just a wrapper for the std::vector object. For example, `V2(float)` is the same as `vector<vector<float>>`
+> `V/V2/V3(T)` is just a wrapper for the std::vector object.
 
 This class holds values for our input/output "neurons", biases, and weights. It also holds a vector containing our `Layers` layout, which defines how many neurons should be in each layer of the network. An example of this is `{ 2, 4, 2 }`, which has two input values and two output values, as well as a computation layer of 4 neurons.
 
@@ -132,21 +132,19 @@ AI has many uses in the scope of cheating, but we will be using it primarily to 
 
 For our network array (Step 1), we will create an array of 50 networks with the layers `{ 4, 12, 2 }`. This is because we will have four inputs (X/Y for the mouse's current position, and X/Y for where we want to move it), and two outputs (X/Y for an output location).
 
-    V<int> Layers = { 2, 12, 2 };
-    V<NeuralNetwork> Networks;
+    V(int) Layers = { 2, 12, 2 };
+    V(NeuralNetwork) Networks;
 	for (int i = 0; i < 50; i++) {
 		Networks.push_back(NeuralNetwork(Layers));
 	}
 
 Then, we will create inputs for the network like this:
 
-    // Get Mouse Location
-    POINT Pt;
+    POINT Pt; // Get Mouse Location
     GetCursorPos(&Pt);
 
-    // Create FNN Input
     Vec2 MouseTarget = { 200, 200 };
-    V<float> Input = { 0, 0, MouseTarget.x, MouseTarget.y };
+    V(float) Input = { 0, 0, MouseTarget.x, MouseTarget.y }; // Create FNN Input
     Input[0] = ((float)(Pt.x) / 1920) - 0.5f;
     Input[1] = ((float)(Pt.y) / 1080) - 0.5f;
 

@@ -30,14 +30,14 @@ code {
     padding-right: 3px;
     border-radius: 5px;
     display: inline-block;
-    white-space: pre-line;
 }
 
 pre code {
     border: 2px solid #1e1e1e;
-    display: inline-block;
-    width: 100%;
     padding: 15px;
+    padding-top: 12px;
+    padding-right: 15px;
+    overflow-x: scroll;
 }
 
 pre {
@@ -54,7 +54,6 @@ blockquote {
     background-color: var(--accent-color-very-transparent);
     padding: 10px;
     padding-left: 15px;
-    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }

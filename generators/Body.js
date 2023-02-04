@@ -82,14 +82,6 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
     }
     let MarkdownHtml = Markdown.toHTML(NewMarkdown)
 
-    // Markdown.toHTML escapes these characters, but we need them!
-    for (let i = 0; i < MarkdownHtml.length; i++) {
-        MarkdownHtml = MarkdownHtml.replace("&lt;", "<")
-        MarkdownHtml = MarkdownHtml.replace("&gt;", ">")
-        MarkdownHtml = MarkdownHtml.replace("&quot", "\"")
-        MarkdownHtml = MarkdownHtml.replace("\";", "\"")
-    }
-
     // Credit https://infusion.media/content-marketing/how-to-calculate-reading-time/
     let MarkdownWordCount = MarkdownString.split(" ").length
     let ReadingTime = Math.ceil(MarkdownWordCount / 200)
@@ -234,8 +226,18 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
                 }
                 Output += `</div>`
             }
+
+            // Markdown.toHTML escapes these characters, but we need them!
+            for (let i = 0; i < MarkdownHtml.length; i++) {
+                MarkdownHtml = MarkdownHtml.replace("&amp;lt;", "<")
+                MarkdownHtml = MarkdownHtml.replace("&amp;gt;", ">")
+                MarkdownHtml = MarkdownHtml.replace("&amp;quot;", "\"")
+                MarkdownHtml = MarkdownHtml.replace("&lt;", "<")
+                MarkdownHtml = MarkdownHtml.replace("&gt;", ">")
+                MarkdownHtml = MarkdownHtml.replace("&quot", "\"")
+                MarkdownHtml = MarkdownHtml.replace("\";", "\"")
+            }
             Output += MarkdownHtml // Article MD
-            fs.writeFile("test.html", MarkdownHtml, {encoding: "utf-8"})
 
             if (Article.indexed)
                 Output += GenerateShareSection(Locale, Filename)

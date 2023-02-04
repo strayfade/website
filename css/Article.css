@@ -1,13 +1,12 @@
 .ArticleHeader {
     margin-bottom: 30px;
     padding-bottom: 30px;
-    width: 70%;
+    width: 100%;
     border-bottom: 3px solid var(--accent-color);
     white-space: nowrap;
 }
 @media only screen and (max-width: 960px) {
     .ArticleHeader {
-        width: 100%;
         margin-left: auto;
         margin-right: auto;
         white-space: normal;

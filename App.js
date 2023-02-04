@@ -98,7 +98,13 @@ App.get('/:localization/:path', WrapAsync(async function (req, res) {
 }))
 
 // Error Handling Middleware
-const { ErrorLogger, ErrorHandler } = require('./middleware/ErrorHandling')
+async function ErrorLogger(error, req, res, next) {
+    Log("ERROR: " + error)
+    next(error)
+}
+async function ErrorHandler(error, req, res, next) {
+    await SendError(500, req, res, Pages, Pages.Dynamic, error, Languages);
+}
 App.use(ErrorLogger)
 App.use(ErrorHandler)
 

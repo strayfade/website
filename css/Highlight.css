@@ -1,6 +1,7 @@
 code {
     color: var(--foreground-color);
     background-color: var(--background-color);
+    filter: saturate(1.5)
 }
 pre code {
     display: block;

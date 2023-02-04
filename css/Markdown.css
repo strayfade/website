@@ -31,7 +31,6 @@ code {
     border-radius: 5px;
     display: inline-block;
     white-space: pre-line;
-    overflow-x: scroll;
 }
 
 pre code {

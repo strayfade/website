@@ -56,11 +56,13 @@ function CalculateAge() {
 async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelector, Custom, Filename) {
     Article = JSON.parse(Article2.split("}")[0] + "}")
     let MarkdownString = Article2.replace(Article2.split("}")[0] + "}", "")
+
     // Markdown
     if (Custom != "") {
         MarkdownString += "\n\n" + Custom
     }
     
+    // Highlights codeblocks one at a time
     let NewMarkdown = "";
     let Lines = MarkdownString.split("\n");
     let CurrentCode = "";
@@ -70,8 +72,7 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
         }
         else {
             if (CurrentCode != "") {
-                NewMarkdown += Prism.highlight(CurrentCode, Prism.languages.javascript, 'javascript');
-                console.log(NewMarkdown)
+                NewMarkdown += Prism.highlight(CurrentCode, Prism.languages.javascript, "javascript");
                 CurrentCode = "";
             }
             else {
@@ -80,6 +81,14 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
         }
     }
     let MarkdownHtml = Markdown.toHTML(NewMarkdown)
+
+    // Markdown.toHTML escapes these characters, but we need them!
+    for (let i = 0; i < MarkdownHtml.length; i++) {
+        MarkdownHtml = MarkdownHtml.replace("&lt;", "<")
+        MarkdownHtml = MarkdownHtml.replace("&gt;", ">")
+        MarkdownHtml = MarkdownHtml.replace("&quot", "\"")
+        MarkdownHtml = MarkdownHtml.replace("\";", "\"")
+    }
 
     // Credit https://infusion.media/content-marketing/how-to-calculate-reading-time/
     let MarkdownWordCount = MarkdownString.split(" ").length

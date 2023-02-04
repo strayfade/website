@@ -105,7 +105,7 @@ After this, we will write the `Forward` function, which is used to run the netwo
 
 At this point, it's worth talking about how feed-forward neural networks actually function. 
 
-"Training" our neural network involves the following steps:
+Training our neural network involves the following steps:
 
  1. Create an array of neural networks
  2. Slightly randomize the weights and biases in the network (performed using the `Mutate()` function)

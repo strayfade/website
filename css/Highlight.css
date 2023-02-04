@@ -6,8 +6,6 @@ code {
 pre code {
     display: block;
     overflow-x: auto;
-    color: var(--foreground-color);
-    background-color: var(--background-color);
 }
 pre,
 code {

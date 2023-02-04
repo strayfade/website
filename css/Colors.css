@@ -4,6 +4,7 @@
     --darken-color: rgb(15, 15, 15);
     --background-color: rgb(10, 10, 10);
     --foreground-color: rgb(240, 240, 240);
+    --codeblock-border-color: #252525;
     --accent-color-hue: 220;
     --accent-color-saturation: 40%;
     --accent-color-value: 70%;

@@ -1,0 +1,4 @@
+pre code {
+    scrollbar-color: var(--codeblock-border-color) var(--background-color);
+    scrollbar-width: thin;
+}

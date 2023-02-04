@@ -1,15 +1,16 @@
 code {
     color: var(--foreground-color);
     background-color: var(--background-color);
-    filter: saturate(1.5)
 }
 pre code {
     display: block;
     overflow-x: auto;
+    color: var(--lighten-color);
+    background-color: var(--darken-color);
+    filter: saturate(1.5);
 }
 pre,
 code {
-	color: #d4d4d4;
 	font-size: 13px;
 	text-shadow: none;
 	font-family: Menlo, Monaco, Consolas, "Andale Mono", "Ubuntu Mono", "Courier New", monospace;

@@ -5,6 +5,7 @@
     --background-color: rgb(10, 10, 10);
     --foreground-color: rgb(240, 240, 240);
     --codeblock-border-color: #252525;
+    --codeblock-border-color-hover: #4b4b4b;
     --accent-color-hue: 220;
     --accent-color-saturation: 40%;
     --accent-color-value: 70%;

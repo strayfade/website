@@ -37,7 +37,7 @@ pre code {
     padding: 15px;
     padding-top: 12px;
     padding-right: 15px;
-    overflow-x: scroll;
+    padding-bottom: 10px;
 }
 
 pre {

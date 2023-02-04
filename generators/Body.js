@@ -228,7 +228,8 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
             }
 
             // Markdown.toHTML escapes these characters, but we need them!
-            for (let i = 0; i < MarkdownHtml.length; i++) {
+            let Length = MarkdownHtml.split("lt;").length + MarkdownHtml.split("gt;").length;
+            for (let i = 0; i < Length; i++) {
                 MarkdownHtml = MarkdownHtml.replace("&amp;lt;", "<")
                 MarkdownHtml = MarkdownHtml.replace("&amp;gt;", ">")
                 MarkdownHtml = MarkdownHtml.replace("&amp;quot;", "\"")

@@ -5,8 +5,7 @@
     "author": "Noah",
     "date": "1/26/2023",
     "showTitle": true,
-    "indexed": true,
-    "pinned": true
+    "indexed": true
 }
 
 > *The source code for this project can be found at [Strayfade/FNN](https://github.com/Strayfade/FNN)*

@@ -36,8 +36,6 @@ pre code {
     border: 3px solid var(--codeblock-border-color);
     padding: 15px;
     padding-top: 12px;
-    padding-right: 15px;
-    padding-bottom: 10px;
 }
 
 pre {

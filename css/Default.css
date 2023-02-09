@@ -2,7 +2,7 @@
     --display-width: 60vw;
     --display-width-inner: 60vw;
     --display-font: Rajdhani, Arial, Helvetica, sans-serif;
-    --display-font-code: monospace, Arial, Helvetica, sans-serif;
+    --display-font-code: Roboto Mono, Arial, Helvetica, sans-serif;
     --lightmode-background: var(--darken-color);
     --darkmode-background: var(--lighten-color);
     --glow-text: 0px 0px 100px var(--accent-color-transparent);

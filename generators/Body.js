@@ -244,6 +244,7 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
                 MarkdownHtml = MarkdownHtml.replace("&lt;", "<")
                 MarkdownHtml = MarkdownHtml.replace("&gt;", ">")
                 MarkdownHtml = MarkdownHtml.replace("&quot", "\"")
+                MarkdownHtml = MarkdownHtml.replace("&amp;", "&")
                 MarkdownHtml = MarkdownHtml.replace("\";", "\"")
             }
             Output += MarkdownHtml // Article MD

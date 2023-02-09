@@ -4,6 +4,8 @@ const Markdown = require("markdown").markdown;
 const { Localize } = require('./tools/LocaleTools');
 const { IncomingMessage } = require('http');
 const Prism = require('prismjs');
+const loadLanguages = require('prismjs/components/');
+loadLanguages(['cpp']);
 
 function GenerateShareSection(Locale, Filename) {
     let Output = `
@@ -68,11 +70,11 @@ async function GenerateBody(Article2, Locale, AvailablePages, AvailablePageSelec
     let CurrentCode = "";
     for (let i = 0; i < Lines.length; i++) {
         if (Lines[i].startsWith("    ") || Lines[i].includes("    ")) {
-            CurrentCode += Lines[i]
+            CurrentCode += Lines[i] + "\n"
         }
         else {
             if (CurrentCode != "") {
-                NewMarkdown += Prism.highlight(CurrentCode, Prism.languages.javascript, "javascript");
+                NewMarkdown += Prism.highlight(CurrentCode, Prism.languages.cpp, "cpp");
                 CurrentCode = "";
             }
             else {

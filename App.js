@@ -103,7 +103,7 @@ async function ErrorLogger(error, req, res, next) {
     next(error)
 }
 async function ErrorHandler(error, req, res, next) {
-    await SendError(500, req, res, Pages, Pages.Dynamic, error, Languages);
+    await SendError(500, req, res, AvailablePages, AvailablePages.Dynamic, error, Languages);
 }
 App.use(ErrorLogger)
 App.use(ErrorHandler)

@@ -19,6 +19,11 @@
     border-top: 5px solid var(--accent-color);
     transition: var(--transition-length);
 }
+@media only screen and (max-width: 960px) {
+    .FooterInner {
+        padding-top: 15px;
+    }
+}
 
 .FooterText {
     width: 100%;

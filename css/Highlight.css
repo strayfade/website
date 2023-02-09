@@ -7,7 +7,6 @@ pre code {
     overflow-x: auto;
     color: var(--lighten-color);
     background-color: var(--darken-color);
-    filter: saturate(1.5);
 }
 pre,
 code {

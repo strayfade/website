@@ -3,6 +3,17 @@
     color: var(--foreground-color);
     margin: auto;
 }
+.MobileHeaderSpacing {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+@media only screen and (max-width: 960px) {
+    .MobileHeaderSpacing {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 .HeaderInner {
     display: flex;
     border-bottom: 5px solid var(--accent-color);
@@ -11,6 +22,13 @@
 .HeaderInner:hover {
     border-bottom: 5px solid var(--accent-color-transparent);
 }
+@media only screen and (max-width: 960px) {
+    .HeaderInner {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+}
+
 .HeaderObject {
     width: auto;
     height: 50px;

@@ -86,4 +86,4 @@ const GeneratePage = async function (Article, Locale, AvailablePages, AvailableP
     return Output
 }
 
-module.exports = { GeneratePageCached, AvailablePages }
+module.exports = { GeneratePageCached, GeneratePage, AvailablePages }

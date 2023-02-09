@@ -1,6 +1,6 @@
 {
     "title": "Markdown Test",
-    "description": "Test Markdown",
+    "description": "",
     "author": "Noah",
     "date": "9/10/2022",
     "showTitle": true,

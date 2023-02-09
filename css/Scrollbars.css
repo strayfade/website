@@ -1,9 +1,7 @@
 pre code {
-    scrollbar-color: var(--codeblock-border-color) var(--darken-color);
     scrollbar-width: thin;
 }
 pre code:hover {
-    scrollbar-color: var(codeblock-border-color-hover) var(--darken-color);
     scrollbar-width: thin;
 }
 

@@ -1,0 +1,8 @@
+blockquote {
+    margin-left: 0px;
+    padding-left: 20px;
+    border-left: 3px solid var(--accent-color);
+    border-left-width: 5px;
+    border-left-style: solid;
+    margin-right: 0px;
+}

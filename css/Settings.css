@@ -1,6 +1,9 @@
 :root {    
     --transparency-percentage: 20%;
+    --lighten-color: white;
+    --darken-color: black;
     --foreground-color: black;
+    --link-color: rgb(255, 255, 255);
     --accent-color-hue: 0;
     --accent-color-saturation: 100%;
     --accent-color-value: 50%;

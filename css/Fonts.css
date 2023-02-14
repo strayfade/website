@@ -58,6 +58,13 @@
     url(/fonts/CircularStd-BlackItalic.woff) format("woff");
 }
 
+@font-face {
+  font-family: Roboto Mono;
+  font-style: normal;
+  font-weight: normal;
+  src: url(/fonts/RobotoMono-Regular.woff) format("woff");
+}
+
 h1 {
   font-size: 60px;
 }

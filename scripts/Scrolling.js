@@ -1,26 +1,19 @@
+document.documentElement.style.overflow = "hidden";
 let PrevScrollDist = 0;
 let InTransition = false
 var SlideNum = 0;
 const MaxSlides = 3;
 const SlideIDs = ["Slide1", "Slide2", "Slide3"]
 const SlideContentIDs = ["SlideContent1", "SlideContent2", "SlideContent3"]
-window.addEventListener("wheel", async function (event) {
-  let ScrollUpdate = event.deltaY - PrevScrollDist
-  PrevScrollDist == event.deltaY;
-  if (Math.abs(ScrollUpdate) > 10) {
-    if (!InTransition) {
-      let NewSlideNum = SlideNum + ((ScrollUpdate > 0) ? 1 : -1);
-      if (NewSlideNum >= 0 && NewSlideNum < MaxSlides) {
-        InTransition = true;
-        SlideNum = NewSlideNum;
-        UpdateSlides(SlideNum)
-        await new Promise(r => setTimeout(r, 1000));
-        InTransition = false;
-      }
-    }
+
+function GoHome() {
+  if (window.location.pathname == "/" || !window.location.pathname) {
+    UpdateSlides(0)
   }
-});
-document.documentElement.style.overflow = "hidden";
+  else {
+    window.location.href = "/"
+  }
+}
 function UpdateSlides(SlideNumb) {
   SlideNum = SlideNumb;
   let Icons2 = document.getElementsByClassName("Footer")[0];
@@ -110,7 +103,7 @@ function UpdateSlides(SlideNumb) {
   })
 }
 
-var keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 function preventDefault(e) {
   e.preventDefault();
 }
@@ -122,19 +115,42 @@ function preventDefaultForScrollKeys(e) {
   }
 }
 
-// modern Chrome requires { passive: false } when adding event
-var supportsPassive = false;
-try {
-  window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-    get: function () { supportsPassive = true; }
-  }));
-} catch (e) { }
+if (window.location.pathname == "/" || !window.location.pathname) {
+  // modern Chrome requires { passive: false } when adding event
+  var supportsPassive = false;
+  try {
+    window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+      get: function () { supportsPassive = true; }
+    }));
+  } catch (e) { }
 
-var wheelOpt = supportsPassive ? { passive: false } : false;
-var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+  var wheelOpt = supportsPassive ? { passive: false } : false;
+  var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
-// call this to Disable
-window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
-window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
-window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+  // call this to Disable
+  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+
+  window.addEventListener("wheel", async function (event) {
+    let ScrollUpdate = event.deltaY - PrevScrollDist
+    PrevScrollDist == event.deltaY;
+    if (Math.abs(ScrollUpdate) > 10) {
+      if (!InTransition) {
+        let NewSlideNum = SlideNum + ((ScrollUpdate > 0) ? 1 : -1);
+        if (NewSlideNum >= 0 && NewSlideNum < MaxSlides) {
+          InTransition = true;
+          SlideNum = NewSlideNum;
+          UpdateSlides(SlideNum)
+          await new Promise(r => setTimeout(r, 1000));
+          InTransition = false;
+        }
+      }
+    }
+  });
+}
+else {
+  document.getElementsByClassName("SidebarScrollPercentage")[0].style.display = "none"
+  document.getElementsByClassName("SidebarScrollFill")[0].style.display = "none"
+}

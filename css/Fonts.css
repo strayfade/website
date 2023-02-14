@@ -1,27 +1,93 @@
 @font-face {
-    font-family: 'Rajdhani';
-    src: url('/fonts/Rajdhani-Bold.woff2') format('woff2'), url('/fonts/Rajdhani-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: Circular;
+  font-style: normal;
+  font-weight: 450;
+  src: local("Circular Std"), url(/fonts/CircularStd-Book.woff) format("woff");
 }
 
 @font-face {
-    font-family: 'Rajdhani';
-    src: url('/fonts/Rajdhani-Medium.woff2') format('woff2'), url('/fonts/Rajdhani-Medium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: Circular;
+  font-style: italic;
+  font-weight: 450;
+  src: local("Circular Std"),
+    url(/fonts/CircularStd-BookItalic.woff) format("woff");
 }
 
 @font-face {
-    font-family: 'Roboto Mono';
-    src: url('/fonts/RobotoMono-Regular.woff2') format('woff2'), url('/fonts/RobotoMono-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: Circular;
+  font-style: normal;
+  font-weight: 500;
+  src: local("Circular Std"), url(/fonts/CircularStd-Medium.woff) format("woff");
 }
 
-.Monospace {
-    font-family: var(--display-font-code);
+@font-face {
+  font-family: Circular;
+  font-style: italic;
+  font-weight: 500;
+  src: local("Circular Std"),
+    url(/fonts/CircularStd-MediumItalic.woff) format("woff");
+}
+
+@font-face {
+  font-family: Circular;
+  font-style: normal;
+  font-weight: 700;
+  src: local("Circular Std"), url(/fonts/CircularStd-Bold.woff) format("woff");
+}
+
+@font-face {
+  font-family: Circular;
+  font-style: italic;
+  font-weight: 700;
+  src: local("Circular Std"),
+    url(/fonts/CircularStd-BoldItalic.woff) format("woff");
+}
+
+@font-face {
+  font-family: Circular;
+  font-style: normal;
+  font-weight: 900;
+  src: local("Circular Std"), url(/fonts/CircularStd-Black.woff) format("woff");
+}
+
+@font-face {
+  font-family: Circular;
+  font-style: italic;
+  font-weight: 900;
+  src: local("Circular Std"),
+    url(/fonts/CircularStd-BlackItalic.woff) format("woff");
+}
+
+h1 {
+  font-size: 60px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+p {
+  font-size: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+em,
+strong {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }

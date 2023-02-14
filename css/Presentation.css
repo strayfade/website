@@ -1,0 +1,197 @@
+.Slide {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    top: 0;
+}
+
+.SlideContentHidden {
+    transition: 1.5s;
+    opacity: 0.0;
+    margin-left: 100vw;
+}
+.SlideContentVisible {
+    transition: 1.5s;
+    opacity: 1.0;
+    margin-left: 0vw;
+}
+.GradientContainer {
+    transition: 0.5s;
+}
+.SlideContentHidden .GradientContainer {
+    margin-left: -100vw;
+    opacity: 0.0;
+}
+.SlideContentVisible .GradientContainer {
+    margin-left: 0vw;
+    opacity: 1.0;
+}
+
+.SlideNotViewed {
+    transition: 1s;
+    margin-top: 100vh;
+}
+
+.SlideViewed {
+    transition: 1s;
+}
+
+.SlideVisible {
+    transition: 1s;
+    margin-top: 0vh;
+}
+
+.Slide .SlideInner {
+    margin-top: 15vw;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70vw;
+}
+@media screen and (max-width: 800px) {
+    .Slide .SlideInner {
+        width: 70vw;
+    }
+}
+
+rd,a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+.Author {
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0.5;
+}
+
+.Footer {
+    position: absolute;
+    text-align: center;
+    width: max-content;
+    bottom: 0px;
+    width: 100%;
+    pointer-events: none;
+    transition: 0.5s;
+    opacity: 0;
+}
+.Footer h3 {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 13px;
+    margin-bottom: 10px;
+    font-weight: normal;
+    opacity: 0.5;
+}
+
+.Sidebar {
+    width: 50px;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.SidebarScrollPercentage {
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+    border-radius: 2.5px;
+    width: 5px;
+    height: 15vw;
+    position: absolute;
+    left: 33px;
+    top: calc(50vh - 7.5vw);
+}
+.SidebarScrollFill {
+    transition: 2.0s;
+    background-color: var(--accent-color);
+    width: 100%;
+    height: 33.33%;
+    border-radius: 6px;
+}
+@media screen and (max-width: 800px) {
+    .SidebarScrollPercentage {
+        display: none;
+    }
+}
+.Icon {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.Coloring1 {
+    color: var(--foreground-color);    
+    fill: var(--foreground-color);    
+    transition: 0.5s;
+}
+.Coloring1:hover {
+    color: var(--accent-color);
+    fill: var(--accent-color);
+}
+.Coloring2 {
+    color: white;   
+    fill: white;    
+    transition: 0.5s;
+}
+.Coloring2:hover {
+    color: black;
+    fill: black;
+}
+.Coloring3 {
+    color: white;  
+    fill: white;  
+    transition: 0.5s;
+}
+.Coloring3:hover {
+    color: var(--accent-color);
+    fill: var(--accent-color);
+}
+
+.Header {
+    width: 50px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.Flexbox {
+    display: flex;
+    width: 100%;
+}
+
+.GridItem {
+    width: 50%;
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 0px;
+}
+.GridItem p {
+    font-size: 17px;
+}
+.GridItem h3 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+@media screen and (max-width: 800px) {
+    .Flexbox {
+        display: block;
+    }
+    .GridItem {
+        width: 100%;
+    }
+}
+
+.Icobox {
+    display: flex;
+    fill: white;
+    width: max-content;
+    padding-top: 5px;
+    padding-bottom: 1px;
+    border-bottom: 1.5px solid white;
+}
+.Icobox svg {
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    margin-left: 3px;
+}

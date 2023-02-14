@@ -1,0 +1,84 @@
+.Gr {
+  background: radial-gradient(
+    circle,
+    var(--accent-color-very-transparent) 0%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  position: absolute;
+  pointer-events: none;
+}
+.Gr-Plus {
+  background-image: url("/assets/Effect-Plus.svg");
+  background-repeat: repeat;
+  background-size: 30px;
+  position: absolute;
+  background-clip: padding-box;
+  background-origin: padding-box;
+  pointer-events: none;
+}
+.Gr-1 {
+  width: 75vw;
+  height: 75vw;
+  top: -50vw;
+  left: 0;
+}
+.Gr-2 {
+  width: 100vw;
+  height: 100vw;
+  top: 70%;
+  left: 40vw;
+}
+.Gr-3 {
+  width: 200vw;
+  height: 200vw;
+  top: 50vw;
+  left: -100vw;
+}
+.Gr-4 {
+  width: 15vw;
+  height: 15vw;
+  bottom: 100px;
+  right: 100px;
+}
+.Gr-5 {
+  width: 15vw;
+  height: 15vw;
+  top: 100px;
+  right: 100px;
+}
+.Gr-6 {
+  width: 15vw;
+  height: 15vw;
+  top: 100px;
+  left: calc(50vw - 25vw);
+  opacity: 0.25;
+}
+.Gr-7 {
+  width: 15vw;
+  height: 15vw;
+  top: 100px;
+  right: 100px;
+}
+.Gr-8 {
+  width: 25vw;
+  height: 15vw;
+  bottom: 100px;
+  left: 100px;
+  opacity: 0.25;
+}
+.Gr-9 {
+  width: 15vw;
+  height: 15vw;
+  bottom: 100px;
+  right: 100px;
+  filter: invert(1);
+  opacity: 0.25;
+}
+.Gr-10 {
+  width: 15vw;
+  height: 15vw;
+  top: 100px;
+  left: 100px;
+  opacity: 0.25;
+  filter: invert(1);
+}

@@ -1,7 +1,0 @@
-.HoverAccentColor {
-    transition: var(--transition-length);
-}
-.HoverAccentColor:hover {
-    color: var(--accent-color);
-    fill: var(--accent-color);
-}

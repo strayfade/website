@@ -7,6 +7,10 @@
     "showTitle": true,
     "indexed": true
 }
+### UPDATE
+
+> As of 2/14/2023, the "new" website that this article is referring to is not the current version. The version of **strayfade.com** discussed in this article is completely different than the current version. To see the old version, download it from [this](https://github.com/Strayfade/Website/tree/48a463ccbb64c59ec4f5dc9cbb690d05ea4b87b6) GitHub link.
+
 As you may have noticed, I decided to rewrite [strayfade.com](https://strayfade.com) to focus more on the usability and aesthetic aspects of the website.
 
 Here are some high points of the new website

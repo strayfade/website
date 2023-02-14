@@ -43,7 +43,7 @@
 }
 
 .Slide .SlideInner {
-    margin-top: 10vw;
+    margin-top: 8vw;
     margin-left: auto;
     margin-right: auto;
     width: 70vw;
@@ -163,7 +163,7 @@ rd,a {
 }
 
 .GridItem {
-    width: 50%;
+    width: 40%;
     padding-right: 40px;
     padding-left: 0px;
     padding-top: 20px;

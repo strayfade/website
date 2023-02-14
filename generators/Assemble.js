@@ -226,11 +226,11 @@ const GenerateBodyV2 = async function (
                                     Output += `
                                         <div class="GridItem">
                                         <a href="/` + Post.file.replace(".md", "") + `">
-                                            <span style="font-size: 14px; margin-top: 0px; color: black;">` + JSON.date + `</span><span style="font-size: 14px; margin-left: 5px;">Pinned</span>
+                                            <span style="font-size: 14px; margin-top: 0px; color: black;">` + JSON.date + `</span><span style="font-size: 14px; margin-left: 5px;">(Pinned)</span>
                                             <h3 style="margin-top: 0px; color: white; background-color: var(--accent-color); padding: 5px; width: max-content;">` + JSON.title + `</h3>
                                             <p style="margin-top: 0px; color: black;">` + JSON.description + `</p>`
                                             if (JSON.tags) {
-                                                Output += `<div class="ArticleTagContainer" style="margin-top: 8px;">`
+                                                Output += `<div class="ArticleTagContainer" style="margin-top: 4px;">`
                                                 for (var y = 0; y < JSON.tags.length; y++) {
                                                     Output += `<span class="ArticleTag">` + JSON.tags[y] + `</span>`
                                                 }
@@ -259,7 +259,7 @@ const GenerateBodyV2 = async function (
                                             <h3 style="margin-top: 0px; color: black;">` + JSON.title + `</h3>
                                             <p style="margin-top: 0px; color: black;">` + JSON.description + `</p>`
                                             if (JSON.tags) {
-                                                Output += `<div class="ArticleTagContainer" style="margin-top: 20px;">`
+                                                Output += `<div class="ArticleTagContainer" style="margin-top: 4px;">`
                                                 for (var y = 0; y < JSON.tags.length; y++) {
                                                     Output += `<span class="ArticleTag">` + JSON.tags[y] + `</span>`
                                                 }
@@ -292,7 +292,7 @@ const GenerateBodyV2 = async function (
                         <div class="Flexbox">
                             <div class="GridItem">
                                 <h3>Web Development</h3>
-                                <p>Full-stack web development building modern, dynamic interfaces and structured backend solutions.</p>
+                                <p>Full-stack web development building modern, dynamic interfaces and structured, secure backend solutions.</p>
                                 <div class="Icobox">
                                     <a class="Link" href="https://github.com/Strayfade/Website">Source Code
                                         <svg class="Link" style="margin-bottom: -4px; margin-left: -1px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 50 40"><path d="M22.5 34H14q-4.15 0-7.075-2.925T4 24q0-4.15 2.925-7.075T14 14h8.5v3H14q-2.9 0-4.95 2.05Q7 21.1 7 24q0 2.9 2.05 4.95Q11.1 31 14 31h8.5Zm-6.25-8.5v-3h15.5v3ZM25.5 34v-3H34q2.9 0 4.95-2.05Q41 26.9 41 24q0-2.9-2.05-4.95Q36.9 17 34 17h-8.5v-3H34q4.15 0 7.075 2.925T44 24q0 4.15-2.925 7.075T34 34Z"/></svg>

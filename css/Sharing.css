@@ -103,6 +103,7 @@
     color: var(--lighten-color);
     background-color: black;
     text-decoration: none;
+    transition: 0.5s;
 }
 .ShareMaxWidth a:hover {
     background-color: var(--accent-color);

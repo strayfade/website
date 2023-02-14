@@ -1,7 +1,7 @@
 .Gr {
   background: radial-gradient(
     circle,
-    var(--accent-color-very-transparent) 0%,
+    var(--accent-color-transparent) 0%,
     rgba(255, 255, 255, 0) 50%
   );
   position: absolute;

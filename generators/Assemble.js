@@ -329,6 +329,9 @@ const GenerateBodyV2 = async function (
                 <div class="Slide SlideNotViewed" id="Slide3" style="background-color: black"></div>
                 <div class="Slide SlideContentHidden" id="SlideContent3">
                     <div class="GradientContainer">
+                        <div class="Gr Gr-1"></div>
+                        <div class="Gr Gr-2"></div>
+                        <div class="Gr Gr-3"></div>
                         <div class="Gr-Plus Gr-9"></div>
                         <div class="Gr-Plus Gr-10"></div>
                     </div>

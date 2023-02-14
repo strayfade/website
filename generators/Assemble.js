@@ -188,7 +188,7 @@ const GenerateBodyV2 = async function (
                     <div class="SlideInner" style="color: black">
                         <p class="Author">Strayfade</p>
                         <h1>Portfolio</h1>
-                        <p>Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <rd>web development</rd>) and <rd>musician</rd> from the <rd>United States</rd></p>
+                        <p>Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <rd>web development</rd>) and <rd>music artist</rd> from the <rd>United States</rd></p>
                         <br>
                         <br>
                         <h3>Posts</h3>

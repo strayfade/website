@@ -193,9 +193,8 @@ const GenerateBodyV2 = async function (
                         <h1 class="Slide1 Slide1Visible">Portfolio</h1>
                         <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <rd>web development</rd>) and <rd>music artist</rd> from the <rd>United States</rd></p>
                         <br class="Slide1 Slide1Visible">
-                        <br class="Slide1 Slide1Visible">
                         <h3 class="Slide1 Slide1Visible">Posts</h3>
-                        
+                        <br class="Slide1 Slide1Visible">
                         `
 
                         // Index

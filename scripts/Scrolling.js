@@ -66,18 +66,20 @@ function UpdateSlides(SlideNumb) {
       for (let x = 0; x < Slide3Elements.length; x++) {
         Slide3Elements[x].classList.remove("Slide3Visible");
       }
-      function jsHello(i) {
+      function CalculateAge() {
+        var AgeDif = new Date(Date.now() - new Date(1131950100000));
+        return Math.abs(AgeDif.getUTCFullYear() - 1970);
+      }
+      function SetYearsCoded(i) {
         if (i < 0) return;
 
         setTimeout(function () {
-
           document.getElementById("Counter").innerHTML = (6 - i).toString() + "+"
-
-          jsHello(--i);
+          SetYearsCoded(--i);
 
         }, 200);
       }
-      jsHello(6);
+      SetYearsCoded(CalculateAge() - 11);
       break;
     case 2:
       document.documentElement.style.backgroundColor = "black"

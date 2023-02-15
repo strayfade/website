@@ -19,24 +19,28 @@ function GoHome() {
 function UpdateSlides(SlideNumb) {
   SlideNum = SlideNumb;
   let Icons2 = document.getElementsByClassName("Footer")[0];
+  let Icons3 = document.getElementsByClassName("Footer2")[0];
   switch (SlideNumb) {
     case 0:
       document.documentElement.style.backgroundColor = "white"
       document.getElementsByClassName("SidebarScrollPercentage")[0].style.backgroundColor = "rgba(0, 0, 0, 0.2)"
       document.getElementsByClassName("SidebarScrollFill")[0].style.backgroundColor = "var(--accent-color)"
       Icons2.style.opacity = "0.0"
+      Icons3.style.opacity = "1.0"
       break;
     case 1:
       document.documentElement.style.backgroundColor = "var(--accent-color)"
       document.getElementsByClassName("SidebarScrollPercentage")[0].style.backgroundColor = "rgba(0, 0, 0, 0.2)"
       document.getElementsByClassName("SidebarScrollFill")[0].style.backgroundColor = "rgba(255, 255, 255, 1)"
       Icons2.style.opacity = "0.0"
+      Icons3.style.opacity = "1.0"
       break;
     case 2:
       document.documentElement.style.backgroundColor = "black"
       document.getElementsByClassName("SidebarScrollPercentage")[0].style.backgroundColor = "rgba(255, 255, 255, 0.2)"
       document.getElementsByClassName("SidebarScrollFill")[0].style.backgroundColor = "rgba(255, 255, 255, 1)"
       Icons2.style.opacity = "1.0"
+      Icons3.style.opacity = "0.0"
       break;
   }
   document.getElementsByClassName("SidebarScrollFill")[0].style.height = (((SlideNum + 1) / MaxSlides) * 100) + "%"
@@ -50,6 +54,9 @@ function UpdateSlides(SlideNumb) {
         Icons2.classList.add("Coloring1")
         Icons2.classList.remove("Coloring2")
         Icons2.classList.remove("Coloring3")
+        Icons3.classList.add("Coloring1")
+        Icons3.classList.remove("Coloring2")
+        Icons3.classList.remove("Coloring3")
         break;
       case 1:
         Icons[i].classList.remove("Coloring1")
@@ -58,6 +65,9 @@ function UpdateSlides(SlideNumb) {
         Icons2.classList.remove("Coloring1")
         Icons2.classList.add("Coloring2")
         Icons2.classList.remove("Coloring3")
+        Icons3.classList.remove("Coloring1")
+        Icons3.classList.add("Coloring2")
+        Icons3.classList.remove("Coloring3")
         break;
       case 2:
         Icons[i].classList.remove("Coloring1")
@@ -66,6 +76,9 @@ function UpdateSlides(SlideNumb) {
         Icons2.classList.remove("Coloring1")
         Icons2.classList.remove("Coloring2")
         Icons2.classList.add("Coloring3")
+        Icons3.classList.remove("Coloring1")
+        Icons3.classList.remove("Coloring2")
+        Icons3.classList.add("Coloring3")
         break;
     }
   }

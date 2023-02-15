@@ -122,6 +122,9 @@ const GenerateFooter = function (
   Filename
 ) {
   return `
+        <div class="Footer2">
+            <h3>Scroll Down</h3>
+        </div>
         <div class="Footer">
             <h3>© Copyright 2023 Strayfade. All Rights Reserved.</h3>
         </div>

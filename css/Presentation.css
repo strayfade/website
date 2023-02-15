@@ -82,6 +82,24 @@ rd,a {
     font-weight: normal;
     opacity: 0.5;
 }
+.Footer2 {
+    position: absolute;
+    text-align: center;
+    width: max-content;
+    bottom: 0px;
+    width: 100%;
+    pointer-events: none;
+    transition: var(--transition-length);
+    opacity: 0;
+}
+.Footer2 h3 {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 13px;
+    margin-bottom: 10px;
+    font-weight: normal;
+    opacity: 0.5;
+}
 
 .Sidebar {
     width: 50px;

@@ -1,5 +1,3 @@
-document.querySelector(':root').style.setProperty('--transition-length', "1.0s");
-
 document.documentElement.style.overflow = "hidden";
 let PrevScrollDist = 0;
 let InTransition = false
@@ -158,3 +156,9 @@ else {
   document.getElementsByClassName("SidebarScrollPercentage")[0].style.display = "none"
   document.getElementsByClassName("SidebarScrollFill")[0].style.display = "none"
 }
+
+const EnableAnimations = async function() {
+  await new Promise(r => setTimeout(r, 250));
+  document.querySelector(':root').style.setProperty('--transition-length', "1.0s");
+}
+EnableAnimations()

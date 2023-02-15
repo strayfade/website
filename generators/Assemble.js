@@ -345,6 +345,14 @@ const GenerateBodyV2 = async function (
                         <p style="margin-top: 10px">My current Discord tag is <a href="https://discord.com/users/455790298082181120">Strayfade#8472</a>, although I do not usually respond to direct messages on Discord.</p>
                     </div>
                 </div>
+                <div class="MobileButton MobileButtonNext Coloring1" onclick="GoDown()" style="opacity: 1">
+                    <p>Next</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24 40 8 24l2.1-2.1 12.4 12.4V8h3v26.3l12.4-12.4L40 24Z"/></svg>
+                </div>
+                <div class="MobileButton MobileButtonPrev Coloring2" onclick="GoUp()" style="opacity: 0">
+                    <p>Previous</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M22.5 40V13.7L10.1 26.1 8 24 24 8l16 16-2.1 2.1-12.4-12.4V40Z"/></svg>
+                </div>
             `;
       break;
     case AvailablePages.Dynamic:

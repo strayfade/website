@@ -1,0 +1,12 @@
+.RemContainerContainer {
+    margin-top: 100px;
+}
+.RemContainer {
+    filter: invert(1);
+    color: transparent;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.2vh;
+    font-size: 1vh;
+}

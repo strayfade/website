@@ -412,18 +412,18 @@ const GenerateBodyV2 = async function (
                     <div class="Scrollable">
                         <br>
                         <br>
-                        <br>` + ((Custom == "" && Filename != null) ? `
+                        <br>` + (true ? `
                         <div class="Icobox">
                             <a class="Link" href="/" style="color: var(--accent-color);">
                                 <svg class="Link" style="margin-bottom: -4px; margin-left: -1px; fill: var(--accent-color);" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 50 40"><path xmlns="http://www.w3.org/2000/svg" d="M24 40 8 24 24 8l2.1 2.1-12.4 12.4H40v3H13.7l12.4 12.4Z"/></svg>
                                 Back
                             </a>
-                        </div>` : "") + `
+                        </div>` : ``) + (Article.showTitle ? (`
                         <h1 class="ArticleTitle">` + Article.title + `</h1>
                         <h4 style="margin-top: 0px">` + Article.description + `</h4>
-                        ` + ((Custom == "" && Filename != null) ? (`<p style="margin-top: 10px; padding-bottom: 30px; border-bottom: 3px solid black;">Written by ` + Article.author + `</p>`) : (`<a href="/" style="margin-top: 10px; padding-bottom: 30px;">Return to Homepage</a>`)) + ` 
+                        <p style="margin-top: 10px; padding-bottom: 30px; border-bottom: 3px solid black;">Written by ` + Article.author + `</p>`) : ``) + `
                         <br>
-                        ` + MarkdownHtml + ((Custom == "" && Filename != null) ? GenerateShareSection(Locale, Filename) : "") + `
+                        ` + MarkdownHtml + ((Custom == "" && Filename != null) ? (Article.showTitle ? GenerateShareSection(Locale, Filename) : ``) : ``) + `
                         <br>
                         <br>
                     </div>
@@ -431,6 +431,11 @@ const GenerateBodyV2 = async function (
             </div>
         `;
       break;
+      case AvailablePages.R:
+            Output += `<div class="RemContainerContainer">`
+            Output += await fs.readFile(__dirname.replace("generators", "assets") + "/Rem", {encoding: "utf-8"})
+            Output += `</div>`
+            break;
   }
   return Output + GenerateHeader() + GenerateFooter();
 };
@@ -461,7 +466,7 @@ const GeneratePage = async function (
         <head>` +
     HeadStr +
     `</head>
-        <body>
+        <body` + ((AvailablePageSelector == AvailablePages.R) ? ` style="filter:invert(1); background-color: black;"` : ``) + `>
         <main>
         ` +
     BodyStr +

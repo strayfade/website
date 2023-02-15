@@ -10,6 +10,7 @@ var ObfuscatorOptions = {
     replaceNames: true,
     variableExclusions: ['^_get_', '^_set_', '^_mtd_']
 };
+const Obfuscate = true;
 
 async function PackStylesheets() {
     Log("[BUILD] - Merging CSS files...")
@@ -49,15 +50,23 @@ async function PackScripts() {
         }
     }
 
-    fs.mkdir("./Production", (err) => { });
-    let p = __dirname + "/Production/Production.js";
-    fs.writeFileSync(p, Script, { recursive: true })
-    Log("[BUILD] - Finished file: " + p)
-    /*Obfuscator(Script, ObfuscatorOptions).then(function (obfuscated) {
-    
-    }, function (err) {
-        console.error(err);
-    });*/
+    if (Obfuscate) {
+        Obfuscator(Script, ObfuscatorOptions).then(function (obfuscated) {
+            let p = __dirname + "/Production/Production.js";
+            Log("[BUILD] - Obfuscated file: " + p)
+            fs.mkdir("./Production", (err) => { });
+            fs.writeFileSync(p, obfuscated, { recursive: true })
+
+            Log("[BUILD] - Finished file: " + p)
+        }, function (err) {
+            console.error(err);
+        });
+    }
+    else {
+        fs.mkdir("./Production", (err) => { });
+        let p = __dirname + "/Production/Production.js";
+        fs.writeFileSync(p, Script, { recursive: true })
+    }
 }
 
 PackStylesheets()

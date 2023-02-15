@@ -20,11 +20,11 @@
     transition: var(--transition-length);
 }
 .SlideContentHidden .GradientContainer {
-    margin-left: -100vw;
+    transform: translateX(100vw);
     opacity: 0.0;
 }
 .SlideContentVisible .GradientContainer {
-    margin-left: 0vw;
+    transform: translateX(0vw);
     opacity: 0.5;
 }
 

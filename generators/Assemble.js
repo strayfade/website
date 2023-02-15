@@ -190,11 +190,11 @@ const GenerateBodyV2 = async function (
                     </div>
                     <div class="SlideInner" style="color: black">
                         <p class="Author">Strayfade</p>
-                        <h1>Portfolio</h1>
-                        <p>Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <rd>web development</rd>) and <rd>music artist</rd> from the <rd>United States</rd></p>
-                        <br>
-                        <br>
-                        <h3>Posts</h3>
+                        <h1 class="Slide1 Slide1Visible">Portfolio</h1>
+                        <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <rd>web development</rd>) and <rd>music artist</rd> from the <rd>United States</rd></p>
+                        <br class="Slide1 Slide1Visible">
+                        <br class="Slide1 Slide1Visible">
+                        <h3 class="Slide1 Slide1Visible">Posts</h3>
                         
                         `
 
@@ -220,14 +220,14 @@ const GenerateBodyV2 = async function (
                         })
                         
                         let PostsOnLine = 0;
-                        Output += `<div class="Flexbox">`
+                        Output += `<div class="Flexbox Slide1 Slide1Visible">`
                         Posts.forEach(Post => {
                             if (Post.file.endsWith(".md") && Post.data.pinned) {
                                 let JSON = Post.data
                                 if (JSON.indexed) {
                                     PostsOnLine++;
                                     Output += `
-                                        <div class="GridItem">
+                                        <div class="GridItem Slide1 Slide1Visible">
                                         <a href="/` + Post.file.replace(".md", "") + `">
                                             <span style="font-size: 14px; margin-top: 0px; color: black;">` + JSON.date + `</span><span style="font-size: 14px; margin-left: 5px;">(Pinned)</span>
                                             <h3 style="margin-top: 0px; color: white; background-color: var(--accent-color); padding: 5px; width: max-content;">` + JSON.title + `</h3>
@@ -243,7 +243,7 @@ const GenerateBodyV2 = async function (
                                     `
                                     if (PostsOnLine > 1) {
                                         PostsOnLine = 0;
-                                        Output += `</div><div class="Flexbox">`
+                                        Output += `</div><div class="Flexbox Slide1 Slide1Visible">`
                                     }
                                     
                                 }
@@ -256,7 +256,7 @@ const GenerateBodyV2 = async function (
                                 if (JSON.indexed) {
                                     PostsOnLine++;
                                     Output += `
-                                        <div class="GridItem">
+                                        <div class="GridItem Slide1 Slide1Visible">
                                         <a href="/` + Post.file.replace(".md", "") + `">
                                             <p style="font-size: 14px; margin-top: 0px; color: black;">` + JSON.date + `</p>
                                             <h3 style="margin-top: 0px; color: black;">` + JSON.title + `</h3>
@@ -272,7 +272,7 @@ const GenerateBodyV2 = async function (
                                     `
                                     if (PostsOnLine > 1) {
                                         PostsOnLine = 0;
-                                        Output += `</div><div class="Flexbox">`
+                                        Output += `</div><div class="Flexbox Slide1 Slide1Visible">`
                                     }
                                     
                                 }
@@ -291,9 +291,11 @@ const GenerateBodyV2 = async function (
                     </div>
                     <div class="SlideInner" style="color: white">
                         <p class="Author">Experience</p>
-                        <h1>Projects</h1>
-                        <div class="Flexbox">
-                            <div class="GridItem">
+                        <h1 class="Slide2">Projects</h1>
+                        <br class="Slide2">
+                        <br class="Slide2">
+                        <div class="Flexbox Slide2">
+                            <div class="GridItem Slide2">
                                 <h3>Web Development</h3>
                                 <p>Full-stack web development building modern, dynamic interfaces and structured, secure backend solutions.</p>
                                 <div class="Icobox">
@@ -302,7 +304,7 @@ const GenerateBodyV2 = async function (
                                     </a>
                                 </div>
                             </div>
-                            <div class="GridItem">
+                            <div class="GridItem Slide2">
                                 <h3>Game Hacking</h3>
                                 <p>Reading/writing memory and creating user interfaces in C++ for cheats/exploits for video games such as Fortnite.</p>
                                 <div class="Icobox">
@@ -313,7 +315,7 @@ const GenerateBodyV2 = async function (
                             </div>
                         </div>
                         <div class="Flexbox">
-                            <div class="GridItem">
+                            <div class="GridItem Slide2">
                                 <h3>Neural Networks/AI</h3>
                                 <p>Created feed-forward neural network systems for task automation and experimentation.</p>
                                 <div class="Icobox">
@@ -322,7 +324,7 @@ const GenerateBodyV2 = async function (
                                     </a>
                                 </div>
                             </div>
-                            <div class="GridItem">
+                            <div class="GridItem Slide2">
                                 <h3>Authentication Backends</h3>
                                 <p>Created multiple program authentication solutions for distributing paid software with license keys.</p>
                             </div>
@@ -340,9 +342,9 @@ const GenerateBodyV2 = async function (
                     </div>
                     <div class="SlideInner" style="color: white">
                         <p class="Author">Connect</p>
-                        <h1>Contact Me</h1>
-                        <p>You can send me an email at <a href="mailto:me@strayfade.com">me@strayfade.com</a> and I might read it, or you can shoot me a message on <a href="https://twitter.com/Strayfade">Twitter</a> or <a href="https://instagram.com/strayfade">Instagram</a>.</p>
-                        <p style="margin-top: 10px">My current Discord tag is <a href="https://discord.com/users/455790298082181120">Strayfade#8472</a>, although I do not usually respond to direct messages on Discord.</p>
+                        <h1 class="Slide3">Contact Me</h1>
+                        <p class="Slide3">You can send me an email at <a href="mailto:me@strayfade.com">me@strayfade.com</a> and I might read it, or you can shoot me a message on <a href="https://twitter.com/Strayfade">Twitter</a> or <a href="https://instagram.com/strayfade">Instagram</a>.</p>
+                        <p class="Slide3" style="margin-top: 10px">My current Discord tag is <a href="https://discord.com/users/455790298082181120">Strayfade#8472</a>, although I do not usually respond to direct messages on Discord.</p>
                     </div>
                 </div>
                 <div class="MobileButton MobileButtonNext Coloring1" onclick="GoDown()" style="opacity: 1">

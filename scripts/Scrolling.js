@@ -27,6 +27,9 @@ function UpdateSlides(SlideNumb) {
   let Icons3 = document.getElementsByClassName("Footer2")[0];
   let Icons4 = document.getElementsByClassName("MobileButton")[0]; // Next
   let Icons5 = document.getElementsByClassName("MobileButton")[1]; // Previous
+  let Slide1Elements = document.getElementsByClassName("Slide1")
+  let Slide2Elements = document.getElementsByClassName("Slide2")
+  let Slide3Elements = document.getElementsByClassName("Slide3")
   switch (SlideNumb) {
     case 0:
       document.documentElement.style.backgroundColor = "white"
@@ -36,6 +39,15 @@ function UpdateSlides(SlideNumb) {
       Icons3.style.opacity = "1.0"
       Icons4.style.opacity = "1.0";
       Icons5.style.opacity = "0.0";
+      for (let x = 0; x < Slide1Elements.length; x++) {
+        Slide1Elements[x].classList.add("Slide1Visible");
+      }
+      for (let x = 0; x < Slide2Elements.length; x++) {
+        Slide2Elements[x].classList.remove("Slide2Visible");
+      }
+      for (let x = 0; x < Slide3Elements.length; x++) {
+        Slide3Elements[x].classList.remove("Slide3Visible");
+      }
       break;
     case 1:
       document.documentElement.style.backgroundColor = "var(--accent-color)"
@@ -45,6 +57,15 @@ function UpdateSlides(SlideNumb) {
       Icons3.style.opacity = "1.0"
       Icons4.style.opacity = "1.0";
       Icons5.style.opacity = "1.0";
+      for (let x = 0; x < Slide1Elements.length; x++) {
+        Slide1Elements[x].classList.remove("Slide1Visible");
+      }
+      for (let x = 0; x < Slide2Elements.length; x++) {
+        Slide2Elements[x].classList.add("Slide2Visible");
+      }
+      for (let x = 0; x < Slide3Elements.length; x++) {
+        Slide3Elements[x].classList.remove("Slide3Visible");
+      }
       break;
     case 2:
       document.documentElement.style.backgroundColor = "black"
@@ -54,6 +75,15 @@ function UpdateSlides(SlideNumb) {
       Icons3.style.opacity = "0.0"
       Icons4.style.opacity = "0.0";
       Icons5.style.opacity = "1.0";
+      for (let x = 0; x < Slide1Elements.length; x++) {
+        Slide1Elements[x].classList.remove("Slide1Visible");
+      }
+      for (let x = 0; x < Slide2Elements.length; x++) {
+        Slide2Elements[x].classList.remove("Slide2Visible");
+      }
+      for (let x = 0; x < Slide3Elements.length; x++) {
+        Slide3Elements[x].classList.add("Slide3Visible");
+      }
       break;
   }
   document.getElementsByClassName("SidebarScrollFill")[0].style.height = (((SlideNum + 1) / MaxSlides) * 100) + "%"

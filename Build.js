@@ -49,15 +49,15 @@ async function PackScripts() {
         }
     }
 
-    Obfuscator(Script, ObfuscatorOptions).then(function (obfuscated) {
-        fs.mkdir("./Production", (err) => { });
-        let p = __dirname + "/Production/Production.js";
-        fs.writeFileSync(p, obfuscated, { recursive: true })
+    fs.mkdir("./Production", (err) => { });
+    let p = __dirname + "/Production/Production.js";
+    fs.writeFileSync(p, Script, { recursive: true })
+    Log("[BUILD] - Finished file: " + p)
+    /*Obfuscator(Script, ObfuscatorOptions).then(function (obfuscated) {
     
-        Log("[BUILD] - Finished file: " + p)
     }, function (err) {
         console.error(err);
-    });
+    });*/
 }
 
 PackStylesheets()

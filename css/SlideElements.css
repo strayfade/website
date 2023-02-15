@@ -1,0 +1,13 @@
+.Slide1,.Slide2,.Slide3 {
+    transition: var(--transition-length);
+    padding-top: 50px;
+    opacity: 0.5;
+}
+.Slide1Visible,.Slide2Visible,.Slide3Visible {
+    padding-top: 0px;
+    opacity: 1;
+}
+
+.Slide2Visible {
+    padding-bottom: 0px;
+}

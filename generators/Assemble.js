@@ -290,7 +290,7 @@ const GenerateBodyV2 = async function (
                         <div class="Gr-Plus Gr-8"></div>
                     </div>
                     <div class="SlideInner" style="color: white">
-                        <p class="Author">Experience</p>
+                        <p class="Author"><span id="Counter">0+</span> years <span>coding</span></p></span>
                         <h1 class="Slide2">Projects</h1>
                         <br class="Slide2">
                         <br class="Slide2">

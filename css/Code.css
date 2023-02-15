@@ -23,7 +23,7 @@ code {
 pre code {
     display: block;
     overflow-x: auto;
-    color: var(--lighten-color);
+    color: #dfdfdf;
     background-color: var(--darken-color);
 }
 pre,

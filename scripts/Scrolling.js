@@ -66,6 +66,18 @@ function UpdateSlides(SlideNumb) {
       for (let x = 0; x < Slide3Elements.length; x++) {
         Slide3Elements[x].classList.remove("Slide3Visible");
       }
+      function jsHello(i) {
+        if (i < 0) return;
+
+        setTimeout(function () {
+
+          document.getElementById("Counter").innerHTML = (6 - i).toString() + "+"
+
+          jsHello(--i);
+
+        }, 200);
+      }
+      jsHello(6);
       break;
     case 2:
       document.documentElement.style.backgroundColor = "black"
@@ -230,7 +242,7 @@ else {
   document.getElementsByClassName("Footer2")[0].style.display = "none"
 }
 
-const EnableAnimations = async function() {
+const EnableAnimations = async function () {
   await new Promise(r => setTimeout(r, 250));
   document.querySelector(':root').style.setProperty('--transition-length', "1.0s");
 }

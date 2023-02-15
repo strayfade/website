@@ -226,6 +226,8 @@ if (window.location.pathname == "/" || !window.location.pathname) {
 else {
   document.getElementsByClassName("SidebarScrollPercentage")[0].style.display = "none"
   document.getElementsByClassName("SidebarScrollFill")[0].style.display = "none"
+  document.getElementsByClassName("Footer")[0].style.display = "none"
+  document.getElementsByClassName("Footer2")[0].style.display = "none"
 }
 
 const EnableAnimations = async function() {

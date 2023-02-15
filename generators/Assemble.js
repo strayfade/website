@@ -415,9 +415,9 @@ const GenerateBodyV2 = async function (
                         <br>
                         <h1 class="ArticleTitle">` + Article.title + `</h1>
                         <h4 style="margin-top: 0px">` + Article.description + `</h4>
-                        ` + ((Custom == "") ? (`<p style="margin-top: 10px; padding-bottom: 30px; border-bottom: 3px solid black;">Written by ` + Article.author + `</p>`) : "") + ` 
+                        ` + ((Custom == "" && Filename != null) ? (`<p style="margin-top: 10px; padding-bottom: 30px; border-bottom: 3px solid black;">Written by ` + Article.author + `</p>`) : (`<a href="/" style="margin-top: 10px; padding-bottom: 30px;">Return to Homepage</a>`)) + ` 
                         <br>
-                        ` + MarkdownHtml + ((Custom == "") ? GenerateShareSection(Locale, Filename) : "") + `
+                        ` + MarkdownHtml + ((Custom == "" && Filename != null) ? GenerateShareSection(Locale, Filename) : "") + `
                         <br>
                         <br>
                     </div>

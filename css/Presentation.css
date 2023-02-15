@@ -253,10 +253,11 @@ rd,a {
     font-size: 20px;
 }
 .Scrollable h1,h2,h3,h4,h5,h6 {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 .Scrollable p,li,em,strong {
     font-size: 15px;
+    margin-top: 2px;
 }
 
 .ArticleTitle {

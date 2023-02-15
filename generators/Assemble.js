@@ -122,7 +122,7 @@ const GenerateFooter = function (
   Filename
 ) {
   return `
-        <div class="Footer2">
+        <div class="Footer2 Coloring1">
             <h3>Scroll Down</h3>
         </div>
         <div class="Footer">

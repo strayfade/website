@@ -1,4 +1,5 @@
 :root {    
+    --transition-length: 0.0s;
     --transparency-percentage: 20%;
     --lighten-color: white;
     --darken-color: black;

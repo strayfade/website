@@ -38,7 +38,7 @@
     transition: var(--transition-length);
     border: 2px solid var(--accent-color-transparent);
     padding: 0px;
-    transition: 0.5s;
+    transition: var(--transition-length);
 }
 
 .ShareItem:hover {
@@ -103,7 +103,7 @@
     color: var(--lighten-color);
     background-color: black;
     text-decoration: none;
-    transition: 0.5s;
+    transition: var(--transition-length);
 }
 .ShareMaxWidth a:hover {
     background-color: var(--accent-color);

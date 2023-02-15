@@ -1,3 +1,5 @@
+document.querySelector(':root').style.setProperty('--transition-length', "1.0s");
+
 document.documentElement.style.overflow = "hidden";
 let PrevScrollDist = 0;
 let InTransition = false
@@ -5,6 +7,8 @@ var SlideNum = 0;
 const MaxSlides = 3;
 const SlideIDs = ["Slide1", "Slide2", "Slide3"]
 const SlideContentIDs = ["SlideContent1", "SlideContent2", "SlideContent3"]
+
+
 
 function GoHome() {
   if (window.location.pathname == "/" || !window.location.pathname) {

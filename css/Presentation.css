@@ -7,17 +7,17 @@
 }
 
 .SlideContentHidden {
-    transition: 1.5s;
+    transition: var(--transition-length);
     opacity: 0.0;
     margin-left: 100vw;
 }
 .SlideContentVisible {
-    transition: 1.5s;
+    transition: var(--transition-length);
     opacity: 1.0;
     margin-left: 0vw;
 }
 .GradientContainer {
-    transition: 0.5s;
+    transition: var(--transition-length);
 }
 .SlideContentHidden .GradientContainer {
     margin-left: -100vw;
@@ -29,16 +29,16 @@
 }
 
 .SlideNotViewed {
-    transition: 1s;
+    transition: var(--transition-length);
     margin-top: 100vh;
 }
 
 .SlideViewed {
-    transition: 1s;
+    transition: var(--transition-length);
 }
 
 .SlideVisible {
-    transition: 1s;
+    transition: var(--transition-length);
     margin-top: 0vh;
 }
 
@@ -71,7 +71,7 @@ rd,a {
     bottom: 0px;
     width: 100%;
     pointer-events: none;
-    transition: 0.5s;
+    transition: var(--transition-length);
     opacity: 0;
 }
 .Footer h3 {
@@ -92,7 +92,7 @@ rd,a {
 
 .SidebarScrollPercentage {
     background-color: rgba(0, 0, 0, 0.2);
-    transition: 0.5s;
+    transition: var(--transition-length);
     border-radius: 2.5px;
     width: 5px;
     height: 15vw;
@@ -101,7 +101,7 @@ rd,a {
     top: calc(50vh - 7.5vw);
 }
 .SidebarScrollFill {
-    transition: 2.0s;
+    transition: var(--transition-length);
     background-color: var(--accent-color);
     width: 100%;
     height: 33.33%;
@@ -125,7 +125,7 @@ rd,a {
 .Coloring1 {
     color: var(--foreground-color);    
     fill: var(--foreground-color);    
-    transition: 0.5s;
+    transition: var(--transition-length);
 }
 .Coloring1:hover {
     color: var(--accent-color);
@@ -134,7 +134,7 @@ rd,a {
 .Coloring2 {
     color: white;   
     fill: white;    
-    transition: 0.5s;
+    transition: var(--transition-length);
 }
 .Coloring2:hover {
     color: black;
@@ -143,7 +143,7 @@ rd,a {
 .Coloring3 {
     color: white;  
     fill: white;  
-    transition: 0.5s;
+    transition: var(--transition-length);
 }
 .Coloring3:hover {
     color: var(--accent-color);

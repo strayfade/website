@@ -1,280 +1,296 @@
 .Slide {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    opacity: 1;
-    top: 0;
+  position: absolute;
+  width: 100vw;
+  min-height: 100vh;
+  min-height: fill-available;
+  min-height: -webkit-fill-available;
+  opacity: 1;
+  top: 0;
 }
 
 .SlideContentHidden {
-    transition: var(--transition-length);
-    opacity: 0.0;
-    margin-left: 100vw;
+  transition: var(--transition-length);
+  opacity: 0;
+  margin-left: 100vw;
 }
 .SlideContentVisible {
-    transition: var(--transition-length);
-    opacity: 1.0;
-    margin-left: 0vw;
+  transition: var(--transition-length);
+  opacity: 1;
+  margin-left: 0vw;
 }
 .GradientContainer {
-    transition: var(--transition-length);
+  transition: var(--transition-length);
 }
 .SlideContentHidden .GradientContainer {
-    transform: translateX(100vw);
-    opacity: 0.0;
+  transform: translateX(100vw);
+  opacity: 0;
 }
 .SlideContentVisible .GradientContainer {
-    transform: translateX(0vw);
-    opacity: 0.5;
+  transform: translateX(0vw);
+  opacity: 0.5;
 }
 
 .SlideNotViewed {
-    transition: var(--transition-length);
-    margin-top: 100vh;
+  transition: var(--transition-length);
+  margin-top: 100vh;
 }
 
 .SlideViewed {
-    transition: var(--transition-length);
+  transition: var(--transition-length);
 }
 
 .SlideVisible {
-    transition: var(--transition-length);
-    margin-top: 0vh;
+  transition: var(--transition-length);
+  margin-top: 0vh;
 }
 
 .Slide .SlideInner {
-    margin-top: 8vw;
-    margin-left: auto;
-    margin-right: auto;
-    width: 70vw;
+  margin-top: 8vw;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70vw;
 }
 @media screen and (max-width: 800px) {
-    .Slide .SlideInner {
-        width: 70vw;
-    }
+  .Slide .SlideInner {
+    width: 70vw;
+  }
 }
 
-rd,a {
-    color: var(--accent-color);
-    text-decoration: none;
+rd,
+a {
+  color: var(--accent-color);
+  text-decoration: none;
 }
 .Author {
-    text-transform: uppercase;
-    font-weight: bold;
-    opacity: 0.5;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0.5;
 }
 
 .Footer {
-    position: absolute;
-    text-align: center;
-    width: max-content;
-    bottom: 0px;
-    width: 100%;
-    pointer-events: none;
-    transition: var(--transition-length);
-    opacity: 0;
+  position: absolute;
+  text-align: center;
+  width: max-content;
+  bottom: 0px;
+  width: 100%;
+  pointer-events: none;
+  transition: var(--transition-length);
+  opacity: 0;
 }
 .Footer h3 {
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 13px;
-    margin-bottom: 10px;
-    font-weight: normal;
-    opacity: 0.5;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: normal;
+  opacity: 0.5;
 }
 .Footer2 {
-    position: absolute;
-    text-align: center;
-    width: max-content;
-    bottom: 0px;
-    width: 100%;
-    pointer-events: none;
-    transition: var(--transition-length);
-    opacity: 0;
+  position: absolute;
+  text-align: center;
+  width: max-content;
+  bottom: 0px;
+  width: 100%;
+  pointer-events: none;
+  transition: var(--transition-length);
+  opacity: 0;
 }
 .Footer2 h3 {
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 13px;
-    margin-bottom: 10px;
-    font-weight: normal;
-    opacity: 0.5;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: normal;
+  opacity: 0.5;
 }
 
 .Sidebar {
-    width: 50px;
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
+  width: 50px;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
 }
 
 .SidebarScrollPercentage {
-    background-color: rgba(0, 0, 0, 0.2);
-    transition: var(--transition-length);
-    border-radius: 2.5px;
-    width: 5px;
-    height: 15vw;
-    position: absolute;
-    left: 33px;
-    top: calc(50vh - 7.5vw);
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: var(--transition-length);
+  border-radius: 2.5px;
+  width: 5px;
+  height: 15vw;
+  position: absolute;
+  left: 33px;
+  top: calc(50vh - 7.5vw);
 }
 .SidebarScrollFill {
-    transition: var(--transition-length);
-    background-color: var(--accent-color);
-    width: 100%;
-    height: 33.33%;
-    border-radius: 6px;
+  transition: var(--transition-length);
+  background-color: var(--accent-color);
+  width: 100%;
+  height: 33.33%;
+  border-radius: 6px;
 }
 @media screen and (max-width: 800px) {
-    .SidebarScrollPercentage {
-        display: none;
-    }
-    .Sidebar {
-        display: none;
-    }
+  .SidebarScrollPercentage {
+    display: none;
+  }
+  .Sidebar {
+    display: none;
+  }
 }
 .Icon {
-    width: 30px;
-    height: 30px;
-    padding: 10px;
-    cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .Coloring1 {
-    color: var(--foreground-color);    
-    fill: var(--foreground-color);    
-    transition: var(--transition-length);
+  color: var(--foreground-color);
+  fill: var(--foreground-color);
+  transition: var(--transition-length);
 }
 .Coloring1:hover {
-    color: var(--accent-color);
-    fill: var(--accent-color);
+  color: var(--accent-color);
+  fill: var(--accent-color);
 }
 .Coloring2 {
-    color: white;   
-    fill: white;    
-    transition: var(--transition-length);
+  color: white;
+  fill: white;
+  transition: var(--transition-length);
 }
 .Coloring2:hover {
-    color: black;
-    fill: black;
+  color: black;
+  fill: black;
 }
 .Coloring3 {
-    color: white;  
-    fill: white;  
-    transition: var(--transition-length);
+  color: white;
+  fill: white;
+  transition: var(--transition-length);
 }
 .Coloring3:hover {
-    color: var(--accent-color);
-    fill: var(--accent-color);
+  color: var(--accent-color);
+  fill: var(--accent-color);
 }
 
 .Header {
-    width: 50px;
-    position: absolute;
-    left: 10px;
-    top: 10px;
+  width: 50px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
 }
 
 .Flexbox {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .GridItem {
-    width: 40%;
-    padding-right: 40px;
-    padding-left: 0px;
-    padding-top: 20px;
-    padding-bottom: 50px;
+  width: 40%;
+  padding-right: 40px;
+  padding-left: 0px;
+  padding-top: 20px;
+  padding-bottom: 50px;
 }
 .GridItem p {
-    font-size: 17px;
+  font-size: 17px;
 }
 .GridItem h3 {
-    font-size: 22px;
-    margin-bottom: 5px;
+  font-size: 22px;
+  margin-bottom: 5px;
 }
 @media screen and (max-width: 800px) {
-    .Flexbox {
-        display: block;
-    }
-    .GridItem {
-        width: 100%;
-        padding-bottom: 0px;
-    }
-    .GridItem h3 {
-        font-size: 19px;
-    }
+  .Flexbox {
+    display: block;
+  }
+  .GridItem {
+    width: 100%;
+    padding-bottom: 0px;
+  }
+  .GridItem h3 {
+    font-size: 19px;
+  }
 }
 
 .Icobox {
-    display: flex;
-    fill: white;
-    width: max-content;
-    padding-top: 10px;
-    padding-bottom: 1px;
-    border-bottom: 1.5px solid var(--link-color);
+  display: flex;
+  fill: white;
+  width: max-content;
+  padding-top: 10px;
+  padding-bottom: 1px;
+  border-bottom: 1.5px solid var(--link-color);
 }
 .Icobox a {
-    font-size: 15px;
+  font-size: 15px;
 }
 .Icobox svg {
-    width: 18px;
-    height: 18px;
-    padding: 0px;
-    margin-left: 3px;
+  width: 18px;
+  height: 18px;
+  padding: 0px;
+  margin-left: 3px;
 }
-.Link, .Link:visited {
-    color: var(--link-color);
-    fill: var(--link-color);
+.Link,
+.Link:visited {
+  color: var(--link-color);
+  fill: var(--link-color);
 }
 
 .SlideInner p {
-    font-size: 16px;
-    margin-top: 20px;
+  font-size: 16px;
+  margin-top: 20px;
 }
 @media screen and (max-width: 800px) {
-    .SlideInner p {
-        font-size: 14px;
-        margin-top: 10px;
-    }
+  .SlideInner p {
+    font-size: 14px;
+    margin-top: 10px;
+  }
 }
 
 .Scrollable {
+  overflow-y: scroll;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20vw;
+  padding-right: 20vw;
+}
+
+.Scrollable h3 {
+  font-size: 20px;
+}
+.Scrollable h1,
+.Scrollable h2,
+.Scrollable h3,
+.Scrollable h4,
+.Scrollable h5,
+.Scrollable h6 {
+  margin-top: 30px;
+}
+.Scrollable p,
+li,
+em,
+strong {
+  font-size: 15px;
+  margin-top: 2px;
+}
+
+.ArticleTitle {
+  font-size: 60px;
+}
+
+@media screen and (max-width: 800px) {
+  .ArticleTitle {
+    font-size: 30px;
+  }
+
+  .Scrollable {
     overflow-y: scroll;
     height: 100vh;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 20vw;
-    padding-right: 20vw;
-}
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
 
-.Scrollable h3 {
-    font-size: 20px;
-}
-.Scrollable h1,h2,h3,h4,h5,h6 {
-    margin-top: 30px;
-}
-.Scrollable p,li,em,strong {
-    font-size: 15px;
-    margin-top: 2px;
-}
-
-.ArticleTitle {
-    font-size: 60px;
-}
-
-@media screen and (max-width: 800px) {
-    .ArticleTitle {
-        font-size: 30px;
-    }
-
-    .Scrollable {
-        overflow-y: scroll;
-        height: 100vh;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 10vw;
-        padding-right: 10vw;
-    }
+  .GridItem {
+    margin-bottom: 30px;
+  }
 }

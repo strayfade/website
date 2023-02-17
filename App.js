@@ -22,7 +22,8 @@ const AvailablePages = {
     Home: Symbol("Home"),
     Dynamic: Symbol("Article"),
     R: Symbol("R"),
-    NonstandardPages: ["R"]
+    UX: Symbol("UX"),
+    NonstandardPages: ["R", "UX"]
 }
 
 const WrapAsync = (Function) => {
@@ -75,12 +76,17 @@ App.get('/:localization/:path', WrapAsync(async function (req, res) {
     else 
         Lang = require(GetLanguagePath(req))
 
-    let IsNotArticle = AvailablePages.NonstandardPages.includes(req.params.path);
+    let IsNotArticle = AvailablePages.NonstandardPages.includes(req.params.path.toUpperCase());
     if (IsNotArticle) {
-        switch (req.params.path) {
+        switch (req.params.path.toUpperCase()) {
             case "R":
-                let Article = await fs.readFile('./posts/_None.md', {encoding: "utf-8"})
-                let Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.R, "");
+                var Article = await fs.readFile('./posts/_None.md', {encoding: "utf-8"})
+                var Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.R, "");
+                res.send(Page)
+                break;
+            case "UX":
+                var Article = await fs.readFile('./posts/UX.md', {encoding: "utf-8"})
+                var Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.UX, "");
                 res.send(Page)
                 break;
         }

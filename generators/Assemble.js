@@ -229,7 +229,7 @@ const GenerateBodyV2 = async function (
                                         <div class="GridItem Slide1 Slide1Visible">
                                         <a href="/` + Post.file.replace(".md", "") + `">
                                             <span style="font-size: 14px; margin-top: 0px; color: black;">` + JSON.date + `</span><span style="font-size: 14px; margin-left: 5px;">(Pinned)</span>
-                                            <h3 style="margin-top: 0px; color: white; background-color: var(--accent-color); padding: 5px; width: max-content;">` + JSON.title + `</h3>
+                                            <h3 style="margin-top: 5px; color: white; background-color: var(--accent-color); padding: 5px; padding-right: 7px; width: max-content;">` + JSON.title + `</h3>
                                             <p style="margin-top: 0px; color: black;">` + JSON.description + `</p>`
                                             if (JSON.tags) {
                                                 Output += `<div class="ArticleTagContainer" style="margin-top: 4px;">`
@@ -358,7 +358,7 @@ const GenerateBodyV2 = async function (
       break;
     case AvailablePages.Dynamic:
         Article = JSON.parse(Article2.split("}")[0] + "}");
-        let MarkdownString = Article2.replace(Article2.split("}")[0] + "}", "");
+        var MarkdownString = Article2.replace(Article2.split("}")[0] + "}", "");
 
         // Markdown
         if (Custom != "") {
@@ -366,9 +366,9 @@ const GenerateBodyV2 = async function (
         }
 
         // Highlights codeblocks one at a time
-        let NewMarkdown = "";
-        let Lines = MarkdownString.split("\n");
-        let CurrentCode = "";
+        var NewMarkdown = "";
+        var Lines = MarkdownString.split("\n");
+        var CurrentCode = "";
         for (let i = 0; i < Lines.length; i++) {
             if (Lines[i].startsWith("    ") || Lines[i].includes("    ")) {
                 CurrentCode += Lines[i] + "\n";
@@ -381,14 +381,14 @@ const GenerateBodyV2 = async function (
                 }
             }
         }
-        let MarkdownHtml = "";
+        var MarkdownHtml = "";
         if (Article.disableHighlighting) {
             MarkdownHtml = Markdown.toHTML(MarkdownString);
         } else {
             MarkdownHtml = Markdown.toHTML(NewMarkdown);
         }
         // Markdown.toHTML escapes these characters, but we need them!
-        let Length = MarkdownHtml.split("lt;").length + MarkdownHtml.split("gt;").length;
+        var Length = MarkdownHtml.split("lt;").length + MarkdownHtml.split("gt;").length;
         for (let i = 0; i < Length; i++) {
             MarkdownHtml = MarkdownHtml.replace("&amp;lt;", "<")
             MarkdownHtml = MarkdownHtml.replace("&amp;gt;", ">")
@@ -430,11 +430,85 @@ const GenerateBodyV2 = async function (
             </div>
         `;
       break;
-      case AvailablePages.R:
+    case AvailablePages.R:
             Output += `<div class="RemContainerContainer">`
             Output += await fs.readFile(__dirname.replace("generators", "assets") + "/Rem", {encoding: "utf-8"})
             Output += `</div>`
             break;
+    case AvailablePages.UX:
+        Article = JSON.parse(Article2.split("}")[0] + "}");
+        var MarkdownString = Article2.replace(Article2.split("}")[0] + "}", "");
+
+        // Markdown
+        if (Custom != "") {
+            MarkdownString += "\n\n" + Custom;
+        }
+
+        // Highlights codeblocks one at a time
+        var NewMarkdown = "";
+        var Lines = MarkdownString.split("\n");
+        var CurrentCode = "";
+        for (let i = 0; i < Lines.length; i++) {
+            if (Lines[i].startsWith("    ") || Lines[i].includes("    ")) {
+                CurrentCode += Lines[i] + "\n";
+            } else {
+                if (CurrentCode != "") {
+                    NewMarkdown += Prism.highlight(CurrentCode, Prism.languages.cpp, "cpp");
+                    CurrentCode = "";
+                } else {
+                    NewMarkdown += Lines[i] + "\n";
+                }
+            }
+        }
+        var MarkdownHtml = "";
+        if (Article.disableHighlighting) {
+            MarkdownHtml = Markdown.toHTML(MarkdownString);
+        } else {
+            MarkdownHtml = Markdown.toHTML(NewMarkdown);
+        }
+        // Markdown.toHTML escapes these characters, but we need them!
+        var Length = MarkdownHtml.split("lt;").length + MarkdownHtml.split("gt;").length;
+        for (let i = 0; i < Length; i++) {
+            MarkdownHtml = MarkdownHtml.replace("&amp;lt;", "<")
+            MarkdownHtml = MarkdownHtml.replace("&amp;gt;", ">")
+            MarkdownHtml = MarkdownHtml.replace("&amp;quot;", "\"")
+            MarkdownHtml = MarkdownHtml.replace("&lt;", "<")
+            MarkdownHtml = MarkdownHtml.replace("&gt;", ">")
+            MarkdownHtml = MarkdownHtml.replace("&quot", "\"")
+            MarkdownHtml = MarkdownHtml.replace("&amp;", "&")
+            MarkdownHtml = MarkdownHtml.replace("\";", "\"")
+        }
+        Output += `
+            <div class="Slide SlideVisible" id="Slide1" style="background-color: white"></div>
+            <div class="Slide SlideContentVisible" id="SlideContent1">
+                <div class="GradientContainer">
+                    <div class="Gr Gr-1"></div>
+                    <div class="Gr Gr-2"></div>
+                    <div class="Gr Gr-3"></div>
+                </div>
+                <div class="SlideInner" style="color: black; margin-top: 0px; width: 100vw;">
+                    <div class="Scrollable">
+                        <br id="PageTop">
+                        <br>
+                        <br>` + (true ? `
+                        <div class="Icobox">
+                            <a class="Link" href="/" style="color: var(--accent-color);">
+                                <svg class="Link" style="margin-bottom: -4px; margin-left: -1px; fill: var(--accent-color);" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 50 40"><path xmlns="http://www.w3.org/2000/svg" d="M24 40 8 24 24 8l2.1 2.1-12.4 12.4H40v3H13.7l12.4 12.4Z"/></svg>
+                                Back to Homepage
+                            </a>
+                        </div>` : ``) + (Article.showTitle ? (`
+                        <h1 class="ArticleTitle">` + Article.title + `</h1>
+                        <h4 style="margin-top: 0px">` + Article.description + `</h4>
+                        <p style="margin-top: 10px; padding-bottom: 30px; border-bottom: 3px solid black;">Written by <strong>` + Article.author + `</strong></p>`) : ``) + `
+                        <br>
+                        ` + MarkdownHtml + ((Custom == "" && Filename != null) ? (Article.showTitle ? GenerateShareSection(Locale, Filename) : ``) : ``) + `
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        `;
+        break;
   }
   return Output + GenerateHeader() + GenerateFooter();
 };

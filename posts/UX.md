@@ -12,6 +12,7 @@
 .BuyBox {
 width: 33.33%;
 padding: 20px;
+padding-bottom: 0px;
 }
 .FrameBox {
 width: 50%;
@@ -58,26 +59,34 @@ width: 100%;
 The highest-quality, most affordable, and most undetectable Fortnite cheat.
 
 <div style="display: flex; width: 100%; margin-top: 40px;">
-<div class="BuyBox">
+<a href="https://uxofficial.sellpass.io/products/one-day" class="BuyBox">
 <div class="BuyBoxInner" style="background-color: var(--accent-color); color: white;">
 <h3>1 Day</h3>
 <p>Purchase <strong>$8</strong></p>
-<em></em>
 </div>
-</div>
-<div class="BuyBox">
+</a>
+<a href="https://uxofficial.sellpass.io/products/one-week" class="BuyBox">
 <div class="BuyBoxInner" style="background-color: var(--accent-color); color: white;">
 <h3>1 Week</h3>
 <p>Purchase <strong>$25</strong></p>
-<em>55% Off*</em>
 </div>
-</div>
-<div class="BuyBox">
+</a>
+<a href="https://uxofficial.sellpass.io/products/one-month" class="BuyBox">
 <div class="BuyBoxInner" style="background-color: var(--accent-color); color: white;">
 <h3>1 Month</h3>
 <p>Purchase <strong>$75</strong></p>
-<em>25% Off**</em>
 </div>
+</a>
+</div>
+
+<div style="display: flex; width: 100%">
+<div class="BuyBox" style="padding: 0px">
+</div>
+<div class="BuyBox" style="padding: 0px">
+<em style="width: 100%; text-align: center; font-size: 12px; opacity: 0.5; display: inline-block;">55% Off*</em>
+</div>
+<div class="BuyBox" style="padding: 0px">
+<em style="width: 100%; text-align: center; font-size: 12px; opacity: 0.5; display: inline-block;">25% Off**</em>
 </div>
 </div>
 
@@ -85,7 +94,7 @@ The highest-quality, most affordable, and most undetectable Fortnite cheat.
 <div class="BuyBox" style="padding: 10px">
 <div class="BuyBoxInner">
 <h3 style="text-align: left;">Performance</h3>
-<p style="text-align: left;">UX runs extremely well, even on low-end hardware. Our development team has poured weeks into optimizing UX and making sure that everyone has fun using it.</p>
+<p style="text-align: left;">UX runs extremely well, even on low-end hardware. Our development team has poured weeks into optimizing UX and making sure that everyone has fun using it</p>
 </div>
 </div>
 <div class="BuyBox" style="padding: 10px">

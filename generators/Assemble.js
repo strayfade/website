@@ -282,7 +282,7 @@ const GenerateBodyV2 = async function (
 
         Output += `</div>
                 </div>
-                <div class="Slide SlideNotViewed" id="Slide2" style="background-color: var(--accent-color)"></div>
+                <div class="Slide SlideNotViewed" id="Slide2" style="background-color: var(--accent-color); height: 100vh;"></div>
                 <div class="Slide SlideContentHidden" id="SlideContent2">
                     <div class="GradientContainer">
                         <div class="Gr-Plus Gr-7"></div>
@@ -305,12 +305,7 @@ const GenerateBodyV2 = async function (
                             </div>
                             <div class="GridItem Slide2">
                                 <h3>Game Hacking</h3>
-                                <p>Reading/writing memory and creating user interfaces in C++ for cheats/exploits for video games such as Fortnite.</p>
-                                <div class="Icobox">
-                                    <a class="Link" href="https://discord.gg/pasters">Discord Server
-                                        <svg class="Link" style="margin-bottom: -4px; margin-left: -1px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 50 40"><path d="M22.5 34H14q-4.15 0-7.075-2.925T4 24q0-4.15 2.925-7.075T14 14h8.5v3H14q-2.9 0-4.95 2.05Q7 21.1 7 24q0 2.9 2.05 4.95Q11.1 31 14 31h8.5Zm-6.25-8.5v-3h15.5v3ZM25.5 34v-3H34q2.9 0 4.95-2.05Q41 26.9 41 24q0-2.9-2.05-4.95Q36.9 17 34 17h-8.5v-3H34q4.15 0 7.075 2.925T44 24q0 4.15-2.925 7.075T34 34Z"/></svg>
-                                    </a>
-                                </div>
+                                <p>Reading/writing memory and creating user interfaces in C++ for cheats/exploits for video games.</p>
                             </div>
                         </div>
                         <div class="Flexbox">

@@ -5,7 +5,7 @@
     "author": "Strayfade",
     "date": "2/16/2023",
     "showTitle": false,
-    "indexed": true,
+    "indexed": false,
     "pinned": true
 }
 <style>

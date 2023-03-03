@@ -7,7 +7,8 @@ const SlideIDs = ["Slide1", "Slide2", "Slide3"]
 const SlideContentIDs = ["SlideContent1", "SlideContent2", "SlideContent3"]
 
 function GoUp() {
-  UpdateSlides(SlideNum - 1)
+  if (SlideNum == 1 || SlideNum == 2)
+    UpdateSlides(SlideNum - 1)
 }
 function GoDown() {
   if (SlideNum == 0 || SlideNum == 1)

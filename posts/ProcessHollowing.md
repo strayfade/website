@@ -9,13 +9,13 @@
     "pinned": true
 }
 ### Introduction
-> Process hollowing is a technique to run executable, binary code, while disguised as a different process. It is mainly used by malware to replace the code of a running, trusted program with its own, making it very difficult to detect. Although its main use is to evade detection by anti-viruses, process hollowing also has a legitimate use.
->
+Process hollowing is a technique to run executable, binary code, while disguised as a different process. It is mainly used by malware to replace the code of a running, trusted program with its own, making it very difficult to detect. Although its main use is to evade detection by anti-viruses, process hollowing also has a legitimate use.
+
 > More information about process hollowing can be found at [https://attack.mitre.org/techniques/T1055/012/](https://attack.mitre.org/techniques/T1055/012/)
 
 We can use process hollowing to download and run an executable without reading or writing to the disk, which is very useful in preventing reverse-engineering of our code.
 
-### Downloading Binary Data
+### Downloading Binary
 We will use `WinHTTP` to download a file from the internet into a temporary buffer.
 
 First, we open an `HINTERNET` session object and initialize its connection to the domain our binaries are stored on.

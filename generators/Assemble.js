@@ -431,7 +431,6 @@ const GenerateBodyV2 = async function (
                         <h1 class="ArticleTitle">` + Article.title + `</h1>
                         <h4 style="margin-top: 0px">` + Article.description + `</h4>
                         <p style="margin-top: 10px; padding-bottom: 30px; border-bottom: 3px solid black;">Written by <strong>` + Article.author + `</strong></p>`) : ``) + `
-                        <br>
                         ` + MarkdownHtml + ((Custom == "" && Filename != null) ? (Article.showTitle ? GenerateShareSection(Locale, Filename) : ``) : ``) + `
                         <br>
                         <br>

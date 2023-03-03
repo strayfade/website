@@ -19,11 +19,11 @@
   transform: translateY(-100vh);
 }
 .SlideViewed .SVGBottom {
-  opacity: 0.25;
+  opacity: 0.65;
   transform: translateY(50vh);
 }
 .SlideVisible .SVGBottom {
-  opacity: 0.25;
+  opacity: 0.65;
   transform: translateY(-10vh);
 }
 
@@ -38,11 +38,11 @@
   transform: translateY(-100vh) scaleY(-100%);
 }
 .SlideViewed .SVGTop {
-  opacity: 0.25;
+  opacity: 0.65;
   transform: translateY(-30vh) scaleY(-100%);
 }
 .SlideVisible .SVGTop {
-  opacity: 0.25;
+  opacity: 0.65;
   transform: translateY(-10vh) scaleY(-100%);
 }
 

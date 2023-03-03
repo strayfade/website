@@ -48,6 +48,15 @@
   transform: translateY(-10vh) scaleY(-100%);
 }
 
+.MobileHidden {
+  display: block;
+}
+@media screen and (max-width: 960px) {
+  .MobileHidden {
+      display: none;
+  }
+}
+
 .SlideContentHidden {
   transition: var(--transition-length);
   opacity: 0;
@@ -105,6 +114,11 @@ a {
   text-transform: uppercase;
   font-weight: bold;
   opacity: 0.5;
+}
+@media screen and (max-width: 960px) {
+  .Author {
+    padding-top: 30px;
+  }
 }
 
 .Footer {

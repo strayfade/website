@@ -115,6 +115,7 @@ a {
   font-weight: bold;
   opacity: 0.5;
   padding-bottom: 20px;
+  font-weight: 300;
 }
 @media screen and (max-width: 960px) {
   .Author {

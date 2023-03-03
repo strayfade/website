@@ -238,9 +238,9 @@ const GenerateBodyV2 = async function (
                         Output += `
                                         <div class="GridItem Slide1 Slide1Visible">
                                         <a href="/` + Post.file.replace(".md", "") + `">
-                                            <span style="font-size: 14px; margin-top: 0px; color: black;">` + JSON.date + `</span><span style="font-size: 14px; margin-left: 5px;">(Pinned)</span>
+                                            <span style="font-size: 14px; margin-top: 0px; color: black;">` + JSON.date + `</span><span style="font-size: 14px; margin-left: 5px; font-weight: 300;">(Pinned)</span>
                                             <h3 style="margin-top: 5px; color: white; background-color: var(--accent-color); padding: 5px; padding-right: 7px; width: max-content;">` + JSON.title + `</h3>
-                                            <p style="margin-top: 0px; color: black;">` + JSON.description + `</p>`
+                                            <p style="margin-top: 0px; color: black; margin-bottom: 10px;">` + JSON.description + `</p>`
                         if (JSON.tags) {
                             Output += `<div class="ArticleTagContainer" style="margin-top: 4px;">`
                             for (var y = 0; y < JSON.tags.length; y++) {
@@ -268,8 +268,8 @@ const GenerateBodyV2 = async function (
                                         <div class="GridItem Slide1 Slide1Visible">
                                         <a href="/` + Post.file.replace(".md", "") + `">
                                             <p style="font-size: 14px; margin-top: 0px; color: black;">` + JSON.date + `</p>
-                                            <h3 style="margin-top: 0px; color: black;">` + JSON.title + `</h3>
-                                            <p style="margin-top: 0px; color: black;">` + JSON.description + `</p>`
+                                            <h3 style="margin-top: 5px; color: black;">` + JSON.title + `</h3>
+                                            <p style="margin-top: 0px; color: black; margin-bottom: 10px;">` + JSON.description + `</p>`
                         if (JSON.tags) {
                             Output += `<div class="ArticleTagContainer" style="margin-top: 4px;">`
                             for (var y = 0; y < JSON.tags.length; y++) {

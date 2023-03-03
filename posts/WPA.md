@@ -8,19 +8,18 @@
     "indexed": true,
     "disableHighlighting": true
 }
-### Disclaimer
 
 > **Do not try anything you see done here!** *Don't do as I say **or** as I do.*
 > 
-> WPA2-PSK "cracking", "hacking", or whatever you wish to call this is unethical, and in many cases even **illegal**. Make sure you have permission before you mess with networks (which I had).
+> WPA2-PSK "cracking", "hacking", or whatever you wish to call this is unethical, and in many cases **illegal**. Make sure you have permission before you mess with networks (which I had).
 
 ### *Why do you want access to the school's internet, anyways?*
 
 1. This network has every nearly every administrative device connected to it. Do I want to mess with all of that? No. Is it fun to look around and count how many printers a school really needs? Yes.
 2. For a kid studying cybersecurity, this is basically an end-goal. I'll be graduating in a year or two so I have to have as much fun as possible!
-3. If I get lucky, the security camera system will be connected to the same network instead of being closed-circuit. Watching what people are doing over the school's camera system is almost as fun as watching Netflix during 4th period.
+3. If I get lucky, the security camera system will be connected to the same network instead of being closed-circuit. Watching that would almost be as fun as not working during class.
 
-### So, how do we do all that?
+### How?
 
 Let me introduce you to the [aircrack-ng](https://www.aircrack-ng.org/) suite.
 

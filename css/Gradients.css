@@ -6,6 +6,20 @@
   );
   position: absolute;
   pointer-events: none;
+  width: 200vw;
+  height: 200vw;
+  animation-name: Shake; 
+  animation-duration: 20s; 
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+@keyframes Shake {
+  0% { transform: translate(0, 10vw) }
+  25% { transform: translate(10vw, 0) }
+  50% { transform: translate(0, -10vw) }
+  75% { transform: translate(-10vw, 0) }
+  100% { transform: translate(0vw, 10vw) }
 }
 .Gr-Plus {
   background-image: url("/assets/Effect-Plus.svg");
@@ -15,70 +29,51 @@
   background-clip: padding-box;
   background-origin: padding-box;
   pointer-events: none;
+  width: 150px;
+  height: 150px;
+  opacity: 0.25;
 }
 .Gr-1 {
-  width: 75vw;
-  height: 75vw;
-  top: -50vw;
-  left: 0;
+  top: -125vw;
+  left: -31vw;
 }
 .Gr-2 {
-  width: 100vw;
-  height: 100vw;
-  top: 70%;
-  left: 40vw;
+  top: 35vw;
+  left: -104vw;
 }
 .Gr-3 {
-  width: 200vw;
-  height: 200vw;
-  top: 50vw;
-  left: -100vw;
+  top: -10vw;
+  left: 13vw;
 }
 .Gr-4 {
-  width: 15vw;
-  height: 15vw;
-  bottom: 100px;
-  right: 100px;
+  bottom: -70vw;
+  left: 23vw;
 }
 .Gr-5 {
-  width: 15vw;
-  height: 15vw;
-  top: 100px;
-  right: 100px;
+  top: 37vw;
+  right: 3vw;
 }
 .Gr-6 {
-  width: 15vw;
-  height: 15vw;
-  top: 100px;
-  left: calc(50vw - 25vw);
-  opacity: 0.25;
+  top: 3vw;
+  right: 12vw;
 }
 .Gr-7 {
-  width: 15vw;
-  height: 15vw;
-  top: 100px;
-  right: 100px;
+  right: 10vw;
+  top: 21vw;
 }
 .Gr-8 {
-  width: 25vw;
-  height: 15vw;
-  bottom: 100px;
-  left: 100px;
-  opacity: 0.25;
+  top: 60vw;
+  left: 10vw;
 }
 .Gr-9 {
-  width: 15vw;
-  height: 15vw;
-  bottom: 100px;
-  right: 100px;
+  top: 27vw;
+  left: 7vw;
+  opacity: 0.1;
   filter: invert(1);
-  opacity: 0.25;
 }
 .Gr-10 {
-  width: 15vw;
-  height: 15vw;
-  top: 100px;
-  left: 100px;
-  opacity: 0.25;
+  top: 10vw;
+  right: 6vw;
+  opacity: 0.1;
   filter: invert(1);
 }

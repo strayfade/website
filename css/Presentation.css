@@ -8,6 +8,44 @@
   top: 0;
 }
 
+.SVGBottom {
+  position: absolute;
+  bottom: 0vh;
+  width: 100vw;
+  transition: var(--transition-length);
+}
+.SlideNotViewed .SVGBottom {
+  opacity: 0;
+  transform: translateY(-100vh);
+}
+.SlideViewed .SVGBottom {
+  opacity: 0.1;
+  transform: translateY(50vh);
+}
+.SlideVisible .SVGBottom {
+  opacity: 0.1;
+  transform: translateY(-10vh);
+}
+
+.SVGTop {
+  position: absolute;
+  top: 20vh;
+  width: 100vw;
+  transition: var(--transition-length);
+}
+.SlideNotViewed .SVGTop {
+  opacity: 0;
+  transform: translateY(-100vh) scaleY(-100%);
+}
+.SlideViewed .SVGTop {
+  opacity: 0.1;
+  transform: translateY(-30vh) scaleY(-100%);
+}
+.SlideVisible .SVGTop {
+  opacity: 0.1;
+  transform: translateY(-10vh) scaleY(-100%);
+}
+
 .SlideContentHidden {
   transition: var(--transition-length);
   opacity: 0;
@@ -22,11 +60,11 @@
   transition: var(--transition-length);
 }
 .SlideContentHidden .GradientContainer {
-  transform: translateX(100vw);
+  transform: translateY(-5vw) translateX(-100vw);
   opacity: 0;
 }
 .SlideContentVisible .GradientContainer {
-  transform: translateX(0vw);
+  transform: translateY(0vw) translateX(0vw);
   opacity: 0.5;
 }
 
@@ -89,20 +127,26 @@ a {
   position: absolute;
   text-align: center;
   width: max-content;
-  bottom: 0px;
+  bottom: 30px;
   width: 100%;
-  pointer-events: none;
   transition: var(--transition-length);
   opacity: 0;
 }
-.Footer2 h3 {
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 13px;
-  margin-bottom: 10px;
-  font-weight: normal;
-  opacity: 0.5;
+.Footer2 svg {
+  animation-name: DownArrow; 
+  animation-duration: 1s; 
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-delay: 3s;
+  cursor: pointer;
 }
+.Footer2 svg:hover {
+  opacity: 1.0;
+}
+@keyframes DownArrow {
+  0%, 100% {opacity: 1.0;}
+  50% {opacity: 0.5;}
+} 
 
 .Sidebar {
   width: 50px;
@@ -226,6 +270,7 @@ a {
   height: 18px;
   padding: 0px;
   margin-left: 3px;
+  position: inherit;
 }
 .Link,
 .Link:visited {

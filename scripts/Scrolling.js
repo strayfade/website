@@ -10,7 +10,8 @@ function GoUp() {
   UpdateSlides(SlideNum - 1)
 }
 function GoDown() {
-  UpdateSlides(SlideNum + 1)
+  if (SlideNum == 0 || SlideNum == 1)
+    UpdateSlides(SlideNum + 1)
 }
 
 function GoHome() {
@@ -37,6 +38,7 @@ function UpdateSlides(SlideNumb) {
       document.getElementsByClassName("SidebarScrollFill")[0].style.backgroundColor = "var(--accent-color)"
       Icons2.style.opacity = "0.0"
       Icons3.style.opacity = "1.0"
+      Icons3.style.pointerEvents = "all"
       Icons4.style.opacity = "1.0";
       Icons5.style.opacity = "0.0";
       for (let x = 0; x < Slide1Elements.length; x++) {
@@ -55,6 +57,7 @@ function UpdateSlides(SlideNumb) {
       document.getElementsByClassName("SidebarScrollFill")[0].style.backgroundColor = "rgba(255, 255, 255, 1)"
       Icons2.style.opacity = "0.0"
       Icons3.style.opacity = "1.0"
+      Icons3.style.pointerEvents = "all"
       Icons4.style.opacity = "1.0";
       Icons5.style.opacity = "1.0";
       for (let x = 0; x < Slide1Elements.length; x++) {
@@ -87,6 +90,7 @@ function UpdateSlides(SlideNumb) {
       document.getElementsByClassName("SidebarScrollFill")[0].style.backgroundColor = "rgba(255, 255, 255, 1)"
       Icons2.style.opacity = "1.0"
       Icons3.style.opacity = "0.0"
+      Icons3.style.pointerEvents = "none"
       Icons4.style.opacity = "0.0";
       Icons5.style.opacity = "1.0";
       for (let x = 0; x < Slide1Elements.length; x++) {

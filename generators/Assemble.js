@@ -134,7 +134,8 @@ const GenerateFooter = function (
             <svg onclick="GoDown()" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24 40 8 24l2.1-2.1 12.4 12.4V8h3v26.3l12.4-12.4L40 24Z"></path></svg>
         </div>
         <div class="Footer">
-            <p>Cached ` + GetCurrentDate() + `</p>
+            <p class="Line1">Made with ❤️ by Strayfade</p>
+            <p class="Line2">Page cached on ` + GetCurrentDate() + `</p>
             <h3>© Copyright 2023 Strayfade. All Rights Reserved.</h3>
         </div>
     `;
@@ -322,8 +323,8 @@ const GenerateBodyV2 = async function (
                         </div>
                         <div class="Flexbox">
                             <div class="GridItem Slide2">
-                                <h3>Neural Networks/AI</h3>
-                                <p>Created feed-forward neural network systems for task automation and experimentation from scratch in C++.</p>
+                                <h3>Neural Networks</h3>
+                                <p>Created feed-forward neural network/AI systems for task automation and experimentation from scratch in C++.</p>
                                 <div class="Icobox">
                                     <a class="Link" href="/FeedForward">Article
                                         <svg class="Link" style="margin-bottom: -4px; margin-left: -1px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 50 40"><path d="M22.5 34H14q-4.15 0-7.075-2.925T4 24q0-4.15 2.925-7.075T14 14h8.5v3H14q-2.9 0-4.95 2.05Q7 21.1 7 24q0 2.9 2.05 4.95Q11.1 31 14 31h8.5Zm-6.25-8.5v-3h15.5v3ZM25.5 34v-3H34q2.9 0 4.95-2.05Q41 26.9 41 24q0-2.9-2.05-4.95Q36.9 17 34 17h-8.5v-3H34q4.15 0 7.075 2.925T44 24q0 4.15-2.925 7.075T34 34Z"/></svg>

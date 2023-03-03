@@ -1,61 +1,73 @@
 @font-face {
-  font-family: Circular;
-  font-style: normal;
-  font-weight: 450;
-  src: local("Circular Std"), url(/fonts/CircularStd-Book.woff) format("woff");
-}
-
-@font-face {
-  font-family: Circular;
+  font-family: "Metropolis";
+  src: url("/fonts/Metropolis-BoldItalic.woff2") format("woff2"),
+    url("/fonts/Metropolis-BoldItalic.woff") format("woff");
+  font-weight: bold;
   font-style: italic;
-  font-weight: 450;
-  src: local("Circular Std"),
-    url(/fonts/CircularStd-BookItalic.woff) format("woff");
+  font-display: swap;
 }
 
 @font-face {
-  font-family: Circular;
-  font-style: normal;
+  font-family: "Metropolis";
+  src: url("/fonts/Metropolis-MediumItalic.woff2") format("woff2"),
+    url("/fonts/Metropolis-MediumItalic.woff") format("woff");
   font-weight: 500;
-  src: local("Circular Std"), url(/fonts/CircularStd-Medium.woff) format("woff");
+  font-style: italic;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: Circular;
-  font-style: italic;
+  font-family: "Metropolis";
+  src: url("/fonts/Metropolis-Light.woff2") format("woff2"),
+    url("/fonts/Metropolis-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Metropolis";
+  src: url("/fonts/Metropolis-Medium.woff2") format("woff2"),
+    url("/fonts/Metropolis-Medium.woff") format("woff");
   font-weight: 500;
-  src: local("Circular Std"),
-    url(/fonts/CircularStd-MediumItalic.woff) format("woff");
-}
-
-@font-face {
-  font-family: Circular;
   font-style: normal;
-  font-weight: 700;
-  src: local("Circular Std"), url(/fonts/CircularStd-Bold.woff) format("woff");
+  font-display: swap;
 }
 
 @font-face {
-  font-family: Circular;
+  font-family: "Metropolis";
+  src: url("/fonts/Metropolis-ThinItalic.woff2") format("woff2"),
+    url("/fonts/Metropolis-ThinItalic.woff") format("woff");
+  font-weight: 100;
   font-style: italic;
-  font-weight: 700;
-  src: local("Circular Std"),
-    url(/fonts/CircularStd-BoldItalic.woff) format("woff");
+  font-display: swap;
 }
 
 @font-face {
-  font-family: Circular;
+  font-family: "Metropolis";
+  src: url("/fonts/Metropolis-Bold.woff2") format("woff2"),
+    url("/fonts/Metropolis-Bold.woff") format("woff");
+  font-weight: bold;
   font-style: normal;
-  font-weight: 900;
-  src: local("Circular Std"), url(/fonts/CircularStd-Black.woff) format("woff");
+  font-display: swap;
 }
 
 @font-face {
-  font-family: Circular;
+  font-family: "Metropolis";
+  src: url("/fonts/Metropolis-Thin.woff2") format("woff2"),
+    url("/fonts/Metropolis-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Metropolis";
+  src: url("/fonts/Metropolis-LightItalic.woff2") format("woff2"),
+    url("/fonts/Metropolis-LightItalic.woff") format("woff");
+  font-weight: 300;
   font-style: italic;
-  font-weight: 900;
-  src: local("Circular Std"),
-    url(/fonts/CircularStd-BlackItalic.woff) format("woff");
+  font-display: swap;
 }
 
 @font-face {

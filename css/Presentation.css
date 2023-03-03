@@ -114,6 +114,7 @@ a {
   text-transform: uppercase;
   font-weight: bold;
   opacity: 0.5;
+  padding-bottom: 20px;
 }
 @media screen and (max-width: 960px) {
   .Author {
@@ -139,14 +140,26 @@ a {
   font-weight: normal;
   opacity: 0.5;
 }
-.Footer p {
+.Footer .Line1 {
   margin-left: auto;
   margin-right: auto;
   font-size: 13px;
   padding-bottom: 10px;
   opacity: 0.2;
   position: absolute;
-  right: 10px;
+  right: 15px;
+  bottom: 0px;
+  font-weight: normal;
+}
+.Footer .Line2 {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 13px;
+  padding-bottom: 10px;
+  opacity: 0.2;
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
   font-weight: 100;
 }
 .Footer2 {
@@ -154,9 +167,11 @@ a {
   text-align: center;
   width: max-content;
   bottom: 30px;
-  width: 100%;
+  width: 50vw;
   transition: var(--transition-length);
   opacity: 0;
+  left: 25vw;
+  right: 25vw;
 }
 .Footer2 svg {
   animation-name: DownArrow;

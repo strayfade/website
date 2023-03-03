@@ -13,6 +13,7 @@
   bottom: 0vh;
   width: 100vw;
   transition: var(--transition-length);
+  pointer-events: none;
 }
 .SlideNotViewed .SVGBottom {
   opacity: 0;
@@ -32,6 +33,7 @@
   top: 20vh;
   width: 100vw;
   transition: var(--transition-length);
+  pointer-events: none;
 }
 .SlideNotViewed .SVGTop {
   opacity: 0;

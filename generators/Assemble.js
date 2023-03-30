@@ -190,7 +190,7 @@ const GenerateBodyV2 = async function (
                 `
                 <div class="Slide SlideVisible" id="Slide1" style="background-color: white"></div>
                 <div class="Slide SlideContentVisible" id="SlideContent1">
-                    <div class="GradientContainer">
+                    <div class="GradientContainer UnaffectedDarkMode" style="filter: brightness(2)">
                         <div class="Gr Gr-1"></div>
                         <div class="Gr Gr-2"></div>
                         <div class="Gr Gr-3"></div>
@@ -201,7 +201,7 @@ const GenerateBodyV2 = async function (
                     <div class="SlideInner" style="color: black">
                         <p class="Author">Strayfade</p>
                         <h1 class="Slide1 Slide1Visible">Portfolio</h1>
-                        <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd>web development</rd></a> and C++) and <a href="https://open.spotify.com/artist/11sY1toC4XScZvVWw2BBCw"><rd>music artist</rd></a> from the United States</p>
+                        <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd class="UnaffectedDarkMode" data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd class="UnaffectedDarkMode">web development</rd></a> and C++) and <a href="https://open.spotify.com/artist/11sY1toC4XScZvVWw2BBCw"><rd class="UnaffectedDarkMode">music artist</rd></a> from the United States</p>
                         <br class="Slide1 Slide1Visible">
                         <h3 class="Slide1 Slide1Visible" style="padding-top: 20px">Posts</h3>
                         <br class="Slide1 Slide1Visible">
@@ -238,11 +238,11 @@ const GenerateBodyV2 = async function (
                         Output += `
                                         <div class="GridItem Slide1 Slide1Visible">
                                         <a href="/` + Post.file.replace(".md", "") + `">
-                                            <span style="font-size: 14px; margin-top: 0px; color: black;">` + JSON.date + `</span><span style="font-size: 14px; margin-left: 5px; font-weight: 300;">(Pinned)</span>
-                                            <h3 style="margin-top: 5px; color: white; background-color: var(--accent-color); padding: 5px; padding-right: 7px; width: max-content;">` + JSON.title + `</h3>
+                                            <span style="font-size: 14px; margin-top: 0px; color: black;">` + JSON.date + `</span><span class="UnaffectedDarkMode" style="font-size: 14px; margin-left: 5px; font-weight: 300;">(Pinned)</span>
+                                            <h3 class="UnaffectedDarkMode" style="margin-top: 5px; color: white; background-color: var(--accent-color); padding: 5px; padding-right: 7px; width: max-content;">` + JSON.title + `</h3>
                                             <p style="margin-top: 0px; color: black; margin-bottom: 10px;">` + JSON.description + `</p>`
                         if (JSON.tags) {
-                            Output += `<div class="ArticleTagContainer" style="margin-top: 4px;">`
+                            Output += `<div class="ArticleTagContainer" style="margin-top: 15px;">`
                             for (var y = 0; y < JSON.tags.length; y++) {
                                 Output += `<span class="ArticleTag">` + JSON.tags[y] + `</span>`
                             }

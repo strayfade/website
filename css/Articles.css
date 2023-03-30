@@ -2,11 +2,11 @@
   margin-right: 10px;
   background-color: transparent;
   font-size: 11px;
-  padding: 8px;
+  padding: 5px;
   padding-top: 5px;
   padding-bottom: 3px;
-  color: white;
-  filter: invert(1);
-  border: 2px solid white;
-  border-radius: 6px;
+  color: black;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-weight: bold;
 }

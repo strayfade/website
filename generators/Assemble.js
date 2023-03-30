@@ -168,8 +168,8 @@ const GenerateShareSection = function (Locale, Filename) {
     </div>
     </div>
     <div class="ShareButtonContainer ShareMaxWidth">
-    <a class="LinkNormal Spaced" href="https://github.com/Strayfade/Website/blob/main/posts/` + Filename + `" style="margin-left: auto;">View on GitHub</a>
-    <a class="LinkNormal Spaced SpacedMobile" href="https://raw.githubusercontent.com/Strayfade/Website/main/posts/` + Filename + `">View Raw</a>
+    <a class="LinkNormal Spaced ArticleTag" href="https://github.com/Strayfade/Website/blob/main/posts/` + Filename + `" style="margin-left: auto;">View on GitHub</a>
+    <a class="LinkNormal Spaced SpacedMobile ArticleTag" href="https://raw.githubusercontent.com/Strayfade/Website/main/posts/` + Filename + `">View Raw</a>
     </div>
     `
 

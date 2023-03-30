@@ -201,7 +201,7 @@ const GenerateBodyV2 = async function (
                     <div class="SlideInner" style="color: black">
                         <p class="Author">Strayfade</p>
                         <h1 class="Slide1 Slide1Visible">Portfolio</h1>
-                        <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd>web development</rd></a>) and <a href="https://open.spotify.com/artist/11sY1toC4XScZvVWw2BBCw"><rd>music artist</rd></a> from the United States</p>
+                        <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd>web development</rd></a> and C++) and <a href="https://open.spotify.com/artist/11sY1toC4XScZvVWw2BBCw"><rd>music artist</rd></a> from the United States</p>
                         <br class="Slide1 Slide1Visible">
                         <h3 class="Slide1 Slide1Visible" style="padding-top: 20px">Posts</h3>
                         <br class="Slide1 Slide1Visible">
@@ -410,6 +410,16 @@ const GenerateBodyV2 = async function (
                 MarkdownHtml = MarkdownHtml.replace("&amp;", "&")
                 MarkdownHtml = MarkdownHtml.replace("\";", "\"")
             }
+
+            let ArticleTags = ""
+            if (Article.tags) {
+                ArticleTags += `<div class="ArticleTagContainer" style="margin-top: 30px;">`
+                for (var y = 0; y < Article.tags.length; y++) {
+                    ArticleTags += `<span class="ArticleTag">` + Article.tags[y] + `</span>`
+                }
+                ArticleTags += `</div>`
+            }
+
             Output += `
             <div class="Slide SlideVisible" id="Slide1" style="background-color: white"></div>
             <div class="Slide SlideContentVisible" id="SlideContent1">
@@ -428,10 +438,10 @@ const GenerateBodyV2 = async function (
                                 <svg class="Link" style="margin-bottom: -4px; margin-left: -1px; fill: var(--accent-color);" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 50 40"><path xmlns="http://www.w3.org/2000/svg" d="M24 40 8 24 24 8l2.1 2.1-12.4 12.4H40v3H13.7l12.4 12.4Z"/></svg>
                                 Back
                             </a>
-                        </div>` : ``) + (Article.showTitle ? (`
-                        <h1 class="ArticleTitle">` + Article.title + `</h1>
+                        </div>` : ``) + (Article.showTitle ? (ArticleTags + `
+                        <h1 class="ArticleTitle" style="margin-top: 10px;">` + Article.title + `</h1>
                         <h4 style="margin-top: 0px">` + Article.description + `</h4>
-                        <p style="margin-top: 10px; padding-bottom: 30px; border-bottom: 3px solid black;">Written by <strong>` + Article.author + `</strong></p>`) : ``) + `
+                        <p style="margin-top: 10px; margin-bottom: 30px; padding-bottom: 30px; border-bottom: 3px solid black;">Written by <strong>` + Article.author + `</strong></p>`) : ``) + `
                         ` + MarkdownHtml + ((Custom == "" && Filename != null) ? (Article.showTitle ? GenerateShareSection(Locale, Filename) : ``) : ``) + `
                         <br>
                         <br>

@@ -1,9 +1,12 @@
 .ArticleTag {
-    margin-right: 10px;
-    background-color: black;
-    font-size: 13px;
-    padding: 8px;
-    padding-top: 5px;
-    padding-bottom: 3px;
-    color: white;
+  margin-right: 10px;
+  background-color: transparent;
+  font-size: 13px;
+  padding: 8px;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  color: white;
+  filter: invert(1);
+  border: 2px solid white;
+  border-radius: 6px;
 }

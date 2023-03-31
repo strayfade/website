@@ -9,6 +9,8 @@
     "disableHighlighting": true
 }
 
+### Introduction
+
 > **Do not try anything you see done here!** *Don't do as I say **or** as I do.*
 > 
 > WPA2-PSK "cracking", "hacking", or whatever you wish to call this is unethical, and in many cases **illegal**. Make sure you have permission before you mess with networks (which I had).

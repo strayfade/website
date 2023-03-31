@@ -6,6 +6,8 @@
     "showTitle": true,
     "indexed": false
 }
+
+### Introduction
 So, as many of you may already know, my YouTube channel and online presence has strayed away from game-hacking, and I have become increasingly interested in music instead. There are a few reasons for this. First off, I really like the creative power and non-toxic community that arises from me creating music. In my opinion, creating music and getting mostly positive feedback is much better than creating game-hacking videos and receiving feedback in the form of *"What is `xinput1_3` and why can't I inject into CSGO?"*
 
 I'm just kidding, of course, nobody writes comments with correct capitalization and punctuation.

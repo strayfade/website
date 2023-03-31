@@ -10,8 +10,6 @@
     "background": "linear-gradient(45deg, rgb(193,81,255) 0%, rgb(45,198,253) 100%);"
 }
 
-###
-
 ### What is deepaim?
 Deepaim is an undetectable aimbot that can be adapted and used with practically any video game in existence. It is currently in production and has been used/tested (and meets our performance requirements) in the following games:
 

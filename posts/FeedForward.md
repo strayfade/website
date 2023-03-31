@@ -8,6 +8,8 @@
     "indexed": true
 }
 
+### Introduction
+
 > *The source code for this project can be found at [Strayfade/FNN](https://github.com/Strayfade/FNN)*
 
 > Feed-forward Neural Networks (FNNs) are used to change data in an intelligent way, and they are very easy to set up and use. Although this article will be applying their use to evading simple anti-cheat detection, FNNs are an invaluable resource for automating complex systems and evaluating information.

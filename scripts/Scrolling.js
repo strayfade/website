@@ -35,7 +35,7 @@ function UpdateSlides(SlideNumb) {
   switch (SlideNumb) {
     case 0:
       document.documentElement.style.backgroundColor = "white"
-      document.getElementsByClassName("SidebarScrollPercentage")[0].style.backgroundColor = "rgba(0, 0, 0, 0.2)"
+      document.getElementsByClassName("SidebarScrollPercentage")[0].style.backgroundColor = "rgba(255, 255, 255, 0.2)"
       document.getElementsByClassName("SidebarScrollFill")[0].style.backgroundColor = "var(--accent-color)"
       Icons2.style.opacity = "0.0"
       Icons3.style.opacity = "1.0"
@@ -196,13 +196,13 @@ function UpdateSlides(SlideNumb) {
 }
 
 const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
-function preventDefault(e) {
+function PreventDefault(e) {
   e.preventDefault();
 }
 
-function preventDefaultForScrollKeys(e) {
+function PreventDefaultForScrollKeys(e) {
   if (keys[e.keyCode]) {
-    preventDefault(e);
+    PreventDefault(e);
     return false;
   }
 }
@@ -220,10 +220,10 @@ if (window.location.pathname == "/" || !window.location.pathname) {
   var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
   // call this to Disable
-  window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
-  window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-  window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
-  window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+  window.addEventListener('DOMMouseScroll', PreventDefault, false); // older FF
+  window.addEventListener(wheelEvent, PreventDefault, wheelOpt); // modern desktop
+  window.addEventListener('touchmove', PreventDefault, wheelOpt); // mobile
+  window.addEventListener('keydown', PreventDefaultForScrollKeys, false);
 
   window.addEventListener("wheel", async function (event) {
     let ScrollUpdate = event.deltaY - PrevScrollDist

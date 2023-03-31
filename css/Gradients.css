@@ -6,8 +6,8 @@
   );
   position: absolute;
   pointer-events: none;
-  width: 200vw;
-  height: 200vw;
+  width: 300vw;
+  height: 300vw;
   animation-name: Shake; 
   animation-duration: 20s; 
   animation-fill-mode: both;
@@ -31,7 +31,7 @@
   pointer-events: none;
   width: 150px;
   height: 150px;
-  opacity: 0.25;
+  opacity: 0.5;
 }
 .Gr-1 {
   top: -125vw;

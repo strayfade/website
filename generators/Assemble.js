@@ -183,7 +183,7 @@ const GenerateBodyV2 = async function (
         case AvailablePages.Home:
             Output +=
                 `
-                <div class="Slide SlideVisible" id="Slide1" style="background-color: white"></div>
+                <div class="Slide SlideVisible" id="Slide1" style="background-color: black"></div>
                 <div class="Slide SlideContentVisible" id="SlideContent1">
                     <div class="GradientContainer">
                         <div class="Gr Gr-1"></div>
@@ -193,7 +193,7 @@ const GenerateBodyV2 = async function (
                         <div class="Gr-Plus Gr-5"></div>
                         <div class="Gr-Plus Gr-6"></div>
                     </div>
-                    <div class="SlideInner" style="color: black">
+                    <div class="SlideInner" style="color: white">
                         <p class="Author">Strayfade</p>
                         <h1 class="Slide1 Slide1Visible">Portfolio</h1>
                         <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd>web development</rd></a>) and <a href="https://open.spotify.com/artist/11sY1toC4XScZvVWw2BBCw"><rd>music artist</rd></a> from the United States</p>
@@ -233,9 +233,9 @@ const GenerateBodyV2 = async function (
                         Output += `
                                         <div class="GridItem Slide1 Slide1Visible">
                                         <a href="/` + Post.file.replace(".md", "") + `">
-                                            <span style="font-size: 14px; margin-top: 0px; color: black;">` + JSON.date + `</span><span style="font-size: 14px; margin-left: 5px; font-weight: 300;">(Pinned)</span>
+                                            <span style="font-size: 14px; margin-top: 0px; color: white;">` + JSON.date + `</span><span style="font-size: 14px; margin-left: 5px; font-weight: 300;">(Pinned)</span>
                                             <h3 style="margin-top: 5px; color: white; background-color: var(--accent-color); padding: 5px; padding-right: 7px; width: max-content;">` + JSON.title + `</h3>
-                                            <p style="margin-top: 0px; color: black; margin-bottom: 10px;">` + JSON.description + `</p>`
+                                            <p style="margin-top: 0px; color: white; margin-bottom: 10px;">` + JSON.description + `</p>`
                         if (JSON.tags) {
                             Output += `<div class="ArticleTagContainer" style="margin-top: 4px;">`
                             for (var y = 0; y < JSON.tags.length; y++) {
@@ -262,9 +262,9 @@ const GenerateBodyV2 = async function (
                         Output += `
                                         <div class="GridItem Slide1 Slide1Visible">
                                         <a href="/` + Post.file.replace(".md", "") + `">
-                                            <p style="font-size: 14px; margin-top: 0px; color: black;">` + JSON.date + `</p>
-                                            <h3 style="margin-top: 5px; color: black;">` + JSON.title + `</h3>
-                                            <p style="margin-top: 0px; color: black; margin-bottom: 10px;">` + JSON.description + `</p>`
+                                            <p style="font-size: 14px; margin-top: 0px; color: white;">` + JSON.date + `</p>
+                                            <h3 style="margin-top: 5px; color: white;">` + JSON.title + `</h3>
+                                            <p style="margin-top: 0px; color: white; margin-bottom: 10px;">` + JSON.description + `</p>`
                         if (JSON.tags) {
                             Output += `<div class="ArticleTagContainer" style="margin-top: 4px;">`
                             for (var y = 0; y < JSON.tags.length; y++) {
@@ -407,7 +407,7 @@ const GenerateBodyV2 = async function (
             }
             let ArticleTags = ""
             if (Article.tags) {
-                ArticleTags += `<div class="ArticleTagContainer" style="margin-top: 20px; filter: ` + (Article.background ? `invert(1) ` : `none`) + `">`
+                ArticleTags += `<div class="ArticleTagContainer" style="margin-top: 20px; filter: ` + (!Article.background ? `invert(1)` : `none`) + `">`
                 for (var y = 0; y < Article.tags.length; y++) {
                     ArticleTags += `<span class="ArticleTag">` + Article.tags[y] + `</span>`
                 }
@@ -416,7 +416,7 @@ const GenerateBodyV2 = async function (
             Output += `
             <div class="Slide SlideVisible ArticleImageBg" id="Slide1" style="background-color: white;` + (Article.background ? (` background: ` + Article.background) : ``) + `"></div>
             <div class="Slide SlideContentVisible" id="SlideContent1">
-                <div class="GradientContainer">
+                <div class="GradientContainer" style="filter: brightness(1.5)">
                     <div class="Gr Gr-1"></div>
                     <div class="Gr Gr-2"></div>
                     <div class="Gr Gr-3"></div>

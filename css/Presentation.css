@@ -111,7 +111,7 @@ a {
 .Author {
   text-transform: uppercase;
   font-weight: bold;
-  opacity: 0.5;
+  opacity: 0.9;
   padding-bottom: 20px;
   font-weight: 300;
 }
@@ -138,28 +138,6 @@ a {
   padding-bottom: 10px;
   font-weight: normal;
   opacity: 0.5;
-}
-.Footer .Line1 {
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 13px;
-  padding-bottom: 10px;
-  opacity: 0.2;
-  position: absolute;
-  right: 15px;
-  bottom: 0px;
-  font-weight: normal;
-}
-.Footer .Line2 {
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 13px;
-  padding-bottom: 10px;
-  opacity: 0.2;
-  position: absolute;
-  bottom: 20px;
-  right: 15px;
-  font-weight: 100;
 }
 .Footer2 {
   position: absolute;

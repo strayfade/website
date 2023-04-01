@@ -20,15 +20,6 @@ function CalculateAge() {
     var AgeDif = new Date(Date.now() - new Date(1131950100000));
     return Math.abs(AgeDif.getUTCFullYear() - 1970);
 }
-function GetCurrentDate() {
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-
-    today = mm + '/' + dd + '/' + yyyy;
-    return today;
-}
 let Cache = [];
 const GeneratePageCached = async function (
     req,
@@ -129,8 +120,6 @@ const GenerateFooter = function (
             <svg onclick="GoDown()" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24 40 8 24l2.1-2.1 12.4 12.4V8h3v26.3l12.4-12.4L40 24Z"></path></svg>
         </div>
         <div class="Footer">
-            <p class="Line1">Made with ❤️ by Strayfade</p>
-            <p class="Line2">Page cached on ` + GetCurrentDate() + `</p>
             <h3>© Copyright 2023 Strayfade. All Rights Reserved.</h3>
         </div>
     `;
@@ -297,7 +286,7 @@ const GenerateBodyV2 = async function (
                         <div class="Gr-Plus Gr-8"></div>
                     </div>
                     <div class="SlideInner" style="color: white">
-                        <p class="Author"><span id="Counter">0+</span> years <span>coding</span></p></span>
+                        <p class="Author"><span id="Counter" style="font-weight: 800">0+</span> years <span>coding</span></p></span>
                         <h1 class="Slide2">Projects</h1>
                         <br class="Slide2">
                         <br class="Slide2">

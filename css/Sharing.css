@@ -78,6 +78,9 @@
 
 .ShareButtonContainer .LinkNormal {
     width: max-content;
+    padding: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .ShareMaxWidth {

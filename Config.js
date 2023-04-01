@@ -1,7 +1,4 @@
 module.exports = {
-    App: {
-        Port: 3000
-    },
     Localization: {
         Directory: "./localization"
     },

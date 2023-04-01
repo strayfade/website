@@ -115,7 +115,7 @@ App.use(ErrorLogger)
 App.use(ErrorHandler)
 
 // Start Server
-var Port = process.env.PORT || Config.App.Port;
+var Port = process.env.PORT || parseInt(process.argv[2]);
 App.listen(Port, () => {
     Log('Listening on port ' + Port)
     Log('Link: http://localhost:' + Port)

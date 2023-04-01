@@ -10,7 +10,7 @@ var ObfuscatorOptions = {
     replaceNames: true,
     variableExclusions: ['^_get_', '^_set_', '^_mtd_']
 };
-const Obfuscate = true;
+const Obfuscate = process.argv0.includes("--skipobfuscation");
 
 async function PackStylesheets() {
     Log("[BUILD] - Merging CSS files...")
@@ -63,6 +63,7 @@ async function PackScripts() {
         });
     }
     else {
+        Log("[BUILD] - Skipping obfuscation")
         fs.mkdir("./Production", (err) => { });
         let p = __dirname + "/Production/Production.js";
         fs.writeFileSync(p, Script, { recursive: true })

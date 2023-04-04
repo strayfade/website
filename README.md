@@ -28,6 +28,6 @@ MongoDB: {
 }
 ```
 
-5. Run the command `npm start` to start the server (this automatically builds static files and listens on the port defined in `Config.js`).
+5. Run the command `npm develop` to start the server (this automatically builds static files and listens on port `3000`).
 
 6. Navigate to the site, hosted locally at [localhost:3000](http://localhost:3000) by default.

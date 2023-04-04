@@ -4,7 +4,9 @@
   "description": "The public source code of Strayfade.com",
   "main": "App.js",
   "scripts": {
-    "start": "node Build --skipobfuscation && node App 3100"
+    "start": "node App 3100",
+    "build": "node Build",
+    "develop": "node Build --skipobfuscation && node App 3000"
   },
   "author": "Strayfade",
   "license": "MIT",

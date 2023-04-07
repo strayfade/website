@@ -112,7 +112,6 @@ a {
   text-transform: uppercase;
   font-weight: bold;
   opacity: 0.9;
-  padding-bottom: 20px;
   font-weight: 300;
 }
 @media screen and (max-width: 960px) {

@@ -35,14 +35,13 @@
     width: 50px;
     height: 50px;
     transition: var(--transition-length);
-    border: 2px solid var(--accent-color-transparent);
+    border: 3px solid rgba(0, 0, 0, 0.001);
     padding: 0px;
     transition: var(--transition-length);
 }
 
 .ShareItem:hover {
     border-radius: 25%;
-    border: 2px solid rgba(0, 0, 0, 0.01);
 }
 
 .ShareItemLink {

@@ -113,6 +113,7 @@ a {
   font-weight: bold;
   opacity: 0.9;
   font-weight: 300;
+  margin-bottom: 20px;
 }
 @media screen and (max-width: 960px) {
   .Author {
@@ -175,6 +176,7 @@ a {
   position: absolute;
   left: 10px;
   bottom: 10px;
+  z-index: 100;
 }
 
 .SidebarScrollPercentage {
@@ -242,6 +244,7 @@ a {
   position: absolute;
   left: 10px;
   top: 10px;
+  z-index: 100;
 }
 
 .Flexbox {

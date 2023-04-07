@@ -7,7 +7,7 @@
     "showTitle": true,
     "indexed": true,
     "pinned": true,
-    "background": "linear-gradient(45deg, rgb(193,81,255) 0%, rgb(45,198,253) 100%);"
+    "background": "black"
 }
 
 ### What is deepaim?

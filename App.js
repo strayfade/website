@@ -22,8 +22,7 @@ const AvailablePages = {
     Home: Symbol("Home"),
     Dynamic: Symbol("Article"),
     R: Symbol("R"),
-    UX: Symbol("UX"),
-    NonstandardPages: ["R", "UX"]
+    NonstandardPages: ["R"]
 }
 
 const WrapAsync = (Function) => {
@@ -82,11 +81,6 @@ App.get('/:localization/:path', WrapAsync(async function (req, res) {
             case "R":
                 var Article = await fs.readFile('./posts/_None.md', {encoding: "utf-8"})
                 var Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.R, "");
-                res.send(Page)
-                break;
-            case "UX":
-                var Article = await fs.readFile('./posts/UX.md', {encoding: "utf-8"})
-                var Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.UX, "");
                 res.send(Page)
                 break;
         }

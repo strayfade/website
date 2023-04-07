@@ -344,6 +344,11 @@ strong {
   font-size: 60px;
 }
 
+.ArticleTitleDate {
+  opacity: 0.5;
+  font-weight: lighter;
+}
+
 @media screen and (max-width: 800px) {
   .ArticleTitle {
     font-size: 30px;

@@ -5,7 +5,6 @@ function SetHue() {
     document.querySelector(':root').style.setProperty('--accent-color-hue', progress);
 }
 
-SetHue()
 setInterval(function() {
     SetHue()
 }, 10000)

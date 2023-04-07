@@ -430,7 +430,8 @@ const GenerateBodyV2 = async function (
             Output += await fs.readFile(__dirname.replace("generators", "assets") + "/Rem", { encoding: "utf-8" })
             break;
     }
-    return Output + GenerateHeader(JSON.parse(Article2.split("}")[0] + "}")) + GenerateFooter();
+    return Output + GenerateHeader(JSON.parse(Article2.split("}")[0] + "}")) + GenerateFooter() + `
+    <div id="LoadingScreen" class="LoadingScreen LoadingScreenVisible"></div>`;
 };
 const GeneratePage = async function (
     Article,
@@ -450,10 +451,14 @@ const GeneratePage = async function (
         Filename
     );
 
+    let date = new Date();
+    let diff = date - new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
+    let progress = (diff / (1000 * 60 * 60 * 24)) / 7 * 360;
+
     Output =
         `
         <!DOCTYPE html>
-        <html lang="` +
+        <html style="--accent-color-hue: ` + progress + `" lang="` +
         Localize(Locale, "locale_title") +
         `">
         <head>` +

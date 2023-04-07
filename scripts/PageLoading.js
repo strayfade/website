@@ -1,6 +1,4 @@
-let LoadingScreen = document.createElement("div")
-LoadingScreen.className = "LoadingScreen LoadingScreenVisible";
-document.body.appendChild(LoadingScreen);
+let LoadingScreen = document.getElementById("LoadingScreen")
 
 var AllElements = document.body.getElementsByTagName('*');
 for (let x = 0; x < AllElements.length; x++) {

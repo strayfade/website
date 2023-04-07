@@ -10,7 +10,7 @@ var ObfuscatorOptions = {
     replaceNames: true,
     variableExclusions: ['^_get_', '^_set_', '^_mtd_']
 };
-const Obfuscate = !process.argv[2].includes("--skipobfuscation");
+const Obfuscate = !process.argv[2] || !process.argv[2].includes("--skipobfuscation");
 
 async function PackStylesheets() {
     Log("[BUILD] - Merging CSS files...")

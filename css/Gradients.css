@@ -21,18 +21,6 @@
   75% { transform: translate(-10vw, 0) }
   100% { transform: translate(0vw, 10vw) }
 }
-.Gr-Plus {
-  background-image: url("/assets/Effect-Plus.svg");
-  background-repeat: repeat;
-  background-size: 30px;
-  position: absolute;
-  background-clip: padding-box;
-  background-origin: padding-box;
-  pointer-events: none;
-  width: 150px;
-  height: 150px;
-  opacity: 0.5;
-}
 .Gr-1 {
   top: -125vw;
   left: -31vw;

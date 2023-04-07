@@ -310,7 +310,7 @@ const GenerateBodyV2 = async function (
                             </div>
                             <div class="GridItem Slide2">
                                 <h3>Authentication Backends</h3>
-                                <p>Made multiple program authentication solutions from the ground up for distributing paid software with license keys.</p>
+                                <p>Made multiple program authentication solutions from the ground up for the purpose of having control over distributed paid software through the use of secure license keys.</p>
                             </div>
                         </div>
                     </div>

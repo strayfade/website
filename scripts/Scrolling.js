@@ -34,7 +34,7 @@ function UpdateSlides(SlideNumb) {
   let Slide3Elements = document.getElementsByClassName("Slide3")
   switch (SlideNumb) {
     case 0:
-      document.documentElement.style.backgroundColor = "white"
+      document.documentElement.style.backgroundColor = "black"
       document.getElementsByClassName("SidebarScrollPercentage")[0].style.backgroundColor = "rgba(255, 255, 255, 0.2)"
       document.getElementsByClassName("SidebarScrollFill")[0].style.backgroundColor = "var(--accent-color)"
       Icons2.style.opacity = "0.0"

@@ -5,6 +5,7 @@
     margin-top: 40px;
     text-align: center;
     width: 65%;
+    position: relative;
 }
 
 @media only screen and (max-width: 960px) {
@@ -35,13 +36,14 @@
     width: 50px;
     height: 50px;
     transition: var(--transition-length);
-    border: 3px solid rgba(0, 0, 0, 0.001);
+    border: 2px solid var(--accent-color);
     padding: 0px;
     transition: var(--transition-length);
 }
 
 .ShareItem:hover {
     border-radius: 25%;
+    border: 2px solid rgba(0, 0, 0, 0.001);
 }
 
 .ShareItemLink {

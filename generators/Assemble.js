@@ -182,7 +182,7 @@ const GenerateBodyV2 = async function (
                     <div class="SlideInner" style="color: white">
                         <p class="Author">Strayfade</p>
                         <h1 class="Slide1 Slide1Visible">Portfolio</h1>
-                        <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd>web development</rd></a>) and <a href="https://open.spotify.com/artist/11sY1toC4XScZvVWw2BBCw"><rd>music artist</rd></a> from the United States</p>
+                        <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd>web development</rd></a> and C++) from the United States</p>
                         <br class="Slide1 Slide1Visible">
                         <h3 class="Slide1 Slide1Visible" style="padding-top: 20px">Posts</h3>
                         <br class="Slide1 Slide1Visible">
@@ -279,14 +279,14 @@ const GenerateBodyV2 = async function (
                 </div>
                 <div class="Slide SlideContentHidden" id="SlideContent2">
                     <div class="SlideInner" style="color: white">
-                        <p class="Author"><span id="Counter" style="font-weight: 800">0+</span> years <span>coding</span></p></span>
-                        <h1 class="Slide2">Projects</h1>
+                        <p class="Author"><span id="Counter" style="font-weight: 800">0+</span> years <span>experience</span></p></span>
+                        <h1 class="Slide2">Skills</h1>
                         <br class="Slide2">
                         <br class="Slide2">
                         <div class="Flexbox Slide2">
                             <div class="GridItem Slide2">
                                 <h3>Web Development</h3>
-                                <p>Full-stack web development building modern, dynamic interfaces and structured, secure backends.</p>
+                                <p><strong>Full-stack web development</strong> building <strong>modern, dynamic interfaces</strong> and <strong>modular, secure backends</strong>.</p>
                                 <div class="Icobox">
                                     <a class="Link" href="https://github.com/Strayfade/Website">Source Code
                                         <svg class="Link" style="margin-bottom: -4px; margin-left: -1px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 50 40"><path d="M22.5 34H14q-4.15 0-7.075-2.925T4 24q0-4.15 2.925-7.075T14 14h8.5v3H14q-2.9 0-4.95 2.05Q7 21.1 7 24q0 2.9 2.05 4.95Q11.1 31 14 31h8.5Zm-6.25-8.5v-3h15.5v3ZM25.5 34v-3H34q2.9 0 4.95-2.05Q41 26.9 41 24q0-2.9-2.05-4.95Q36.9 17 34 17h-8.5v-3H34q4.15 0 7.075 2.925T44 24q0 4.15-2.925 7.075T34 34Z"/></svg>
@@ -294,14 +294,14 @@ const GenerateBodyV2 = async function (
                                 </div>
                             </div>
                             <div class="GridItem Slide2">
-                                <h3>Game Hacking</h3>
-                                <p>Created modern user interfaces in C++ for cheats/exploits in video games. Worked with a team efficiently on multiple projects, including selling and distribution of paid cheats.</p>
+                                <h3>UI Design</h3>
+                                <p>Created <strong>lightweight, user-friendly interfaces</strong> for desktop applications in C++ while <strong>working with a small team</strong>.</p>
                             </div>
                         </div>
                         <div class="Flexbox">
                             <div class="GridItem Slide2">
                                 <h3>Neural Networks</h3>
-                                <p>Created feed-forward neural network/AI systems for task automation and experimentation from scratch in C++.</p>
+                                <p>Created <strong>neural network/AI</strong> frameworks for task automation and experimentation <strong>from scratch in C++</strong>.</p>
                                 <div class="Icobox">
                                     <a class="Link" href="/FeedForward">Article
                                         <svg class="Link" style="margin-bottom: -4px; margin-left: -1px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 50 40"><path d="M22.5 34H14q-4.15 0-7.075-2.925T4 24q0-4.15 2.925-7.075T14 14h8.5v3H14q-2.9 0-4.95 2.05Q7 21.1 7 24q0 2.9 2.05 4.95Q11.1 31 14 31h8.5Zm-6.25-8.5v-3h15.5v3ZM25.5 34v-3H34q2.9 0 4.95-2.05Q41 26.9 41 24q0-2.9-2.05-4.95Q36.9 17 34 17h-8.5v-3H34q4.15 0 7.075 2.925T44 24q0 4.15-2.925 7.075T34 34Z"/></svg>
@@ -310,7 +310,17 @@ const GenerateBodyV2 = async function (
                             </div>
                             <div class="GridItem Slide2">
                                 <h3>Authentication Backends</h3>
-                                <p>Made multiple program authentication solutions from the ground up for the purpose of having control over distributed paid software through the use of secure license keys.</p>
+                                <p>Made multiple <strong>program authentication solutions</strong> from scratch for the purpose of having <strong>control over distributed paid software</strong> through the use of <strong>secure software licensing</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="Flexbox">
+                            <div class="GridItem Slide2">
+                                <h3>Software Distribution</h3>
+                                <p><strong>Completed and distributed</strong> many of my own <strong>paid desktop applications</strong>, all of which included an <strong>in-depth analytics backend</strong> to monitor activity and <strong>determine customer satisfaction</strong>.</p>
+                            </div>
+                            <div class="GridItem Slide2">
+                                <h3>Game Hacking</h3>
+                                <p>Used <strong>high-level</strong> process memory reading/writing techniques to create and distribute <strong>video game cheats</strong> while evading detection from <strong>anti-cheat software</strong>.</p>
                             </div>
                         </div>
                     </div>
@@ -415,9 +425,9 @@ const GenerateBodyV2 = async function (
                             </a>
                         </div>` + (Article.showTitle ? (ArticleTags + `
                         <p class="ArticleTitleDate" style="margin-top: 50px">` + Article.date + `</p>
-                        <h1 class="ArticleTitle" style="margin-top: -12px">` + Article.title + `</h1>
-                        <h4 style="margin-top: 0px">` + Article.description + `</h4>
-                        <p style="margin-top: 10px; padding-bottom: 50px; margin-bottom: 50px; border-bottom: 3px solid white;">Written by <strong>` + Article.author + `</strong></p>`) : ``) + `
+                        <h1 class="ArticleTitle" style="margin-top: 12px">` + Article.title + `</h1>
+                        <h4 style="margin-top: 0px; font-weight: normal">` + Article.description + `</h4>
+                        <p style="margin-top: 24px; padding-bottom: 50px; margin-bottom: 50px; border-bottom: 3px solid white;">Written by <strong>` + Article.author + `</strong></p>`) : ``) + `
                         ` + MarkdownHtml + ((Custom == "" && Filename != null) ? (Article.showTitle ? GenerateShareSection(Locale, Filename, Article) : ``) : ``) + `
                         <br>
                         <br>
@@ -453,7 +463,7 @@ const GeneratePage = async function (
 
     let date = new Date();
     let diff = date - new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
-    let progress = (diff / (1000 * 60 * 60 * 24)) / 7 * 360;
+    let progress = (diff / (1000 * 60 * 60 * 24)) * 360;
 
     Output =
         `

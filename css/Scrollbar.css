@@ -15,5 +15,5 @@ pre code::-webkit-scrollbar-thumb {
     background: var(--codeblock-border-color);
 }
 pre code:hover::-webkit-scrollbar-thumb {
-    background: var(codeblock-border-color-hover);
+    background: var(--codeblock-border-color-hover);
 }

@@ -1,6 +1,6 @@
 {
     "title": "deepaim",
-    "description": "An undetectable (AI) aimbot for any game",
+    "description": "An undetectable aimbot ready for any game",
     "tags": ["Gaming", "AI"],
     "author": "Strayfade",
     "date": "3/31/2023",

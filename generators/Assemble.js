@@ -382,6 +382,11 @@ const GenerateBodyV2 = async function (
                 }
                 ArticleTags += `</div>`
             }
+            if (Article.video) {
+                Output += `<video autoplay="" loop="" muted="" style="width: 100vw; height: 100vh; position: absolute; object-fit: cover; z-index: -1; filter: brightness(0.1);">
+                    <source src="` + Article.video + `" type="video/mp4">
+                </video>`
+            }
             Output += `
             <div class="Slide SlideVisible ArticleImageBg" id="Slide1" style="background-color: black;` + (Article.background ? (` background: ` + Article.background) : ``) + `"></div>
             <div class="Slide SlideContentVisible" id="SlideContent1">

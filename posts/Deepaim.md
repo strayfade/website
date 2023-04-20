@@ -7,7 +7,8 @@
     "showTitle": true,
     "indexed": true,
     "pinned": true,
-    "background": "black"
+    "background": "transparent",
+    "video": "/assets/Videos/DeepAimBackground.mp4"
 }
 
 ### What is deepaim?
@@ -17,6 +18,8 @@ Deepaim is an undetectable aimbot that can be adapted and used with practically 
  - Counter-Strike: Global Offensive
  - Fortnite
  - Halo Infinite
+
+You can read the Frequently Answered Questions (FAQ) [here](/DeepAimFAQ)
 
 ### How does deepaim work?
 Deepaim first captures a section of the game screen, then runs inference on a deep neural network to recognize potential targets (enemy players, etc.). Using this data, we can tell what direction and how far we need to move the mouse to aim at the target.

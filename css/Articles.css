@@ -12,7 +12,6 @@
 }
 
 .Scrollable p img {
-  position: sticky;
   margin: 30px;
   margin-left: auto;
   margin-right: auto;
@@ -20,8 +19,8 @@
   max-width: 50%;
   max-height: 200px;
   text-align: center;
-  left: 25%;
 }
+
 .Caption {
   font-size: smaller;
   font-style: italic;

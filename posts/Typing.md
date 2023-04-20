@@ -15,7 +15,6 @@
  - **Fun Fact 2**: I don't want to type more than I already do daily.
 
 <img src="/assets/images/Typing1.png"/>
-
 <p class="Caption">I'm not typing this.</p>
 
 ### How do we approach this challenge?
@@ -45,7 +44,6 @@ Selenium solves every single problem that the Python version had, and as a bonus
 So, I rewrote basically the same code as before for Selenium Webdriver in NodeJS and let it type one of the lessons out on its own.
 
 <img src="/assets/images/Typing2.png"/>
-
 <p class="Caption">I accidentally did this on my school account...</p>
 
 > The source code for this project is available at [Strayfade/SeleniumTypewriter](https://github.com/Strayfade/SeleniumTypewriter/blob/main/index.js)

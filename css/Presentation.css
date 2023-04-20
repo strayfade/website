@@ -95,7 +95,7 @@
   margin-top: 8vw;
   margin-left: auto;
   margin-right: auto;
-  width: 70vw;
+  width: 50vw;
 }
 @media screen and (max-width: 800px) {
   .Slide .SlideInner {
@@ -253,7 +253,7 @@ a {
 }
 
 .GridItem {
-  width: 30%;
+  width: 80%;
   padding-right: 40px;
   padding-left: 0px;
   padding-top: 20px;
@@ -305,7 +305,7 @@ a {
 
 .SlideInner p {
   font-size: 16px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 @media screen and (max-width: 800px) {
   .SlideInner p {

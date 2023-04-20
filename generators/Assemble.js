@@ -184,8 +184,8 @@ const GenerateBodyV2 = async function (
                         <h1 class="Slide1 Slide1Visible">Portfolio</h1>
                         <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd>web development</rd></a> and C++) from the United States</p>
                         <br class="Slide1 Slide1Visible">
-                        <h3 class="Slide1 Slide1Visible" style="padding-top: 20px">Posts</h3>
                         <br class="Slide1 Slide1Visible">
+                        <h3 class="Slide1 Slide1Visible" style="padding-top: 20px">Posts</h3>
                         `
 
             // Index
@@ -209,32 +209,20 @@ const GenerateBodyV2 = async function (
                 return SecondDate - FirstDate
             })
 
-            let PostsOnLine = 0;
-            Output += `<div class="Flexbox Slide1 Slide1Visible" style="margin-top: 20px">`
             Posts.forEach(Post => {
                 if (Post.file.endsWith(".md") && Post.data.pinned) {
                     let JSON = Post.data
                     if (JSON.indexed) {
-                        PostsOnLine++;
+                        Output += `<div class="ArticleItem Slide1 Slide1Visible" style="margin-top: 20px">`
                         Output += `
-                                        <div class="GridItem Slide1 Slide1Visible">
+                                        <div class="GridItem Slide1 Slide1Visible" style="padding-bottom: 0px; width: max-content; padding-right: 0px;">
                                         <a href="/` + Post.file.replace(".md", "") + `">
-                                            <span style="font-size: 14px; margin-top: 0px; color: white;">` + JSON.date + `</span>
-                                            <h3 style="margin-top: 5px; color: white; background-color: var(--accent-color); padding: 5px; padding-right: 7px; width: max-content;">` + JSON.title + `</h3>
-                                            <p style="margin-top: 0px; color: white; margin-bottom: 10px;">` + JSON.description + `</p>`
-                        if (JSON.tags) {
-                            Output += `<div class="ArticleTagContainer" style="margin-top: 4px;">`
-                            for (var y = 0; y < JSON.tags.length; y++) {
-                                Output += `<span class="ArticleTag">` + JSON.tags[y] + `</span>`
-                            }
-                            Output += `</div>`
-                        }
-                        Output += `</a></div>
-                                    `
-                        if (PostsOnLine > 1) {
-                            PostsOnLine = 0;
-                            Output += `</div><div class="Flexbox Slide1 Slide1Visible" style="margin-top: 20px">`
-                        }
+                                            <div style="display: flex; width: max-content">
+                                                <h3 style="margin-top: 0px; color: white; background-color: var(--accent-color); padding: 5px; padding-right: 7px; padding-left: 7px; width: max-content; height: max-content; margin-top: 5px;">` + JSON.title + `</h3>
+                                                <p style="font-size: 14px; margin-top: 0px; color: white; opacity: 0.5; margin: 14px; margin-left: 8px">` + JSON.date + `</p>
+                                            </div>
+                                            <p style="color: white; margin: 0px; width: max-content">` + JSON.description + `</p>`
+                        Output += `</a></div></div>`
 
                     }
                     indexed.push(Post.file)
@@ -244,27 +232,16 @@ const GenerateBodyV2 = async function (
                 if (Post.file.endsWith(".md") && !indexed.includes(Post.file)) {
                     let JSON = Post.data
                     if (JSON.indexed) {
-                        PostsOnLine++;
+                        Output += `<div class="ArticleItem Slide1 Slide1Visible" style="margin-top: 20px">`
                         Output += `
-                                        <div class="GridItem Slide1 Slide1Visible">
+                                        <div class="GridItem Slide1 Slide1Visible" style="padding-bottom: 0px; width: max-content; padding-right: 0px;">
                                         <a href="/` + Post.file.replace(".md", "") + `">
-                                            <p style="font-size: 14px; margin-top: 0px; color: white;">` + JSON.date + `</p>
-                                            <h3 style="margin-top: 5px; color: white;">` + JSON.title + `</h3>
-                                            <p style="margin-top: 0px; color: white; margin-bottom: 10px;">` + JSON.description + `</p>`
-                        if (JSON.tags) {
-                            Output += `<div class="ArticleTagContainer" style="margin-top: 4px;">`
-                            for (var y = 0; y < JSON.tags.length; y++) {
-                                Output += `<span class="ArticleTag">` + JSON.tags[y] + `</span>`
-                            }
-                            Output += `</div>`
-                        }
-                        Output += `</a></div>
-                                    `
-                        if (PostsOnLine > 1) {
-                            PostsOnLine = 0;
-                            Output += `</div><div class="Flexbox Slide1 Slide1Visible">`
-                        }
-
+                                            <div style="display: flex; width: max-content">
+                                                <h3 style="margin-top: 5px; color: white; padding: 5px; padding-left: 0px">` + JSON.title + `</h3>
+                                                <p style="font-size: 14px; margin-top: 0px; color: white; opacity: 0.5; margin: 14px; margin-left: 6px">` + JSON.date + `</p>
+                                            </div>
+                                            <p style="color: white; margin: 0px; width: max-content; margin-top: -5px;">` + JSON.description + `</p>`
+                        Output += `</a></div></div>`
                     }
                     indexed.push(Post.file)
                 }

@@ -423,7 +423,7 @@ const GenerateBodyV2 = async function (
             break;
     }
     return Output + GenerateHeader(JSON.parse(Article2.split("}")[0] + "}")) + GenerateFooter() + `
-    <div id="LoadingScreen" class="LoadingScreen LoadingScreenVisible"></div>`;
+    <div id="LoadingScreen" class="LoadingScreen LoadingScreenVisible" style="overflow: hidden"></div>`;
 };
 const GeneratePage = async function (
     Article,

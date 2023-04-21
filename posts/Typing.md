@@ -35,7 +35,7 @@ Using OCR, I could capture a section of the screen and detect letters from it. T
  - Some characters simply couldn't be recognized by Tesseract, such as Typing.com's newline character (`⏎`) which requires the user to press `enter`.
 
 *So, that's why I decided to try...*
-### Solution 3
+### Solution 2
 
 **Selenium Webdriver** is a framework for NodeJS that allows developers to create tests and automate tasks by creating a contained browser and sending commands to it. *This is perfect for what we are trying to accomplish!*
 

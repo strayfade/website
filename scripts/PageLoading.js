@@ -18,10 +18,10 @@ for (let x = 0; x < AllElements.length; x++) {
 
 async function PlaceLoadingBuffer() {
     LoadingScreen.classList.add("LoadingScreenVisible")
-    await new Promise(r => setTimeout(r, 250));
+    await new Promise(r => setTimeout(r, 150));
 }
 async function ClearLoadingBuffer() {
-    await new Promise(r => setTimeout(r, 250));
+    await new Promise(r => setTimeout(r, 150));
     LoadingScreen.classList.remove("LoadingScreenVisible")
 }
 ClearLoadingBuffer();

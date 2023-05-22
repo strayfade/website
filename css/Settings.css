@@ -6,10 +6,11 @@
     --foreground-color: white;
     --link-color: rgb(255, 255, 255);
     --accent-color-hue: 0;
-    --accent-color-saturation: 80%;
+    --accent-color-saturation: 100%;
     --accent-color-value: 60%;
     --accent-color: hsl(var(--accent-color-hue), var(--accent-color-saturation), var(--accent-color-value));
     --accent-color-transparent: hsla(var(--accent-color-hue), var(--accent-color-saturation), calc(var(--accent-color-value) - var(--transparency-percentage)), 0.5);
     --accent-color-very-transparent: hsla(var(--accent-color-hue), var(--accent-color-saturation), calc(var(--accent-color-value) - var(--transparency-percentage)), 0.2);
     --font-family: Metropolis;
+    --default-shadow: 0px 0px 20px black, 0px 0px 3px rgba(0,0,0,0.5);
 }

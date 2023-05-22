@@ -58,7 +58,7 @@ const GeneratePageCached = async function (
         }
     }
     if (Found.A == Article) {
-        Log("Found page in cache: " + req.url + ServeInfo);
+        Log("Serve: " + req.url + ServeInfo);
         return Found.F;
     } else {
         CacheObject.F = GeneratePage(
@@ -173,7 +173,7 @@ const GenerateBodyV2 = async function (
             Output +=
                 `
                 <div class="Slide SlideVisible" id="Slide1" style="background-color: black"></div>
-                <div class="Slide SlideContentVisible" id="SlideContent1">
+                <div class="Slide SlideContentVisible SlideOccluded" id="SlideContent1">
                     <div class="GradientContainer" style="filter: brightness(2)">
                         <div class="Gr Gr-1"></div>
                         <div class="Gr Gr-2"></div>
@@ -216,7 +216,7 @@ const GenerateBodyV2 = async function (
                                         <div class="GridItem Slide1 Slide1Visible" style="padding-bottom: 0px; width: max-content; padding-right: 0px;">
                                         <a href="/` + Post.file.replace(".md", "") + `">
                                             <div style="display: flex; width: max-content">
-                                                <h3 style="margin-top: 0px; color: white; background-color: var(--accent-color); padding: 5px; padding-right: 7px; padding-left: 7px; width: max-content; height: max-content; margin-top: 5px;">` + JSON.title + `</h3>
+                                                <h3 style="margin-top: 0px; text-shadow: var(--default-shadow); color: white; background-color: var(--accent-color); padding: 5px; padding-right: 7px; padding-left: 7px; width: max-content; height: max-content; margin-top: 5px;">` + JSON.title + `</h3>
                                                 <p style="font-size: 14px; margin-top: 0px; color: white; opacity: 0.5; margin: 14px; margin-left: 8px">` + JSON.date + `</p>
                                             </div>
                                             <p style="color: white; margin: 0px; width: max-content">` + JSON.description + `</p>`
@@ -317,7 +317,7 @@ const GenerateBodyV2 = async function (
                         <p class="Slide3" style="margin-top: 10px">My current Discord tag is <a href="https://discord.com/users/455790298082181120">Strayfade#8472</a>, although I do not usually respond to direct messages on Discord.</p>
                     </div>
                 </div>
-                <div style="opacity: 0.5">
+                <div style="opacity: 1.0">
                     <div class="MobileButton MobileButtonNext Coloring1" onclick="GoDown()" style="opacity: 1">
                         <p>Next</p>
                         <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24 40 8 24l2.1-2.1 12.4 12.4V8h3v26.3l12.4-12.4L40 24Z"/></svg>
@@ -387,7 +387,7 @@ const GenerateBodyV2 = async function (
             }
             Output += `
             <div class="Slide SlideVisible ArticleImageBg" id="Slide1" style="background-color: black;` + (Article.background ? (` background: ` + Article.background) : ``) + `"></div>
-            <div class="Slide SlideContentVisible" id="SlideContent1">
+            <div class="Slide SlideContentVisible SlideOccluded" id="SlideContent1">
                 <div class="GradientContainer" style="filter: brightness(2)">
                     <div class="Gr Gr-1"></div>
                     <div class="Gr Gr-2"></div>
@@ -420,8 +420,7 @@ const GenerateBodyV2 = async function (
             Output += await fs.readFile(__dirname.replace("generators", "assets") + "/Rem", { encoding: "utf-8" })
             break;
     }
-    return Output + GenerateHeader(JSON.parse(Article2.split("}")[0] + "}")) + GenerateFooter() + `
-    <div id="LoadingScreen" class="LoadingScreen LoadingScreenVisible" style="overflow: hidden"></div>`;
+    return Output + GenerateHeader(JSON.parse(Article2.split("}")[0] + "}")) + GenerateFooter() + `<div id="LoadingScreen" class="LoadingScreen LoadingScreenVisible" style="overflow: hidden"></div>`;
 };
 const GeneratePage = async function (
     Article,
@@ -444,6 +443,7 @@ const GeneratePage = async function (
     let date = new Date();
     let diff = date - new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
     let progress = (diff / (1000 * 60 * 60 * 24)) * 360;
+    progress = 0
 
     Output =
         `

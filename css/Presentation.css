@@ -56,12 +56,12 @@
 }
 
 .SlideContentHidden {
-  transition: var(--transition-length);
+  transition: calc(var(--transition-length) / 2);
   opacity: 0;
   margin-left: 100vw;
 }
 .SlideContentVisible {
-  transition: var(--transition-length);
+  transition: calc(var(--transition-length) / 2);
   opacity: 1;
   margin-left: 0vw;
 }
@@ -338,8 +338,8 @@ a {
 em,
 strong {
   font-size: 15px;
-  margin-top: 3px;
-  margin-bottom: 14px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .ArticleTitle {
@@ -368,4 +368,13 @@ strong {
   .GridItem {
     margin-bottom: 30px;
   }
+}
+
+.SlideOccluded {
+  top: 20px;
+  transition: calc(var(--transition-length) / 2);
+}
+.SlideNotOccluded {
+  top: 0px;
+  transition: calc(var(--transition-length) / 2);
 }

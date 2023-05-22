@@ -7,8 +7,7 @@
     "showTitle": true,
     "indexed": true,
     "pinned": true,
-    "background": "transparent",
-    "video": "/assets/Videos/DeepAimBackground.mp4"
+    "background": "transparent"
 }
 
 ### What is deepaim?
@@ -16,6 +15,7 @@ Deepaim is an undetectable aimbot that can be adapted and used with practically 
 
  - Apex Legends
  - Counter-Strike: Global Offensive
+ - Counter-Strike 2
  - Fortnite
  - Halo Infinite
 

@@ -4,13 +4,13 @@
     height: 100vh;
     left: 0px;
     top: 0px;
-    transform: translateX(50vw) scaleX(0%);
     transition: 0.25s;
-    background-color: var(--accent-color);
-    opacity: 1;
+    background-color: black;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
 }
 .LoadingScreenVisible {
-    background-color: var(--accent-color);
-    transform: translateX(0vw) scaleX(100%);
+    background-color: black;
     opacity: 1;
 }

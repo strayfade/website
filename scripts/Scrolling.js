@@ -252,5 +252,7 @@ else {
 const EnableAnimations = async function () {
   await new Promise(r => setTimeout(r, 250));
   document.querySelector(':root').style.setProperty('--transition-length', "1.0s");
+  await new Promise(r => setTimeout(r, 0));
+  document.getElementById("SlideContent1").classList.add("SlideNotOccluded")
 }
 EnableAnimations()

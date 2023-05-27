@@ -38,7 +38,7 @@ const GeneratePageCached = async function (
         " blocked)";
     let CacheObject = {
         A: Article,
-        B: Locale,
+        B: req.header("Accept-Language"),
         C: AvailablePageSelector,
         D: Custom,
         E: Filename,
@@ -108,19 +108,14 @@ const GenerateHeader = function (
     `;
 };
 const GenerateFooter = function (
-    Article,
-    Locale,
-    AvailablePages,
-    AvailablePageSelector,
-    Custom,
-    Filename
+    CopyrightString
 ) {
     return `
         <div class="Footer2 Coloring1" style="opacity: 1">
             <svg onclick="GoDown()" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24 40 8 24l2.1-2.1 12.4 12.4V8h3v26.3l12.4-12.4L40 24Z"></path></svg>
         </div>
         <div class="Footer">
-            <h3>© Copyright 2023 Strayfade. All Rights Reserved.</h3>
+            <h3>` + CopyrightString + `</h3>
         </div>
     `;
 };
@@ -152,8 +147,8 @@ const GenerateShareSection = function (Locale, Filename, Article) {
     </div>
     </div>
     <div class="ShareButtonContainer ShareMaxWidth">
-    <a class="LinkNormal Spaced ArticleTag" href="https://github.com/Strayfade/Website/blob/main/posts/` + Filename + `" style="margin-left: auto; background-color: transparent; border: 2px solid white;">View on GitHub</a>
-    <a class="LinkNormal Spaced SpacedMobile ArticleTag" href="https://raw.githubusercontent.com/Strayfade/Website/main/posts/` + Filename + `" style="background-color: transparent; border: 2px solid white;">View Raw</a>
+    <a class="LinkNormal Spaced ArticleTag" href="https://github.com/Strayfade/Website/blob/main/posts/` + Filename + `" style="margin-left: auto; background-color: transparent; border: 2px solid white;">` + Localize(Locale, "view_on_github") + `</a>
+    <a class="LinkNormal Spaced SpacedMobile ArticleTag" href="https://raw.githubusercontent.com/Strayfade/Website/main/posts/` + Filename + `" style="background-color: transparent; border: 2px solid white;">` + Localize(Locale, "view_original") + `</a>
     </div>
     `
 
@@ -181,7 +176,7 @@ const GenerateBodyV2 = async function (
                     </div>
                     <div class="SlideInner" style="color: white">
                         <p class="Author">Strayfade</p>
-                        <h1 class="Slide1 Slide1Visible">Portfolio</h1>
+                        <h1 class="Slide1 Slide1Visible">` + Localize(Locale, "pageTitle1") + `</h1>
                         <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd>web development</rd></a> and C++) from the United States</p>
                         <br class="Slide1 Slide1Visible">
                         `
@@ -217,7 +212,7 @@ const GenerateBodyV2 = async function (
                                             <div class="GridItem Slide1 Slide1Visible" style="padding-bottom: 0px; width: max-content; padding-right: 0px;">
                                             <a href="/` + Post.file.replace(".md", "") + `">
                                             <div style="display: flex; width: max-content">`
-                            
+
                             // Article Titles
                             if (x == 0) {
                                 Output += `<h3 style="margin-top: 0px; text-shadow: var(--default-shadow); color: white; background-color: var(--accent-color); padding: 5px; padding-right: 7px; padding-left: 7px; width: max-content; height: max-content; margin-top: 5px;">` + JSON.title + `</h3>`
@@ -226,7 +221,7 @@ const GenerateBodyV2 = async function (
                                 Output += `<h3 style="margin-top: 5px; color: white; padding: 5px; padding-left: 0px">` + JSON.title + `</h3>`
                             }
                             Output += `<p style="font-size: 14px; margin-top: 0px; color: white; opacity: 0.5; margin: 14px; margin-left: 8px">` + JSON.date + `</p></div>`
-                            
+
                             // Article Descriptions
                             if (x == 0) {
                                 Output += `<p style="color: white; margin: 0px; width: max-content">` + JSON.description + `</p>`
@@ -234,9 +229,9 @@ const GenerateBodyV2 = async function (
                             else {
                                 Output += `<p style="color: white; margin: 0px; width: max-content; margin-top: -5px;">` + JSON.description + `</p>`
                             }
-                            
+
                             Output += `</a></div></div>`
-    
+
                         }
                         indexed.push(Post.file)
                     }
@@ -253,7 +248,7 @@ const GenerateBodyV2 = async function (
                 <div class="Slide SlideContentHidden" id="SlideContent2">
                     <div class="SlideInner" style="color: white">
                         <p class="Author"><span id="Counter" style="font-weight: 800">0+</span> years <span>experience</span></p></span>
-                        <h1 class="Slide2">Skills</h1>
+                        <h1 class="Slide2">` + Localize(Locale, "pageTitle2") + `</h1>
                         <br class="Slide2">
                         <br class="Slide2">
                         <div class="Flexbox Slide2">
@@ -310,7 +305,7 @@ const GenerateBodyV2 = async function (
                     </div>
                     <div class="SlideInner" style="color: white">
                         <p class="Author">Connect</p>
-                        <h1 class="Slide3">Contact Me</h1>
+                        <h1 class="Slide3">` + Localize(Locale, "pageTitle3") + `</h1>
                         <p class="Slide3">You can send me an email at <a href="mailto:me@strayfade.com">me@strayfade.com</a> and I might read it, or you can shoot me a message on <a href="https://twitter.com/Strayfade">Twitter</a> or <a href="https://instagram.com/strayfade">Instagram</a>.</p>
                         <p class="Slide3" style="margin-top: 10px">My current Discord tag is <a href="https://discord.com/users/455790298082181120">Strayfade#8472</a>, although I do not usually respond to direct messages on Discord.</p>
                     </div>
@@ -418,7 +413,7 @@ const GenerateBodyV2 = async function (
             Output += await fs.readFile(__dirname.replace("generators", "assets") + "/Rem", { encoding: "utf-8" })
             break;
     }
-    return Output + GenerateHeader(JSON.parse(Article2.split("}")[0] + "}")) + GenerateFooter() + `<div id="LoadingScreen" class="LoadingScreen LoadingScreenVisible" style="overflow: hidden"></div>`;
+    return Output + GenerateHeader(JSON.parse(Article2.split("}")[0] + "}")) + GenerateFooter(Localize(Locale, "copyright_main")) + `<div id="LoadingScreen" class="LoadingScreen LoadingScreenVisible" style="overflow: hidden"></div>`;
 };
 const GeneratePage = async function (
     Article,

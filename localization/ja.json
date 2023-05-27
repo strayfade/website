@@ -1,21 +1,13 @@
 {
     "locale_title": "ja",
-
     "site_name": "strayfade.com",
     "site_title_default": "Strayfade",
     "site_title_extension": " - Strayfade",
-
-    "header_main": "始める",
-    "header_shop": "店",
-    "tooltip_lightmode": "ライトモード",
-    "tooltip_darkmode": "ダークモード",
-
-    "copyright_main": "著作権 © 2022 Strayfade. 全著作権所有。",
-
-    "article_author_prefix": "によって書かれた ",
-    "article_read_time": "分",
-
-    "source_code": "ソースコード",
-
-    "share_section_header": "このページをシェアする"
+    "copyright_main": "Copyright © 2022 Strayfade. All Rights Reserved.",
+    "share_section_header": "このページを共有する",
+    "view_on_github": "GitHubで表示",
+    "view_original": "元の表示",
+    "pageTitle1": "投稿",
+    "pageTitle2": "スキル",
+    "pageTitle3": "お問い合わせ"
 }

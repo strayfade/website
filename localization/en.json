@@ -1,21 +1,13 @@
 {
     "locale_title": "en",
-
     "site_name": "strayfade.com",
     "site_title_default": "Strayfade",
     "site_title_extension": " - Strayfade",
-
-    "header_main": "Home",
-    "header_shop": "Shop",
-    "tooltip_lightmode": "Light Mode",
-    "tooltip_darkmode": "Dark Mode",
-
     "copyright_main": "Copyright © 2022 Strayfade. All Rights Reserved.",
-
-    "article_author_prefix": "by ",
-    "article_read_time": "-minute read",
-
-    "source_code": "Source Code",
-
-    "share_section_header": "Share This Page"
+    "share_section_header": "Share This Page",
+    "view_on_github": "View on GitHub",
+    "view_original": "View Raw",
+    "pageTitle1": "Posts",
+    "pageTitle2": "Skills",
+    "pageTitle3": "Contact Me"
 }

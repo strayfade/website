@@ -1,21 +1,13 @@
 {
     "locale_title": "zh",
-
     "site_name": "strayfade.com",
     "site_title_default": "Strayfade",
     "site_title_extension": " - Strayfade",
-
-    "header_main": "开始",
-    "header_shop": "店铺",
-    "tooltip_lightmode": "灯光模式",
-    "tooltip_darkmode": "黑暗模式",
-
-    "copyright_main": "版权所有 © 2022 Strayfade。 版权所有。",
-
-    "article_author_prefix": "作者: ",
-    "article_read_time": "分钟长",
-
-    "source_code": "源代码",
-
-    "share_section_header": "分享这个页面"
+    "copyright_main": "版权所有 © 2022 Strayfade。保留所有权利。",
+    "share_section_header": "分享此页面",
+    "view_on_github": "在GitHub上查看",
+    "view_original": "查看原始版本",
+    "pageTitle1": "帖子",
+    "pageTitle2": "技能",
+    "pageTitle3": "联系我"
 }

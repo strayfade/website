@@ -215,7 +215,7 @@ const GenerateBodyV2 = async function (
 
                             // Article Titles
                             if (x == 0) {
-                                Output += `<h3 style="margin-top: 0px; text-shadow: var(--default-shadow); color: white; background-color: var(--accent-color); padding: 5px; padding-right: 7px; padding-left: 7px; width: max-content; height: max-content; margin-top: 5px;">` + JSON.title + `</h3>`
+                                Output += `<h3 style="margin-top: 0px; text-shadow: 0px 0px 15px white; color: black; background-color: var(--accent-color); padding: 5px; padding-right: 7px; padding-left: 7px; width: max-content; height: max-content; margin-top: 5px;">` + JSON.title + `</h3>`
                             }
                             else {
                                 Output += `<h3 style="margin-top: 5px; color: white; padding: 5px; padding-left: 0px">` + JSON.title + `</h3>`
@@ -241,7 +241,7 @@ const GenerateBodyV2 = async function (
 
             Output += `</div>
                 </div>
-                <div class="Slide SlideNotViewed" id="Slide2" style="background-color: var(--accent-color); height: 100vh;">
+                <div class="Slide SlideNotViewed" id="Slide2" style="background-color: var(--accent-color); height: 100vh; filter: brightness(50%);">
                     <svg viewBox="0 0 1440 260" class="MobileHidden SVGBottom" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(0, 0, 0, 0)" offset="0%"></stop><stop stop-color="var(--accent-color)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,52L60,69.3C120,87,240,121,360,138.7C480,156,600,156,720,138.7C840,121,960,87,1080,73.7C1200,61,1320,69,1440,73.7C1560,78,1680,78,1800,73.7C1920,69,2040,61,2160,65C2280,69,2400,87,2520,99.7C2640,113,2760,121,2880,134.3C3000,147,3120,165,3240,173.3C3360,182,3480,182,3600,182C3720,182,3840,182,3960,190.7C4080,199,4200,217,4320,208C4440,199,4560,165,4680,130C4800,95,4920,61,5040,69.3C5160,78,5280,130,5400,160.3C5520,191,5640,199,5760,208C5880,217,6000,225,6120,199.3C6240,173,6360,113,6480,91C6600,69,6720,87,6840,112.7C6960,139,7080,173,7200,173.3C7320,173,7440,139,7560,112.7C7680,87,7800,69,7920,60.7C8040,52,8160,52,8280,78C8400,104,8520,156,8580,182L8640,208L8640,260L8580,260C8520,260,8400,260,8280,260C8160,260,8040,260,7920,260C7800,260,7680,260,7560,260C7440,260,7320,260,7200,260C7080,260,6960,260,6840,260C6720,260,6600,260,6480,260C6360,260,6240,260,6120,260C6000,260,5880,260,5760,260C5640,260,5520,260,5400,260C5280,260,5160,260,5040,260C4920,260,4800,260,4680,260C4560,260,4440,260,4320,260C4200,260,4080,260,3960,260C3840,260,3720,260,3600,260C3480,260,3360,260,3240,260C3120,260,3000,260,2880,260C2760,260,2640,260,2520,260C2400,260,2280,260,2160,260C2040,260,1920,260,1800,260C1680,260,1560,260,1440,260C1320,260,1200,260,1080,260C960,260,840,260,720,260C600,260,480,260,360,260C240,260,120,260,60,260L0,260Z"></path></svg>
                     <svg viewBox="0 0 1440 260" class="MobileHidden SVGTop" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(0, 0, 0, 0)" offset="0%"></stop><stop stop-color="var(--accent-color)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,208L60,199.3C120,191,240,173,360,177.7C480,182,600,208,720,208C840,208,960,182,1080,151.7C1200,121,1320,87,1440,99.7C1560,113,1680,173,1800,195C1920,217,2040,199,2160,177.7C2280,156,2400,130,2520,130C2640,130,2760,156,2880,138.7C3000,121,3120,61,3240,60.7C3360,61,3480,121,3600,138.7C3720,156,3840,130,3960,117C4080,104,4200,104,4320,104C4440,104,4560,104,4680,91C4800,78,4920,52,5040,47.7C5160,43,5280,61,5400,60.7C5520,61,5640,43,5760,34.7C5880,26,6000,26,6120,56.3C6240,87,6360,147,6480,164.7C6600,182,6720,156,6840,134.3C6960,113,7080,95,7200,104C7320,113,7440,147,7560,138.7C7680,130,7800,78,7920,69.3C8040,61,8160,95,8280,95.3C8400,95,8520,61,8580,43.3L8640,26L8640,260L8580,260C8520,260,8400,260,8280,260C8160,260,8040,260,7920,260C7800,260,7680,260,7560,260C7440,260,7320,260,7200,260C7080,260,6960,260,6840,260C6720,260,6600,260,6480,260C6360,260,6240,260,6120,260C6000,260,5880,260,5760,260C5640,260,5520,260,5400,260C5280,260,5160,260,5040,260C4920,260,4800,260,4680,260C4560,260,4440,260,4320,260C4200,260,4080,260,3960,260C3840,260,3720,260,3600,260C3480,260,3360,260,3240,260C3120,260,3000,260,2880,260C2760,260,2640,260,2520,260C2400,260,2280,260,2160,260C2040,260,1920,260,1800,260C1680,260,1560,260,1440,260C1320,260,1200,260,1080,260C960,260,840,260,720,260C600,260,480,260,360,260C240,260,120,260,60,260L0,260Z"></path></svg>
                 </div>
@@ -399,7 +399,7 @@ const GenerateBodyV2 = async function (
                         </div>` + (Article.showTitle ? (ArticleTags + `
                         <p class="ArticleTitleDate" style="margin-top: 50px">` + Article.date + `</p>
                         <h1 class="ArticleTitle" style="margin-top: 12px">` + Article.title + `</h1>
-                        <h4 style="margin-top: 0px; font-weight: normal">` + Article.description + `</h4>
+                        <h4 style="margin-top: 0px; font-weight: normal; margin-top: 10px;">` + Article.description + `</h4>
                         <p style="margin-top: 24px; padding-bottom: 50px; margin-bottom: 50px; border-bottom: 3px solid white;">Written by <strong>` + Article.author + `</strong></p>`) : ``) + `
                         ` + MarkdownHtml + ((Custom == "" && Filename != null) ? (Article.showTitle ? GenerateShareSection(Locale, Filename, Article) : ``) : ``) + `
                         <br>
@@ -433,15 +433,10 @@ const GeneratePage = async function (
         Filename
     );
 
-    let date = new Date();
-    let diff = date - new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
-    let progress = (diff / (1000 * 60 * 60 * 24)) * 360;
-    progress = 0
-
     Output =
         `
         <!DOCTYPE html>
-        <html style="--accent-color-hue: ` + progress + `" lang="` +
+        <html start="` + new Date().getTime() + `" lang="` +
         Localize(Locale, "locale_title") +
         `">
         <head>` +

@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node App 3100",
     "build": "node Build",
+    "prod": "node Build && node App 3000",
     "develop": "node Build --skipobfuscation && node App 3000"
   },
   "author": "Strayfade",

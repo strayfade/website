@@ -78,7 +78,8 @@ function UpdateSlides(SlideNumb) {
         if (i < 0) return;
 
         setTimeout(function () {
-          document.getElementById("Counter").innerHTML = (6 - i).toString() + "+"
+
+          document.getElementById("Counter").innerHTML = ((new Date().getFullYear() - 2016) - i).toString() + "+"
           SetYearsCoded(--i);
 
         }, 200);
@@ -249,10 +250,4 @@ else {
   document.getElementsByClassName("Footer2")[0].style.display = "none"
 }
 
-const EnableAnimations = async function () {
-  await new Promise(r => setTimeout(r, 250));
-  document.querySelector(':root').style.setProperty('--transition-length', "1.0s");
-  await new Promise(r => setTimeout(r, 0));
-  document.getElementById("SlideContent1").classList.add("SlideNotOccluded")
-}
-EnableAnimations()
+document.getElementById("SlideContent1").classList.add("SlideNotOccluded")

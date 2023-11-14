@@ -167,17 +167,12 @@ const GenerateBodyV2 = async function (
         case AvailablePages.Home:
             Output +=
                 `
-                <div class="Slide SlideVisible" id="Slide1" style="background-color: black"></div>
-                <div class="Slide SlideContentVisible SlideOccluded" id="SlideContent1">
-                    <div class="GradientContainer" style="filter: brightness(2)">
-                        <div class="Gr Gr-1"></div>
-                        <div class="Gr Gr-2"></div>
-                        <div class="Gr Gr-3"></div>
-                    </div>
-                    <div class="SlideInner" style="color: white">
+                <div class="Slide SlideVisible" id="Slide1" style="background-color: black;"></div>
+                <div class="Slide SlideContentVisible SlideOccluded" id="SlideContent1" style="background: linear-gradient(to right, black, var(--accent-color-very-transparent));">
+                    <div class="SlideInner" style="color: white;">
                         <p class="Author">Strayfade</p>
                         <h1 class="Slide1 Slide1Visible">` + Localize(Locale, "pageTitle1") + `</h1>
-                        <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd>web development</rd></a> and C++) from the United States</p>
+                        <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd>web development</rd></a> and C++) from the United States.</p>
                         <br class="Slide1 Slide1Visible">
                         `
 
@@ -298,11 +293,6 @@ const GenerateBodyV2 = async function (
                     <svg viewBox="0 0 1440 260" class="MobileHidden SVGTop" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(0, 0, 0, 0)" offset="0%"></stop><stop stop-color="var(--accent-color)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,52L60,69.3C120,87,240,121,360,138.7C480,156,600,156,720,138.7C840,121,960,87,1080,73.7C1200,61,1320,69,1440,73.7C1560,78,1680,78,1800,73.7C1920,69,2040,61,2160,65C2280,69,2400,87,2520,99.7C2640,113,2760,121,2880,134.3C3000,147,3120,165,3240,173.3C3360,182,3480,182,3600,182C3720,182,3840,182,3960,190.7C4080,199,4200,217,4320,208C4440,199,4560,165,4680,130C4800,95,4920,61,5040,69.3C5160,78,5280,130,5400,160.3C5520,191,5640,199,5760,208C5880,217,6000,225,6120,199.3C6240,173,6360,113,6480,91C6600,69,6720,87,6840,112.7C6960,139,7080,173,7200,173.3C7320,173,7440,139,7560,112.7C7680,87,7800,69,7920,60.7C8040,52,8160,52,8280,78C8400,104,8520,156,8580,182L8640,208L8640,260L8580,260C8520,260,8400,260,8280,260C8160,260,8040,260,7920,260C7800,260,7680,260,7560,260C7440,260,7320,260,7200,260C7080,260,6960,260,6840,260C6720,260,6600,260,6480,260C6360,260,6240,260,6120,260C6000,260,5880,260,5760,260C5640,260,5520,260,5400,260C5280,260,5160,260,5040,260C4920,260,4800,260,4680,260C4560,260,4440,260,4320,260C4200,260,4080,260,3960,260C3840,260,3720,260,3600,260C3480,260,3360,260,3240,260C3120,260,3000,260,2880,260C2760,260,2640,260,2520,260C2400,260,2280,260,2160,260C2040,260,1920,260,1800,260C1680,260,1560,260,1440,260C1320,260,1200,260,1080,260C960,260,840,260,720,260C600,260,480,260,360,260C240,260,120,260,60,260L0,260Z"></path></svg>
                 </div>
                 <div class="Slide SlideContentHidden" id="SlideContent3">
-                    <div class="GradientContainer">
-                        <div class="Gr Gr-1"></div>
-                        <div class="Gr Gr-2"></div>
-                        <div class="Gr Gr-3"></div>
-                    </div>
                     <div class="SlideInner" style="color: white">
                         <p class="Author">Connect</p>
                         <h1 class="Slide3">` + Localize(Locale, "pageTitle3") + `</h1>
@@ -381,12 +371,7 @@ const GenerateBodyV2 = async function (
             Output += `
             <div class="Slide SlideVisible ArticleImageBg" id="Slide1" style="background-color: black;` + (Article.background ? (` background: ` + Article.background) : ``) + `"></div>
             <div class="Slide SlideContentVisible SlideOccluded" id="SlideContent1">
-                <div class="GradientContainer" style="filter: brightness(2)">
-                    <div class="Gr Gr-1"></div>
-                    <div class="Gr Gr-2"></div>
-                    <div class="Gr Gr-3"></div>
-                </div>
-                <div class="SlideInner" style="color: white; margin-top: 0px; width: 100vw;">
+                <div class="SlideInner" style="color: white; margin-top: 0px; width: 100vw; background: linear-gradient(to left, black, var(--accent-color-very-transparent));">
                     <div class="Scrollable">
                         <br>
                         <br>

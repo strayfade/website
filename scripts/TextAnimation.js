@@ -63,24 +63,13 @@ function DecryptElements(Elements) {
             //}
             if (Iter < LongestString + 1) {
                 DecryptLoop(Iter)
-            } 
-            else {
-                //DoContentLinks();
-                setInterval(OnResize, 20);
             }
-        }, 25)
+        }, 20)
     }
     DecryptLoop(0);
 }
 
-// This is <REALLY> stupid, but it works
-function OnResize() {
-    //ReplaceEffectBoxes()
-    //PositionLinkElements()
-}
-
 document.addEventListener("DOMContentLoaded", async function () {
-    //PlaceEffectBoxes();
     let Elements = GetElements();
     DecryptElements(Elements);
 })

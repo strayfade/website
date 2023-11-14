@@ -58,12 +58,14 @@
 .SlideContentHidden {
   transition: calc(var(--transition-length) / 2);
   opacity: 0;
-  margin-left: 100vw;
+  margin-left: 0vw;
+  pointer-events: none;
 }
 .SlideContentVisible {
   transition: calc(var(--transition-length) / 2);
   opacity: 1;
   margin-left: 0vw;
+  pointer-events: all;
 }
 .GradientContainer {
   transition: var(--transition-length);
@@ -80,19 +82,22 @@
 .SlideNotViewed {
   transition: var(--transition-length);
   margin-top: 100vh;
+  pointer-events: none;
 }
 
 .SlideViewed {
   transition: var(--transition-length);
+  pointer-events: none;
 }
 
 .SlideVisible {
   transition: var(--transition-length);
   margin-top: 0vh;
+  pointer-events: all;
 }
 
 .Slide .SlideInner {
-  margin-top: 8vw;
+  margin-top: 10vw;
   margin-left: auto;
   margin-right: auto;
   width: 50vw;
@@ -184,10 +189,10 @@ a {
   transition: var(--transition-length);
   border-radius: 2.5px;
   width: 5px;
-  height: 15vw;
+  height: 33vh;
   position: absolute;
   left: 33px;
-  top: calc(50vh - 7.5vw);
+  top: calc(50vh - calc(33vh / 2));
 }
 .SidebarScrollFill {
   transition: var(--transition-length);
@@ -196,6 +201,7 @@ a {
   height: 33.33%;
   border-radius: 6px;
 }
+
 @media screen and (max-width: 800px) {
   .SidebarScrollPercentage {
     display: none;
@@ -204,6 +210,7 @@ a {
     display: none;
   }
 }
+
 .Icon {
   width: 30px;
   height: 30px;
@@ -319,8 +326,8 @@ a {
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 30vw;
-  padding-right: 30vw;
+  padding-left: 20vw;
+  padding-right: 20vw;
   z-index: 3;
 }
 

@@ -436,7 +436,7 @@ const GeneratePage = async function (
     Output =
         `
         <!DOCTYPE html>
-        <html start="` + new Date().getTime() + `" lang="` +
+        <html lang="` +
         Localize(Locale, "locale_title") +
         `">
         <head>` +

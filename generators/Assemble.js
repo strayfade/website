@@ -215,7 +215,7 @@ const GenerateBodyV2 = async function (
 
                             // Article Titles
                             if (x == 0) {
-                                Output += `<h3 style="margin-top: 0px; color: black; background-color: var(--accent-color); padding: 5px; padding-right: 7px; padding-left: 7px; width: max-content; height: max-content; margin-top: 5px;">` + JSON.title + `</h3>`
+                                Output += `<h3 style="margin-top: 0px; text-shadow: 0px 0px 15px white; color: black; background-color: var(--accent-color); padding: 5px; padding-right: 7px; padding-left: 7px; width: max-content; height: max-content; margin-top: 5px;">` + JSON.title + `</h3>`
                             }
                             else {
                                 Output += `<h3 style="margin-top: 5px; color: white; padding: 5px; padding-left: 0px">` + JSON.title + `</h3>`
@@ -396,10 +396,10 @@ const GenerateBodyV2 = async function (
                                 <svg class="Link" style="margin-bottom: -4px; margin-left: -1px; fill: var(--accent-color);" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 50 40"><path xmlns="http://www.w3.org/2000/svg" d="M24 40 8 24 24 8l2.1 2.1-12.4 12.4H40v3H13.7l12.4 12.4Z"/></svg>
                                 Back
                             </a>
-                        </div>
+                        </div>` + (Article.showTitle ? (ArticleTags + `
                         <p class="ArticleTitleDate" style="margin-top: 50px">` + Article.date + `</p>
                         <h1 class="ArticleTitle" style="margin-top: 12px">` + Article.title + `</h1>
-                        <h4 style="margin-top: 0px; font-weight: normal; margin-top: 10px;">` + Article.description + `</h4>` + (Article.showTitle ? (ArticleTags + `
+                        <h4 style="margin-top: 0px; font-weight: normal; margin-top: 10px;">` + Article.description + `</h4>
                         <p style="margin-top: 24px; padding-bottom: 50px; margin-bottom: 50px; border-bottom: 3px solid white;">Written by <strong>` + Article.author + `</strong></p>`) : ``) + `
                         ` + MarkdownHtml + ((Custom == "" && Filename != null) ? (Article.showTitle ? GenerateShareSection(Locale, Filename, Article) : ``) : ``) + `
                         <br>

@@ -1,65 +1,21 @@
 {
     "title": "AI vs Anti-cheat",
-    "description": "Neural networks are a double-edged sword for anticheat.",
+    "description": "A deep-dive into neural networks",
     "tags": ["Anti-cheat", "AI", "C++"],
     "author": "Noah",
-    "date": "7/22/2023",
+    "date": "1/26/2023",
     "showTitle": true,
-    "indexed": true,
-    "pinned": true
+    "indexed": true
 }
 
 ### Introduction
 
-> The source code for this project can be found at [Strayfade/FNN](https://github.com/Strayfade/FNN)
+> *The source code for this project can be found at [Strayfade/FNN](https://github.com/Strayfade/FNN)*
 
-Are "neural anti-cheats" like Valve's "VACnet" the solution to cheating in video games? Possibly. However, just as neural networks can be used by anti-cheat to detect cheaters, cheaters can use neural networks to avoid anti-cheat.
+> Feed-forward Neural Networks (FNNs) are used to change data in an intelligent way, and they are very easy to set up and use. Although this article will be applying their use to evading simple anti-cheat detection, FNNs are an invaluable resource for automating complex systems and evaluating information.
 
-This article will be discussing how certain input methods, such as mouse movement, can be easily detected by anti-cheat software, and how this problem can be solved through the use of input "humanization" through neural networks.
-
-### VACnet
-
-By looking at [Valve's publicly available patent](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf) for VACnet, lots of information can be revealed about the upcoming anti-cheat's inner workings. On [page 44](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf#page=44), Valve displays some of the values forwarded through the network: 
-
- - Pitch
- - Yaw
- - Object Type
- - Action Result
- - Affected Object
- - Distance to AO
-
-While it's hard to guess at what some of these values represent, two are immediately recognizable: **pitch** and **yaw**. This likely confirms that VACnet closely monitors how the player's mouse movement affects the in-game camera's pitch and yaw over time.
-
-### 1. Simple Detection
-
-Let's focus on the simplest form of aimbot detection: the distance of the crosshair from the target location. If this distance shows little to no movement over a long period of time, then it is safe to assume that the player is cheating. This is the easiest way to hypothetically detect a player using aimbot, but it is also the easiest to circumvent using our first "humanization" method: Input Smoothing.
-
-### 2. Smoothing Detection
-
-The goal of "smoothing" is to move the mouse gradually to the target location, as a human would, instead of instantly moving the mouse where it needs to be. Smoothing is almost **always** accomplished using the following function, where *x* is a screen coordinate and *t* is that coordinate's target position:
-
-> <em>f(x) = (t - x) / c + x</em>
-
-Note that in this equation, *c* is the **smoothing constant**, a value greater than *1* which can be used to control the speed at which the coordinate changes. The higher the value, the slower the coordinate changes.
-
-An anticheat could detect a user that is using smoothing simply because of the fact that the crosshair's distance from the target will always decrease at an exponential rate. This can, of course, happen natrually with human players at times, but it will **always** happen with players who are cheating and using smoothing.
-
-One way to avoid this detection is by using a linear smoothing function, or one that adds a constant value to the coordinate over time until it is within a certain distance from the target coordinate. Many cheats, however, don't take advantage of this, as an exponential smoothing algorithm is usually easier to code. Additionally, a linear smoothing algorithm could (*in theory*) be just as straightforward for an anticheat to detect as its exponential variant.
-
-### The Solution
-
-It almost feels that we would need a smoothing algorithm with added randomness to make the inputs look "human". What is the best way to produce controlled randomness that can change depending on the circumstances? **Neural networks.**
-
-### Writing Our Own Neural Network
-
-The key in creating a neural network is the layout of **weights** and **biases**.
-
- - **Weights** define how much the input should be changed by
- - **Biases** define the probability that the input will be changed at all
-
-Lastly, we have our input and output layers, or **neurons**.
-
-Here is example code that shows what we are working with. In this example, the `V(T)` is a macro for the `std::vector<>` object. `V2(T)` is the definition for a **Vector2** (`std::vector<std::vector<...>>`), and so on.
+### Starting from scratch
+To begin coding, we will create a `NeuralNetwork` class, which holds values from our neural network
 
     class NeuralNetwork {
     private:
@@ -69,7 +25,26 @@ Here is example code that shows what we are working with. In this example, the `
         V3(float) Weights;
     }
 
-When creating a constructor for this class, the values in the `Neurons`, `Biases`, and `Weights` vectors are populated with starting data.
+> `V/V2/V3(T)` is just a wrapper for the std::vector object.
+
+This class holds values for our input/output "neurons", biases, and weights. It also holds a vector containing our `Layers` layout, which defines how many neurons should be in each layer of the network. An example of this is `{ 2, 4, 2 }`, which has two input values and two output values, as well as a computation layer of 4 neurons.
+
+Our constructor for the `NeuralNetwork` class looks like this:
+
+    NeuralNetwork::NeuralNetwork(V(int) NewLayers) {
+        this->Layers = NewLayers;
+        for (int i = 0; i < this->Layers.size(); i++) {
+            this->Layers[i] = NewLayers[i];
+        }
+        
+        CreateNeurons();
+        CreateBiases();
+        CreateWeights();
+    }
+
+We start by setting our `Layers` variable to tell the network how many neurons should be in each layer. Then, we run the functions `CreateNeurons`, `CreateBiases`, and `CreateWeights` to initialize the network. This code is simplified and has all of the logging/debugging functions removed.
+
+Here are the function definitions for `CreateNeurons`, `CreateBiases`, and `CreateWeights`:
 
     void NeuralNetwork::CreateNeurons() {
         V2(float) NewNeurons;
@@ -110,11 +85,7 @@ When creating a constructor for this class, the values in the `Neurons`, `Biases
         this->Weights = NewWeights;
     }
 
-### How does it all work?
-
-The type of neural network shown here is a Feed-Forward Neural Network, also called a **FNN** (or **FFNN**). The input values are forwarded through the network, and then the network is **mutated**.
-
-Here is the function used to **forward** the input values through the network and return an output:
+After this, we will write the `Forward` function, which is used to run the network.
 
     V(float) NeuralNetwork::Forward(V(float) Input) {
         for (int x = 0; x < Input.size(); x++) {
@@ -133,9 +104,76 @@ Here is the function used to **forward** the input values through the network an
         return this->Neurons[Neurons.size() - 1];
     }
 
-The last step in the training process is **mutation**.
+At this point, it's worth talking about how feed-forward neural networks actually function. 
 
-When a network is **mutated**, it's characteristics are cloned into a new network, and then that network has its weights and biases modified by a random amount.
+Training our neural network involves the following steps:
+
+ 1. Create an array of neural networks
+ 2. Slightly randomize the weights and biases in the network (performed using the `Mutate()` function)
+ 3. Run the forward operation with input data
+ 4. Calculate how correct/incorrect the response was from the network
+ 5. Find the network in the array that was "most correct"
+ 6. Make all of the networks "copy" the weights and biases of the best network
+ 7. Go back to step 2 and do it all again
+
+With this approach, the network will gradually provide better outputs over time. After it has been sufficiently trained, we can save the weights and biases and re-load them at a later time. This is our "model".
+
+    -0.12585058
+    0.49258252
+    0.14557051
+    -0.99751266
+    ...
+
+We can save and load it from memory (as an array), or from a file by creating `Save()` and `Load()` functions in the `NeuralNetwork` class.
+
+### Applying what we know
+AI has many uses in the scope of cheating, but we will be using it primarily to "humanize" mouse movements made by the computer. Some anti-cheats (namely Easy Anti-Cheat), have shown to detect mouse movement that seems too un-realistic. A good example of this would be a crosshair that is always locked onto an enemy player's head instead of having human randomness applied. 
+
+*So, then, why can't we just use randomness added onto our crosshair's position?* This works, in some cases, but it gives the user less control over their crosshair's actual position. By using a pre-trained neural network to calculate mouse movements, we can create something that is based off of human movement and moves in the exact same way as a human.
+
+For our network array (Step 1), we will create an array of 50 networks with the layers `{ 4, 12, 2 }`. This is because we will have four inputs (X/Y for the mouse's current position, and X/Y for where we want to move it), and two outputs (X/Y for an output location).
+
+    V(int) Layers = { 2, 12, 2 };
+    V(NeuralNetwork) Networks;
+	for (int i = 0; i < 50; i++) {
+		Networks.push_back(NeuralNetwork(Layers));
+	}
+
+Then, we will create inputs for the network like this:
+
+    POINT Pt; // Get Mouse Location
+    GetCursorPos(&Pt);
+
+    Vec2 MouseTarget = { 200, 200 };
+    V(float) Input = { 0, 0, MouseTarget.x, MouseTarget.y }; // Create FNN Input
+    Input[0] = ((float)(Pt.x) / 1920) - 0.5f;
+    Input[1] = ((float)(Pt.y) / 1080) - 0.5f;
+
+We forward the network to "run" it, then calculate how it did using a variable `Performance`:
+
+    for (int i = 0; i < Networks.size(); i++) {
+        V(float) Output = Networks[i].Forward(Input);
+        float PerformanceX = pow((float(MouseTarget.x) - 960) / 1920 - Output[0], 2);
+        float PerformanceY = pow((float(MouseTarget.y) - 540) / 1080 - Output[1], 2);
+        Networks[i].Performance = pow(1 - sqrt(PerformanceX + PerformanceY), 5);
+    }
+
+Now, we find which network did the best and create the next generation based on that.
+
+    NeuralNetwork HighestFitness(Layers);
+    for (int i = 0; i < Networks.size(); i++) {
+        if (Networks[i].Fitness > HighestFitness.Fitness) {
+            HighestFitness = Networks[i];
+        }
+    }
+    for (int i = 0; i < Networks.size(); i++) {
+        Networks[i].CloneFrom(HighestFitness);
+        Networks[i].Mutate(1, 0.1);
+    }
+
+At this point, it's worth explaining what the `Mutate` function does. `Mutate` is responsible for randomly choosing whether or not to randomize the biases and weights of the network.
+
+Here, `Chance` is responsible for determining whether or not we should mutate the network, and `Value` is the maximum amount that we can mutate the network per run. `Chance` can be thought of as the Mutation Chance, and `Value` is the Mutation Scale.
 
     void NeuralNetwork::Mutate(int Chance, float Value) {
         for (int x = 0; x < this->Biases.size(); x++) {
@@ -156,38 +194,9 @@ When a network is **mutated**, it's characteristics are cloned into a new networ
         }
     }
 
-### Feed-Forward Neural Networks TLDR
-
-When training a FNN, an array of networks is given the same input information. Then, the data is forwarded through the network and the outputs are measured. All of the networks' outputs must be measured to test which network came closest to generating the expected output. This is why all data passed to the network during training must have an expected result already prepared.
-
-The network with the best outputs, or `performance`, is used as the base to create a new array of networks that will be used for the next training loop. These new networks must be mutated so that they are given the chance to generate outputs that are closer to the target result than their parent network.
-
-The hierarchy of parent networks and mutation is what gives this type of training the name **Genetic Algorithm**.
-
-Training our neural network involves the following steps:
-
- - Create an array of neural networks
- - Slightly randomize the weights and biases in the network (performed using the Mutate() function)
- - Run the forward operation with input data
- - Calculate how correct/incorrect the response was from the network
- - Find the network in the array that was "most correct"
- - Make all of the networks "copy" the weights and biases of the best network
- - Go back to step 2 and do it all again
-
-With this approach, the network will gradually provide better outputs over time. After it has been sufficiently trained, we can save the weights and biases and re-load them at a later time. This is our "model".
-
-    -0.12585058
-    0.49258252
-    0.14557051
-    -0.99751266
-    ...
-
-We can save and load it from memory (as an array), or from a file by creating Save() and Load() functions in the NeuralNetwork class.
+At this point, we are finished coding the neural network. To test it, we can feed it an input to move the mouse to in the `Vec2 MouseTarget` and watch as it tries to move to the desired location. It will likely start off just guessing during training, but will get better over time.
 
 ### References
  - [https://github.com/Strayfade/FNN](https://github.com/Strayfade/FNN)
  - [https://towardsdatascience.com/building-a-neural-network-framework-in-c-16ef56ce1fef](https://towardsdatascience.com/building-a-neural-network-framework-in-c-16ef56ce1fef)
  - [https://deepai.org/machine-learning-glossary-and-terms/feed-forward-neural-network](https://deepai.org/machine-learning-glossary-and-terms/feed-forward-neural-network)
- - [https://www.theloadout.com/csgo/vacnet-cheating-patent](https://www.theloadout.com/csgo/vacnet-cheating-patent)
- - [https://patents.google.com/patent/WO2019182868A1](https://patents.google.com/patent/WO2019182868A1)
- - [https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf)

@@ -19,6 +19,9 @@ This article will be discussing how certain input methods, such as mouse movemen
 
 ### VACnet
 
+<img src="/assets/images/FeedForward1.png"/>
+<p class="Caption">Presumed VACnet Patent</p>
+
 By looking at [Valve's publicly available patent](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf) for VACnet, lots of information can be revealed about the upcoming anti-cheat's inner workings. On [page 44](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf#page=44), Valve displays some of the values forwarded through the network: 
 
  - Pitch
@@ -27,6 +30,9 @@ By looking at [Valve's publicly available patent](https://patentimages.storage.g
  - Action Result
  - Affected Object
  - Distance to AO
+
+<img src="/assets/images/FeedForward2.png"/>
+<p class="Caption">Example input array given to the VACnet neural network.</p>
 
 While it's hard to guess at what some of these values represent, two are immediately recognizable: **pitch** and **yaw**. This likely confirms that VACnet closely monitors how the player's mouse movement affects the in-game camera's pitch and yaw over time.
 
@@ -41,6 +47,10 @@ The goal of "smoothing" is to move the mouse gradually to the target location, a
 > <em>f(x) = (t - x) / c + x</em>
 
 Note that in this equation, *c* is the **smoothing constant**, a value greater than *1* which can be used to control the speed at which the coordinate changes. The higher the value, the slower the coordinate changes.
+
+The speed at which the crosshair moves to the enemy can be graphed using the equation **<em>y = 1 - x</em>**, and the approximate distance from the enemy can be graphed using the following:
+
+> <em>y = 1 - (|(x - 1)|^(s + 1) * -1 + 1)</em>
 
 An anticheat could detect a user that is using smoothing simply because of the fact that the crosshair's distance from the target will always decrease at an exponential rate. This can, of course, happen natrually with human players at times, but it will **always** happen with players who are cheating and using smoothing.
 

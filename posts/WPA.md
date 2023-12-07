@@ -189,7 +189,7 @@ Finally, the network's SSID and credentials could be found in the `hashcat.potfi
 
 > I loved this challenge, and it was a good opportunity for me to learn about tools that people can use to brute-force encryption. It was also a good lesson in some of the ways that networks handle authentication, and I greatly enjoyed the experience.
 
-## References
+### References
  - [https://hashcat.net/wiki/doku.php](https://hashcat.net/wiki/doku.php?id=mask_attack)
  - [https://www.aircrack-ng.org/](https://www.aircrack-ng.org/)
  - [https://hashcat.net/hashcat/](https://hashcat.net/hashcat/)

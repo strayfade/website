@@ -1,4 +1,4 @@
-let TextTags = ["h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "em", "strong", "a", "code", "span"]
+let TextTags = ["h1", "h2", "h3", "h4", "h5", "h6", "p", "li", "em", "strong", "a", "code"]
 let ReplacementLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 
 function GetElements() {

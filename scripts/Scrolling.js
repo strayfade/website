@@ -75,6 +75,7 @@ const UpdateSlides = (SlideNumb) => {
       }
       const SetYearsCoded = (i) => {
         setTimeout(() => {
+          if (i < 0) return;
           document.getElementById("Counter").innerHTML = ((new Date().getFullYear() - 2016) - i).toString() + "+"
           SetYearsCoded(--i);
         }, 200);

@@ -6,16 +6,15 @@ const MaxSlides = 3;
 const SlideIDs = ["Slide1", "Slide2", "Slide3"]
 const SlideContentIDs = ["SlideContent1", "SlideContent2", "SlideContent3"]
 
-function GoUp() {
+const GoUp = () => {
   if (SlideNum == 1 || SlideNum == 2)
     UpdateSlides(SlideNum - 1)
 }
-function GoDown() {
+const GoDown = () => {
   if (SlideNum == 0 || SlideNum == 1)
     UpdateSlides(SlideNum + 1)
 }
-
-function GoHome() {
+const GoHome = () => {
   if (window.location.pathname == "/" || !window.location.pathname) {
     UpdateSlides(0)
   }
@@ -23,12 +22,12 @@ function GoHome() {
     window.location.href = "/"
   }
 }
-function UpdateSlides(SlideNumb) {
+const UpdateSlides = (SlideNumb) => {
   SlideNum = SlideNumb;
   let Icons2 = document.getElementsByClassName("Footer")[0];
   let Icons3 = document.getElementsByClassName("Footer2")[0];
-  let Icons4 = document.getElementsByClassName("MobileButton")[0]; // Next
-  let Icons5 = document.getElementsByClassName("MobileButton")[1]; // Previous
+  let Icons4 = document.getElementsByClassName("MobileButton")[0];
+  let Icons5 = document.getElementsByClassName("MobileButton")[1];
   let Slide1Elements = document.getElementsByClassName("Slide1")
   let Slide2Elements = document.getElementsByClassName("Slide2")
   let Slide3Elements = document.getElementsByClassName("Slide3")
@@ -70,18 +69,14 @@ function UpdateSlides(SlideNumb) {
       for (let x = 0; x < Slide3Elements.length; x++) {
         Slide3Elements[x].classList.remove("Slide3Visible");
       }
-      function CalculateAge() {
+      const CalculateAge = () => {
         var AgeDif = new Date(Date.now() - new Date(1131950100000));
         return Math.abs(AgeDif.getUTCFullYear() - 1970);
       }
-      function SetYearsCoded(i) {
-        if (i < 0) return;
-
-        setTimeout(function () {
-
+      const SetYearsCoded = (i) => {
+        setTimeout(() => {
           document.getElementById("Counter").innerHTML = ((new Date().getFullYear() - 2016) - i).toString() + "+"
           SetYearsCoded(--i);
-
         }, 200);
       }
       SetYearsCoded(CalculateAge() - 11);
@@ -171,25 +166,25 @@ function UpdateSlides(SlideNumb) {
     UnmoveTargets.push(SlideIDs[i])
     ContentUnmoveTargets.push(SlideContentIDs[i])
   }
-  MoveTargets.forEach(function (item) {
+  MoveTargets.forEach((item) => {
     let Element = document.getElementById(item);
     Element.classList.remove("SlideViewed")
     Element.classList.remove("SlideNotViewed")
     Element.classList.add("SlideVisible")
   })
-  UnmoveTargets.forEach(function (item) {
+  UnmoveTargets.forEach((item) => {
     let Element = document.getElementById(item);
     Element.classList.remove("SlideVisible")
     Element.classList.remove("SlideViewed")
     Element.classList.remove("SlideNotViewed")
     Element.classList.add(UnmoveTargets.indexOf(item) < (SlideNumb) ? "SlideViewed" : "SlideNotViewed")
   })
-  ContentMoveTargets.forEach(function (item) {
+  ContentMoveTargets.forEach((item) => {
     let Element = document.getElementById(item);
     Element.classList.remove("SlideContentHidden")
     Element.classList.add("SlideContentVisible")
   })
-  ContentUnmoveTargets.forEach(function (item) {
+  ContentUnmoveTargets.forEach((item) => {
     let Element = document.getElementById(item);
     Element.classList.add("SlideContentHidden")
     Element.classList.remove("SlideContentVisible")
@@ -197,11 +192,11 @@ function UpdateSlides(SlideNumb) {
 }
 
 const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
-function PreventDefault(e) {
+const PreventDefault = (e) => {
   e.preventDefault();
 }
 
-function PreventDefaultForScrollKeys(e) {
+const PreventDefaultForScrollKeys = (e) => {
   if (keys[e.keyCode]) {
     PreventDefault(e);
     return false;
@@ -209,24 +204,36 @@ function PreventDefaultForScrollKeys(e) {
 }
 
 if (window.location.pathname == "/" || !window.location.pathname) {
-  // modern Chrome requires { passive: false } when adding event
+  // Scroll to location
+  UpdateSlides(0)
+  let Slide = new URLSearchParams(window.location.search).get('p')
+  if (Slide) {
+    switch (Slide.toLowerCase()) {
+      case "skills":
+        UpdateSlides(1)
+        break;
+      case "contact":
+        UpdateSlides(2)
+        break;
+    }
+  }
+  // modern Chrome requires { passive: false } when adding events
   var supportsPassive = false;
   try {
     window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-      get: function () { supportsPassive = true; }
+      get: () => { supportsPassive = true; }
     }));
   } catch (e) { }
 
   var wheelOpt = supportsPassive ? { passive: false } : false;
   var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
-  // call this to Disable
-  window.addEventListener('DOMMouseScroll', PreventDefault, false); // older FF
-  window.addEventListener(wheelEvent, PreventDefault, wheelOpt); // modern desktop
-  window.addEventListener('touchmove', PreventDefault, wheelOpt); // mobile
+  window.addEventListener('DOMMouseScroll', PreventDefault, false); // Older Firefox versions
+  window.addEventListener(wheelEvent, PreventDefault, wheelOpt); // Desktop
+  window.addEventListener('touchmove', PreventDefault, wheelOpt); // Mobile (?)
   window.addEventListener('keydown', PreventDefaultForScrollKeys, false);
 
-  window.addEventListener("wheel", async function (event) {
+  window.addEventListener("wheel", async (event) => {
     let ScrollUpdate = event.deltaY - PrevScrollDist
     PrevScrollDist == event.deltaY;
     if (Math.abs(ScrollUpdate) > 10) {

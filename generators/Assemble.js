@@ -297,7 +297,7 @@ const GenerateBodyV2 = async function (
                         <p class="Author">Connect</p>
                         <h1 class="Slide3">` + Localize(Locale, "pageTitle3") + `</h1>
                         <p class="Slide3">You can send me an email at <a href="mailto:me@strayfade.com">me@strayfade.com</a> and I might read it, or you can shoot me a message on <a href="https://twitter.com/Strayfade">Twitter</a> or <a href="https://instagram.com/strayfade">Instagram</a>.</p>
-                        <p class="Slide3" style="margin-top: 10px">My current Discord tag is <a href="https://discord.com/users/455790298082181120">Strayfade#8472</a>, although I do not usually respond to direct messages on Discord.</p>
+                        <p class="Slide3" style="margin-top: 10px">My current Discord tag is <a href="https://discord.com/users/455790298082181120">strayfade</a>, although I do not usually respond to direct messages on Discord.</p>
                     </div>
                 </div>
                 <div style="opacity: 1.0">

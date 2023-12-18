@@ -57,10 +57,10 @@ function DecryptElements(Elements) {
                 Elements[x].innerHTML = NewString;
             }
 
-            //let DecryptChance = 0.8;
-            //if (Math.random() < DecryptChance) { // Chance of decrypting
+            let DecryptChance = 0.33;
+            if (Math.random() < DecryptChance) { // Chance of decrypting
                 Iter++
-            //}
+            }
             if (Iter < LongestString + 1) {
                 DecryptLoop(Iter)
             }

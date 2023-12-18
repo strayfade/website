@@ -44,7 +44,6 @@
         return min(max(a))
     }
     AllBoxes.sort((a, b) => ((1 - document.getElementById("SlideContent1").contains(a)) * clamp(a.getBoundingClientRect().top - b.getBoundingClientRect().top)))
-    console.log(AllBoxes)
     let Iterator = 0;
     const ref = setInterval(() => {
         AllBoxes[Iterator].style.marginLeft = parseInt(AllBoxes[Iterator].getAttribute("initialwidth")) + "px"

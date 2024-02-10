@@ -1,4 +1,3 @@
-const Database = require("../Database")
 const Whitelist = ["/Production.css", "/Production.js"]
 
 const Middleware = async function(Request, Reponse, Next) {
@@ -20,7 +19,6 @@ const Middleware = async function(Request, Reponse, Next) {
         session: Request.headers['cookie'],
         user: Request.headers['user-agent']
     }
-    await Database.Post(Capture)
     Next();
 }
 module.exports = { Middleware }

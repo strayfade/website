@@ -18,16 +18,6 @@ cd Website
 
 3. Install packages using the command `npm i`
 
-4. **Optional:** Create a MongoDB database and tell the server where to find it in `Config.js` 
-(Leave `MongoDB.URI` empty to run without MongoDB):
-```JS
-MongoDB: {
-    URI: "YOUR DATABASE URI",
-    Name: "strayfade",
-    Collection: "analytics"
-}
-```
+4. Run the command `npm develop` to start the server (this automatically builds static files and listens on port `3000`).
 
-5. Run the command `npm develop` to start the server (this automatically builds static files and listens on port `3000`).
-
-6. Navigate to the site, hosted locally at [localhost:3000](http://localhost:3000) by default.
+5. Navigate to the site, hosted locally at [localhost:3000](http://localhost:3000) by default.

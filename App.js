@@ -8,11 +8,7 @@ const express = require('express')
 const { Log } = require('./Log')
 const { SendError } = require('./Error')
 const { GeneratePageCached } = require("./generators/Assemble")
-const { CollectAnalytics, GetAnalyticsFromRequest } = require('./Database')
-const { GetAvailableLanguages, GetLanguage, GetLanaguageShort, GetLanguagePath } = require('./Localization')
-
-// Import Config
-const Config = require("./Config")
+const { GetAvailableLanguages, GetLanaguageShort, GetLanguagePath } = require('./Localization')
 
 // Create App
 const App = express()

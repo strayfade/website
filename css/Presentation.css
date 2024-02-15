@@ -1,389 +1,422 @@
 .Slide {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  opacity: 1;
-  top: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    top: 0;
 }
 
 .SVGBottom {
-  position: absolute;
-  bottom: 0vh;
-  width: 100vw;
-  transition: var(--transition-length);
-  pointer-events: none;
+    position: absolute;
+    bottom: 0vh;
+    width: 100vw;
+    transition: var(--transition-length);
+    pointer-events: none;
 }
+
 .SlideNotViewed .SVGBottom {
-  opacity: 0;
-  transform: translateY(-100vh);
+    opacity: 0;
+    transform: translateY(-100vh);
 }
+
 .SlideViewed .SVGBottom {
-  opacity: 0.35;
-  transform: translateY(50vh);
+    opacity: 0.35;
+    transform: translateY(50vh);
 }
+
 .SlideVisible .SVGBottom {
-  opacity: 0.35;
-  transform: translateY(-10vh);
+    opacity: 0.35;
+    transform: translateY(-10vh);
 }
 
 .SVGTop {
-  position: absolute;
-  top: 20vh;
-  width: 100vw;
-  transition: var(--transition-length);
-  pointer-events: none;
+    position: absolute;
+    top: 20vh;
+    width: 100vw;
+    transition: var(--transition-length);
+    pointer-events: none;
 }
+
 .SlideNotViewed .SVGTop {
-  opacity: 0;
-  transform: translateY(-100vh) scaleY(-100%);
+    opacity: 0;
+    transform: translateY(-100vh) scaleY(-100%);
 }
+
 .SlideViewed .SVGTop {
-  opacity: 0.35;
-  transform: translateY(-30vh) scaleY(-100%);
+    opacity: 0.35;
+    transform: translateY(-30vh) scaleY(-100%);
 }
+
 .SlideVisible .SVGTop {
-  opacity: 0.35;
-  transform: translateY(-10vh) scaleY(-100%);
+    opacity: 0.35;
+    transform: translateY(-10vh) scaleY(-100%);
 }
 
 .MobileHidden {
-  display: block;
+    display: block;
 }
+
 @media screen and (max-width: 960px) {
-  .MobileHidden {
-    display: none;
-  }
+    .MobileHidden {
+        display: none;
+    }
 }
 
 .SlideContentHidden {
-  transition: calc(var(--transition-length) / 2);
-  opacity: 0;
-  margin-left: 0vw;
-  pointer-events: none;
+    transition: calc(var(--transition-length) / 2);
+    opacity: 0;
+    margin-left: 0vw;
+    pointer-events: none;
 }
+
 .SlideContentVisible {
-  transition: calc(var(--transition-length) / 2);
-  opacity: 1;
-  margin-left: 0vw;
-  pointer-events: all;
+    transition: calc(var(--transition-length) / 2);
+    opacity: 1;
+    margin-left: 0vw;
+    pointer-events: all;
 }
+
 .GradientContainer {
-  transition: var(--transition-length);
+    transition: var(--transition-length);
 }
+
 .SlideContentHidden .GradientContainer {
-  transform: translateY(-5vw) translateX(-100vw);
-  opacity: 0;
+    transform: translateY(-5vw) translateX(-100vw);
+    opacity: 0;
 }
+
 .SlideContentVisible .GradientContainer {
-  transform: translateY(0vw) translateX(0vw);
-  opacity: 0.5;
+    transform: translateY(0vw) translateX(0vw);
+    opacity: 0.5;
 }
 
 .SlideNotViewed {
-  transition: var(--transition-length);
-  margin-top: 100vh;
-  pointer-events: none;
+    transition: var(--transition-length);
+    margin-top: 100vh;
+    pointer-events: none;
 }
 
 .SlideViewed {
-  transition: var(--transition-length);
-  pointer-events: none;
+    transition: var(--transition-length);
+    pointer-events: none;
 }
 
 .SlideVisible {
-  transition: var(--transition-length);
-  margin-top: 0vh;
-  pointer-events: all;
+    transition: var(--transition-length);
+    margin-top: 0vh;
+    pointer-events: all;
 }
 
 .Slide .SlideInner {
-  margin-top: 10vw;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50vw;
+    margin-top: 15vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50vw;
 }
+
 @media screen and (max-width: 800px) {
-  .Slide .SlideInner {
-    width: 70vw;
-  }
+    .Slide .SlideInner {
+        width: 70vw;
+    }
 }
 
 rd,
 a {
-  color: var(--accent-color);
-  text-decoration: none;
+    color: var(--accent-color);
+    text-decoration: none;
 }
+
 .Author {
-  text-transform: uppercase;
-  font-weight: bold;
-  opacity: 0.9;
-  font-weight: 300;
-  margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0.9;
+    font-weight: 300;
+    margin-bottom: 20px;
 }
+
 @media screen and (max-width: 960px) {
-  .Author {
-    padding-top: 30px;
-  }
+    .Author {
+        padding-top: 30px;
+    }
 }
 
 .Footer {
-  position: absolute;
-  text-align: center;
-  width: max-content;
-  bottom: 0px;
-  width: 100%;
-  pointer-events: none;
-  transition: var(--transition-length);
-  opacity: 0;
+    position: absolute;
+    text-align: center;
+    width: max-content;
+    bottom: 0px;
+    width: 100%;
+    pointer-events: none;
+    transition: var(--transition-length);
+    opacity: 0;
 }
+
 .Footer h3 {
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 13px;
-  padding-bottom: 10px;
-  font-weight: normal;
-  opacity: 0.5;
-}
-.Footer2 {
-  position: absolute;
-  text-align: center;
-  width: max-content;
-  bottom: 30px;
-  width: 50vw;
-  transition: var(--transition-length);
-  opacity: 0;
-  left: 25vw;
-  right: 25vw;
-}
-.Footer2 svg {
-  animation-name: DownArrow;
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  animation-iteration-count: infinite;
-  animation-delay: 3s;
-  cursor: pointer;
-}
-.Footer2 svg:hover {
-  opacity: 1;
-}
-@keyframes DownArrow {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 13px;
+    padding-bottom: 10px;
+    font-weight: normal;
     opacity: 0.5;
-  }
+}
+
+.Footer2 {
+    position: absolute;
+    text-align: center;
+    width: max-content;
+    bottom: 30px;
+    width: 50vw;
+    transition: var(--transition-length);
+    opacity: 0;
+    left: 25vw;
+    right: 25vw;
+}
+
+.Footer2 svg {
+    animation-name: DownArrow;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-delay: 3s;
+    cursor: pointer;
+}
+
+.Footer2 svg:hover {
+    opacity: 1;
+}
+
+@keyframes DownArrow {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .Sidebar {
-  width: 50px;
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  z-index: 100;
+    width: 50px;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    z-index: 100;
 }
 
 .SidebarScrollPercentage {
-  background-color: rgba(0, 0, 0, 0.2);
-  transition: var(--transition-length);
-  border-radius: 2.5px;
-  width: 5px;
-  height: 33vh;
-  position: absolute;
-  left: 33px;
-  top: calc(50vh - calc(33vh / 2));
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: var(--transition-length);
+    border-radius: 2.5px;
+    width: 5px;
+    height: 33vh;
+    position: absolute;
+    left: 33px;
+    top: calc(50vh - calc(33vh / 2));
 }
+
 .SidebarScrollFill {
-  transition: var(--transition-length);
-  background-color: var(--accent-color);
-  width: 100%;
-  height: 33.33%;
-  border-radius: 6px;
+    transition: var(--transition-length);
+    background-color: var(--accent-color);
+    width: 100%;
+    height: 33.33%;
+    border-radius: 6px;
 }
 
 @media screen and (max-width: 800px) {
-  .SidebarScrollPercentage {
-    display: none;
-  }
-  .Sidebar {
-    display: none;
-  }
+    .SidebarScrollPercentage {
+        display: none;
+    }
+    .Sidebar {
+        display: none;
+    }
 }
 
 .Icon {
-  width: 30px;
-  height: 30px;
-  padding: 10px;
-  cursor: pointer;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .Coloring1 {
-  color: var(--foreground-color);
-  fill: var(--foreground-color);
-  transition: var(--transition-length);
+    color: var(--foreground-color);
+    fill: var(--foreground-color);
+    transition: var(--transition-length);
 }
+
 .Coloring1:hover {
-  color: var(--accent-color);
-  fill: var(--accent-color);
+    color: var(--accent-color);
+    fill: var(--accent-color);
 }
+
 .Coloring2 {
-  color: white;
-  fill: white;
-  transition: var(--transition-length);
+    color: white;
+    fill: white;
+    transition: var(--transition-length);
 }
+
 .Coloring2:hover {
-  color: black;
-  fill: black;
+    color: black;
+    fill: black;
 }
+
 .Coloring3 {
-  color: white;
-  fill: white;
-  transition: var(--transition-length);
+    color: white;
+    fill: white;
+    transition: var(--transition-length);
 }
+
 .Coloring3:hover {
-  color: var(--accent-color);
-  fill: var(--accent-color);
+    color: var(--accent-color);
+    fill: var(--accent-color);
 }
 
 .Header {
-  width: 50px;
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  z-index: 100;
+    width: 50px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 100;
 }
 
 .Flexbox {
-  display: flex;
-  width: 100%;
+    display: flex;
+    width: 100%;
 }
 
 .GridItem {
-  width: 80%;
-  padding-right: 40px;
-  padding-left: 0px;
-  padding-top: 20px;
-  padding-bottom: 50px;
+    width: 80%;
+    padding-right: 40px;
+    padding-left: 0px;
+    padding-top: 20px;
+    padding-bottom: 50px;
 }
+
 .GridItem p {
-  font-size: 17px;
+    font-size: 17px;
 }
+
 .GridItem h3 {
-  font-size: 22px;
-  margin-bottom: 5px;
+    font-size: 22px;
+    margin-bottom: 5px;
 }
+
 @media screen and (max-width: 800px) {
-  .Flexbox {
-    display: block;
-  }
-  .GridItem {
-    width: 100%;
-    padding-bottom: 0px;
-  }
-  .GridItem h3 {
-    font-size: 19px;
-  }
+    .Flexbox {
+        display: block;
+    }
+    .GridItem {
+        width: 100%;
+        padding-bottom: 0px;
+    }
+    .GridItem h3 {
+        font-size: 19px;
+    }
 }
 
 .Icobox {
-  display: flex;
-  fill: white;
-  width: max-content;
-  padding-top: 10px;
-  padding-bottom: 1px;
-  border-bottom: 1.5px solid var(--link-color);
+    display: flex;
+    fill: white;
+    width: max-content;
+    padding-top: 10px;
+    padding-bottom: 1px;
+    border-bottom: 1.5px solid var(--link-color);
 }
+
 .Icobox a {
-  font-size: 15px;
+    font-size: 15px;
 }
+
 .Icobox svg {
-  width: 18px;
-  height: 18px;
-  padding: 0px;
-  margin-left: 3px;
-  position: inherit;
+    width: 18px;
+    height: 18px;
+    padding: 0px;
+    margin-left: 3px;
+    position: inherit;
 }
+
 .Link,
 .Link:visited {
-  color: var(--link-color);
-  fill: var(--link-color);
+    color: var(--link-color);
+    fill: var(--link-color);
 }
 
 .SlideInner p {
-  font-size: 16px;
-  margin-top: 10px;
-}
-@media screen and (max-width: 800px) {
-  .SlideInner p {
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 10px;
-  }
+}
+
+@media screen and (max-width: 800px) {
+    .SlideInner p {
+        font-size: 14px;
+        margin-top: 10px;
+    }
 }
 
 .Scrollable {
-  overflow-y: scroll;
-  height: 100vh;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20vw;
-  padding-right: 20vw;
-  z-index: 3;
+    overflow-y: scroll;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    z-index: 3;
 }
 
 .Scrollable h3 {
-  font-size: 20px;
+    font-size: 20px;
 }
+
 .Scrollable h1,
 .Scrollable h2,
 .Scrollable h3,
 .Scrollable h4,
 .Scrollable h5,
 .Scrollable h6 {
-  margin-top: 30px;
+    margin-top: 30px;
 }
+
 .Scrollable p,
 em,
 strong {
-  font-size: 15px;
-  margin-top: 14px;
-  margin-bottom: 14px;
-  line-height: 1.3;
+    font-size: 15px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    line-height: 1.3;
 }
 
 .ArticleTitle {
-  font-size: 60px;
+    font-size: 60px;
 }
 
 .ArticleTitleDate {
-  opacity: 0.5;
-  font-weight: lighter;
+    opacity: 0.5;
+    font-weight: lighter;
 }
 
 @media screen and (max-width: 800px) {
-  .ArticleTitle {
-    font-size: 30px;
-  }
-
-  .Scrollable {
-    overflow-y: scroll;
-    height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 10vw;
-    padding-right: 10vw;
-  }
-
-  .GridItem {
-    margin-bottom: 30px;
-  }
+    .ArticleTitle {
+        font-size: 30px;
+    }
+    .Scrollable {
+        overflow-y: scroll;
+        height: 100vh;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+    .GridItem {
+        margin-bottom: 30px;
+    }
 }
 
 .SlideOccluded {
-  top: 20px;
-  transition: calc(var(--transition-length) / 2);
+    top: 20px;
+    transition: calc(var(--transition-length) / 2);
 }
+
 .SlideNotOccluded {
-  top: 0px;
-  transition: calc(var(--transition-length) / 2);
+    top: 0px;
+    transition: calc(var(--transition-length) / 2);
 }

@@ -1,12 +1,13 @@
 {
-    "title": "New Website",
-    "description": "Some interesting things about how my website was made",
-    "tags": ["JavaScript", "NodeJS", "Web"],
-    "author": "Noah",
-    "date": "8/31/2022",
-    "showTitle": true,
-    "indexed": false
+"title": "New Website",
+"description": "Some interesting things about how my website was made",
+"tags": ["JavaScript", "NodeJS", "Web"],
+"author": "Noah",
+"date": "8/31/2022",
+"showTitle": true,
+"indexed": false
 }
+
 ### UPDATE
 
 > As of 2/14/2023, the "new" website that this article is referring to is not the current version. The version of **strayfade.com** discussed in this article is completely different than the current version. To see the old version, download it from [this](https://github.com/Strayfade/Website/tree/48a463ccbb64c59ec4f5dc9cbb690d05ea4b87b6) GitHub link.
@@ -31,8 +32,8 @@ The last website loaded the `body` first, then used scripts to request the heade
 
 This also means that there are no static HTML files on the server!
 
-> [Here](https://www.webpagetest.org/result/221101_AiDcYJ_24J/) is the perfect Lighthouse test score for the site. 
-> 
+> [Here](https://www.webpagetest.org/result/221101_AiDcYJ_24J/) is the perfect Lighthouse test score for the site.
+>
 > It's likely outdated now, but the site still performs relatively well.
 
 ### No inline styles
@@ -47,7 +48,7 @@ Before, I was just using a JSON file to log all of the requests to the website, 
 
 The build system runs every time the server restarts, and combines all of the site's CSS files and client-side scripts into single files. Additional operations can be performed on these files too, like optimizing them, `minify`ing them, and obfuscating JavaScript code if need be.
 
-The only files requested by the page are [Production.css](/Production.css) and [Production.js](/Production.js), and the browser will also request either [Icon.svg](/assets/Icon.svg) or its fallback ([Icon.png](/assets/Icon.png)).
+The only files requested by the page are [Production.css](/build/production.css) and [Production.js](/build/production.js), and the browser will also request either [Icon.svg](/assets/Icon.svg) or its fallback ([Icon.png](/assets/Icon.png)).
 
 ### Open-source
 

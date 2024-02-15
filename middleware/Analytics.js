@@ -1,24 +1,23 @@
-const Whitelist = ["/Production.css", "/Production.js"]
+const Whitelist = ['/build/production.css', '/build/production.js']
 
-const Middleware = async function(Request, Reponse, Next) {
-    let Whitelisted = false;
-    for (var x = 0; x < Whitelist.length; x++) {
-        if (Request.url == Whitelist[x])
-            Whitelisted = true;
+const Middleware = async (Request, Reponse, Next) => {
+    let Whitelisted = false
+    for (let x = 0; x < Whitelist.length; x++) {
+        if (Request.url == Whitelist[x]) Whitelisted = true
     }
     if (Whitelisted) {
-        Next();
-        return;
+        Next()
+        return
     }
     let Capture = {
-        ip: (Request.headers['x-forwarded-for'] || Request.connection.remoteAddress).replace("::ffff:", ""),
+        ip: (Request.headers['x-forwarded-for'] || Request.connection.remoteAddress).replace('::ffff:', ''),
         path: Request.url,
         host: Request.headers['host'],
         lang: Request.headers['accept-language'],
         encoding: Request.headers['accept-encoding'],
         session: Request.headers['cookie'],
-        user: Request.headers['user-agent']
+        user: Request.headers['user-agent'],
     }
-    Next();
+    Next()
 }
 module.exports = { Middleware }

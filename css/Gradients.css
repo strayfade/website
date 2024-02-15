@@ -1,67 +1,73 @@
 .Gr {
-  background: radial-gradient(
-    circle,
-    var(--accent-color-transparent) 0%,
-    rgba(255, 255, 255, 0) 50%
-  );
-  position: absolute;
-  pointer-events: none;
-  width: 300vw;
-  height: 300vw;
-  animation-name: Shake; 
-  animation-duration: 20s; 
-  animation-fill-mode: both;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+    background: radial-gradient(circle, var(--accent-color-transparent) 0%, rgba(255, 255, 255, 0) 50%);
+    position: absolute;
+    pointer-events: none;
+    width: 300vw;
+    height: 300vw;
+    animation-name: Shake;
+    animation-duration: 20s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }
 @keyframes Shake {
-  0% { transform: translate(0, 10vw) }
-  25% { transform: translate(10vw, 0) }
-  50% { transform: translate(0, -10vw) }
-  75% { transform: translate(-10vw, 0) }
-  100% { transform: translate(0vw, 10vw) }
+    0% {
+        transform: translate(0, 10vw);
+    }
+    25% {
+        transform: translate(10vw, 0);
+    }
+    50% {
+        transform: translate(0, -10vw);
+    }
+    75% {
+        transform: translate(-10vw, 0);
+    }
+    100% {
+        transform: translate(0vw, 10vw);
+    }
 }
 .Gr-1 {
-  top: -125vw;
-  left: -31vw;
+    top: -125vw;
+    left: -31vw;
 }
 .Gr-2 {
-  top: 35vw;
-  left: -104vw;
+    top: 35vw;
+    left: -104vw;
 }
 .Gr-3 {
-  top: -10vw;
-  left: 13vw;
+    top: -10vw;
+    left: 13vw;
 }
 .Gr-4 {
-  bottom: -70vw;
-  left: 23vw;
+    bottom: -70vw;
+    left: 23vw;
 }
 .Gr-5 {
-  top: 37vw;
-  right: 3vw;
+    top: 37vw;
+    right: 3vw;
 }
 .Gr-6 {
-  top: 3vw;
-  right: 12vw;
+    top: 3vw;
+    right: 12vw;
 }
 .Gr-7 {
-  right: 10vw;
-  top: 21vw;
+    right: 10vw;
+    top: 21vw;
 }
 .Gr-8 {
-  top: 60vw;
-  left: 10vw;
+    top: 60vw;
+    left: 10vw;
 }
 .Gr-9 {
-  top: 27vw;
-  left: 7vw;
-  opacity: 0.1;
-  filter: invert(1);
+    top: 27vw;
+    left: 7vw;
+    opacity: 0.1;
+    filter: invert(1);
 }
 .Gr-10 {
-  top: 10vw;
-  right: 6vw;
-  opacity: 0.1;
-  filter: invert(1);
+    top: 10vw;
+    right: 6vw;
+    opacity: 0.1;
+    filter: invert(1);
 }

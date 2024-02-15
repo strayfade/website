@@ -10,7 +10,7 @@ pre code::-webkit-scrollbar {
     height: 8px;
     background-color: var(--darken-color);
 }
-  
+
 pre code::-webkit-scrollbar-thumb {
     background: var(--codeblock-border-color);
 }

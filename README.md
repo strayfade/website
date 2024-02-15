@@ -4,13 +4,14 @@ Strayfade/Website is the public source code of [Strayfade.com](https://strayfade
 
 > Do you know a language that isn't English? You can contribute to this repository by translating for us!
 >
-> The project's localization files are in the `localization` directory. Simply copy one of the existing ones, rename it to the locale you are translating for, and translate the values in the JSON file. 
+> The project's localization files are in the `localization` directory. Simply copy one of the existing ones, rename it to the locale you are translating for, and translate the values in the JSON file.
 
 ### Usage
 
 1. Install [Node.js](https://nodejs.org/en/download/) (obviously)
 
 2. Clone this repository and `cd` into it:
+
 ```Bash
 git clone https://github.com/Strayfade/Website.git
 cd Website

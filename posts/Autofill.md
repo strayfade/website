@@ -1,22 +1,22 @@
 {
-    "title": "Autofill",
-    "description": "Cheating in online classes using an insecure API",
-    "tags": ["Browser", "Javascript", "APIs"],
-    "author": "Noah",
-    "date": "11/14/2023",
-    "showTitle": true,
-    "indexed": true,
-    "disableHighlighting": false,
-    "pinned": true
+"title": "Autofill",
+"description": "Cheating in online classes using an insecure API",
+"tags": ["Browser", "Javascript", "APIs"],
+"author": "Noah",
+"date": "11/14/2023",
+"showTitle": true,
+"indexed": true,
+"disableHighlighting": false,
+"pinned": true
 }
 
 > **Disclaimer**
-> 
+>
 > I do not condone cheating in online classes.
 
 ### What have I been doing?
 
-*Well, mostly working on music.* But when I'm not doing that, I'm usually doing work for school. Here is an example of the "**Foundations in Personal Finance**" class, taken through the **RamseyClassroom** website:
+_Well, mostly working on music._ But when I'm not doing that, I'm usually doing work for school. Here is an example of the "**Foundations in Personal Finance**" class, taken through the **RamseyClassroom** website:
 
 <img src="/assets/images/Autofill1.png"/>
 <p class="Caption">In this portion of the assignment, we have to watch a video and fill in the blanks using what is explained in the video.</p>
@@ -57,6 +57,3 @@ Later on, I added a button to the website that would run this code and autofill 
 > **Moral of the story**
 >
 > If you ever design a classwork API, please just use forms and check the answers using server-side code.
-
-
-

@@ -1,31 +1,52 @@
 const { Localize } = require('./tools/LocaleTools')
 
-async function GenerateHead(Article, Locale) {
-    Article = JSON.parse(Article.split("}")[0] + "}")
+const GenerateHead = async (Article, Locale) => {
+    Article = JSON.parse(Article.split('}')[0] + '}')
     Output = `
         <link rel="manifest" href="/assets/manifest.json">
         <meta charset="utf-8">
     `
 
-    let SiteTitle = Article.title + Localize(Locale, "site_title_extension")
-    if (Article.title == "") {
-        SiteTitle = Localize(Locale, "site_title_default")
+    let SiteTitle = Article.title + Localize(Locale, 'site_title_extension')
+    if (Article.title == '') {
+        SiteTitle = Localize(Locale, 'site_title_default')
     }
 
-    Output += `
-        <meta property="og:site_name" content="` + Localize(Locale, "site_name") + `">
-        <meta property="og:url" content="` + Localize(Locale, "site_name") + `">
-        <meta name="twitter:url" content="` + Localize(Locale, "site_name") + `">
+    Output +=
+        `
+        <meta property="og:site_name" content="` +
+        Localize(Locale, 'site_name') +
+        `">
+        <meta property="og:url" content="` +
+        Localize(Locale, 'site_name') +
+        `">
+        <meta name="twitter:url" content="` +
+        Localize(Locale, 'site_name') +
+        `">
 
-        <title>` + SiteTitle + `</title>
-        <meta property="og:title" content="` + SiteTitle + `">
-        <meta property="twitter:title" content="` + SiteTitle + `">
+        <title>` +
+        SiteTitle +
+        `</title>
+        <meta property="og:title" content="` +
+        SiteTitle +
+        `">
+        <meta property="twitter:title" content="` +
+        SiteTitle +
+        `">
 
-        <meta name="description" content="` + Article.description + `">
-        <meta property="og:description" content="` + Article.description + `">
-        <meta property="twitter:description" content="` + Article.description + `">
+        <meta name="description" content="` +
+        Article.description +
+        `">
+        <meta property="og:description" content="` +
+        Article.description +
+        `">
+        <meta property="twitter:description" content="` +
+        Article.description +
+        `">
 
-        <meta name="author" content="` + Article.author + `">
+        <meta name="author" content="` +
+        Article.author +
+        `">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -33,8 +54,8 @@ async function GenerateHead(Article, Locale) {
         <link rel="icon" href="/assets/Icon.svg" color="#ffffff">
         <link rel="mask-icon" href="/assets/Icon.svg" color="#ffffff">
 
-        <link rel="stylesheet" href="/Production.css" type="text/css">
-        <link rel="preload" href="/Production.js" as="script">
+        <link rel="stylesheet" href="/build/production.css" type="text/css">
+        <link rel="preload" href="/build/production.js" as="script">
     `
     return Output
 }

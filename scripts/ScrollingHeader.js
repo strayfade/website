@@ -1,17 +1,16 @@
 if (window.location.pathname != '/') {
-    let Elems = [document.getElementById("SidebarMain"), document.getElementsByClassName("Header")[0]]
-    Elems.forEach(function (Elem) {
-        Elem.classList.add("ScrollAffectable")
+    let Elems = [document.getElementById('SidebarMain'), document.getElementsByClassName('Header')[0]]
+    Elems.forEach((Elem) => {
+        Elem.classList.add('ScrollAffectable')
     })
-    const Scrollable = document.getElementsByClassName("Scrollable")[0]
-    Scrollable.addEventListener("scroll", function (e) {
-        let ScrollDistance = Scrollable.scrollTop;
-        Elems.forEach(function (Elem) {
+    const Scrollable = document.getElementsByClassName('Scrollable')[0]
+    Scrollable.addEventListener('scroll', () => {
+        let ScrollDistance = Scrollable.scrollTop
+        Elems.forEach((CurrentElement) => {
             if (ScrollDistance > 0) {
-                Elem.classList.add("ScrollLowOpacity")
-            }
-            else {
-                Elem.classList.remove("ScrollLowOpacity")
+                CurrentElement.classList.add('ScrollLowOpacity')
+            } else {
+                CurrentElement.classList.remove('ScrollLowOpacity')
             }
         })
     })

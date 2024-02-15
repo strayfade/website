@@ -1,24 +1,32 @@
 {
-  "name": "website",
-  "version": "1.0.0",
-  "description": "The public source code of Strayfade.com",
-  "main": "App.js",
-  "scripts": {
-    "start": "node App 3100",
-    "build": "node Build",
-    "prod": "node Build && node App 3000",
-    "develop": "node Build --skipobfuscation && node App 3000"
-  },
-  "author": "Strayfade",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.18.2",
-    "express-session": "^1.17.3",
-    "helmet": "^6.0.1",
-    "js-obfuscator": "^0.1.4",
-    "markdown": "^0.5.0",
-    "mongodb": "^4.13.0",
-    "prismjs": "^1.29.0",
-    "request": "^2.88.2"
-  }
+    "name": "website",
+    "version": "1.0.0",
+    "description": "The public source code of Strayfade.com",
+    "main": "App.js",
+    "scripts": {
+        "start": "node App 3100",
+        "build": "prettier --write . && node Build",
+        "prod": "prettier --write . && node Build && node App 3000",
+        "develop": "prettier --write . && node Build --skipobfuscation && node App 3000"
+    },
+    "author": "Strayfade",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.2",
+        "express-session": "^1.17.3",
+        "helmet": "^6.0.1",
+        "js-obfuscator": "^0.1.4",
+        "markdown": "^0.5.0",
+        "mongodb": "^4.13.0",
+        "prismjs": "^1.29.0",
+        "request": "^2.88.2"
+    },
+    "devDependencies": {
+        "eslint": "^8.56.0",
+        "eslint-config-semistandard": "^17.0.0",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-plugin-import": "^2.29.1",
+        "eslint-plugin-n": "^15.7.0",
+        "eslint-plugin-promise": "^6.1.1"
+    }
 }

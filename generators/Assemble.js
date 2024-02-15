@@ -1,56 +1,57 @@
-const { Localize } = require("./tools/LocaleTools");
-const RequestInfo = require("../middleware/RequestBlocking");
-const { Log } = require("../Log");
-const Head = require("./Head");
+const { Localize } = require('./tools/LocaleTools')
+const RequestInfo = require('../middleware/RequestBlocking')
+const { Log } = require('../Log')
+const Head = require('./Head')
 
-const fs = require('fs/promises');
-const fsdir = require('fs');
-const Markdown = require("markdown").markdown;
-const Prism = require("prismjs");
+const fs = require('fs/promises')
+const fsdir = require('fs')
+const Markdown = require('markdown').markdown
+const Prism = require('prismjs')
 
-require("prismjs/components/")(["cpp"]);
+require('prismjs/components/')(['cpp'])
 
 const AvailablePages = {
-    Home: Symbol("Home"),
-    Dynamic: Symbol("Article"),
-    R: Symbol("R"),
-    NonstandardPages: ["R"],
-};
-function CalculateAge() {
-    var AgeDif = new Date(Date.now() - new Date(1131950100000));
-    return Math.abs(AgeDif.getUTCFullYear() - 1970);
+    Home: Symbol('Home'),
+    Dynamic: Symbol('Article'),
+    R: Symbol('R'),
+    NonstandardPages: ['R'],
 }
-let Cache = [];
-const GeneratePageCached = async function (
+
+const CalculateAge = () => {
+    let AgeDif = new Date(Date.now() - new Date(1131950100000))
+    return Math.abs(AgeDif.getUTCFullYear() - 1970)
+}
+let Cache = []
+const GeneratePageCached = async (
     req,
     Article,
     Locale,
     AvailablePages,
     AvailablePageSelector,
-    Custom = "",
-    Filename
-) {
+    Custom = '',
+    Filename,
+) => {
     let ServeInfo =
-        " (" +
+        ' (' +
         RequestInfo.RequestAnalytics.TotalRequestsServed +
-        " served, " +
+        ' served, ' +
         RequestInfo.RequestAnalytics.TotalRequestsBlocked +
-        " blocked)";
+        ' blocked)'
     let CacheObject = {
         A: Article,
-        B: req.header("Accept-Language"),
+        B: req.header('Accept-Language'),
         C: AvailablePageSelector,
         D: Custom,
         E: Filename,
-    };
-    let Found = {};
-    for (var x = 0; x < Cache.length; x++) {
+    }
+    let Found = {}
+    for (let x = 0; x < Cache.length; x++) {
         if (Cache[x].A == CacheObject.A) {
             if (Cache[x].B == CacheObject.B) {
                 if (Cache[x].C == CacheObject.C) {
                     if (Cache[x].D == CacheObject.D) {
                         if (Cache[x].E == CacheObject.E) {
-                            Found = Cache[x];
+                            Found = Cache[x]
                         }
                     }
                 }
@@ -58,40 +59,29 @@ const GeneratePageCached = async function (
         }
     }
     if (Found.A == Article) {
-        Log("Serve: " + req.url + ServeInfo);
-        return Found.F;
+        Log('Serve: ' + req.url + ServeInfo)
+        return Found.F
     } else {
-        CacheObject.F = GeneratePage(
-            Article,
-            Locale,
-            AvailablePages,
-            AvailablePageSelector,
-            Custom,
-            Filename
-        );
-        Cache.push(CacheObject);
-        Log("Rendered page for cache: " + req.url + ServeInfo);
-        return CacheObject.F;
+        CacheObject.F = GeneratePage(Article, Locale, AvailablePages, AvailablePageSelector, Custom, Filename)
+        Cache.push(CacheObject)
+        Log('Rendered page for cache: ' + req.url + ServeInfo)
+        return CacheObject.F
     }
-};
-
-function CreateTooltips() {
-    let Output = "";
-    Output += "<div class='TooltipContainer MobileHidden'>";
-    Output +=
-        "<p id='TooltipText' class='TooltipText NoSelect' aria-hidden='true'>";
-    Output += "</p>";
-    Output += "</div>";
-    Output += "<div class='TooltipContainer MobileHidden'>";
-    Output +=
-        "<p id='TooltipText2' class='TooltipText TooltipTextSmall NoSelect' aria-hidden='true'>";
-    Output += "</p>";
-    Output += "</div>";
-    return Output;
 }
-const GenerateHeader = function (
-    Article
-) {
+
+const CreateTooltips = () => {
+    let Output = ''
+    Output += "<div class='TooltipContainer MobileHidden'>"
+    Output += "<p id='TooltipText' class='TooltipText NoSelect' aria-hidden='true'>"
+    Output += '</p>'
+    Output += '</div>'
+    Output += "<div class='TooltipContainer MobileHidden'>"
+    Output += "<p id='TooltipText2' class='TooltipText TooltipTextSmall NoSelect' aria-hidden='true'>"
+    Output += '</p>'
+    Output += '</div>'
+    return Output
+}
+const GenerateHeader = (Article) => {
     return `
         <div class="Header">
             <svg class="Icon Coloring1" onclick="GoHome()" version="1.0" xmlns="http://www.w3.org/2000/svg" width="300.000000pt" height="300.000000pt" viewBox="0 0 300.000000 300.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,300.000000) scale(0.050000,-0.050000)"><path d="M2707 5344 c-178 -217 -563 -686 -857 -1043 -609 -741 -676 -830 -786 -1052 -265 -529 -186 -1034 228 -1460 114 -117 678 -590 702 -588 9 1 372 434 806 964 1176 1433 1361 1655 1376 1655 73 0 193 -307 179 -459 -16 -176 -34 -201 -1014 -1389 -506 -615 -920 -1123 -920 -1130 2 -19 587 -490 606 -487 9 1 194 217 410 480 216 263 596 725 844 1027 679 823 798 1012 870 1376 103 514 -94 878 -779 1439 l-277 227 -46 -47 c-42 -43 -814 -980 -1749 -2122 -203 -249 -380 -453 -393 -454 -40 -2 -147 163 -180 276 -75 257 -63 276 863 1400 429 521 842 1022 917 1114 75 92 131 176 124 187 -17 28 -549 463 -577 472 -13 4 -169 -169 -347 -386z"></path></g></svg>
@@ -105,24 +95,29 @@ const GenerateHeader = function (
         <div class="SidebarScrollPercentage" style="background-color: rgba(255, 255, 255, 0.2);">
             <div class="SidebarScrollFill"></div>
         </div>
-    `;
-};
-const GenerateFooter = function (
-    CopyrightString
-) {
-    return `
+    `
+}
+const GenerateFooter = (CopyrightString) => {
+    return (
+        `
         <div class="Footer2 Coloring1" style="opacity: 1">
             <svg onclick="GoDown()" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24 40 8 24l2.1-2.1 12.4 12.4V8h3v26.3l12.4-12.4L40 24Z"></path></svg>
         </div>
         <div class="Footer">
-            <h3>` + CopyrightString + `</h3>
+            <h3>` +
+        CopyrightString +
+        `</h3>
         </div>
-    `;
-};
-const GenerateShareSection = function (Locale, Filename, Article) {
-    let Output = `
+    `
+    )
+}
+const GenerateShareSection = (Locale, Filename, Article) => {
+    let Output =
+        `
     <div class="ShareSection">
-    <p class="ShareHeader">` + Localize(Locale, "share_section_header") + `</p>
+    <p class="ShareHeader">` +
+        Localize(Locale, 'share_section_header') +
+        `</p>
     <div class="ShareButtonContainer">
     <a aria-label="Copy Link" class="ShareItemLink" onclick="navigator.clipboard.writeText(document.URL);">
     <div class="ShareItem ShareButtonGray">
@@ -147,22 +142,23 @@ const GenerateShareSection = function (Locale, Filename, Article) {
     </div>
     </div>
     <div class="ShareButtonContainer ShareMaxWidth">
-    <a class="LinkNormal Spaced ArticleTag" href="https://github.com/Strayfade/Website/blob/main/posts/` + Filename + `" style="margin-left: auto; background-color: transparent; border: 2px solid white;">` + Localize(Locale, "view_on_github") + `</a>
-    <a class="LinkNormal Spaced SpacedMobile ArticleTag" href="https://raw.githubusercontent.com/Strayfade/Website/main/posts/` + Filename + `" style="background-color: transparent; border: 2px solid white;">` + Localize(Locale, "view_original") + `</a>
+    <a class="LinkNormal Spaced ArticleTag" href="https://github.com/Strayfade/Website/blob/main/posts/` +
+        Filename +
+        `" style="margin-left: auto; background-color: transparent; border: 2px solid white;">` +
+        Localize(Locale, 'view_on_github') +
+        `</a>
+    <a class="LinkNormal Spaced SpacedMobile ArticleTag" href="https://raw.githubusercontent.com/Strayfade/Website/main/posts/` +
+        Filename +
+        `" style="background-color: transparent; border: 2px solid white;">` +
+        Localize(Locale, 'view_original') +
+        `</a>
     </div>
     `
 
-    return Output;
+    return Output
 }
-const GenerateBodyV2 = async function (
-    Article2,
-    Locale,
-    AvailablePages,
-    AvailablePageSelector,
-    Custom,
-    Filename
-) {
-    let Output = "";
+const GenerateBodyV2 = async (Article2, Locale, AvailablePages, AvailablePageSelector, Custom, Filename) => {
+    let Output = ''
     switch (AvailablePageSelector) {
         case AvailablePages.Home:
             Output +=
@@ -171,26 +167,32 @@ const GenerateBodyV2 = async function (
                 <div class="Slide SlideContentVisible SlideOccluded" id="SlideContent1" style="background: linear-gradient(to right, black, var(--accent-color-very-transparent));">
                     <div class="SlideInner" style="color: white;">
                         <p class="Author">Strayfade</p>
-                        <h1 class="Slide1 Slide1Visible">` + Localize(Locale, "pageTitle1") + `</h1>
-                        <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` + CalculateAge() + `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd>web development</rd></a> and C++) from the United States.</p>
+                        <h1 class="Slide1 Slide1Visible">` +
+                Localize(Locale, 'pageTitle1') +
+                `</h1>
+                        <p class="Slide1 Slide1Visible">Hello! I am Noah, a <rd data-tooltipsmall="Automatically Updates">` +
+                CalculateAge() +
+                `-year-old</rd> software developer (primarily <a href="https://github.com/Strayfade/Website"><rd>web development</rd></a> and C++) from the United States.</p>
                         <br class="Slide1 Slide1Visible">
                         `
 
             // Index
             let Posts = []
-            let indexed = [];
+            let indexed = []
 
-            let filenames = fsdir.readdirSync(__dirname.replace("generators", "posts/"));
-            for (var x = 0; x < filenames.length; x++) {
-                if (filenames[x].endsWith(".md")) {
-                    let JSONstr = await fs.readFile(__dirname.replace("generators", "posts/") + filenames[x], { encoding: "utf-8" })
-                    let Current = JSON.parse(JSONstr.split("}")[0] + "}")
+            let filenames = fsdir.readdirSync(__dirname.replace('generators', 'posts/'))
+            for (let x = 0; x < filenames.length; x++) {
+                if (filenames[x].endsWith('.md')) {
+                    let JSONstr = await fs.readFile(__dirname.replace('generators', 'posts/') + filenames[x], {
+                        encoding: 'utf-8',
+                    })
+                    let Current = JSON.parse(JSONstr.split('}')[0] + '}')
                     if (Current.indexed) {
                         Posts.push({ data: Current, file: filenames[x] })
                     }
                 }
             }
-            Posts.sort(function (a, b) {
+            Posts.sort((a, b) => {
                 const FirstDate = new Date(a.data.date)
                 const SecondDate = new Date(b.data.date)
 
@@ -198,43 +200,62 @@ const GenerateBodyV2 = async function (
             })
 
             for (let x = 0; x < 2; x++) {
-                Posts.forEach(Post => {
-                    if (Post.file.endsWith(".md") && ((x == 0 && Post.data.pinned) || (x == 1 && !indexed.includes(Post.file)))) {
+                Posts.forEach((Post) => {
+                    if (
+                        Post.file.endsWith('.md') &&
+                        ((x == 0 && Post.data.pinned) || (x == 1 && !indexed.includes(Post.file)))
+                    ) {
                         let JSON = Post.data
                         if (JSON.indexed) {
                             Output += `<div class="ArticleItem Slide1 Slide1Visible" style="margin-top: 20px">`
-                            Output += `
+                            Output +=
+                                `
                                             <div class="GridItem Slide1 Slide1Visible" style="padding-bottom: 0px; width: max-content; padding-right: 0px;">
-                                            <a href="/` + Post.file.replace(".md", "") + `">
+                                            <a href="/` +
+                                Post.file.replace('.md', '') +
+                                `">
                                             <div style="display: flex; width: max-content">`
 
                             // Article Titles
                             if (x == 0) {
-                                Output += `<h3 style="margin-top: 0px; color: black; background-color: var(--accent-color); padding: 5px; padding-right: 7px; padding-left: 7px; width: max-content; height: max-content; margin-top: 5px;">` + JSON.title + `</h3>`
+                                Output +=
+                                    `<h3 style="margin-top: 0px; color: black; background-color: var(--accent-color); padding: 5px; padding-right: 7px; padding-left: 7px; width: max-content; height: max-content; margin-top: 5px;">` +
+                                    JSON.title +
+                                    `</h3>`
+                            } else {
+                                Output +=
+                                    `<h3 style="margin-top: 5px; color: white; padding: 5px; padding-left: 0px">` +
+                                    JSON.title +
+                                    `</h3>`
                             }
-                            else {
-                                Output += `<h3 style="margin-top: 5px; color: white; padding: 5px; padding-left: 0px">` + JSON.title + `</h3>`
-                            }
-                            Output += `<p style="font-size: 14px; margin-top: 0px; color: white; opacity: 0.5; margin: 14px; margin-left: 8px">` + JSON.date + `</p></div>`
+                            Output +=
+                                `<p style="font-size: 14px; margin-top: 0px; color: white; opacity: 0.5; margin: 14px; margin-left: 8px">` +
+                                JSON.date +
+                                `</p></div>`
 
                             // Article Descriptions
                             if (x == 0) {
-                                Output += `<p style="color: white; margin: 0px; width: max-content">` + JSON.description + `</p>`
-                            }
-                            else {
-                                Output += `<p style="color: white; margin: 0px; width: max-content; margin-top: -5px;">` + JSON.description + `</p>`
+                                Output +=
+                                    `<p style="color: white; margin: 0px; width: max-content">` +
+                                    JSON.description +
+                                    `</p>`
+                            } else {
+                                Output +=
+                                    `<p style="color: white; margin: 0px; width: max-content; margin-top: -5px;">` +
+                                    JSON.description +
+                                    `</p>`
                             }
 
                             Output += `</a></div></div>`
-
                         }
                         indexed.push(Post.file)
                     }
                 })
             }
-            Output += "</div>"
+            Output += '</div>'
 
-            Output += `</div>
+            Output +=
+                `</div>
                 </div>
                 <div class="Slide SlideNotViewed" id="Slide2" style="background-color: var(--accent-color); height: 100vh; filter: brightness(50%);">
                     <svg viewBox="0 0 1440 260" class="MobileHidden SVGBottom" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0"><stop stop-color="rgba(0, 0, 0, 0)" offset="0%"></stop><stop stop-color="var(--accent-color)" offset="100%"></stop></linearGradient></defs><path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,52L60,69.3C120,87,240,121,360,138.7C480,156,600,156,720,138.7C840,121,960,87,1080,73.7C1200,61,1320,69,1440,73.7C1560,78,1680,78,1800,73.7C1920,69,2040,61,2160,65C2280,69,2400,87,2520,99.7C2640,113,2760,121,2880,134.3C3000,147,3120,165,3240,173.3C3360,182,3480,182,3600,182C3720,182,3840,182,3960,190.7C4080,199,4200,217,4320,208C4440,199,4560,165,4680,130C4800,95,4920,61,5040,69.3C5160,78,5280,130,5400,160.3C5520,191,5640,199,5760,208C5880,217,6000,225,6120,199.3C6240,173,6360,113,6480,91C6600,69,6720,87,6840,112.7C6960,139,7080,173,7200,173.3C7320,173,7440,139,7560,112.7C7680,87,7800,69,7920,60.7C8040,52,8160,52,8280,78C8400,104,8520,156,8580,182L8640,208L8640,260L8580,260C8520,260,8400,260,8280,260C8160,260,8040,260,7920,260C7800,260,7680,260,7560,260C7440,260,7320,260,7200,260C7080,260,6960,260,6840,260C6720,260,6600,260,6480,260C6360,260,6240,260,6120,260C6000,260,5880,260,5760,260C5640,260,5520,260,5400,260C5280,260,5160,260,5040,260C4920,260,4800,260,4680,260C4560,260,4440,260,4320,260C4200,260,4080,260,3960,260C3840,260,3720,260,3600,260C3480,260,3360,260,3240,260C3120,260,3000,260,2880,260C2760,260,2640,260,2520,260C2400,260,2280,260,2160,260C2040,260,1920,260,1800,260C1680,260,1560,260,1440,260C1320,260,1200,260,1080,260C960,260,840,260,720,260C600,260,480,260,360,260C240,260,120,260,60,260L0,260Z"></path></svg>
@@ -243,7 +264,9 @@ const GenerateBodyV2 = async function (
                 <div class="Slide SlideContentHidden" id="SlideContent2">
                     <div class="SlideInner" style="color: white">
                         <p class="Author"><span id="Counter" style="font-weight: 800">0+</span> years <span>experience</span></p></span>
-                        <h1 class="Slide2">` + Localize(Locale, "pageTitle2") + `</h1>
+                        <h1 class="Slide2">` +
+                Localize(Locale, 'pageTitle2') +
+                `</h1>
                         <br class="Slide2">
                         <br class="Slide2">
                         <div class="Flexbox Slide2">
@@ -295,8 +318,10 @@ const GenerateBodyV2 = async function (
                 <div class="Slide SlideContentHidden" id="SlideContent3">
                     <div class="SlideInner" style="color: white">
                         <p class="Author">Connect</p>
-                        <h1 class="Slide3">` + Localize(Locale, "pageTitle3") + `</h1>
-                        <p class="Slide3">You can send me an email at <a href="mailto:me@strayfade.com">me@strayfade.com</a> and I might read it, or you can shoot me a message on <a href="https://twitter.com/Strayfade">Twitter</a> or <a href="https://instagram.com/strayfade">Instagram</a>.</p>
+                        <h1 class="Slide3">` +
+                Localize(Locale, 'pageTitle3') +
+                `</h1>
+                        <p class="Slide3">You can send me an email at <a href="mailto:me@strayfade.com">me@strayfade.com</a> and I might read it, or you can shoot me a message on <a href="https://twitter.com/Strayfade">Twitter</a> (but I won't see it) or <a href="https://instagram.com/strayfade">Instagram</a>.</p>
                         <p class="Slide3" style="margin-top: 10px">My current Discord tag is <a href="https://discord.com/users/455790298082181120">strayfade</a>, although I do not usually respond to direct messages on Discord.</p>
                     </div>
                 </div>
@@ -310,66 +335,72 @@ const GenerateBodyV2 = async function (
                         <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M22.5 40V13.7L10.1 26.1 8 24 24 8l16 16-2.1 2.1-12.4-12.4V40Z"/></svg>
                     </div>
                 </div>
-            `;
-            break;
+            `
+            break
         case AvailablePages.Dynamic:
-            Article = JSON.parse(Article2.split("}")[0] + "}");
-            var MarkdownString = Article2.replace(Article2.split("}")[0] + "}", "");
+            Article = JSON.parse(Article2.split('}')[0] + '}')
+            let MarkdownString = Article2.replace(Article2.split('}')[0] + '}', '')
 
             // Markdown
-            if (Custom != "") {
-                MarkdownString += "\n\n" + Custom;
+            if (Custom != '') {
+                MarkdownString += '\n\n' + Custom
             }
 
             // Highlights codeblocks one at a time
-            var NewMarkdown = "";
-            var Lines = MarkdownString.split("\n");
-            var CurrentCode = "";
+            let NewMarkdown = ''
+            let Lines = MarkdownString.split('\n')
+            let CurrentCode = ''
             for (let i = 0; i < Lines.length; i++) {
-                if (Lines[i].startsWith("    ") || Lines[i].includes("    ")) {
-                    CurrentCode += Lines[i] + "\n";
+                if (Lines[i].startsWith('    ') || Lines[i].includes('    ')) {
+                    CurrentCode += Lines[i] + '\n'
                 } else {
-                    if (CurrentCode != "") {
-                        NewMarkdown += Prism.highlight(CurrentCode, Prism.languages.cpp, "cpp");
-                        CurrentCode = "";
+                    if (CurrentCode != '') {
+                        NewMarkdown += Prism.highlight(CurrentCode, Prism.languages.cpp, 'cpp')
+                        CurrentCode = ''
                     } else {
-                        NewMarkdown += Lines[i] + "\n";
+                        NewMarkdown += Lines[i] + '\n'
                     }
                 }
             }
-            var MarkdownHtml = "";
+            let MarkdownHtml = ''
             if (Article.disableHighlighting) {
-                MarkdownHtml = Markdown.toHTML(MarkdownString);
+                MarkdownHtml = Markdown.toHTML(MarkdownString)
             } else {
-                MarkdownHtml = Markdown.toHTML(NewMarkdown);
+                MarkdownHtml = Markdown.toHTML(NewMarkdown)
             }
             // Markdown.toHTML escapes these characters, but we need them!
-            var Length = MarkdownHtml.split("lt;").length + MarkdownHtml.split("gt;").length;
+            let Length = MarkdownHtml.split('lt;').length + MarkdownHtml.split('gt;').length
             for (let i = 0; i < Length; i++) {
-                MarkdownHtml = MarkdownHtml.replace("&amp;lt;", "<")
-                MarkdownHtml = MarkdownHtml.replace("&amp;gt;", ">")
-                MarkdownHtml = MarkdownHtml.replace("&amp;quot;", "\"")
-                MarkdownHtml = MarkdownHtml.replace("&lt;", "<")
-                MarkdownHtml = MarkdownHtml.replace("&gt;", ">")
-                MarkdownHtml = MarkdownHtml.replace("&quot", "\"")
-                MarkdownHtml = MarkdownHtml.replace("&amp;", "&")
-                MarkdownHtml = MarkdownHtml.replace("\";", "\"")
+                MarkdownHtml = MarkdownHtml.replace('&amp;lt;', '<')
+                MarkdownHtml = MarkdownHtml.replace('&amp;gt;', '>')
+                MarkdownHtml = MarkdownHtml.replace('&amp;quot;', '"')
+                MarkdownHtml = MarkdownHtml.replace('&lt;', '<')
+                MarkdownHtml = MarkdownHtml.replace('&gt;', '>')
+                MarkdownHtml = MarkdownHtml.replace('&quot', '"')
+                MarkdownHtml = MarkdownHtml.replace('&amp;', '&')
+                MarkdownHtml = MarkdownHtml.replace('";', '"')
             }
-            let ArticleTags = ""
+            let ArticleTags = ''
             if (Article.tags) {
                 ArticleTags += `<div class="ArticleTagContainer" style="margin-top: 20px;">`
-                for (var y = 0; y < Article.tags.length; y++) {
+                for (let y = 0; y < Article.tags.length; y++) {
                     ArticleTags += `<span class="ArticleTag">` + Article.tags[y] + `</span>`
                 }
                 ArticleTags += `</div>`
             }
             if (Article.video) {
-                Output += `<video autoplay="" loop="" muted="" style="width: 100vw; height: 100vh; position: absolute; object-fit: cover; z-index: -1; filter: brightness(0.1);">
-                    <source src="` + Article.video + `" type="video/mp4">
+                Output +=
+                    `<video autoplay="" loop="" muted="" style="width: 100vw; height: 100vh; position: absolute; object-fit: cover; z-index: -1; filter: brightness(0.1);">
+                    <source src="` +
+                    Article.video +
+                    `" type="video/mp4">
                 </video>`
             }
-            Output += `
-            <div class="Slide SlideVisible ArticleImageBg" id="Slide1" style="background-color: black;` + (Article.background ? (` background: ` + Article.background) : ``) + `"></div>
+            Output +=
+                `
+            <div class="Slide SlideVisible ArticleImageBg" id="Slide1" style="background-color: black;` +
+                (Article.background ? ` background: ` + Article.background : ``) +
+                `"></div>
             <div class="Slide SlideContentVisible SlideOccluded" id="SlideContent1">
                 <div class="SlideInner" style="color: white; margin-top: 0px; width: 100vw; background: linear-gradient(to left, black, var(--accent-color-very-transparent));">
                     <div class="Scrollable">
@@ -382,52 +413,72 @@ const GenerateBodyV2 = async function (
                                 Back
                             </a>
                         </div>
-                        <p class="ArticleTitleDate" style="margin-top: 50px">` + Article.date + `</p>
-                        <h1 class="ArticleTitle" style="margin-top: 12px">` + Article.title + `</h1>
-                        <h4 style="margin-top: 0px; font-weight: normal; margin-top: 10px;">` + Article.description + `</h4>` + (Article.showTitle ? (ArticleTags + `
-                        <p style="margin-top: 24px; padding-bottom: 50px; margin-bottom: 50px; border-bottom: 3px solid white;">Written by <strong>` + Article.author + `</strong></p>`) : ``) + `
-                        ` + MarkdownHtml + ((Custom == "" && Filename != null) ? (Article.showTitle ? GenerateShareSection(Locale, Filename, Article) : ``) : ``) + `
+                        <p class="ArticleTitleDate" style="margin-top: 50px">` +
+                Article.date +
+                `</p>
+                        <h1 class="ArticleTitle" style="margin-top: 12px">` +
+                Article.title +
+                `</h1>
+                        <h4 style="margin-top: 0px; font-weight: normal; margin-top: 10px;">` +
+                Article.description +
+                `</h4>` +
+                (Article.showTitle
+                    ? ArticleTags +
+                      `
+                        <p style="margin-top: 24px; padding-bottom: 50px; margin-bottom: 50px; border-bottom: 3px solid white;">Written by <strong>` +
+                      Article.author +
+                      `</strong></p>`
+                    : ``) +
+                `
+                        ` +
+                MarkdownHtml +
+                (Custom == '' && Filename != null
+                    ? Article.showTitle
+                        ? GenerateShareSection(Locale, Filename, Article)
+                        : ``
+                    : ``) +
+                `
                         <br>
                         <br>
                     </div>
                 </div>
             </div>
-        `;
-            break;
+        `
+            break
         case AvailablePages.R:
-            Output += await fs.readFile(__dirname.replace("generators", "assets") + "/Rem", { encoding: "utf-8" })
-            break;
+            Output += await fs.readFile(__dirname.replace('generators', 'assets') + '/Rem', { encoding: 'utf-8' })
+            break
     }
-    return Output + GenerateHeader(JSON.parse(Article2.split("}")[0] + "}")) + GenerateFooter(Localize(Locale, "copyright_main")) + `<div id="LoadingScreen" class="LoadingScreen LoadingScreenVisible" style="overflow: hidden"></div>`;
-};
-const GeneratePage = async function (
+    return (
+        Output +
+        GenerateHeader(JSON.parse(Article2.split('}')[0] + '}')) +
+        GenerateFooter(Localize(Locale, 'copyright_main')) +
+        `<div id="LoadingScreen" class="LoadingScreen LoadingScreenVisible" style="overflow: hidden"></div>`
+    )
+}
+const GeneratePage = async (
     Article,
     Locale,
     AvailablePages,
     AvailablePageSelector,
-    Custom = "",
-    Filename = "_None.md"
-) {
-    let HeadStr = await Head.GenerateHead(Article, Locale);
-    let BodyStr = await GenerateBodyV2(
-        Article,
-        Locale,
-        AvailablePages,
-        AvailablePageSelector,
-        Custom,
-        Filename
-    );
+    Custom = '',
+    Filename = '_None.md',
+) => {
+    let HeadStr = await Head.GenerateHead(Article, Locale)
+    let BodyStr = await GenerateBodyV2(Article, Locale, AvailablePages, AvailablePageSelector, Custom, Filename)
 
     Output =
         `
         <!DOCTYPE html>
         <html lang="` +
-        Localize(Locale, "locale_title") +
+        Localize(Locale, 'locale_title') +
         `">
         <head>` +
         HeadStr +
         `</head>
-        <body style="` + ((AvailablePageSelector == AvailablePages.R) ? `filter:invert(1); ` : ``) + `background-color: black;">
+        <body style="` +
+        (AvailablePageSelector == AvailablePages.R ? `filter:invert(1); ` : ``) +
+        `background-color: black;">
         <main>
         ` +
         BodyStr +
@@ -436,11 +487,11 @@ const GeneratePage = async function (
     ` +
         CreateTooltips() +
         `
-        <script src="/Production.js"></script>
+        <script src="/build/production.js"></script>
         </body>
         </html>
-    `;
-    return Output;
-};
+    `
+    return Output
+}
 
-module.exports = { GeneratePageCached, GeneratePage, AvailablePages };
+module.exports = { GeneratePageCached, GeneratePage, AvailablePages }

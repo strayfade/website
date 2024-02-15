@@ -1,105 +1,113 @@
 @font-face {
-  font-family: "Metropolis";
-  src: url("/fonts/Metropolis-BoldItalic.woff2") format("woff2"),
-    url("/fonts/Metropolis-BoldItalic.woff") format("woff");
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
+    font-family: 'Metropolis';
+    src:
+        url('/fonts/Metropolis-BoldItalic.woff2') format('woff2'),
+        url('/fonts/Metropolis-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Metropolis";
-  src: url("/fonts/Metropolis-MediumItalic.woff2") format("woff2"),
-    url("/fonts/Metropolis-MediumItalic.woff") format("woff");
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
+    font-family: 'Metropolis';
+    src:
+        url('/fonts/Metropolis-MediumItalic.woff2') format('woff2'),
+        url('/fonts/Metropolis-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Metropolis";
-  src: url("/fonts/Metropolis-Light.woff2") format("woff2"),
-    url("/fonts/Metropolis-Light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Metropolis';
+    src:
+        url('/fonts/Metropolis-Light.woff2') format('woff2'),
+        url('/fonts/Metropolis-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Metropolis";
-  src: url("/fonts/Metropolis-Medium.woff2") format("woff2"),
-    url("/fonts/Metropolis-Medium.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Metropolis';
+    src:
+        url('/fonts/Metropolis-Medium.woff2') format('woff2'),
+        url('/fonts/Metropolis-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Metropolis";
-  src: url("/fonts/Metropolis-ThinItalic.woff2") format("woff2"),
-    url("/fonts/Metropolis-ThinItalic.woff") format("woff");
-  font-weight: 100;
-  font-style: italic;
-  font-display: swap;
+    font-family: 'Metropolis';
+    src:
+        url('/fonts/Metropolis-ThinItalic.woff2') format('woff2'),
+        url('/fonts/Metropolis-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Metropolis";
-  src: url("/fonts/Metropolis-Bold.woff2") format("woff2"),
-    url("/fonts/Metropolis-Bold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Metropolis';
+    src:
+        url('/fonts/Metropolis-Bold.woff2') format('woff2'),
+        url('/fonts/Metropolis-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Metropolis";
-  src: url("/fonts/Metropolis-Thin.woff2") format("woff2"),
-    url("/fonts/Metropolis-Thin.woff") format("woff");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Metropolis';
+    src:
+        url('/fonts/Metropolis-Thin.woff2') format('woff2'),
+        url('/fonts/Metropolis-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "Metropolis";
-  src: url("/fonts/Metropolis-LightItalic.woff2") format("woff2"),
-    url("/fonts/Metropolis-LightItalic.woff") format("woff");
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
+    font-family: 'Metropolis';
+    src:
+        url('/fonts/Metropolis-LightItalic.woff2') format('woff2'),
+        url('/fonts/Metropolis-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: Roboto Mono;
-  font-style: normal;
-  font-weight: normal;
-  src: url(/fonts/RobotoMono-Regular.woff) format("woff");
+    font-family: Roboto Mono;
+    font-style: normal;
+    font-weight: normal;
+    src: url(/fonts/RobotoMono-Regular.woff) format('woff');
 }
 
 h1 {
-  font-size: 60px;
+    font-size: 60px;
 }
 @media screen and (max-width: 800px) {
-  h1 {
-    font-size: 30px;
-  }
+    h1 {
+        font-size: 30px;
+    }
 }
 
 h2 {
-  font-size: 40px;
+    font-size: 40px;
 }
 
 h3 {
-  font-size: 30px;
+    font-size: 30px;
 }
 
 h4 {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 p {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 h1,
@@ -112,6 +120,6 @@ p,
 li,
 em,
 strong {
-  margin-top: 0px;
-  margin-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }

@@ -1,12 +1,12 @@
 {
-    "title": "AI vs Anti-cheat",
-    "description": "Neural networks are a double-edged sword for anticheat.",
-    "tags": ["Anti-cheat", "AI", "C++"],
-    "author": "Noah",
-    "date": "7/22/2023",
-    "showTitle": true,
-    "indexed": true,
-    "pinned": true
+"title": "AI vs Anti-cheat",
+"description": "Neural networks are a double-edged sword for anticheat.",
+"tags": ["Anti-cheat", "AI", "C++"],
+"author": "Noah",
+"date": "7/22/2023",
+"showTitle": true,
+"indexed": true,
+"pinned": true
 }
 
 ### Introduction
@@ -22,14 +22,14 @@ This article will be discussing how certain input methods, such as mouse movemen
 <img src="/assets/images/FeedForward1.png"/>
 <p class="Caption">Presumed VACnet Patent</p>
 
-By looking at [Valve's publicly available patent](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf) for VACnet, lots of information can be revealed about the upcoming anti-cheat's inner workings. On [page 44](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf#page=44), Valve displays some of the values forwarded through the network: 
+By looking at [Valve's publicly available patent](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf) for VACnet, lots of information can be revealed about the upcoming anti-cheat's inner workings. On [page 44](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf#page=44), Valve displays some of the values forwarded through the network:
 
- - Pitch
- - Yaw
- - Object Type
- - Action Result
- - Affected Object
- - Distance to AO
+-   Pitch
+-   Yaw
+-   Object Type
+-   Action Result
+-   Affected Object
+-   Distance to AO
 
 <img src="/assets/images/FeedForward2.png"/>
 <p class="Caption">Example input array given to the VACnet neural network.</p>
@@ -42,19 +42,19 @@ Let's focus on the simplest form of aimbot detection: the distance of the crossh
 
 ### 2. Smoothing Detection
 
-The goal of "smoothing" is to move the mouse gradually to the target location, as a human would, instead of instantly moving the mouse where it needs to be. Smoothing is almost **always** accomplished using the following function, where *x* is a screen coordinate and *t* is that coordinate's target position:
+The goal of "smoothing" is to move the mouse gradually to the target location, as a human would, instead of instantly moving the mouse where it needs to be. Smoothing is almost **always** accomplished using the following function, where _x_ is a screen coordinate and _t_ is that coordinate's target position:
 
 > <em>f(x) = (t - x) / c + x</em>
 
-Note that in this equation, *c* is the **smoothing constant**, a value greater than *1* which can be used to control the speed at which the coordinate changes. The higher the value, the slower the coordinate changes.
+Note that in this equation, _c_ is the **smoothing constant**, a value greater than _1_ which can be used to control the speed at which the coordinate changes. The higher the value, the slower the coordinate changes.
 
 The speed at which the crosshair moves to the enemy can be graphed using the equation **<em>y = 1 - x</em>**, and the approximate distance from the enemy can be graphed using the following:
 
-> <em>y = 1 - (|(x - 1)|^(s + 1) * -1 + 1)</em>
+> <em>y = 1 - (|(x - 1)|^(s + 1) \* -1 + 1)</em>
 
 An anticheat could detect a user that is using smoothing simply because of the fact that the crosshair's distance from the target will always decrease at an exponential rate. This can, of course, happen natrually with human players at times, but it will **always** happen with players who are cheating and using smoothing.
 
-One way to avoid this detection is by using a linear smoothing function, or one that adds a constant value to the coordinate over time until it is within a certain distance from the target coordinate. Many cheats, however, don't take advantage of this, as an exponential smoothing algorithm is usually easier to code. Additionally, a linear smoothing algorithm could (*in theory*) be just as straightforward for an anticheat to detect as its exponential variant.
+One way to avoid this detection is by using a linear smoothing function, or one that adds a constant value to the coordinate over time until it is within a certain distance from the target coordinate. Many cheats, however, don't take advantage of this, as an exponential smoothing algorithm is usually easier to code. Additionally, a linear smoothing algorithm could (_in theory_) be just as straightforward for an anticheat to detect as its exponential variant.
 
 ### The Solution
 
@@ -64,8 +64,8 @@ It almost feels that we would need a smoothing algorithm with added randomness t
 
 The key in creating a neural network is the layout of **weights** and **biases**.
 
- - **Weights** define how much the input should be changed by
- - **Biases** define the probability that the input will be changed at all
+-   **Weights** define how much the input should be changed by
+-   **Biases** define the probability that the input will be changed at all
 
 Lastly, we have our input and output layers, or **neurons**.
 
@@ -176,13 +176,13 @@ The hierarchy of parent networks and mutation is what gives this type of trainin
 
 Training our neural network involves the following steps:
 
- - Create an array of neural networks
- - Slightly randomize the weights and biases in the network (performed using the Mutate() function)
- - Run the forward operation with input data
- - Calculate how correct/incorrect the response was from the network
- - Find the network in the array that was "most correct"
- - Make all of the networks "copy" the weights and biases of the best network
- - Go back to step 2 and do it all again
+-   Create an array of neural networks
+-   Slightly randomize the weights and biases in the network (performed using the Mutate() function)
+-   Run the forward operation with input data
+-   Calculate how correct/incorrect the response was from the network
+-   Find the network in the array that was "most correct"
+-   Make all of the networks "copy" the weights and biases of the best network
+-   Go back to step 2 and do it all again
 
 With this approach, the network will gradually provide better outputs over time. After it has been sufficiently trained, we can save the weights and biases and re-load them at a later time. This is our "model".
 
@@ -195,9 +195,10 @@ With this approach, the network will gradually provide better outputs over time.
 We can save and load it from memory (as an array), or from a file by creating Save() and Load() functions in the NeuralNetwork class.
 
 ### References
- - [https://github.com/Strayfade/FNN](https://github.com/Strayfade/FNN)
- - [https://towardsdatascience.com/building-a-neural-network-framework-in-c-16ef56ce1fef](https://towardsdatascience.com/building-a-neural-network-framework-in-c-16ef56ce1fef)
- - [https://deepai.org/machine-learning-glossary-and-terms/feed-forward-neural-network](https://deepai.org/machine-learning-glossary-and-terms/feed-forward-neural-network)
- - [https://www.theloadout.com/csgo/vacnet-cheating-patent](https://www.theloadout.com/csgo/vacnet-cheating-patent)
- - [https://patents.google.com/patent/WO2019182868A1](https://patents.google.com/patent/WO2019182868A1)
- - [https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf)
+
+-   [https://github.com/Strayfade/FNN](https://github.com/Strayfade/FNN)
+-   [https://towardsdatascience.com/building-a-neural-network-framework-in-c-16ef56ce1fef](https://towardsdatascience.com/building-a-neural-network-framework-in-c-16ef56ce1fef)
+-   [https://deepai.org/machine-learning-glossary-and-terms/feed-forward-neural-network](https://deepai.org/machine-learning-glossary-and-terms/feed-forward-neural-network)
+-   [https://www.theloadout.com/csgo/vacnet-cheating-patent](https://www.theloadout.com/csgo/vacnet-cheating-patent)
+-   [https://patents.google.com/patent/WO2019182868A1](https://patents.google.com/patent/WO2019182868A1)
+-   [https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf)

@@ -7,7 +7,7 @@ const express = require('express')
 // Imported Functions
 const { Log } = require('./Log')
 const { SendError } = require('./Error')
-const { GeneratePageCached } = require("./generators/Assemble")
+const { GeneratePageCached } = require('./generators/Assemble')
 const { GetAvailableLanguages, GetLanaguageShort, GetLanguagePath } = require('./Localization')
 
 // Create App
@@ -15,15 +15,18 @@ const App = express()
 
 const Languages = GetAvailableLanguages()
 const AvailablePages = {
-    Home: Symbol("Home"),
-    Dynamic: Symbol("Article"),
-    R: Symbol("R"),
-    NonstandardPages: ["R"]
+    Home: Symbol('Home'),
+    Dynamic: Symbol('Article'),
+    R: Symbol('R'),
+    NonstandardPages: ['R'],
 }
 
 const WrapAsync = (Function) => {
-    return (req, res, next) => { const FunctionOut = Function(req, res, next); return Promise.resolve(FunctionOut).catch(next); }
-};
+    return (req, res, next) => {
+        const FunctionOut = Function(req, res, next)
+        return Promise.resolve(FunctionOut).catch(next)
+    }
+}
 
 // Basic Security
 require('./security/Security').Setup(App)
@@ -32,80 +35,96 @@ require('./security/Security').Setup(App)
 App.use('/cdn', express.static('cdn'))
 App.use('/assets', express.static('assets'))
 App.use('/fonts', express.static('fonts'))
+App.use('/build', express.static('build'))
 
 // Middleware
-const Analytics = require("./middleware/Analytics")
+const Analytics = require('./middleware/Analytics')
 App.use(Analytics.Middleware)
-const RequestBlocking = require("./middleware/RequestBlocking")
+const RequestBlocking = require('./middleware/RequestBlocking')
 App.use(RequestBlocking.Middleware)
 
 // Sources
-App.get('/Production.css', WrapAsync(async function(req, res) {
-    res.sendFile(__dirname + "/Production/Production.css")
-}))
-App.get('/Production.js', WrapAsync(async function(req, res) {
-    res.sendFile(__dirname + "/Production/Production.js")
-}))
-App.get('/favicon.ico', WrapAsync(async function(req, res) {
-    res.sendFile(path.resolve(__dirname, 'assets/Icon.ico'))
-}))
-App.get('/robots.txt', WrapAsync(async function(req, res) {
-    res.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
-}))
+App.get(
+    '/favicon.ico',
+    WrapAsync(async (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'assets/Icon.ico'))
+    }),
+)
+App.get(
+    '/robots.txt',
+    WrapAsync(async (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
+    }),
+)
 
 // Default Routing
-App.get('/', WrapAsync(async function (req, res) {
-    const Article = await fs.readFile('./posts/_None.md', {encoding: "utf-8"})
-    let Lang = require(GetLanguagePath(req))
-    let Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Home, "")
-    res.send(Page)
-}))
-App.get('/:path', WrapAsync(async function (req, res) {
-    res.redirect("/" + GetLanaguageShort(req) + "/" + req.params.path)
-}))
-App.get('/:localization/:path', WrapAsync(async function (req, res) {
+App.get(
+    '/',
+    WrapAsync(async (req, res) => {
+        const Article = await fs.readFile('./posts/_None.md', { encoding: 'utf-8' })
+        let Lang = require(GetLanguagePath(req))
+        let Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Home, '')
+        res.send(Page)
+    }),
+)
+App.get(
+    '/:path',
+    WrapAsync(async (req, res) => {
+        res.redirect('/' + GetLanaguageShort(req) + '/' + req.params.path)
+    }),
+)
+App.get(
+    '/:localization/:path',
+    WrapAsync(async (req, res) => {
+        let Lang = {}
+        if (Languages.includes(req.params.localization))
+            Lang = require('./localization/' + req.params.localization + '.json')
+        else Lang = require(GetLanguagePath(req))
 
-    var Lang = {}
-    if (Languages.includes(req.params.localization))
-        Lang = require('./localization/' + req.params.localization + '.json')
-    else 
-        Lang = require(GetLanguagePath(req))
-
-    let IsNotArticle = AvailablePages.NonstandardPages.includes(req.params.path.toUpperCase());
-    if (IsNotArticle) {
-        switch (req.params.path.toUpperCase()) {
-            case "R":
-                var Article = await fs.readFile('./posts/_None.md', {encoding: "utf-8"})
-                var Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.R, "");
-                res.send(Page)
-                break;
-        }
-    } else {
-        let ArticlePath = './posts/' + req.params.path + '.md'
-        if (fsdir.existsSync(ArticlePath) && req.params.path != "_None") {
-            let Article = await fs.readFile('./posts/' + req.params.path + '.md', {encoding: "utf-8"})
-            let Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Dynamic, "", req.params.path + '.md')
-            res.send(Page)
+        let IsNotArticle = AvailablePages.NonstandardPages.includes(req.params.path.toUpperCase())
+        if (IsNotArticle) {
+            switch (req.params.path.toUpperCase()) {
+                case 'R':
+                    let Article = await fs.readFile('./posts/_None.md', { encoding: 'utf-8' })
+                    let Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.R, '')
+                    res.send(Page)
+                    break
+            }
         } else {
-            Log("Requested page not found (404): " + req.path)
-            await SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, "", Languages);
+            let ArticlePath = './posts/' + req.params.path + '.md'
+            if (fsdir.existsSync(ArticlePath) && req.params.path != '_None') {
+                let Article = await fs.readFile('./posts/' + req.params.path + '.md', { encoding: 'utf-8' })
+                let Page = await GeneratePageCached(
+                    req,
+                    Article,
+                    Lang,
+                    AvailablePages,
+                    AvailablePages.Dynamic,
+                    '',
+                    req.params.path + '.md',
+                )
+                res.send(Page)
+            } else {
+                Log('Requested page not found (404): ' + req.path)
+                await SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, '', Languages)
+            }
         }
-    }
-}))
+    }),
+)
 
 // Error Handling Middleware
-async function ErrorLogger(error, req, res, next) {
-    Log("ERROR: " + error)
+const ErrorLogger = async (error, req, res, next) => {
+    Log('ERROR: ' + error)
     next(error)
 }
-async function ErrorHandler(error, req, res, next) {
-    await SendError(500, req, res, AvailablePages, AvailablePages.Dynamic, error, Languages);
+const ErrorHandler = async (error, req, res, next) => {
+    await SendError(500, req, res, AvailablePages, AvailablePages.Dynamic, error, Languages)
 }
 App.use(ErrorLogger)
 App.use(ErrorHandler)
 
 // Start Server
-var Port = process.env.PORT || parseInt(process.argv[2]);
+let Port = process.env.PORT || parseInt(process.argv[2])
 App.listen(Port, () => {
     Log('Listening on port ' + Port)
     Log('Link: http://localhost:' + Port)

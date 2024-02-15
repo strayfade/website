@@ -7,7 +7,7 @@ blockquote {
     margin-right: 0px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background: linear-gradient(45deg, var(--accent-color-very-transparent), var(--accent-color-transparent))
+    background: linear-gradient(45deg, var(--accent-color-very-transparent), var(--accent-color-transparent));
 }
 blockquote * {
     text-shadow: var(--default-shadow);

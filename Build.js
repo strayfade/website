@@ -12,7 +12,7 @@ const ObfuscatorOptions = {
 }
 const Obfuscate = !process.argv[2] || !process.argv[2].includes('--skipobfuscation')
 
-const PackStylesheets = async() => {
+const PackStylesheets = async () => {
     Log('[BUILD] - Merging CSS files...')
     let Stylesheet = ''
     let filenames = fs.readdirSync(__dirname + '/css')
@@ -37,7 +37,7 @@ const PackStylesheets = async() => {
     Log('[BUILD] - Finished file: ' + p)
 }
 
-const PackScripts = async() => {
+const PackScripts = async () => {
     Log('[BUILD] - Merging Javascript files...')
     let Script = ''
     let filenames = fs.readdirSync(__dirname + '/scripts')

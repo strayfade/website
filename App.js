@@ -46,13 +46,13 @@ App.use(RequestBlocking.Middleware)
 // Sources
 App.get(
     '/favicon.ico',
-    WrapAsync(async (req, res) => {
+    WrapAsync(async(req, res) => {
         res.sendFile(path.resolve(__dirname, 'assets/Icon.ico'))
     }),
 )
 App.get(
     '/robots.txt',
-    WrapAsync(async (req, res) => {
+    WrapAsync(async(req, res) => {
         res.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
     }),
 )
@@ -60,7 +60,7 @@ App.get(
 // Default Routing
 App.get(
     '/',
-    WrapAsync(async (req, res) => {
+    WrapAsync(async(req, res) => {
         const Article = await fs.readFile('./posts/_None.md', { encoding: 'utf-8' })
         let Lang = require(GetLanguagePath(req))
         let Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Home, '')
@@ -69,13 +69,13 @@ App.get(
 )
 App.get(
     '/:path',
-    WrapAsync(async (req, res) => {
+    WrapAsync(async(req, res) => {
         res.redirect('/' + GetLanaguageShort(req) + '/' + req.params.path)
     }),
 )
 App.get(
     '/:localization/:path',
-    WrapAsync(async (req, res) => {
+    WrapAsync(async(req, res) => {
         let Lang = {}
         if (Languages.includes(req.params.localization))
             Lang = require('./localization/' + req.params.localization + '.json')
@@ -113,11 +113,11 @@ App.get(
 )
 
 // Error Handling Middleware
-const ErrorLogger = async (error, req, res, next) => {
+const ErrorLogger = async(error, req, res, next) => {
     Log('ERROR: ' + error)
     next(error)
 }
-const ErrorHandler = async (error, req, res, next) => {
+const ErrorHandler = async(error, req, res, next) => {
     await SendError(500, req, res, AvailablePages, AvailablePages.Dynamic, error, Languages)
 }
 App.use(ErrorLogger)

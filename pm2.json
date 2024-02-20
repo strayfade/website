@@ -1,9 +1,0 @@
-{
-    "apps": [
-        {
-            "name": "Website",
-            "script": "/Users/strayfade/Documents/GitHub/Website",
-            "watch": ["/Users/strayfade/Documents/GitHub/Website"]
-        }
-    ]
-}

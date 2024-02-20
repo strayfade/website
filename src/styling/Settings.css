@@ -1,0 +1,22 @@
+:root {
+    --light-0: white;
+    --light-1: rgb(calc(95 / 100 * 255), calc(95 / 100 * 255), calc(95 / 100 * 255));
+    --light-2: rgb(calc(70 / 100 * 255), calc(70 / 100 * 255), calc(70 / 100 * 255));
+    --light-3: rgb(calc(50 / 100 * 255), calc(50 / 100 * 255), calc(50 / 100 * 255));
+    --light-4: rgb(calc(30 / 100 * 255), calc(30 / 100 * 255), calc(30 / 100 * 255));
+    --light-5: rgb(calc(10 / 100 * 255), calc(10 / 100 * 255), calc(10 / 100 * 255));
+
+    --dark-0: black;
+    --dark-1: rgb(calc(05 / 100 * 255), calc(05 / 100 * 255), calc(05 / 100 * 255));
+    --dark-2: rgb(calc(30 / 100 * 255), calc(30 / 100 * 255), calc(30 / 100 * 255));
+    --dark-3: rgb(calc(50 / 100 * 255), calc(50 / 100 * 255), calc(50 / 100 * 255));
+    --dark-4: rgb(calc(70 / 100 * 255), calc(70 / 100 * 255), calc(70 / 100 * 255));
+    --dark-5: rgb(calc(90 / 100 * 255), calc(90 / 100 * 255), calc(90 / 100 * 255));
+
+    --accent-color-hue: 0deg;
+    --accent-color-saturation: 100%;
+    --accent-color-value: 50%;
+    --accent-color: hsla(var(--accent-color-hue), var(--accent-color-saturation), var(--accent-color-value), 1);
+
+    --transition-length: 0.25s;
+}

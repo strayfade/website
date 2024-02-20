@@ -1,6 +1,0 @@
-.ScrollLowOpacity {
-    opacity: 0.5;
-}
-.ScrollAffectable {
-    transition: var(--transition-length);
-}

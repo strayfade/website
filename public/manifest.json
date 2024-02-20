@@ -1,0 +1,19 @@
+{
+    "name": "Strayfade.com",
+    "short_name": "Strayfade",
+    "icons": [
+        {
+            "src": "/icon.svg",
+            "type": "image/svg+xml",
+            "sizes": "300x300"
+        },
+        {
+            "src": "/icon.png",
+            "type": "image/png",
+            "sizes": "1080x1080"
+        }
+    ],
+    "background_color": "#101010",
+    "theme_color": "#f0f0f0",
+    "display": "browser"
+}

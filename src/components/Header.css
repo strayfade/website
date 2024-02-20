@@ -1,0 +1,35 @@
+header {
+    height: calc(100vh - 20px);
+    width: 60px;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.HeaderInner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.HeaderInner a {
+    width: 60px;
+    height: 60px;
+}
+.HeaderSpacing {
+    height: 100%;
+}
+.HeaderIcon {
+    width: calc(100% - 36px);
+    margin: 18px;
+    transition: var(--transition-length);
+}
+
+.HeaderIconDesktopOnly {
+    display: block;
+}
+@media screen and (max-width: 600px) {
+    .HeaderIconDesktopOnly {
+        display: none;
+    }
+}

@@ -1,0 +1,15 @@
+.article-title {
+    margin-bottom: 0px;
+    margin-top: 25px;
+    font-size: 60px;
+    font-weight: 400;
+}
+
+.article-description {
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.article-author {
+    font-size: 15px;
+}

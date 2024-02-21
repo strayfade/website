@@ -5,18 +5,22 @@
     --light-3: rgb(calc(50 / 100 * 255), calc(50 / 100 * 255), calc(50 / 100 * 255));
     --light-4: rgb(calc(30 / 100 * 255), calc(30 / 100 * 255), calc(30 / 100 * 255));
     --light-5: rgb(calc(10 / 100 * 255), calc(10 / 100 * 255), calc(10 / 100 * 255));
-
     --dark-0: black;
     --dark-1: rgb(calc(05 / 100 * 255), calc(05 / 100 * 255), calc(05 / 100 * 255));
     --dark-2: rgb(calc(30 / 100 * 255), calc(30 / 100 * 255), calc(30 / 100 * 255));
     --dark-3: rgb(calc(50 / 100 * 255), calc(50 / 100 * 255), calc(50 / 100 * 255));
     --dark-4: rgb(calc(70 / 100 * 255), calc(70 / 100 * 255), calc(70 / 100 * 255));
     --dark-5: rgb(calc(90 / 100 * 255), calc(90 / 100 * 255), calc(90 / 100 * 255));
-
     --accent-color-hue: 0deg;
-    --accent-color-saturation: 100%;
-    --accent-color-value: 50%;
+    --accent-color-saturation: 80%;
+    --accent-color-value: 60%;
     --accent-color: hsla(var(--accent-color-hue), var(--accent-color-saturation), var(--accent-color-value), 1);
-
     --transition-length: 0.25s;
+}
+
+@media screen and (prefers-color-scheme: light) {
+     :root {
+        --accent-color-value: 40%;
+        --accent-color-saturation: 100%;
+    }
 }

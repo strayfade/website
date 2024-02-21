@@ -1,0 +1,13 @@
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+.icon {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.icon-button {
+    display: flex;
+}

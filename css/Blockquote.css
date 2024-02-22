@@ -1,6 +1,7 @@
 blockquote {
-    padding: 0px 20px;
-    margin: 20px 0px;
+    padding: 10px 20px;
+    margin: 50px 0px;
+    background: linear-gradient(90deg, var(--accent-color-very-transparent), transparent);
     border-left: 5px solid var(--accent-color);
 }
 

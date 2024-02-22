@@ -13,3 +13,7 @@
 .article-author {
     font-size: 15px;
 }
+
+.article-author-emphasis {
+    font-weight: 600;
+}

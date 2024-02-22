@@ -1,0 +1,9 @@
+.radial-gradient {
+    background: radial-gradient(var(--accent-color-transparent) 0%, transparent 50%);
+    position: absolute;
+    pointer-events: none;
+}
+body {
+    max-height: 100vh;
+    overflow-y: hidden;
+}

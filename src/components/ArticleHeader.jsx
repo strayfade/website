@@ -9,7 +9,7 @@ function ArticleHeader({ Title = 'Test Title', Description = 'Test Description',
             <h1 className='article-title'>{Title}</h1>
             <p className='article-description'>{Description}</p>
             <div className='article-author'>
-                <span>Written by</span> <strong>{Author}</strong>
+                <span>Written by</span> <span className='article-author-emphasis'>{Author}</span>
             </div>
             <Separator/>
         </div>

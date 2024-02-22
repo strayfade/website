@@ -15,6 +15,8 @@
     --accent-color-saturation: 80%;
     --accent-color-value: 60%;
     --accent-color: hsla(var(--accent-color-hue), var(--accent-color-saturation), var(--accent-color-value), 1);
+    --accent-color-semitransparent: hsla(var(--accent-color-hue), var(--accent-color-saturation), var(--accent-color-value), 0.5);
+    --accent-color-transparent: hsla(var(--accent-color-hue), var(--accent-color-saturation), var(--accent-color-value), 0.25);
     --transition-length: 0.25s;
 }
 

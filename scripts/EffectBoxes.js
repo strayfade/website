@@ -18,7 +18,7 @@
         let EffectBox = document.createElement('div')
         EffectBox.classList.add('CoverBox')
         EffectBox.style.top = '-' + ElementLocation.top + 'px'
-        EffectBox.style.left = '0px'
+        EffectBox.style.right = '0px'
         EffectBox.style.width = ElementLocation.right - ElementLocation.left + 'px'
         EffectBox.style.height = ElementLocation.bottom - ElementLocation.top + 'px'
         EffectBox.style.marginTop = '-' + (ElementLocation.bottom - ElementLocation.top) + 'px'
@@ -27,7 +27,7 @@
     }
 
     // Animate effect boxes
-    document.querySelector(':root').style.setProperty('--transition-length', '1.0s')
+    document.querySelector(':root').style.setProperty('--transition-length', '0.75s')
 
     let AllBoxes = []
     for (const Box of document.getElementsByClassName('CoverBox')) {
@@ -49,14 +49,14 @@
     )
     let Iterator = 0
     const ref = setInterval(() => {
-        AllBoxes[Iterator].style.marginLeft = parseInt(AllBoxes[Iterator].getAttribute('initialwidth')) + 'px'
+        AllBoxes[Iterator].style.marginRight = parseInt(AllBoxes[Iterator].getAttribute('initialwidth')) + 'px'
         AllBoxes[Iterator].style.width = '0px'
         Iterator++
         if (Iterator == AllBoxes.length) {
             clearInterval(ref)
             setTimeout(() => {
                 for (const Box of document.getElementsByClassName('CoverBox')) {
-                    Box.remove()
+                    //Box.remove()
                 }
             }, 1000)
         }

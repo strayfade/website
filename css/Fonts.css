@@ -88,7 +88,8 @@
 h1 {
     font-size: 60px;
 }
-@media screen and (max-width: 800px) {
+
+@media screen and (max-width: 960px) {
     h1 {
         font-size: 30px;
     }
@@ -122,4 +123,5 @@ em,
 strong {
     margin-top: 0px;
     margin-bottom: 0px;
+    font-weight: 400;
 }

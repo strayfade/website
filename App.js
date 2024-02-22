@@ -18,8 +18,8 @@ const AvailablePages = {
     Home: Symbol('Home'),
     Dynamic: Symbol('Article'),
     R: Symbol('R'),
-    NonstandardPages: ['R'],
 }
+const IrregularPages = ['R']
 
 const WrapAsync = (Function) => {
     return (req, res, next) => {
@@ -81,7 +81,7 @@ App.get(
             Lang = require('./localization/' + req.params.localization + '.json')
         else Lang = require(GetLanguagePath(req))
 
-        let IsNotArticle = AvailablePages.NonstandardPages.includes(req.params.path.toUpperCase())
+        let IsNotArticle = IrregularPages.includes(req.params.path.toUpperCase())
         if (IsNotArticle) {
             switch (req.params.path.toUpperCase()) {
                 case 'R':

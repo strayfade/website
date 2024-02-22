@@ -1,16 +1,5 @@
 const fs = require('fs')
 const Log = require('./Log').Log
-const Obfuscator = require('js-obfuscator')
-const ObfuscatorOptions = {
-    keepLinefeeds: false,
-    keepIndentations: false,
-    encodeStrings: true,
-    encodeNumbers: true,
-    moveStrings: true,
-    replaceNames: true,
-    variableExclusions: ['^_get_', '^_set_', '^_mtd_'],
-}
-const Obfuscate = !process.argv[2] || !process.argv[2].includes('--skipobfuscation')
 
 const PackStylesheets = async () => {
     Log('[BUILD] - Merging CSS files...')
@@ -50,26 +39,10 @@ const PackScripts = async () => {
         }
     }
 
-    if (Obfuscate && false) {
-        Obfuscator(Script, ObfuscatorOptions).then(
-            (ObfuscatedContent) => {
-                let p = __dirname + '/build/production.js'
-                Log('[BUILD] - Obfuscated file: ' + p)
-                fs.mkdir('./Production', (err) => {})
-                fs.writeFileSync(p, ObfuscatedContent, { recursive: true })
-
-                Log('[BUILD] - Finished file: ' + p)
-            },
-            (Error) => {
-                console.error(Error)
-            },
-        )
-    } else {
-        Log('[BUILD] - Skipping obfuscation')
-        fs.mkdir('./Production', (err) => {})
-        let p = __dirname + '/build/production.js'
-        fs.writeFileSync(p, Script, { recursive: true })
-    }
+    Log('[BUILD] - Skipping obfuscation')
+    fs.mkdir('./Production', (err) => {})
+    let p = __dirname + '/build/production.js'
+    fs.writeFileSync(p, Script, { recursive: true })
 }
 
 PackStylesheets()

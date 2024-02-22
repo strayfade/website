@@ -68,6 +68,6 @@ const DecryptElements = (Elements) => {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    let Elements = GetElements()
-    DecryptElements(Elements)
+    //let Elements = GetElements()
+    //DecryptElements(Elements)
 })

@@ -14,7 +14,6 @@ const AvailablePages = {
     Home: Symbol('Home'),
     Dynamic: Symbol('Article'),
     R: Symbol('R'),
-    NonstandardPages: ['R'],
 }
 
 const CalculateAge = () => {
@@ -210,7 +209,7 @@ const GenerateBodyV2 = async (Article2, Locale, AvailablePages, AvailablePageSel
                             Output += `<div class="ArticleItem Slide1 Slide1Visible" style="margin-top: 20px">`
                             Output +=
                                 `
-                                            <div class="GridItem Slide1 Slide1Visible" style="padding-bottom: 0px; width: max-content; padding-right: 0px;">
+                                            <div class="GridItem Slide1 Slide1Visible" style="padding-bottom: 0px; padding-right: 0px;">
                                             <a href="/` +
                                 Post.file.replace('.md', '') +
                                 `">
@@ -219,7 +218,13 @@ const GenerateBodyV2 = async (Article2, Locale, AvailablePages, AvailablePageSel
                             // Article Titles
                             if (x == 0) {
                                 Output +=
-                                    `<h3 style="margin-top: 0px; color: black; background-color: var(--accent-color); padding: 5px; padding-right: 7px; padding-left: 7px; width: max-content; height: max-content; margin-top: 5px;">` +
+                                    `<h3 style="color: black;
+                                    background: var(--accent-color);
+                                    padding: 7px 5px 4px 7px;
+                                    width: max-content;
+                                    height: max-content;
+                                    margin-top: 3px;
+                                    font-weight: bold;">` +
                                     JSON.title +
                                     `</h3>`
                             } else {
@@ -229,14 +234,18 @@ const GenerateBodyV2 = async (Article2, Locale, AvailablePages, AvailablePageSel
                                     `</h3>`
                             }
                             Output +=
-                                `<p style="font-size: 14px; margin-top: 0px; color: white; opacity: 0.5; margin: 14px; margin-left: 8px">` +
+                                `<p style="font-size: 16px;
+                                color: white;
+                                opacity: 0.2;
+                                margin: 14px;
+                                font-weight: 300; ">` +
                                 JSON.date +
                                 `</p></div>`
 
                             // Article Descriptions
                             if (x == 0) {
                                 Output +=
-                                    `<p style="color: white; margin: 0px; width: max-content">` +
+                                    `<p style="color: white; margin: 0px; max-width: 100%;">` +
                                     JSON.description +
                                     `</p>`
                             } else {
@@ -275,7 +284,7 @@ const GenerateBodyV2 = async (Article2, Locale, AvailablePages, AvailablePageSel
                                 <p><strong>Full-stack web development</strong> building <strong>modern, dynamic interfaces</strong> and <strong>modular, secure backends</strong>.</p>
                                 <div class="Icobox">
                                     <a class="Link" href="https://github.com/Strayfade/Website">Source Code
-                                        <svg class="Link" style="margin-bottom: -4px; margin-left: -1px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 50 40"><path d="M22.5 34H14q-4.15 0-7.075-2.925T4 24q0-4.15 2.925-7.075T14 14h8.5v3H14q-2.9 0-4.95 2.05Q7 21.1 7 24q0 2.9 2.05 4.95Q11.1 31 14 31h8.5Zm-6.25-8.5v-3h15.5v3ZM25.5 34v-3H34q2.9 0 4.95-2.05Q41 26.9 41 24q0-2.9-2.05-4.95Q36.9 17 34 17h-8.5v-3H34q4.15 0 7.075 2.925T44 24q0 4.15-2.925 7.075T34 34Z"/></svg>
+                                        <svg class="Link" style="margin-bottom: -4px; margin-left: -1px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
                                     </a>
                                 </div>
                             </div>
@@ -290,7 +299,7 @@ const GenerateBodyV2 = async (Article2, Locale, AvailablePages, AvailablePageSel
                                 <p>Created <strong>neural network/AI</strong> frameworks for task automation and experimentation <strong>from scratch in C++</strong>.</p>
                                 <div class="Icobox">
                                     <a class="Link" href="/FeedForward">Article
-                                        <svg class="Link" style="margin-bottom: -4px; margin-left: -1px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 50 40"><path d="M22.5 34H14q-4.15 0-7.075-2.925T4 24q0-4.15 2.925-7.075T14 14h8.5v3H14q-2.9 0-4.95 2.05Q7 21.1 7 24q0 2.9 2.05 4.95Q11.1 31 14 31h8.5Zm-6.25-8.5v-3h15.5v3ZM25.5 34v-3H34q2.9 0 4.95-2.05Q41 26.9 41 24q0-2.9-2.05-4.95Q36.9 17 34 17h-8.5v-3H34q4.15 0 7.075 2.925T44 24q0 4.15-2.925 7.075T34 34Z"/></svg>
+                                        <svg class="Link" style="margin-bottom: -4px; margin-left: -1px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
                                     </a>
                                 </div>
                             </div>
@@ -381,7 +390,7 @@ const GenerateBodyV2 = async (Article2, Locale, AvailablePages, AvailablePageSel
                 MarkdownHtml = MarkdownHtml.replace('";', '"')
             }
             let ArticleTags = ''
-            if (Article.tags) {
+            if (Article.tags && false) {
                 ArticleTags += `<div class="ArticleTagContainer" style="margin-top: 20px;">`
                 for (let y = 0; y < Article.tags.length; y++) {
                     ArticleTags += `<span class="ArticleTag">` + Article.tags[y] + `</span>`
@@ -419,13 +428,13 @@ const GenerateBodyV2 = async (Article2, Locale, AvailablePages, AvailablePageSel
                         <h1 class="ArticleTitle" style="margin-top: 12px">` +
                 Article.title +
                 `</h1>
-                        <h4 style="margin-top: 0px; font-weight: normal; margin-top: 10px;">` +
+                        <h4 style="margin-top: 0px; font-weight: 300; margin-top: 10px;">` +
                 Article.description +
                 `</h4>` +
                 (Article.showTitle
                     ? ArticleTags +
                       `
-                        <p style="margin-top: 24px; padding-bottom: 50px; margin-bottom: 50px; border-bottom: 3px solid white;">Written by <strong>` +
+                        <p style="margin-top: 24px; padding-bottom: 50px; margin-bottom: 50px; border-bottom: 3px solid white; font-weight: 300;">Written by <strong>` +
                       Article.author +
                       `</strong></p>`
                     : ``) +

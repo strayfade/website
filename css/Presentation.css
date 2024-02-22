@@ -114,9 +114,10 @@
     width: 50vw;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 960px) {
     .Slide .SlideInner {
         width: 70vw;
+        margin-top: 7.5vh;
     }
 }
 
@@ -222,7 +223,7 @@ a {
     border-radius: 6px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 960px) {
     .SidebarScrollPercentage {
         display: none;
     }
@@ -301,7 +302,7 @@ a {
     margin-bottom: 5px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 960px) {
     .Flexbox {
         display: block;
     }
@@ -346,7 +347,7 @@ a {
     margin-top: 10px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 960px) {
     .SlideInner p {
         font-size: 14px;
         margin-top: 10px;
@@ -387,6 +388,7 @@ strong {
 
 .ArticleTitle {
     font-size: 60px;
+    font-weight: 400;
 }
 
 .ArticleTitleDate {
@@ -394,7 +396,7 @@ strong {
     font-weight: lighter;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 960px) {
     .ArticleTitle {
         font-size: 30px;
     }

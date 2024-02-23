@@ -1,0 +1,6 @@
+body {
+    caret-color: var(--accent-color);
+    text-rendering: optimizeLegibility;
+    image-rendering: optimizeQuality;
+    overscroll-behavior: contain;
+}

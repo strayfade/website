@@ -7,6 +7,7 @@ const GetElements = () => {
         let Found = document.getElementsByTagName(TextTags[x])
         for (let y = 0; y < Found.length; y++) {
             let HasEffectBox = false
+            Found[y].style.willChange = 'content'
             for (let z = 0; z < Found[y].children.length; z++) {
                 if (Found[y].children[z].classList.contains('EffectBox')) HasEffectBox = true
             }
@@ -38,6 +39,7 @@ const DecryptElements = (Elements) => {
     let Iter = 0
 
     const DecryptLoop = (i) => {
+        const DecryptChance = 0.5
         setTimeout(() => {
             for (let x = 0; x < Elements.length; x++) {
                 let NewString = ''
@@ -52,9 +54,9 @@ const DecryptElements = (Elements) => {
                     }
                 }
                 Elements[x].innerHTML = NewString
+                //Elements[x].style.filter = `blur(${Math.floor((1 - i / SavedStrings[x].length) * 5)}px)`
             }
 
-            let DecryptChance = 0.33
             if (Math.random() < DecryptChance) {
                 // Chance of decrypting
                 Iter++
@@ -68,6 +70,6 @@ const DecryptElements = (Elements) => {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    //let Elements = GetElements()
-    //DecryptElements(Elements)
+    let Elements = GetElements()
+    DecryptElements(Elements)
 })

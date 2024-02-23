@@ -1,7 +1,6 @@
 @font-face {
     font-family: 'Metropolis';
-    src:
-        url('/fonts/Metropolis-BoldItalic.woff2') format('woff2'),
+    src: url('/fonts/Metropolis-BoldItalic.woff2') format('woff2'),
         url('/fonts/Metropolis-BoldItalic.woff') format('woff');
     font-weight: bold;
     font-style: italic;
@@ -10,8 +9,7 @@
 
 @font-face {
     font-family: 'Metropolis';
-    src:
-        url('/fonts/Metropolis-MediumItalic.woff2') format('woff2'),
+    src: url('/fonts/Metropolis-MediumItalic.woff2') format('woff2'),
         url('/fonts/Metropolis-MediumItalic.woff') format('woff');
     font-weight: 500;
     font-style: italic;
@@ -20,9 +18,7 @@
 
 @font-face {
     font-family: 'Metropolis';
-    src:
-        url('/fonts/Metropolis-Light.woff2') format('woff2'),
-        url('/fonts/Metropolis-Light.woff') format('woff');
+    src: url('/fonts/Metropolis-Light.woff2') format('woff2'), url('/fonts/Metropolis-Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -30,9 +26,7 @@
 
 @font-face {
     font-family: 'Metropolis';
-    src:
-        url('/fonts/Metropolis-Medium.woff2') format('woff2'),
-        url('/fonts/Metropolis-Medium.woff') format('woff');
+    src: url('/fonts/Metropolis-Medium.woff2') format('woff2'), url('/fonts/Metropolis-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -40,8 +34,7 @@
 
 @font-face {
     font-family: 'Metropolis';
-    src:
-        url('/fonts/Metropolis-ThinItalic.woff2') format('woff2'),
+    src: url('/fonts/Metropolis-ThinItalic.woff2') format('woff2'),
         url('/fonts/Metropolis-ThinItalic.woff') format('woff');
     font-weight: 100;
     font-style: italic;
@@ -50,9 +43,7 @@
 
 @font-face {
     font-family: 'Metropolis';
-    src:
-        url('/fonts/Metropolis-Bold.woff2') format('woff2'),
-        url('/fonts/Metropolis-Bold.woff') format('woff');
+    src: url('/fonts/Metropolis-Bold.woff2') format('woff2'), url('/fonts/Metropolis-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -60,9 +51,7 @@
 
 @font-face {
     font-family: 'Metropolis';
-    src:
-        url('/fonts/Metropolis-Thin.woff2') format('woff2'),
-        url('/fonts/Metropolis-Thin.woff') format('woff');
+    src: url('/fonts/Metropolis-Thin.woff2') format('woff2'), url('/fonts/Metropolis-Thin.woff') format('woff');
     font-weight: 100;
     font-style: normal;
     font-display: swap;
@@ -70,8 +59,7 @@
 
 @font-face {
     font-family: 'Metropolis';
-    src:
-        url('/fonts/Metropolis-LightItalic.woff2') format('woff2'),
+    src: url('/fonts/Metropolis-LightItalic.woff2') format('woff2'),
         url('/fonts/Metropolis-LightItalic.woff') format('woff');
     font-weight: 300;
     font-style: italic;
@@ -89,7 +77,7 @@ h1 {
     font-size: 60px;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-aspect-ratio: 1/1) {
     h1 {
         font-size: 30px;
     }

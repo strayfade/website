@@ -6,8 +6,8 @@
     "scripts": {
         "start": "node App 3100",
         "build": "prettier --write . && node Build",
-        "prod": "prettier --write . && node Build && node App 3000",
-        "develop": "prettier --write . && node Build --skipobfuscation && node App 3000"
+        "prod": "node Build && node App 3000",
+        "develop": "nodemon --exec \"node Build && node App 3000\" --ignore \"build/\" --ext \"\""
     },
     "author": "Strayfade",
     "license": "MIT",
@@ -17,6 +17,7 @@
         "helmet": "^6.0.1",
         "markdown": "^0.5.0",
         "mongodb": "^4.13.0",
+        "nodemon": "^3.1.0",
         "prismjs": "^1.29.0"
     },
     "devDependencies": {

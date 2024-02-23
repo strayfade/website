@@ -48,13 +48,13 @@ App.get(
     '/favicon.ico',
     WrapAsync(async (req, res) => {
         res.sendFile(path.resolve(__dirname, 'assets/Icon.ico'))
-    }),
+    })
 )
 App.get(
     '/robots.txt',
     WrapAsync(async (req, res) => {
         res.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
-    }),
+    })
 )
 
 // Default Routing
@@ -65,13 +65,13 @@ App.get(
         let Lang = require(GetLanguagePath(req))
         let Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Home, '')
         res.send(Page)
-    }),
+    })
 )
 App.get(
     '/:path',
     WrapAsync(async (req, res) => {
         res.redirect('/' + GetLanaguageShort(req) + '/' + req.params.path)
-    }),
+    })
 )
 App.get(
     '/:localization/:path',
@@ -101,7 +101,7 @@ App.get(
                     AvailablePages,
                     AvailablePages.Dynamic,
                     '',
-                    req.params.path + '.md',
+                    req.params.path + '.md'
                 )
                 res.send(Page)
             } else {
@@ -109,7 +109,7 @@ App.get(
                 await SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, '', Languages)
             }
         }
-    }),
+    })
 )
 
 // Error Handling Middleware
@@ -126,6 +126,7 @@ App.use(ErrorHandler)
 // Start Server
 let Port = process.env.PORT || parseInt(process.argv[2])
 App.listen(Port, () => {
+    console.clear()
     Log('Listening on port ' + Port)
     Log('Link: http://localhost:' + Port)
 })

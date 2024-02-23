@@ -56,7 +56,7 @@
     display: block;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-aspect-ratio: 1/1) {
     .MobileHidden {
         display: none;
     }
@@ -111,12 +111,12 @@
     margin-top: 15vh;
     margin-left: auto;
     margin-right: auto;
-    width: 50vw;
+    width: min(50vw, calc(100vw - 140px));
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-aspect-ratio: 1/1) {
     .Slide .SlideInner {
-        width: 70vw;
+        width: min(70vw, calc(100vw - 140px));
         margin-top: 7.5vh;
     }
 }
@@ -135,7 +135,7 @@ a {
     margin-bottom: 20px;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-aspect-ratio: 1/1) {
     .Author {
         padding-top: 30px;
     }
@@ -223,11 +223,8 @@ a {
     border-radius: 6px;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-aspect-ratio: 1/1) {
     .SidebarScrollPercentage {
-        display: none;
-    }
-    .Sidebar {
         display: none;
     }
 }
@@ -302,7 +299,7 @@ a {
     margin-bottom: 5px;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-aspect-ratio: 1/1) {
     .Flexbox {
         display: block;
     }
@@ -347,7 +344,7 @@ a {
     margin-top: 10px;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-aspect-ratio: 1/1) {
     .SlideInner p {
         font-size: 14px;
         margin-top: 10px;
@@ -359,9 +356,8 @@ a {
     height: 100vh;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 20vw;
-    padding-right: 20vw;
-    z-index: 3;
+    padding-left: max(20vw, 70px);
+    padding-right: max(20vw, 70px);
 }
 
 .Scrollable h3 {
@@ -396,7 +392,7 @@ strong {
     font-weight: lighter;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-aspect-ratio: 1/1) {
     .ArticleTitle {
         font-size: 30px;
     }
@@ -405,8 +401,8 @@ strong {
         height: 100vh;
         margin-left: auto;
         margin-right: auto;
-        padding-left: 10vw;
-        padding-right: 10vw;
+        padding-left: max(10vw, 70px);
+        padding-right: max(10vw, 70px);
     }
     .GridItem {
         margin-bottom: 30px;

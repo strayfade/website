@@ -9,6 +9,7 @@
 .MobileButton p {
     text-align: right;
 }
+
 .MobileButton svg {
     position: absolute;
     right: 0px;
@@ -18,6 +19,7 @@
 .MobileButtonPrev {
     top: 50px;
 }
+
 .MobileButtonNext {
     bottom: 110px;
 }
@@ -25,10 +27,12 @@
 .Footer2 {
     display: block;
 }
+
 .MobileButton {
     display: none;
 }
-@media screen and (max-width: 960px) {
+
+@media screen and (max-aspect-ratio: 1/1) {
     .Footer2 {
         display: none;
     }

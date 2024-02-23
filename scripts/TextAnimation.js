@@ -39,7 +39,7 @@ const DecryptElements = (Elements) => {
     let Iter = 0
 
     const DecryptLoop = (i) => {
-        const DecryptChance = 0.5
+        const DecryptChance = 0.66
         setTimeout(() => {
             for (let x = 0; x < Elements.length; x++) {
                 let NewString = ''
@@ -54,7 +54,7 @@ const DecryptElements = (Elements) => {
                     }
                 }
                 Elements[x].innerHTML = NewString
-                //Elements[x].style.filter = `blur(${Math.floor((1 - i / SavedStrings[x].length) * 5)}px)`
+                Elements[x].style.filter = `blur(${Math.floor((1 - i / SavedStrings[x].length) * 5)}px)`
             }
 
             if (Math.random() < DecryptChance) {

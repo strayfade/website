@@ -416,13 +416,13 @@ const GenerateBodyV2 = async (Article2, Locale, AvailablePages, AvailablePageSel
                         <br>
                         <br>
                         <br>
-                        <div class="Icobox" style="border: none;">
+                        <div class="Icobox" style="border: none; margin-top: 25px;">
                             <a class="Link" href="/" style="color: var(--accent-color);">
                                 <svg class="Link" style="margin-bottom: -4px; margin-left: -1px; fill: var(--accent-color);" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 5 50 40"><path xmlns="http://www.w3.org/2000/svg" d="M24 40 8 24 24 8l2.1 2.1-12.4 12.4H40v3H13.7l12.4 12.4Z"/></svg>
                                 Back
                             </a>
                         </div>
-                        <p class="ArticleTitleDate" style="margin-top: 50px">` +
+                        <p class="ArticleTitleDate" style="margin-top: 75px">` +
                 Article.date +
                 `</p>
                         <h1 class="ArticleTitle" style="margin-top: 12px">` +

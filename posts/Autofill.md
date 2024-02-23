@@ -10,9 +10,7 @@
 "pinned": true
 }
 
-> **Disclaimer**
->
-> I do not condone cheating in online classes.
+> *I do not condone cheating in online classes.*
 
 ### What have I been doing?
 

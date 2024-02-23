@@ -17,8 +17,6 @@ Are "neural anti-cheats" like Valve's "VACnet" the solution to cheating in video
 
 This article will be discussing how certain input methods, such as mouse movement, can be easily detected by anti-cheat software, and how this problem can be solved through the use of input "humanization" through neural networks.
 
-### VACnet
-
 <img src="/assets/images/FeedForward1.png"/>
 <p class="Caption">Presumed VACnet Patent</p>
 
@@ -196,7 +194,6 @@ We can save and load it from memory (as an array), or from a file by creating Sa
 
 ### References
 
--   [https://github.com/Strayfade/FNN](https://github.com/Strayfade/FNN)
 -   [https://towardsdatascience.com/building-a-neural-network-framework-in-c-16ef56ce1fef](https://towardsdatascience.com/building-a-neural-network-framework-in-c-16ef56ce1fef)
 -   [https://deepai.org/machine-learning-glossary-and-terms/feed-forward-neural-network](https://deepai.org/machine-learning-glossary-and-terms/feed-forward-neural-network)
 -   [https://www.theloadout.com/csgo/vacnet-cheating-patent](https://www.theloadout.com/csgo/vacnet-cheating-patent)

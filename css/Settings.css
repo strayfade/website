@@ -7,7 +7,7 @@
     --link-color: rgb(255, 255, 255);
     --accent-color-hue: 0;
     --accent-color-saturation: 100%;
-    --accent-color-value: 50%;
+    --accent-color-value: 75%;
     --accent-color: hsl(var(--accent-color-hue), var(--accent-color-saturation), var(--accent-color-value));
     --accent-color-transparent: hsla(
         var(--accent-color-hue),
@@ -21,6 +21,7 @@
         calc(var(--accent-color-value) - var(--transparency-percentage)),
         0.2
     );
+    --accent-color-muted: hsl(var(--accent-color-hue), var(--accent-color-saturation), 25%);
     --font-family: Metropolis;
     --default-shadow: none;
 }

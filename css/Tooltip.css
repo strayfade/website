@@ -27,6 +27,8 @@
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
+    box-shadow: 0px 0px 50px black;
+    pointer-events: none;
 }
 .TooltipTextSmall {
     padding: 3px;
@@ -37,11 +39,11 @@
 .TooltipActive {
     transition: var(--transition-length);
     opacity: 1;
-    background-color: var(--accent-color);
+    background-color: var(--accent-color-muted);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 .TooltipActiveSmall {
-    background-color: var(--accent-color);
+    background-color: var(--accent-color-muted);
 }
 
 .TooltipInactive {

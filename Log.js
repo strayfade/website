@@ -17,6 +17,7 @@ const MakeFormat = () => {
     return '[' + FormattingTag + ']'
 }
 const Log = (String) => {
+    // eslint-disable-next-line no-console
     console.log(MakeFormat() + ' - ' + String.toString())
 }
 

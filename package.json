@@ -4,10 +4,9 @@
     "description": "The public source code of Strayfade.com",
     "main": "App.js",
     "scripts": {
-        "start": "node App 3100",
-        "build": "prettier --write . && node Build",
-        "prod": "node Build && node App 3000",
-        "develop": "nodemon --exec \"node Build && node App 3000\" --ignore \"build/\" --ext \"\""
+        "prod": "node Build && node Server 8080",
+        "develop": "nodemon --exec \"node Build && node Server 8080\" --ignore \"build/\" --ext \"\"",
+        "test": "jest tests"
     },
     "author": "Strayfade",
     "license": "MIT",
@@ -15,6 +14,7 @@
         "express": "^4.18.2",
         "express-session": "^1.17.3",
         "helmet": "^6.0.1",
+        "http": "^0.0.1-security",
         "markdown": "^0.5.0",
         "mongodb": "^4.13.0",
         "nodemon": "^3.1.0",
@@ -26,6 +26,8 @@
         "eslint-config-standard": "^17.1.0",
         "eslint-plugin-import": "^2.29.1",
         "eslint-plugin-n": "^15.7.0",
-        "eslint-plugin-promise": "^6.1.1"
+        "eslint-plugin-promise": "^6.1.1",
+        "jest": "^29.7.0",
+        "supertest": "^6.3.4"
     }
 }

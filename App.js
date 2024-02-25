@@ -123,10 +123,4 @@ const ErrorHandler = async (error, req, res, next) => {
 App.use(ErrorLogger)
 App.use(ErrorHandler)
 
-// Start Server
-let Port = process.env.PORT || parseInt(process.argv[2])
-App.listen(Port, () => {
-    console.clear()
-    Log('Listening on port ' + Port)
-    Log('Link: http://localhost:' + Port)
-})
+module.exports = { App }

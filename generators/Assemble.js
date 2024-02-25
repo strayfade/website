@@ -28,7 +28,7 @@ const GeneratePageCached = async (
     AvailablePages,
     AvailablePageSelector,
     Custom = '',
-    Filename,
+    Filename
 ) => {
     let ServeInfo =
         ' (' +
@@ -471,7 +471,7 @@ const GeneratePage = async (
     AvailablePages,
     AvailablePageSelector,
     Custom = '',
-    Filename = '_None.md',
+    Filename = '_None.md'
 ) => {
     let HeadStr = await Head.GenerateHead(Article, Locale)
     let BodyStr = await GenerateBodyV2(Article, Locale, AvailablePages, AvailablePageSelector, Custom, Filename)

@@ -15,6 +15,6 @@ cd website
 
 3. Install packages using the command `npm i`
 
-4. Run the command `npm run prod` to start the server (this automatically builds static files and listens on port `3000`).
+4. Run the command `npm run develop` to start the development server (this automatically builds static files and listens on a port).
 
-5. Navigate to the site, hosted locally at [127.0.0.1:3000](http://127.0.0.1:3000) by default.
+5. Navigate to the site

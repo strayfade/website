@@ -13,6 +13,12 @@ describe('Server', () => {
             .expect('Content-Type', /^text\/html/)
             .expect(200)
     })
+    it('serves error pages properly', async () => {
+        await request(Server)
+            .get('/404')
+            .expect('Content-Type', /^text\/plain/)
+            .expect(302)
+    })
     it('serves other pages properly', async () => {
         await request(Server)
             .get('/R')

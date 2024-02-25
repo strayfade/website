@@ -1,4 +1,4 @@
-name: Jest
+name: Run Tests (jest)
 on: push
 jobs:
     test:
@@ -8,7 +8,7 @@ jobs:
             - name: Setup Node.js
               uses: actions/setup-node@v1
               with:
-                  node-version: '16'
+                  node-version: '20'
 
             # Speed up subsequent runs with caching
             - name: Cache node modules

@@ -1,0 +1,30 @@
+.post {
+    display: block;
+    text-decoration: none;
+    width: max-content;
+    padding: 0px 20px;
+    margin-bottom: 20px;
+    max-width: calc(100% - 20px * 2);
+}
+.post-pinned {
+    padding: 20px 20px;
+    filter: invert(1);
+    background: var(--background);
+}
+.post p {
+    margin: 0;
+}
+.post-header {
+    display: flex;
+}
+.post-header h3 {
+    margin: 0;
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-size: 24px;
+}
+.post-header p {
+    margin-top: 6px;
+    margin-bottom: 0;
+    opacity: 0.5;
+}

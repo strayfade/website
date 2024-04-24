@@ -2,7 +2,7 @@
 "title": "Typewriter",
 "description": "Writing a bot to complete my typing homework",
 "tags": ["NodeJS"],
-"author": "Noah",
+"author": "Strayfade",
 "date": "4/19/2023",
 "showTitle": true,
 "indexed": true,
@@ -17,7 +17,7 @@
 -   **Fun Fact 2**: I don't want to type more than I already do daily.
 
 <img src="/assets/images/Typing1.png"/>
-<p class="Caption">I'm not typing this.</p>
+<p class="image-caption">I'm not typing this.</p>
 
 ### How do we approach this challenge?
 
@@ -51,7 +51,7 @@ So, with this knowledge, I rewrote the task at hand using Selenium. Keys would b
 I wrote further code to simulate typing mistakes, which would then press backspace and re-type the correct letter, and I also added logic to type at different speeds (in "words per minute"). Without these limiters, it's incredible what times the script can achieve.
 
 <img src="/assets/images/Typing2.png"/>
-<p class="Caption">I accidentally did this on my school account...</p>
+<p class="image-caption">I accidentally did this on my school account...</p>
 
 > The source code for this project is available at the repository [Strayfade/Typewriter](https://github.com/Strayfade/Typewriter/blob/main/index.js)
 

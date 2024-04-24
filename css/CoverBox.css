@@ -1,8 +1,0 @@
-.CoverBox {
-    position: sticky;
-    background-color: var(--accent-color);
-    z-index: 2;
-    transition: calc(var(--transition-length) / 3);
-    pointer-events: none;
-    will-change: transform;
-}

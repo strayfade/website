@@ -1,7 +1,7 @@
 {
 "title": "Error Code Test",
 "description": "Every error code page that can be shown",
-"author": "Noah",
+"author": "Strayfade",
 "date": "8/31/2022",
 "showTitle": false,
 "indexed": false

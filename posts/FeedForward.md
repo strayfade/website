@@ -2,7 +2,7 @@
 "title": "AI vs Anti-cheat",
 "description": "Neural networks are a double-edged sword for anticheat.",
 "tags": ["Anti-cheat", "AI", "C++"],
-"author": "Noah",
+"author": "Strayfade",
 "date": "7/22/2023",
 "showTitle": true,
 "indexed": true,
@@ -18,7 +18,7 @@ Are "neural anti-cheats" like Valve's "VACnet" the solution to cheating in video
 This article will be discussing how certain input methods, such as mouse movement, can be easily detected by anti-cheat software, and how this problem can be solved through the use of input "humanization" through neural networks.
 
 <img src="/assets/images/FeedForward1.png"/>
-<p class="Caption">Presumed VACnet Patent</p>
+<p class="image-caption">Presumed VACnet Patent</p>
 
 By looking at [Valve's publicly available patent](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf) for VACnet, lots of information can be revealed about the upcoming anti-cheat's inner workings. On [page 44](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf#page=44), Valve displays some of the values forwarded through the network:
 
@@ -30,7 +30,7 @@ By looking at [Valve's publicly available patent](https://patentimages.storage.g
 -   Distance to AO
 
 <img src="/assets/images/FeedForward2.png"/>
-<p class="Caption">Example input array given to the VACnet neural network.</p>
+<p class="image-caption">Example input array given to the VACnet neural network.</p>
 
 While it's hard to guess at what some of these values represent, two are immediately recognizable: **pitch** and **yaw**. This likely confirms that VACnet closely monitors how the player's mouse movement affects the in-game camera's pitch and yaw over time.
 

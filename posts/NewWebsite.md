@@ -2,7 +2,7 @@
 "title": "New Website",
 "description": "Some interesting things about how my website was made",
 "tags": ["JavaScript", "NodeJS", "Web"],
-"author": "Noah",
+"author": "Strayfade",
 "date": "8/31/2022",
 "showTitle": true,
 "indexed": false

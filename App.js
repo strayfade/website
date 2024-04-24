@@ -1,126 +1,82 @@
 // Import Packages
 const fs = require('fs/promises')
-const fsdir = require('fs')
 const path = require('path')
 const express = require('express')
-
-// Imported Functions
 const { Log } = require('./Log')
-const { SendError } = require('./Error')
-const { GeneratePageCached } = require('./generators/Assemble')
-const { GetAvailableLanguages, GetLanaguageShort, GetLanguagePath } = require('./Localization')
 
 // Create App
 const App = express()
 
-const Languages = GetAvailableLanguages()
-const AvailablePages = {
-    Home: Symbol('Home'),
-    Dynamic: Symbol('Article'),
-    R: Symbol('R'),
-}
-const IrregularPages = ['R']
-
 const WrapAsync = (Function) => {
-    return (req, res, next) => {
-        const FunctionOut = Function(req, res, next)
-        return Promise.resolve(FunctionOut).catch(next)
+    return (Request, Response, Next) => {
+        const FunctionOut = Function(Request, Response, Next)
+        return Promise.resolve(FunctionOut).catch(Next)
     }
 }
 
 // Basic Security
 require('./security/Security').Setup(App)
+const RequestBlocking = require('./RequestBlocking')
+App.use(RequestBlocking.Middleware)
 
 // Static Directories
-App.use('/cdn', express.static('cdn'))
 App.use('/assets', express.static('assets'))
-App.use('/fonts', express.static('fonts'))
 App.use('/build', express.static('build'))
-
-// Middleware
-const Analytics = require('./middleware/Analytics')
-App.use(Analytics.Middleware)
-const RequestBlocking = require('./middleware/RequestBlocking')
-App.use(RequestBlocking.Middleware)
 
 // Sources
 App.get(
     '/favicon.ico',
-    WrapAsync(async (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'assets/Icon.ico'))
+    WrapAsync(async (Request, Response) => {
+        Response.sendFile(path.resolve(__dirname, 'assets/Icon.ico'))
     })
 )
 App.get(
     '/robots.txt',
-    WrapAsync(async (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
+    WrapAsync(async (Request, Response) => {
+        Response.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
     })
 )
 
-// Default Routing
+// Routing
+const Homepage = require('./pages/Homepage').Homepage
+const Post = require('./pages/Post').Post
+const Re = require('./pages/Re').Re
 App.get(
     '/',
-    WrapAsync(async (req, res) => {
-        const Article = await fs.readFile('./posts/_None.md', { encoding: 'utf-8' })
-        let Lang = require(GetLanguagePath(req))
-        let Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.Home, '')
-        res.send(Page)
+    WrapAsync(async (Request, Response) => {
+        Response.send(await Homepage(Request))
     })
 )
 App.get(
     '/:path',
-    WrapAsync(async (req, res) => {
-        res.redirect('/' + GetLanaguageShort(req) + '/' + req.params.path)
-    })
-)
-App.get(
-    '/:localization/:path',
-    WrapAsync(async (req, res) => {
-        let Lang = {}
-        if (Languages.includes(req.params.localization))
-            Lang = require('./localization/' + req.params.localization + '.json')
-        else Lang = require(GetLanguagePath(req))
-
-        let IsNotArticle = IrregularPages.includes(req.params.path.toUpperCase())
-        if (IsNotArticle) {
-            switch (req.params.path.toUpperCase()) {
-                case 'R':
-                    let Article = await fs.readFile('./posts/_None.md', { encoding: 'utf-8' })
-                    let Page = await GeneratePageCached(req, Article, Lang, AvailablePages, AvailablePages.R, '')
-                    res.send(Page)
-                    break
-            }
-        } else {
-            let ArticlePath = './posts/' + req.params.path + '.md'
-            if (fsdir.existsSync(ArticlePath) && req.params.path != '_None') {
-                let Article = await fs.readFile('./posts/' + req.params.path + '.md', { encoding: 'utf-8' })
-                let Page = await GeneratePageCached(
-                    req,
-                    Article,
-                    Lang,
-                    AvailablePages,
-                    AvailablePages.Dynamic,
-                    '',
-                    req.params.path + '.md'
-                )
-                res.send(Page)
-            } else {
-                Log('Requested page not found (404): ' + req.path)
-                await SendError(404, req, res, AvailablePages, AvailablePages.Dynamic, '', Languages)
-            }
+    WrapAsync(async (Request, Response) => {
+        const ValidPost = await Post(Request);
+        if (!ValidPost) {
+            Response.redirect("/404")
+        }
+        else {
+            Response.send(ValidPost)
         }
     })
 )
+App.get(
+    '/R',
+    WrapAsync(async (Request, Response) => {
+        Response.send(await Re(Request))
+    })
+)
 
-// Error Handling Middleware
-const ErrorLogger = async (error, req, res, next) => {
-    Log('ERROR: ' + error)
-    next(error)
-}
-const ErrorHandler = async (error, req, res, next) => {
-    await SendError(500, req, res, AvailablePages, AvailablePages.Dynamic, error, Languages)
-}
-App.use(ErrorLogger)
-App.use(ErrorHandler)
+// Error Handling
+App.use((Error, Request, Response, Next) => {
+    Log('Error: ')
+    console.log(Error)
+    Next(Error)
+})
+App.get('*', (Request, Response) => {
+    Response.redirect("/404")
+})
+App.use((Error, Request, Response, Next) => {
+    Response.redirect("/500")
+})
 
 module.exports = { App }

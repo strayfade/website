@@ -2,7 +2,7 @@
 "title": "Process Hollowing",
 "description": "Streaming and executing binary code securely",
 "tags": ["Hacking", "Windows", "C++"],
-"author": "Noah",
+"author": "Strayfade",
 "date": "1/13/2023",
 "showTitle": true,
 "indexed": false,

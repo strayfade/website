@@ -1,0 +1,6 @@
+:root {
+    --font-family: Noto Serif, serif;
+    --font-family-mono: Roboto Mono, monospace;
+    --foreground: rgb(10, 10, 10);
+    --background: white;
+}

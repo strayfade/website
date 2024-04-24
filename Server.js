@@ -4,7 +4,7 @@ const { Log } = require('./Log')
 
 const Server = http.createServer(App)
 
-Server.listen(process.env.PORT || parseInt(process.argv[2]) || '8000')
+Server.listen(process.env.PORT || '8000')
 
 Server.on('listening', () => {
     const Address = Server.address()

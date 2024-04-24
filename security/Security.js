@@ -34,7 +34,15 @@ const Setup = (App) => {
     App.set('trust proxy', 1)
     App.use(
         session({
-            secret: require('./Utilities').RandomStringWithLength(32),
+            secret: ((Length) => {
+                let result = ''
+                let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+                let charactersLength = characters.length
+                for (let i = 0; i < Length; i++) {
+                    result += characters.charAt(Math.floor(Math.random() * charactersLength))
+                }
+                return result
+            })(32),
             resave: false,
             saveUninitialized: true,
             cookie: {

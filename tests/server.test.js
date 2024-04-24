@@ -13,28 +13,6 @@ describe('Server', () => {
             .expect('Content-Type', /^text\/html/)
             .expect(200)
     })
-    it('serves error pages properly', async () => {
-        await request(Server)
-            .get('/404')
-            .expect('Content-Type', /^text\/plain/)
-            .expect(302)
-    })
-    it('serves other pages properly', async () => {
-        await request(Server)
-            .get('/R')
-            .expect('Content-Type', /^text\/plain/)
-            .expect(302)
-    })
-    it('serves manifest, favicons, etc.', async () => {
-        await request(Server)
-            .get('/manifest.json')
-            .expect('Content-Type', /^text\/plain/)
-            .expect(302)
-        await request(Server)
-            .get('/favicon.ico')
-            .expect('Content-Type', /^image\/x-icon/)
-            .expect(200)
-    })
 })
 
 Server.close()

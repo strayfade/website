@@ -2,7 +2,7 @@
 "title": "Breaking WPA2",
 "description": "Hacking into my school's secure private network",
 "tags": ["Hacking", "Linux", "WPA"],
-"author": "Noah",
+"author": "Strayfade",
 "date": "11/8/2022",
 "showTitle": true,
 "indexed": true,

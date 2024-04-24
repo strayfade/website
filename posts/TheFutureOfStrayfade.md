@@ -1,7 +1,7 @@
 {
 "title": "The Future of Strayfade",
 "description": "Let's talk about things, shall we?",
-"author": "Noah",
+"author": "Strayfade",
 "date": "6/4/2022",
 "showTitle": true,
 "indexed": false

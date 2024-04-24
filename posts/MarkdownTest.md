@@ -1,7 +1,7 @@
 {
 "title": "Markdown Test",
 "description": "",
-"author": "Noah",
+"author": "Strayfade",
 "date": "9/10/2022",
 "showTitle": true,
 "indexed": false

@@ -1,0 +1,23 @@
+.back-button {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    text-decoration: none;
+    font-family: var(--font-family-mono);
+    display: flex;
+    font-size: 14px;
+}
+.back-button p {
+    margin: 0;
+}
+.back-button .back-icon {
+    margin-right: 10px;
+    margin-top: -2px;
+}
+
+@media screen and (max-width: 960px) {
+    .back-button {
+        display: none;
+        pointer-events: none;
+    }
+}

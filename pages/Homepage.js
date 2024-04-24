@@ -14,7 +14,7 @@ const Homepage = async (Request) => {
             Request,
             `
             <div class="content-scrollable">
-                <div class="content-width article-content" style="margin: 0px 20px;">
+                <div class="content-width article-content" style="margin: 0px;">
                     ${await (async () => {
                         const GetPosts = async (Pinned) => {
                             let Posts = []

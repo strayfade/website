@@ -12,14 +12,30 @@ footer p {
     text-transform: lowercase;
 }
 footer .footer-top {
-    margin-left: 14px;
+    margin-left: 38px;
 }
 footer .footer-bottom {
     margin-top: 2px;
-    margin-left: calc(14px + 26px);
-    margin-bottom: 30px;
+    margin-left: calc(38px + 26px);
     opacity: 0.5;
     font-size: 12px;
+}
+
+.social-container {
+    display: flex;
+    margin-left: calc(38px + 26px);
+    margin-bottom: 60px;
+    margin-top: 15px;
+}
+.social-container a,
+.social-container svg {
+    width: 20px;
+    margin-right: 10px;
+}
+.social-container svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 @media screen and (max-width: 960px) {

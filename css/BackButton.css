@@ -1,7 +1,7 @@
 .back-button {
     position: absolute;
-    left: 30px;
-    top: 30px;
+    left: 38px;
+    top: 38px;
     text-decoration: none;
     font-family: var(--font-family-mono);
     display: flex;

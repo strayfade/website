@@ -1,3 +1,4 @@
+const process = require('process')
 const P = (Input) => {
     return Input.toString().length < 2 ? '0' + Input : Input
 }

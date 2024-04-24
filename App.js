@@ -38,9 +38,15 @@ App.get(
 )
 
 // Routing
+const Re = require('./pages/Re').Re
 const Homepage = require('./pages/Homepage').Homepage
 const Post = require('./pages/Post').Post
-const Re = require('./pages/Re').Re
+App.get(
+    '/R',
+    WrapAsync(async (Request, Response) => {
+        Response.send(await Re(Request))
+    })
+)
 App.get(
     '/',
     WrapAsync(async (Request, Response) => {
@@ -50,19 +56,16 @@ App.get(
 App.get(
     '/:path',
     WrapAsync(async (Request, Response) => {
-        const ValidPost = await Post(Request);
+        const ValidPost = await Post(Request)
         if (!ValidPost) {
-            Response.redirect("/404")
-        }
-        else {
+            Response.send(
+                await Post({
+                    path: '/404',
+                })
+            )
+        } else {
             Response.send(ValidPost)
         }
-    })
-)
-App.get(
-    '/R',
-    WrapAsync(async (Request, Response) => {
-        Response.send(await Re(Request))
     })
 )
 
@@ -72,11 +75,24 @@ App.use((Error, Request, Response, Next) => {
     console.log(Error)
     Next(Error)
 })
-App.get('*', (Request, Response) => {
-    Response.redirect("/404")
-})
-App.use((Error, Request, Response, Next) => {
-    Response.redirect("/500")
-})
+App.get(
+    '*',
+    WrapAsync(async (Request, Response) => {
+        Response.send(
+            await Post({
+                path: '/404',
+            })
+        )
+    })
+)
+App.use(
+    WrapAsync(async (Error, Request, Response, Next) => {
+        Response.send(
+            await Post({
+                path: '/500',
+            })
+        )
+    })
+)
 
 module.exports = { App }

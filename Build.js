@@ -40,7 +40,7 @@ const PackScripts = async () => {
     }
 
     Log('[BUILD] - Skipping obfuscation')
-    fs.mkdir('./Production', (err) => {})
+    fs.mkdir('./build', (err) => {})
     let p = __dirname + '/build/production.js'
     fs.writeFileSync(p, Script, { recursive: true })
 }

@@ -107,6 +107,8 @@ const PackScripts = async () => {
     fs.mkdir('./build', (err) => {})
     let p = __dirname + '/build/production.js'
     fs.writeFileSync(p, Script, { recursive: true })
+
+    Log('[BUILD] - Finished file: ' + p)
 }
 
 PackStylesheets()

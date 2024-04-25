@@ -58,7 +58,7 @@ App.get(
     WrapAsync(async (Request, Response) => {
         const ValidPost = await Post(Request)
         if (!ValidPost) {
-            Response.send(
+            Response.status(404).send(
                 await Post({
                     path: '/404',
                 })
@@ -78,7 +78,7 @@ App.use((Error, Request, Response, Next) => {
 App.get(
     '*',
     WrapAsync(async (Request, Response) => {
-        Response.send(
+        Response.status(404).send(
             await Post({
                 path: '/404',
             })

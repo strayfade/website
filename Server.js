@@ -2,6 +2,9 @@ const http = require('http')
 const { App } = require('./App')
 const { Log } = require('./Log')
 
+// Run build
+require('./Build')
+
 const Server = http.createServer(App)
 Server.listen(process.env.PORT || '8080')
 

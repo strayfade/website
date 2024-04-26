@@ -28,6 +28,10 @@ jobs:
             - name: Install Dependencies
               run: npm install
 
+            # Install required deps for action
+            - name: Build static files
+              run: npm run build
+
             # Finally, run our tests
             - name: Run the tests
-              run: npm test
+              run: npm run test

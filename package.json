@@ -4,9 +4,9 @@
     "description": "The public source code of Strayfade.com",
     "main": "App.js",
     "scripts": {
-        "prod": "node Build && node Server 8080",
         "develop": "nodemon --exec \"node Build && node Server 8080\" --ignore \"build/\" --ext \"\"",
-        "test": "jest tests"
+        "test": "jest tests",
+        "build": "node Build"
     },
     "author": "Strayfade",
     "license": "MIT",

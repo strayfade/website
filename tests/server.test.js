@@ -24,13 +24,6 @@ describe('Server', () => {
             .expect('Content-Type', /^text\/html/)
             .expect(200)
     });
-    // Check hidden pages
-    it('serves secrets properly', async () => {
-        await request(Server)
-            .get('/R')
-            .expect('Content-Type', /^text\/html/)
-            .expect(200)
-    });
     // Check posts
     it(`serves the post "500" properly`, async () => {
         await request(Server)

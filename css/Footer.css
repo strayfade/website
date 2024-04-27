@@ -12,18 +12,18 @@ footer p {
     text-transform: lowercase;
 }
 footer .footer-top {
-    margin-left: 38px;
+    margin-left: 23px;
 }
 footer .footer-bottom {
     margin-top: 2px;
-    margin-left: calc(38px + 26px);
+    margin-left: calc(25px + 26px);
     opacity: 0.5;
     font-size: 12px;
 }
 
 .social-container {
     display: flex;
-    margin-left: calc(38px + 26px);
+    margin-left: calc(25px + 26px);
     margin-bottom: 60px;
     margin-top: 15px;
 }
@@ -43,4 +43,8 @@ footer .footer-bottom {
         display: none;
         pointer-events: none;
     }
+}
+
+svg path {
+    fill: var(--foreground);
 }

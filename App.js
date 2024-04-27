@@ -37,6 +37,10 @@ App.get(
     })
 )
 
+// Use cookie-parser
+const cookieParser = require('cookie-parser');
+App.use(cookieParser());
+
 // Routing
 const Re = require('./pages/Re').Re
 const Homepage = require('./pages/Homepage').Homepage

@@ -5,6 +5,7 @@ const HTML = require('../components/HTML').HTML
 const Head = require('../components/Head').Head
 const Body = require('../components/Body').Body
 const Footer = require('../components/Footer').Footer
+const LightDarkToggle = require('../components/LightDarkToggle').LightDarkToggle
 
 const Homepage = async (Request) => {
     return `
@@ -60,6 +61,7 @@ const Homepage = async (Request) => {
                 </div>
             </div>
             ${await Footer(Request, `// Made by Me`, `Copyright (©) Strayfade 2024`)}
+            ${await LightDarkToggle(Request)}
             `
         )}
     `

@@ -1,0 +1,13 @@
+#light-dark-toggle {
+    position: absolute;
+    right: calc(25px + 26px + 20px);
+    bottom: 56px;
+}
+#light-dark-toggle svg {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}

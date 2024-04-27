@@ -21,6 +21,7 @@ const Head = require('../components/Head').Head
 const Body = require('../components/Body').Body
 const Footer = require('../components/Footer').Footer
 const BackButton = require('../components/BackButton').BackButton
+const LightDarkToggle = require('../components/LightDarkToggle').LightDarkToggle
 
 const Post = async (Request) => {
     let Failed = false
@@ -73,6 +74,7 @@ const Post = async (Request) => {
                 </div>
             </div>
             ${await Footer(Request, `// By ${Meta.author}`, `Last edited ${Meta.date}`)}
+            ${await LightDarkToggle(Request)}
             `
         )}
         `

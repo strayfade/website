@@ -3,6 +3,7 @@
     max-height: 300px;
     margin: 0px auto;
     display: block;
+    border-radius: 15px;
 }
 .image-caption {
     text-align: center;

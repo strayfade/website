@@ -60,7 +60,15 @@ const Homepage = async (Request) => {
                     })()}
                 </div>
             </div>
-            ${await Footer(Request, `// Made by Me`, `Copyright (©) Strayfade 2024`)}
+            ${await Footer(Request, `// ${(() => {
+                    const FooterOpts = [
+                        `Made by Me`,
+                        `Designed by Noah`,
+                        `Strayfade`,
+                        `Version Five`
+                    ]
+                    return FooterOpts[Math.floor(Math.random() * FooterOpts.length)];
+            })()}`, `Copyright (c) Strayfade 2024`)}
             ${await LightDarkToggle(Request)}
             `
         )}

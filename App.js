@@ -19,6 +19,10 @@ require('./security/Security').Setup(App)
 const RequestBlocking = require('./RequestBlocking')
 App.use(RequestBlocking.Middleware)
 
+// Use cookie-parser
+const cookieParser = require('cookie-parser');
+App.use(cookieParser());
+
 // Static Directories
 App.use('/assets', express.static('assets'))
 App.use('/build', express.static('build'))
@@ -36,10 +40,6 @@ App.get(
         Response.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
     })
 )
-
-// Use cookie-parser
-const cookieParser = require('cookie-parser');
-App.use(cookieParser());
 
 // Routing
 const Re = require('./pages/Re').Re
@@ -65,6 +65,7 @@ App.get(
             Response.status(404).send(
                 await Post({
                     path: '/404',
+                    cookies: Request.cookies
                 })
             )
         } else {
@@ -85,15 +86,17 @@ App.get(
         Response.status(404).send(
             await Post({
                 path: '/404',
+                cookies: Request.cookies
             })
         )
     })
 )
 App.use(
     WrapAsync(async (Error, Request, Response, Next) => {
-        Response.send(
+        Response.status(500).send(
             await Post({
                 path: '/500',
+                cookies: Request.cookies
             })
         )
     })

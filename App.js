@@ -83,7 +83,7 @@ App.use((Error, Request, Response, Next) => {
 App.get(
     '*',
     WrapAsync(async (Request, Response) => {
-        Response.status(404).send(
+        Response.send(
             await Post({
                 path: '/404',
                 cookies: Request.cookies
@@ -93,7 +93,7 @@ App.get(
 )
 App.use(
     WrapAsync(async (Error, Request, Response, Next) => {
-        Response.status(500).send(
+        Response.send(
             await Post({
                 path: '/500',
                 cookies: Request.cookies

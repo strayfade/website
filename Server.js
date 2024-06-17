@@ -3,14 +3,17 @@ const { App } = require('./App')
 const { Log } = require('./Log')
 
 const Server = http.createServer(App)
-Server.listen(process.env.PORT)
+if (process.argv[2])
+    Server.listen(process.argv[2])
+else
+    Server.listen(process.env.PORT)
 
 Server.on('listening', () => {
     const Address = Server.address()
     const Binding = typeof Address === 'string' ? `pipe ${Address}` : `port ${Address.port}`
     if (Address.port < 10000) {
         Log(`Listening on ${Binding}`)
-        Log(`Local address (if available): http://127.0.0.1:${Address.port}`)
+        Log(`Local address: http://127.0.0.1:${Address.port}`)
     }
 })
 

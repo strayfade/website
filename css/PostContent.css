@@ -1,9 +1,8 @@
 .article-content p img {
     max-width: 100%;
-    max-height: 300px;
+    max-height: 500px;
     margin: 0px auto;
     display: block;
-    border-radius: 15px;
 }
 .image-caption {
     text-align: center;

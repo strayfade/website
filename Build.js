@@ -1,5 +1,6 @@
 const fs = require('fs')
-const Log = require('./Log').Log
+const path = require('path')
+const { Log, LogColors } = require('./Log')
 
 const JSProcessorOptions = {
     compact: true,
@@ -83,10 +84,10 @@ const PackStylesheets = async () => {
     Stylesheet = new CSSProcessor(CSSProcessorOptions).minify(Stylesheet).styles;
 
     fs.mkdir('./build', (err) => {})
-    let p = __dirname + '/build/production.css'
-    fs.writeFileSync(p, Stylesheet)
+    let OutputFile = path.join(__dirname, '/build/production.css')
+    fs.writeFileSync(OutputFile, Stylesheet)
 
-    Log('[BUILD] - Finished file: ' + p)
+    Log(`[BUILD] - Finished file: ${OutputFile}`, LogColors.Success)
 }
 
 const PackScripts = async () => {
@@ -105,10 +106,10 @@ const PackScripts = async () => {
     Script = JSProcessor.obfuscate(Script, JSProcessorOptions).getObfuscatedCode()
 
     fs.mkdir('./build', (err) => {})
-    let p = __dirname + '/build/production.js'
-    fs.writeFileSync(p, Script, { recursive: true })
+    let OutputFile = path.join(__dirname, '/build/production.js')
+    fs.writeFileSync(OutputFile, Script, { recursive: true })
 
-    Log('[BUILD] - Finished file: ' + p)
+    Log(`[BUILD] - Finished file: ${OutputFile}`, LogColors.Success)
 }
 
 PackStylesheets()

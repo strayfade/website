@@ -44,6 +44,7 @@ App.get(
 // Routing
 const Re = require('./pages/Re').Re
 const Homepage = require('./pages/Homepage').Homepage
+const Homepage34 = require('./pages/Homepage34').Homepage34
 const Post = require('./pages/Post').Post
 App.get(
     '/R',
@@ -55,6 +56,12 @@ App.get(
     '/',
     WrapAsync(async (Request, Response) => {
         Response.send(await Homepage(Request))
+    })
+)
+App.get(
+    '/34',
+    WrapAsync(async (Request, Response) => {
+        Response.send(await Homepage34(Request))
     })
 )
 App.get(

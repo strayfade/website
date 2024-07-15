@@ -26,7 +26,7 @@ let RequestAnalytics = {
 const Middleware = (Request, Response, Next) => {
     for (let x = 0; x < BlacklistedPaths.length; x++) {
         if (Request.path.toString().toLowerCase().includes(BlacklistedPaths[x].toLowerCase())) {
-            Log('Blacklisted path: ' + BlacklistedPaths[x])
+            //Log('Blacklisted path: ' + BlacklistedPaths[x])
             RequestAnalytics.TotalRequestsBlocked++
                 Response.sendStatus(404)
             return

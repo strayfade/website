@@ -98,15 +98,9 @@ App.get(
         )
     })
 )
-App.use(
-    WrapAsync(async (Error, Request, Response, Next) => {
-        Response.send(
-            await Post({
-                path: '/500',
-                cookies: Request.cookies
-            })
-        )
-    })
-)
+App.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.sendStatus(404)
+})
 
 module.exports = { App }

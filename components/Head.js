@@ -9,7 +9,7 @@ const Head = async(Request, Title, Description) => {
         <meta property="og:url" content="strayfade.com">
         <meta name="twitter:url" content="strayfade.com">
 
-        <title>${Title} | Strayfade</title>
+        <title>${Title} | strayfade</title>
         <meta property="og:title" content="${Title} | Strayfade">
         <meta property="twitter:title" content="${Title} | Strayfade">
 

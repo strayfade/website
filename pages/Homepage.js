@@ -65,7 +65,9 @@ const Homepage = async (Request) => {
                         `Made by Me`,
                         `Designed by Noah`,
                         `Strayfade`,
-                        `Version Five`
+                        `Version Five`,
+                        `Made with <3 by Noah`,
+                        `I did that!`,
                     ]
                     return FooterOpts[Math.floor(Math.random() * FooterOpts.length)];
             })()}`, `Copyright (c) Strayfade 2024`)}

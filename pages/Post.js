@@ -73,7 +73,7 @@ const Post = async (Request) => {
                     ${await RewriteMarkdown(markdown.parse(Content))}
                 </div>
             </div>
-            ${await Footer(Request, `// By ${Meta.author}`, `Last edited ${Meta.date}`)}
+            ${await Footer(Request, `// By ${Meta.author}`, `Written ${Meta.date}`)}
             ${await LightDarkToggle(Request)}
             `
         )}

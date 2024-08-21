@@ -1,6 +1,6 @@
 {
 "title": "Autofill",
-"description": "Cheating in online classes using an insecure API",
+"description": "Cheating in online classes using an unsecured API",
 "tags": ["Browser", "Javascript", "APIs"],
 "author": "Strayfade",
 "date": "11/14/2023",

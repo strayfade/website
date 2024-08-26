@@ -1,6 +1,6 @@
 {
 "title": "AI vs. Anti-cheats",
-"description": "Using a neural network to generate fake cursor movement",
+"description": "Using neural networks to make smarter cheats (and anti-cheats)",
 "tags": ["Anti-cheat", "AI", "C++"],
 "author": "Strayfade",
 "date": "8/19/2024",

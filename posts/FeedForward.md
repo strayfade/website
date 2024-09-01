@@ -58,13 +58,11 @@ Of course, the solution to many of these heuristic detection vectors is to have 
 
 [The average human reaction time is around 247ms.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4456887/) This is a problem because if the target location suddenly changes, an aimbot will nearly instantly begin moving the cursor in the target's new direction, while a human will take a minimum of 50-100ms to process the change.
 
-It is, of course, possible to account for this by adding a delay or queueing system to the mouse movements being sent by a cheat, but this is one of many possible detection vectors that often goes overlooked. In the context of HID-based cursor movement, [an incredible post on the Unknown Cheats forum](https://www.unknowncheats.me/forum/3968927-post13.html) discusses even more heuristic vectors that could potentially be detected by anti-cheat software:
+It is, of course, possible to account for this by adding a delay or queueing system to the mouse movements being sent by a cheat, but this is one of many possible detection vectors that often goes overlooked. In the context of HID-based cursor movement, [an incredible post on the Unknown Cheats forum](https://www.unknowncheats.me/forum/3968927-post13.html) discusses how heuristic mouse movement vectors could be detected by anti-cheat software:
 
 > *"I also think it'd be worth more of Vanguard's time to detect everyone, despite how good their mouse setup is, by simply looking for unrealistic aiming, reaction time, and stats, which I don't doubt they've already done extensively."*
 
 In short, with some anti-cheats, you are much more likely to be banned based on an account trust system and suspicious **overall** gameplay. Remember that the best cheaters are already decent at the game.
-
-If your cursor movements aren't smooth and realistic, though, chances are that you'll be banned much sooner than that.
 
 ### Writing a neural network for input "humanization"
 
@@ -77,8 +75,8 @@ The most important thing that this graph shows is that nearly every line follows
 
 When comparing this to the most widely-used smoothing function, differences are obvious. 
 
-> `<em>f(x) = (t - x) / c + x</em>`
-> 
+$$f(x)=\frac{t - x}{c + x}$$
+ 
 > **_x_** represents the current location of the cursor (X or Y) and **_t_** represents the target coordinate.
 
 Using this smoothing function, the speed curve would constantly be linearly decreasing. This is easily detectable by anti-cheat software when compared to the mouse cursor's natural speed.

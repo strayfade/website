@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs').promises
 const markdown = require('markdown')
+const katex = require('katex')
 
 const RewriteMarkdown = async (MarkdownHtml) => {
     for (let i = 0; i < MarkdownHtml.length; i++) {
@@ -13,6 +14,22 @@ const RewriteMarkdown = async (MarkdownHtml) => {
         MarkdownHtml = MarkdownHtml.replace('&amp;', '&')
         MarkdownHtml = MarkdownHtml.replace('";', '"')
     }
+
+    let InLatex = false;
+    let CurrentLatex = ""
+    for (let i = 0; i < MarkdownHtml.length; i++) {
+        if (MarkdownHtml[i] + MarkdownHtml[i + 1] == "$$") {
+            InLatex = !InLatex;
+            if (!InLatex) {
+                CurrentLatex = CurrentLatex.substring(2)
+                MarkdownHtml = MarkdownHtml.replace(`$$${CurrentLatex}$$`, katex.renderToString(CurrentLatex))
+                CurrentLatex = "";
+            }
+        }
+        if (InLatex)
+            CurrentLatex += MarkdownHtml[i]
+    }
+
     return MarkdownHtml;
 }
 
@@ -39,8 +56,8 @@ const Post = async (Request) => {
     if (TargetExists) {
         try {
             const File = await fs.readFile(TargetPath, { encoding: 'utf-8' })
-            Meta = JSON.parse((File.split('}')[0] + '}').trim())
-            Content = File.split('}')[1].trim()
+            Meta = JSON.parse(File.substring(0, File.indexOf('}')) + "}")
+            Content = File.substring(File.indexOf("}") + 1)
         } catch {
             Failed = true
         }
@@ -59,17 +76,17 @@ const Post = async (Request) => {
             <div class="content-scrollable">
                 <div class="content-width article-content" style="margin: 0px auto;">
                     ${await (async () => {
-                        if (Meta.showTitle) {
-                            return `
+                if (Meta.showTitle) {
+                    return `
                             <div class="post-meta">
                                 <h1 class="decrypt-text">${Meta.title}</h1>
                                 <p class="post-description">"${Meta.description}"</p>
                                 <p class="post-author">- ${Meta.author}</p>
                             </div>
                             `
-                        }
-                        return ``
-                    })()}
+                }
+                return ``
+            })()}
                     ${await RewriteMarkdown(markdown.parse(Content))}
                 </div>
             </div>

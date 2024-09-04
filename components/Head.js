@@ -1,4 +1,4 @@
-const Head = async(Request, Title, Description) => {
+const Head = async (Request, Title, Description) => {
     return `
     <head>
         <link rel="manifest" href="/assets/manifest.json">
@@ -23,7 +23,6 @@ const Head = async(Request, Title, Description) => {
         <link rel="icon" href="/assets/Icon.svg" color="#ffffff">
         <link rel="mask-icon" href="/assets/Icon.svg" color="#ffffff">
         <link rel="dns-prefetch" href="https://strayfade.com">
-        <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self'; img-src 'self'; media-src 'none'; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; worker-src 'none'; frame-src 'none'; form-action 'none';">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +30,11 @@ const Head = async(Request, Title, Description) => {
 
         <link rel="stylesheet" href="/build/production.css" type="text/css">
         <link rel="preload" href="/build/production.js" as="script">
+
+        <script type="module">
+            import { LaTeXJSComponent } from "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs"
+            customElements.define("latex-js", LaTeXJSComponent)
+        </script>
     </head>
     `
 }

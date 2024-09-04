@@ -1,85 +1,89 @@
 {
 "title": "AI vs. Anti-cheats",
-"description": "Using neural networks to make smarter cheats (and anti-cheats)",
+"description": "Using heuristic vectors to make smarter cheats (and anti-cheats)",
 "tags": ["Anti-cheat", "AI", "C++"],
 "author": "Strayfade",
 "date": "8/19/2024",
 "showTitle": true,
 "indexed": true,
-"pinned": true
+"pinned": true,
+"tex": true
 }
 
-### Introduction
+\documentclass{article}
 
-> The source code for this project can be found at [Strayfade/FNN](https://github.com/Strayfade/FNN).
+\usepackage{comment, multicol}
+\usepackage{hyperref}
 
-Are "neural anti-cheats" like Valve's "VACnet" the solution to cheating in video games? Possibly. However, just as neural networks can be used by anti-cheat to detect cheaters, cheaters can use neural networks to avoid anti-cheat.
+\usepackage{calc,pict2e,picture}
+\usepackage{textgreek,textcomp,gensymb,stix}
 
-This article will be discussing how certain input methods, such as mouse movement, can be easily detected by anti-cheat software and how this problem can be solved through the use of input randomization and "humanization" through neural networks.
+\setcounter{secnumdepth}{2}
+\title{Generating realistic mouse movement patterns to evade heuristic detection by anti-cheat software}
+\author{Noah Taylor (@strayfade)}
+\date{4 September 2024}
 
-First, let's look at the flagship up-and-coming neural network anti-cheat by Valve, VACnet.
+\begin{document}
 
-<img src="/assets/images/FeedForward1.png"/>
-<p class="image-caption">The presumed patent for Valve's neural-network-based anti-cheat, VACnet</p>
+\maketitle
 
-By looking at [Valve's patent](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf) for VACnet, lots of information can be revealed about the upcoming anti-cheat's inner workings. On [page 44](https://patentimages.storage.googleapis.com/e5/80/ee/aadc4e252c6791/WO2019182868A1.pdf#page=44), Valve displays some of the values forwarded through the network to determine the likelihood that a player is cheating. Notable values are `pitch` and `yaw`, which likely represent the direction that an in-game player's camera is facing.
 
-<img src="/assets/images/FeedForward2.png"/>
-<p class="image-caption">Example inputs given to the VACnet neural network anti-cheat software.</p>
+\begin{abstract}
+This document will explain the importance of correctly implemented heuristic detection vectors in anti-cheat software. Furthermore, the document explores ways that these detection vectors could be evaded by video game cheats, primarily by generating human-looking mouse movement curves using neural networks.
+\end{abstract}
 
-When looking at the ways that anti-cheat software can detect cheating, one of the primary detection vectors has always been mouse movement. As such, *many* different anomalies related to mouse movement can trigger an anti-cheat, including but not limited to:
 
- - Mouse events being sent directly by the mouse don't align with in-game movements.
- - Mouse movements are unpredictable and erratic.
- - The mouse cursor moves extremely quickly and at unrealistic speeds.
- - The mouse cursor is being moved by an external program instead of directly by an input device.
- - A mouse movement event has a `LLMHF_INJECTED` (or similar) flag set to show it did not originate from a valid input device.
- - *and more!*
+\section{Introduction}
 
-After looking at some of these detection vectors, one thing is immediately obvious: some of the vectors are determined by the computer itself (such as the `LLMHF_INJECTED` flag), and others seem like "common-sense" (we can call these **heuristic**) vectors. An example of a heuristic detection vector would be the cursor's speed greatly changing or moving erratically.
+With video game cheats becoming more and more advanced each day, many anti-cheat solutions are generally failing to keep up. This could be due to technical limitations, such as with elevated priviliges being required to detect almost all low-level cheats. Additionally, the failure to develop better anti-cheat software could be due to the privacy concerns that arise from deploying invasive anti-cheats. 
 
-### What measures can be taken to prevent these detections?
+In recent years, more invasive anti-cheats such as \href{https://support-valorant.riotgames.com/hc/en-us/articles/360046160933-What-is-Vanguard}{Vanguard by Riot Games} have been criticized for allegedly invading the privacy of their users. Recently, more and more anti-cheats are being developed that rely on heuristic detection rather than invasive detection on the client system. This type of anti-cheat software most commonly appears as server-side anti-cheat software, anti-cheats that are built into the game themselves instead of being added on later, and AI-based anti-cheats that use neural networks to detect suspicious behavior.
 
-Actually, a surprising amount can be done to prevent anti-cheat detection regarding mouse movement.
+As the primary way that anti-cheats catch cheaters changes, cheat developers should be informed of some general "best practices" for developing cheats in the future.
 
-For detection vectors that are created by the computer itself, it is possible to manipulate the mouse events using a kernel-mode driver. A good example of this is [vsaint1's **kernel-mouse** repository on Github](https://github.com/vsaint1/kernel-mouse), which demonstrates a way to spoof legitimate, valid mouse events using a kernel-mode driver on Windows. 
+\section{Common Vectors}
 
-This prevents the `LLMHF_INJECTED` flag from being appended to mouse events (such as those created using `SendInput`). Some lower-level anti-cheats, such as Vanguard by Riot Games, will outright reject mouse input if it contains the flag, meaning that nothing will happen in-game when using `SendInput`. Fortunately, `SendInput` is a Windows API relied on by many pieces of legitimate software (such as macro and accessibility software), so mouse movement should still *work* in most games, even if it means getting flagged by anti-cheat software.
+For the purposes of this research, I am going to be defining "system-level" vectors as any detection vector that is more likely to be out of the control of a cheat developer. This is in contrast to heuristic vectors, which are generally easier to manage and can be thought of as generally common sense. Here are some examples of vectors that could be defined as being "system-level":
 
-### Heuristic vectors
+\begin{itemize}
+    \item{The \texttt{LLMHF\_INJECTED} flag being shown on injected mouse events}
+    \item{The \texttt{wdfilter.sys} driver, a part of Windows Defender, keeping track of loaded kernel-mode drivers}
+    \item{Network traffic history and DNS records that show a previous connection to servers known to the anti-cheat provider to host cheating software}
+    \item{The camera/viewpoint is moving in-game without the mouse moving.}
+\end{itemize}
 
-Even if your movement source appears completely valid to a kernel-mode anti-cheat, the cursor's movements themselves might still trigger detections. If the cursor suddenly changes speed too quickly, moves at a constant speed, or moves at an exponentially decreasing speed (a sign of smoothing functions), then an advanced anti-cheat could still be triggered. 
+In comparision, here are some examples of detection vectors that could be defined as being "heuristic":
 
-Somewhat recently, players of Counter-Strike 2 learned that [by moving their cursor very quickly in-game, VACnet would be triggered](https://www.reddit.com/r/cs2/comments/17ea7wg/reproduceable_highdpi_vac_ban_bug/) and they would be banned from the server. This was likely due to VACnet being trained on many different types of cheats, including Spinbot, a notorious type of cheat that moves the player's in-game camera at very high speeds.
+\begin{itemize}
+    \item{A mouse event shows a sudden change in velocity or direction that is unrealistic.}
+    \item{A mouse event shows a change in direction in response to a change in the target's direction, with an unrealistic amount of reaction time.}
+    \item{Mouse events don't show a correlation to the direction of the in-game camera/viewpoint moving.}
+\end{itemize}
 
-Of course, the solution to many of these heuristic detection vectors is to have the mouse input generated very carefully (or by a neural network) and in ways that look realistic heuristically. Ideally, a network could be trained on a highly skilled player's cursor movement patterns and recreate them in-game.
+As you may have already noticed, the primary source of heuristic detection vectors stems from the way that the cheat interacts with the video game.
 
-### Reaction time
+\section{Invalid Solutions}
 
-[The average human reaction time is around 247ms.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4456887/) This is a problem because if the target location suddenly changes, an aimbot will nearly instantly begin moving the cursor in the target's new direction, while a human will take a minimum of 50-100ms to process the change.
+Just by scrolling through open-source repositories on websites like Github, it's easy to see the most common way that cheats have dealt with heuristic vectors for so long.
 
-It is, of course, possible to account for this by adding a delay or queueing system to the mouse movements being sent by a cheat, but this is one of many possible detection vectors that often goes overlooked. In the context of HID-based cursor movement, [an incredible post on the Unknown Cheats forum](https://www.unknowncheats.me/forum/3968927-post13.html) discusses how heuristic mouse movement vectors could be detected by anti-cheat software:
+This is the equation for the most common "smoothing" used in video game cheats, with $x_1$ being the starting mouse coordinate, $x_2$ being the target coordinate, and $C$ being the smoothing coefficient:
 
-> *"I also think it'd be worth more of Vanguard's time to detect everyone, despite how good their mouse setup is, by simply looking for unrealistic aiming, reaction time, and stats, which I don't doubt they've already done extensively."*
+$$
+x_2=x_1+\frac{x_2-x_1}{C}
+$$
 
-In short, with some anti-cheats, you are much more likely to be banned based on an account trust system and suspicious **overall** gameplay. Remember that the best cheaters are already decent at the game.
+This equation is a very simple, yet effective form of making sure that the mouse does not instantly snap from its current position to the target. By implementing this smoothing function, the mouse movements look slightly more realistic. However, there are still many issues even after implementing smoothing which could be detected by a highly heuristic anti-cheat:
 
-### Writing a neural network for input "humanization"
+\begin{itemize}
+    \item{\textbf{Each movement will have a lower distance than the previous movement.}}
+    \item{The movement direction reacts instantly to changes in the target's direction.}
+\end{itemize}
 
-When researching the steps that would be required to "humanize" computer-generated mouse movements, I first wrote a C++ program to capture and graph my mouse cursor's speed over time. This way, I would have a good reference for the ways that cursor speed naturally changes as the player moves their cursor towards a target position.
+Another attempt to make the movement look more human relies on randomization. This could take the form of a randomized value being added to each mouse coordinate, a randomized movement speed, or a randomized amount of smoothing. However, as smoothing is only added onto a pre-calculated smoothing curve, it would still be trivially easy to detect.
 
-<img src="/assets/images/FeedForward3.png"/>
-<p class="image-caption">The speed (Y) of my mouse cursor for various movement curves over time (X).</p>
+$$
+\text{This post is currently WIP. To be continued!}
+$$
 
-The most important thing that this graph shows is that nearly every line follows an inverted-U curve (and even more importantly, with some **randomness** involved). The mouse has inertia, meaning that it takes time to reach its full speed, and then takes time to slow down.
+\end{document}
 
-When comparing this to the most widely-used smoothing function, differences are obvious. 
-
-$$f(x)=\frac{t - x}{c + x}$$
- 
-> **_x_** represents the current location of the cursor (X or Y) and **_t_** represents the target coordinate.
-
-Using this smoothing function, the speed curve would constantly be linearly decreasing. This is easily detectable by anti-cheat software when compared to the mouse cursor's natural speed.
-
-<h3 style="text-align: center;">(this article is unlisted and a work-in-progress...)<h3>
-<h3 style="text-align: center;">come back later!<h3>

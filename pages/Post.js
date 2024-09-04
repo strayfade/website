@@ -1,33 +1,28 @@
 const path = require('path')
 const fs = require('fs').promises
 const markdown = require('markdown')
-const katex = require('katex')
 
-const RewriteMarkdown = async (MarkdownHtml) => {
-    for (let i = 0; i < MarkdownHtml.length; i++) {
-        MarkdownHtml = MarkdownHtml.replace('&amp;lt;', '<')
-        MarkdownHtml = MarkdownHtml.replace('&amp;gt;', '>')
-        MarkdownHtml = MarkdownHtml.replace('&amp;quot;', '"')
-        MarkdownHtml = MarkdownHtml.replace('&lt;', '<')
-        MarkdownHtml = MarkdownHtml.replace('&gt;', '>')
-        MarkdownHtml = MarkdownHtml.replace('&quot', '"')
-        MarkdownHtml = MarkdownHtml.replace('&amp;', '&')
-        MarkdownHtml = MarkdownHtml.replace('";', '"')
+const Rewrite = async (MarkdownHtml, isTex = false) => {
+    MarkdownHtml = MarkdownHtml.trim()
+
+    if (isTex) {
+        MarkdownHtml = `<latex-js baseURL="https://cdn.jsdelivr.net/npm/latex.js/dist/">
+        ${MarkdownHtml}
+        </latex-js>`
     }
+    else {
+        MarkdownHtml = markdown.parse(MarkdownHtml)
 
-    let InLatex = false;
-    let CurrentLatex = ""
-    for (let i = 0; i < MarkdownHtml.length; i++) {
-        if (MarkdownHtml[i] + MarkdownHtml[i + 1] == "$$") {
-            InLatex = !InLatex;
-            if (!InLatex) {
-                CurrentLatex = CurrentLatex.substring(2)
-                MarkdownHtml = MarkdownHtml.replace(`$$${CurrentLatex}$$`, katex.renderToString(CurrentLatex))
-                CurrentLatex = "";
-            }
+        for (let i = 0; i < MarkdownHtml.length; i++) {
+            MarkdownHtml = MarkdownHtml.replace('&amp;lt;', '<')
+            MarkdownHtml = MarkdownHtml.replace('&amp;gt;', '>')
+            MarkdownHtml = MarkdownHtml.replace('&amp;quot;', '"')
+            MarkdownHtml = MarkdownHtml.replace('&lt;', '<')
+            MarkdownHtml = MarkdownHtml.replace('&gt;', '>')
+            MarkdownHtml = MarkdownHtml.replace('&quot', '"')
+            MarkdownHtml = MarkdownHtml.replace('&amp;', '&')
+            MarkdownHtml = MarkdownHtml.replace('";', '"')
         }
-        if (InLatex)
-            CurrentLatex += MarkdownHtml[i]
     }
 
     return MarkdownHtml;
@@ -74,20 +69,20 @@ const Post = async (Request) => {
             `
             ${await BackButton(Request)}
             <div class="content-scrollable">
-                <div class="content-width article-content" style="margin: 0px auto;">
+                <div class="article-content${Meta.tex ? `` : ` content-width`}" style="margin: 0px auto;">
                     ${await (async () => {
-                if (Meta.showTitle) {
+                if (Meta.showTitle && !Meta.tex) {
                     return `
-                            <div class="post-meta">
-                                <h1 class="decrypt-text">${Meta.title}</h1>
-                                <p class="post-description">"${Meta.description}"</p>
-                                <p class="post-author">- ${Meta.author}</p>
-                            </div>
-                            `
+                                    <div class="post-meta">
+                                        <h1 class="decrypt-text">${Meta.title}</h1>
+                                        <p class="post-description">"${Meta.description}"</p>
+                                        <p class="post-author">- ${Meta.author}</p>
+                                    </div>
+                                    `
                 }
-                return ``
+                return `<div class="post-meta"></div>`
             })()}
-                    ${await RewriteMarkdown(markdown.parse(Content))}
+                    ${await Rewrite(Content, Meta.tex)}
                 </div>
             </div>
             ${await Footer(Request, `// By ${Meta.author}`, `Written ${Meta.date}`)}

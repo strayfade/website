@@ -11,7 +11,33 @@ const Rewrite = async (MarkdownHtml, isTex = false) => {
         </latex-js>`
     }
     else {
-        MarkdownHtml = markdown.parse(MarkdownHtml)
+        let OutHTML = ""
+        let InLaTeX = false
+        let CurrentMarkdown = ""
+        let Lines = MarkdownHtml.split("\n")
+        for (let i = 0; i < Lines.length; i++) {
+            if (Lines[i].includes("latex>")) {
+                InLaTeX = !InLaTeX
+                if (InLaTeX) {
+                    OutHTML += `${markdown.parse(CurrentMarkdown)}\n`
+                    OutHTML += `<latex-js baseURL="https://cdn.jsdelivr.net/npm/latex.js/dist/">`
+                    CurrentMarkdown = ""
+                }
+                else {
+                    OutHTML += `</latex-js>`
+                }
+            }
+            else {
+                if (InLaTeX) {
+                    OutHTML += `${Lines[i]}\n`
+                }
+                if (!InLaTeX)
+                    CurrentMarkdown += `${Lines[i]}\n`
+            }
+        }
+        if (!InLaTeX)
+            OutHTML += `${markdown.parse(CurrentMarkdown)}\n`
+        MarkdownHtml = OutHTML
 
         for (let i = 0; i < MarkdownHtml.length; i++) {
             MarkdownHtml = MarkdownHtml.replace('&amp;lt;', '<')

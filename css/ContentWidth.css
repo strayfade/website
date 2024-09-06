@@ -2,14 +2,27 @@
     max-width: calc(700px - 50px * 2);
     padding: 50px;
 }
-@media screen and (max-width: 960px) {
+latex-js {
+    display: block;
+    max-width: calc(100vw - 50px * 2 + 100px * 2);
+    margin: 0px -100px;
+}
+@media screen and (max-width: 1280px) {
     .content-width {
         max-width: calc(80vw - 50px * 2);
+    }
+    latex-js {
+        max-width: calc(80vw - 50px * 2 + 100px * 2);
+        margin: 0px -100px;
     }
 }
 @media screen and (max-width: 480px) {
     .content-width {
         max-width: calc(95vw - 50px * 2);
+    }
+    latex-js {
+        max-width: calc(95vw - 50px * 2 + 100px * 2);
+        margin: 0px -100px;
     }
 }
 

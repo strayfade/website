@@ -28,8 +28,8 @@ const Head = async (Request, Title, Description) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Noto+Serif" rel="stylesheet">
 
-        <link rel="stylesheet" href="/build/production.css" type="text/css">
-        <link rel="preload" href="/build/production.js" as="script">
+        <link rel="stylesheet" href="/prod.css" type="text/css">
+        <link rel="preload" href="/prod.js" as="script">
 
         <script type="module">
             import { LaTeXJSComponent } from "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs"

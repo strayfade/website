@@ -4,33 +4,52 @@
     margin: 0px auto;
     display: block;
 }
+
 .image-caption {
     text-align: center;
     opacity: 0.5;
     font-style: italic;
 }
-a, a:visited {
+
+a,
+a:visited {
     color: var(--foreground);
 }
+
 blockquote {
+    border: 1px dashed var(--foreground);
     border-left: 3px solid var(--foreground);
-    padding: 0px 20px;
-    margin: 20px 0px; 
+    padding: 1px 20px;
+    margin: 20px 0px;
+}
+
+.post-meta {
+    border-bottom: 3px solid var(--foreground);
 }
 
 .post-meta h1 {
     margin: 0;
     margin-top: 10px;
+    font-size: 36px;
 }
+
 .post-description {
-    margin-top: 0px;
     font-style: italic;
+    margin-bottom: 15px;
+    margin-top: 5px;
 }
+
 .post-author {
     margin-top: 0px;
-    margin-bottom: 50px;
-    padding-bottom: 50px;
-    border-bottom: 3px solid var(--foreground);
     font-size: 12px;
     font-style: normal;
+    display: none;
+}
+
+@media screen and (max-width: 960px) {
+
+    .post-meta h1,
+    .post-description {
+        text-align: center;
+    }
 }

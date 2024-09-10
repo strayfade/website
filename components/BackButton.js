@@ -1,6 +1,5 @@
 const BackButton = async (Request) => {
     return `
-    <header>
         <a class="back-button" href="/">
             <p class="back-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
@@ -11,7 +10,6 @@ const BackButton = async (Request) => {
                 back
             </p>
         </a>
-    </header>
     `
 }
 module.exports = { BackButton }

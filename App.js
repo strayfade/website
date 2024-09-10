@@ -25,8 +25,7 @@ App.use(cookieParser());
 
 // Static Directories
 App.use('/assets', express.static('assets'))
-App.use('/build', express.static('build'))
-App.use('/', express.static('rendering'))
+App.use('/', express.static('build'))
 
 // Sources
 App.get(

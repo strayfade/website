@@ -94,8 +94,8 @@ const Post = async (Request) => {
             Request,
             `
             ${await BackButton(Request)}
-            <div class="content-scrollable">
-                <div class="article-content${Meta.tex ? `` : ` content-width`}" style="margin: 0px auto;">
+            <div>
+                <div class="article-content${Meta.tex ? `` : ` content-width`}">
                     ${await (async () => {
                 if (Meta.showTitle && !Meta.tex) {
                     return `

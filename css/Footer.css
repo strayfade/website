@@ -1,5 +1,5 @@
 footer {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: max-content;
     left: 0;
@@ -15,10 +15,9 @@ footer .footer-top {
     margin-left: 23px;
 }
 footer .footer-bottom {
-    margin-top: 2px;
+    margin-top: 4px;
     margin-left: calc(25px + 26px);
-    opacity: 0.5;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .social-container {

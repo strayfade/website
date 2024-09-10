@@ -84,7 +84,7 @@ const PackStylesheets = async () => {
     Stylesheet = new CSSProcessor(CSSProcessorOptions).minify(Stylesheet).styles;
 
     fs.mkdir('./build', (err) => {})
-    let OutputFile = path.join(__dirname, '/build/production.css')
+    let OutputFile = path.join(__dirname, '/build/prod.css')
     fs.writeFileSync(OutputFile, Stylesheet)
 
     Log(`[BUILD] - Finished file: ${OutputFile}`, LogColors.Success)
@@ -106,7 +106,7 @@ const PackScripts = async () => {
     Script = JSProcessor.obfuscate(Script, JSProcessorOptions).getObfuscatedCode()
 
     fs.mkdir('./build', (err) => {})
-    let OutputFile = path.join(__dirname, '/build/production.js')
+    let OutputFile = path.join(__dirname, '/build/prod.js')
     fs.writeFileSync(OutputFile, Script, { recursive: true })
 
     Log(`[BUILD] - Finished file: ${OutputFile}`, LogColors.Success)

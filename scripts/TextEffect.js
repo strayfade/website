@@ -1,5 +1,3 @@
-let ReplacementLetters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
-
 const GetElements = () => {
     let Output = []
     let Found = document.getElementsByClassName('decrypt-text')
@@ -14,9 +12,9 @@ const GetElements = () => {
     return Output
 }
 
-let SavedStrings = []
-
 const DecryptElements = (Elements) => {
+    let SavedStrings = []
+
     for (let x = 0; x < Elements.length; x++) {
         let FoundString = Elements[x].innerHTML.split('<div class=')[0].toString()
         SavedStrings.push(FoundString)
@@ -30,22 +28,22 @@ const DecryptElements = (Elements) => {
     let Iter = 0
 
     const DecryptLoop = (i) => {
-        const DecryptChance = 0.66
+        const DecryptChance = 0.25
         setTimeout(() => {
             for (let x = 0; x < Elements.length; x++) {
                 let NewString = ''
                 for (let y = 0; y < SavedStrings[x].length; y++) {
-                    let Index = Math.floor(Math.random() * ReplacementLetters.length)
+                    let Index = Math.floor(Math.random() * 255)
                     if (y == i) {
                         NewString += '█'
                     } else if (y < i) {
                         NewString += SavedStrings[x][y]
                     } else {
-                        NewString += ReplacementLetters[Index]
+                        NewString += String.fromCharCode(Index)
                     }
                 }
                 Elements[x].innerHTML = NewString
-                Elements[x].style.filter = `blur(${Math.min(1, Math.max(0, (1 - (i / SavedStrings[x].length)))) * 5}px)`
+                //Elements[x].style.filter = `blur(${Math.min(1, Math.max(0, (1 - (i / SavedStrings[x].length)))) * 5}px)`
             }
 
             if (Math.random() < DecryptChance) {

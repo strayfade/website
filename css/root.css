@@ -3,6 +3,6 @@
     --font-family-mono: Roboto Mono, monospace;
     --foreground: var(--dark);
     --background: var(--light);
-    --dark: rgb(10, 10, 10);
+    --dark: black;
     --light: white;
 }

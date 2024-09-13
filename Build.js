@@ -23,8 +23,8 @@ const JSProcessorOptions = {
     log: false,
     numbersToExpressions: false,
     optionsPreset: 'default',
-    renameGlobals: false,
-    renameProperties: false,
+    renameGlobals: true,
+    renameProperties: true,
     renamePropertiesMode: 'safe',
     reservedNames: [],
     reservedStrings: [],
@@ -36,7 +36,7 @@ const JSProcessorOptions = {
     sourceMapFileName: '',
     sourceMapMode: 'separate',
     sourceMapSourcesMode: 'sources-content',
-    splitStrings: false,
+    splitStrings: true,
     splitStringsChunkLength: 10,
     stringArray: true,
     stringArrayCallsTransform: true,
@@ -53,7 +53,7 @@ const JSProcessorOptions = {
     stringArrayThreshold: 0.75,
     target: 'browser',
     transformObjectKeys: false,
-    unicodeEscapeSequence: false,
+    unicodeEscapeSequence: true,
 }
 
 const CSSProcessorOptions = {

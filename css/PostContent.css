@@ -25,6 +25,7 @@ blockquote {
 
 .post-meta {
     border-bottom: 3px solid var(--foreground);
+    margin-bottom: 30px;
 }
 
 .post-meta h1 {
@@ -35,7 +36,7 @@ blockquote {
 
 .post-description {
     font-style: italic;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     margin-top: 5px;
 }
 

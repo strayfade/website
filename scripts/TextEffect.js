@@ -42,7 +42,7 @@ const DecryptElements = (Elements) => {
                         NewString += String.fromCharCode(Index)
                     }
                 }
-                Elements[x].innerHTML = NewString
+                Elements[x].textContent = NewString
                 //Elements[x].style.filter = `blur(${Math.min(1, Math.max(0, (1 - (i / SavedStrings[x].length)))) * 5}px)`
             }
 

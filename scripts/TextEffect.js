@@ -39,7 +39,7 @@ const DecryptElements = (Elements) => {
                 for (let y = 0; y < SavedStrings[x].length; y++) {
                     let Index = Math.floor(Math.random() * 255)
                     if (y == i) {
-                        NewString += `<span style="border: 1px dashed white; color: var(--background); padding: 1px;">`
+                        NewString += `<span style="border: 1px dashed var(--foreground); color: var(--background); padding: 1px;">`
                         NewString += SavedStrings[x][y];//''[Math.floor(Math.random() * 4)]
                         NewString += `</span>`
                     } else if (y < i) {

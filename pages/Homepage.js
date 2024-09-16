@@ -15,7 +15,7 @@ const Homepage = async (Request) => {
         Request,
         `
             <div>
-                <div class="content-width article-content" style="margin: 0px;">
+                <div class="article-content" style="margin: 0px; padding: 50px; width: calc(100% - 100px);">
                     ${await (async () => {
             const GetPosts = async (Pinned) => {
                 let Posts = []

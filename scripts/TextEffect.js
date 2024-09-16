@@ -29,20 +29,27 @@ const DecryptElements = (Elements) => {
 
     const DecryptLoop = (i) => {
         const DecryptChance = 0.25
+        let Charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        Charset += `▓▒░`
+        Charset += `____________________________`
+        Charset += `............................`
         setTimeout(() => {
             for (let x = 0; x < Elements.length; x++) {
                 let NewString = ''
                 for (let y = 0; y < SavedStrings[x].length; y++) {
                     let Index = Math.floor(Math.random() * 255)
                     if (y == i) {
-                        NewString += '█'
+                        NewString += `<span style="border: 1px dashed white; color: var(--background); padding: 1px;">`
+                        NewString += SavedStrings[x][y];//''[Math.floor(Math.random() * 4)]
+                        NewString += `</span>`
                     } else if (y < i) {
                         NewString += SavedStrings[x][y]
                     } else {
-                        NewString += String.fromCharCode(Index)
+                        //NewString += SavedStrings[x][y]
+                        NewString += Charset[Math.floor(Math.random() * Charset.length)]
                     }
                 }
-                Elements[x].textContent = NewString
+                Elements[x].innerHTML = NewString
                 //Elements[x].style.filter = `blur(${Math.min(1, Math.max(0, (1 - (i / SavedStrings[x].length)))) * 5}px)`
             }
 

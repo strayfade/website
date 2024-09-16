@@ -1,11 +1,11 @@
 {
-"title": "AI vs. Anti-cheat",
+"title": "Human Aimbot",
 "description": "Learning heuristic detection vectors to make smarter cheats (and anti-cheats)",
-"tags": ["Anti-cheat", "AI", "C++"],
+"tags": ["Anti-cheat", "Math", "C++"],
 "author": "Strayfade",
 "date": "8/19/2024",
 "showTitle": true,
-"indexed": false,
+"indexed": true,
 "pinned": true,
 "tex": false
 }
@@ -100,3 +100,5 @@ In terms of ways that the game is interacted with, a "heuristically undetectable
 - Reaction time is correctly simulated using a mouse event queueing system or similar.
 - Mouse movement events are correctly modified by preferring movements towards the target.
 - Never prefer movement events *directly* toward a target bone position
+
+Once all of these conditions are met, a correctly-developed cheat would be much harder to detect than a cheat which triggers heuristic detections.

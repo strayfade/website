@@ -103,7 +103,7 @@ const PackScripts = async () => {
         }
     }
 
-    Script = JSProcessor.obfuscate(Script, JSProcessorOptions).getObfuscatedCode()
+    //Script = JSProcessor.obfuscate(Script, JSProcessorOptions).getObfuscatedCode()
 
     fs.mkdir('./build', (err) => {})
     let OutputFile = path.join(__dirname, '/build/prod.js')

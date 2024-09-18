@@ -1,5 +1,5 @@
 :root {
-    --font-family: Noto Serif, serif;
+    --font-family: Georgia, serif;
     --font-family-mono: Roboto Mono, monospace;
     --foreground: var(--dark);
     --background: var(--light);

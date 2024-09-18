@@ -1,9 +1,11 @@
+const { ConvertToEncrypted } = require('../components/EncryptedTextUtil')
+
 const Footer = async (Request, Author = "// ", LastEdited = "") => {
     return `
     <footer>
         <div>
-            <p class="footer-top decrypt-text">${Author}</p>
-            <p class="footer-bottom decrypt-text">${LastEdited}</p>
+            <p class="footer-top decrypt-text" decrypted="${Author}">${ConvertToEncrypted(Author)}</p>
+            <p class="footer-bottom decrypt-text" decrypted="${LastEdited}">${ConvertToEncrypted(LastEdited)}</p>
             <div class="social-container">
                 <a href="https://github.com/strayfade">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">

@@ -61,6 +61,8 @@ const Footer = require('../components/Footer').Footer
 const BackButton = require('../components/BackButton').BackButton
 const LightDarkToggle = require('../components/LightDarkToggle').LightDarkToggle
 
+const { ConvertToEncrypted } = require('../components/EncryptedTextUtil')
+
 const Post = async (Request) => {
     let Failed = false
     let TargetExists = false
@@ -100,9 +102,9 @@ const Post = async (Request) => {
                 if (Meta.showTitle && !Meta.tex) {
                     return `
                                     <div class="post-meta">
-                                        <h1 class="decrypt-text">${Meta.title}</h1>
-                                        <p class="post-description">"${Meta.description}"</p>
-                                        <p class="post-author">- ${Meta.author}</p>
+                                        <h1 class="decrypt-text" decrypted="${Meta.title}">${ConvertToEncrypted(Meta.title)}</h1>
+                                        <p class="decrypt-text post-description" decrypted="${Meta.description}">${ConvertToEncrypted(Meta.description)}</p>
+                                        <p class="decrypt-text post-author" decrypted="${ConvertToEncrypted(`- ${Meta.author}`)}">${ConvertToEncrypted(`- ${Meta.author}`)}</p>
                                     </div>
                                     `
                 }

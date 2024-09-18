@@ -3,7 +3,7 @@ const GetElements = () => {
     let Found = document.getElementsByClassName('decrypt-text')
     for (let y = 0; y < Found.length; y++) {
         Found[y].style.willChange = 'content'
-        if (Found[y].children.length == 0) {
+        if (Found[y].children.length == 1) {
             if (Found[y].textContent != '') {
                 Output.push(Found[y])
             }
@@ -12,12 +12,15 @@ const GetElements = () => {
     return Output
 }
 
-const DecryptElements = (Elements) => {
+const DecryptElements = async (Elements) => {
     let SavedStrings = []
+    let InitialStrings = []
 
     for (let x = 0; x < Elements.length; x++) {
-        let FoundString = Elements[x].innerHTML.split('<div class=')[0].toString()
+        let FoundString = Elements[x].getAttribute("decrypted")
         SavedStrings.push(FoundString)
+        InitialStrings.push(Elements[x].textContent)
+        Elements[x].removeAttribute("decrypted")
     }
 
     let LongestString = 0
@@ -25,43 +28,59 @@ const DecryptElements = (Elements) => {
         if (SavedStrings[x].length > LongestString) LongestString = SavedStrings[x].length
     }
 
-    let Iter = 0
-
-    const DecryptLoop = (i) => {
+    const DecryptLoop = async () => {
         const DecryptChance = 0.25
         let Charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         Charset += `▓▒░`
         Charset += `____________________________`
         Charset += `............................`
-        setTimeout(() => {
-            for (let x = 0; x < Elements.length; x++) {
-                let NewString = ''
-                for (let y = 0; y < SavedStrings[x].length; y++) {
-                    let Index = Math.floor(Math.random() * 255)
-                    if (y == i) {
-                        NewString += `<span style="border: 1px dashed var(--foreground); color: var(--background); padding: 1px;">`
-                        NewString += SavedStrings[x][y];//''[Math.floor(Math.random() * 4)]
-                        NewString += `</span>`
-                    } else if (y < i) {
-                        NewString += SavedStrings[x][y]
-                    } else {
-                        //NewString += SavedStrings[x][y]
-                        NewString += Charset[Math.floor(Math.random() * Charset.length)]
-                    }
-                }
-                Elements[x].innerHTML = NewString
-                //Elements[x].style.filter = `blur(${Math.min(1, Math.max(0, (1 - (i / SavedStrings[x].length)))) * 5}px)`
-            }
+        Charset += `                            `
+        for (let el = 0; el < Elements.length; el++) {
+            await new Promise(r => setTimeout(r, 50));
+            (async () => {
+                // Iterate through string
+                const StringLengthMod = (SavedStrings[el].length / 20)
+                for (let i = 0; i < SavedStrings[el].length; i++) {
 
-            if (Math.random() < DecryptChance) {
-                Iter++
-            }
-            if (Iter < LongestString + 1) {
-                DecryptLoop(Iter)
-            }
-        }, 10)
+                    // Decrypt chance 
+                    /*if (Math.random() <= DecryptChance) {
+                        await new Promise(r => setTimeout(r, 20 / StringLengthMod));
+                        i--
+                        continue;
+                    }*/
+
+                    // Build new string
+                    let NewString = ""
+                    for (let x = 0; x < SavedStrings[el].length; x++) {
+                        if (x == i) {
+                            NewString += `<span style="border: 1px dashed var(--foreground); color: var(--background); padding: 1px;">`
+                            NewString += SavedStrings[el][x];
+                            NewString += `</span>`
+                        }
+                        else if (x < i) {
+                            NewString += SavedStrings[el][x]
+                        }
+                        else if (x > i + SavedStrings[el].length / 2) {
+                            NewString += InitialStrings[el][x]
+                        }
+                        else {
+                            NewString += Charset[Math.floor(Math.random() * Charset.length)]
+                        }
+                    }
+
+                    // Update element
+                    Elements[el].innerHTML = NewString
+
+                    // Wait
+                    const TimeoutLength = 10 + Math.pow(i / SavedStrings[el].length, 3) * 30
+                    //console.log(TimeoutLength)
+                    await new Promise(r => setTimeout(r, TimeoutLength));
+                }
+                Elements[el].innerHTML = SavedStrings[el]
+            })()
+        }
     }
-    DecryptLoop(0)
+    await DecryptLoop()
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

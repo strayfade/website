@@ -31,8 +31,8 @@ const DecryptElements = async (Elements) => {
     const DecryptLoop = async () => {
         const DecryptChance = 0.25
         let Charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        Charset += `▓▒░`
-        Charset += `____________________________`
+        //Charset += `▓▒░`
+        //Charset += `____________________________`
         Charset += `............................`
         Charset += `                            `
         for (let el = 0; el < Elements.length; el++) {

@@ -108,12 +108,12 @@ const Post = async (Request) => {
                                     </div>
                                     `
                 }
-                return `<div class="post-meta"></div>`
+                return ``
             })()}
                     ${await Rewrite(Content, Meta.tex)}
                 </div>
             </div>
-            ${await Footer(Request, `// By ${Meta.author}`, `Written ${Meta.date}`)}
+            ${Meta.showTitle ? await Footer(Request, `// By ${Meta.author}`, `Written ${Meta.date}`) : ``}
             ${await LightDarkToggle(Request)}
             `
         )}

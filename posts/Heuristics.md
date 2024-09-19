@@ -1,5 +1,5 @@
 {
-"title": "Human Aimbot",
+"title": "Cheat vs. Anti-cheat",
 "description": "Learning heuristic detection vectors to make smarter cheats (and anti-cheats)",
 "tags": ["Anti-cheat", "Math", "C++"],
 "author": "Strayfade",
@@ -43,7 +43,7 @@ This is the equation for the most common "smoothing" used in video game cheats, 
 
 <latex>
 $$
-x_2=x_1+\frac{x_2-x_1}{C}
+\Delta x=x_1+\frac{x_2-x_1}{C}
 $$
 </latex>
 
@@ -87,7 +87,7 @@ The solution to these problems is to have the cheat aim at the nearest bone, and
 
 [The average human reaction time is around 247ms.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4456887/) This is a problem because if the target location suddenly changes, an aimbot will nearly instantly begin moving the cursor in the target's new direction, while a human will take a minimum of 50-100ms to process the change.
 
-It is, of course, possible to account for this by adding a delay or queueing system to the mouse movements being sent by a cheat, but this is one of many possible detection vectors that often goes overlooked. In the context of HID-based cursor movement, [an incredible post on the Unknown Cheats forum](https://www.unknowncheats.me/forum/3968927-post13.html) discusses even more heuristic vectors that could potentially be detected by anti-cheat software:
+It is, of course, possible to account for this by adding a delay or queueing system to the mouse movements being sent by a cheat, but this is one of many possible detection vectors that often goes overlooked. In the context of HID-based cursor movement, [a post on the Unknown Cheats forum](https://www.unknowncheats.me/forum/3968927-post13.html) discusses even more heuristic vectors that could potentially be detected by anti-cheat software:
 
 > *"I also think it'd be worth more of Vanguard's time to detect everyone, despite how good their mouse setup is, by simply looking for unrealistic aiming, reaction time, and stats, which I don't doubt they've already done extensively."*
 

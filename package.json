@@ -4,7 +4,7 @@
     "description": "The public source code of Strayfade.com",
     "main": "App.js",
     "scripts": {
-        "develop": "nodemon --exec \"node Build && node Server 8080\" --ignore \"build/\" --ext \"\"",
+        "develop": "nodemon --exec \"node Server 8080\" --ignore \"build/\" --ext \"\"",
         "build": "node Build"
     },
     "author": "Strayfade",

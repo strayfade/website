@@ -14,6 +14,9 @@ const WrapAsync = (Function) => {
     }
 }
 
+// Run build
+require('./Build')
+
 // Basic Security
 require('./security/Security').Setup(App)
 const RequestBlocking = require('./RequestBlocking')

@@ -24,17 +24,16 @@ const Head = async (Request, Title, Description) => {
         <link rel="mask-icon" href="/assets/Icon.svg" color="#ffffff">
         <link rel="dns-prefetch" href="https://strayfade.com">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Noto+Serif" rel="stylesheet">
-
         <link rel="stylesheet" href="/prod.css" type="text/css">
         <link rel="preload" href="/prod.js" as="script">
-
+        ${Request.path != "/" ? `
+            
         <script type="module">
             import { LaTeXJSComponent } from "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs"
             customElements.define("latex-js", LaTeXJSComponent)
         </script>
+        
+        ` : ``}
     </head>
     `
 }

@@ -23,8 +23,8 @@ const JSProcessorOptions = {
     log: false,
     numbersToExpressions: false,
     optionsPreset: 'default',
-    renameGlobals: true,
-    renameProperties: true,
+    renameGlobals: false,
+    renameProperties: false,
     renamePropertiesMode: 'safe',
     reservedNames: [],
     reservedStrings: [],
@@ -36,24 +36,24 @@ const JSProcessorOptions = {
     sourceMapFileName: '',
     sourceMapMode: 'separate',
     sourceMapSourcesMode: 'sources-content',
-    splitStrings: true,
+    splitStrings: false,
     splitStringsChunkLength: 10,
     stringArray: true,
     stringArrayCallsTransform: true,
     stringArrayCallsTransformThreshold: 0.5,
     stringArrayEncoding: [],
     stringArrayIndexesType: ['hexadecimal-number'],
-    stringArrayIndexShift: true,
-    stringArrayRotate: true,
-    stringArrayShuffle: true,
+    stringArrayIndexShift: false,
+    stringArrayRotate: false,
+    stringArrayShuffle: false,
     stringArrayWrappersCount: 1,
-    stringArrayWrappersChainedCalls: true,
+    stringArrayWrappersChainedCalls: false,
     stringArrayWrappersParametersMaxCount: 2,
     stringArrayWrappersType: 'variable',
     stringArrayThreshold: 0.75,
     target: 'browser',
     transformObjectKeys: false,
-    unicodeEscapeSequence: true,
+    unicodeEscapeSequence: false,
 }
 
 const CSSProcessorOptions = {
@@ -103,7 +103,7 @@ const PackScripts = async () => {
         }
     }
 
-    //Script = JSProcessor.obfuscate(Script, JSProcessorOptions).getObfuscatedCode()
+    Script = JSProcessor.obfuscate(Script, JSProcessorOptions).getObfuscatedCode()
 
     fs.mkdir('./build', (err) => {})
     let OutputFile = path.join(__dirname, '/build/prod.js')

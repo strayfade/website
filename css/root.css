@@ -1,6 +1,6 @@
 :root {
     --font-family: Georgia, serif;
-    --font-family-mono: Roboto Mono, monospace;
+    --font-family-mono: monospace;
     --foreground: var(--dark);
     --background: var(--light);
     --dark: black;

@@ -1,0 +1,8 @@
+.banner {
+    font-family: var(--font-family-mono);
+    font-weight: bold;
+    background: var(--foreground);
+    color: var(--background);
+    padding: 4px;
+    text-align: center;
+}

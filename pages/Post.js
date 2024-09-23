@@ -63,7 +63,7 @@ const LightDarkToggle = require('../components/LightDarkToggle').LightDarkToggle
 
 const { ConvertToEncrypted } = require('../components/EncryptedTextUtil')
 
-const Post = async (Request) => {
+const Post = async (Request, BuildData) => {
     let Failed = false
     let TargetExists = false
     const TargetPath = path.join(__dirname, `../posts${Request.path}.md`)
@@ -91,7 +91,7 @@ const Post = async (Request) => {
     } else {
         return `
         ${await HTML(Request)}
-        ${await Head(Request, Meta.title.length > 0 ? Meta.title : path.basename(TargetPath).split(".")[0], Meta.description)}
+        ${await Head(Request, Meta.title.length > 0 ? Meta.title : path.basename(TargetPath).split(".")[0], Meta.description, BuildData)}
         ${await Body(
             Request,
             `
@@ -116,7 +116,7 @@ const Post = async (Request) => {
             ${Meta.showTitle ? await Footer(Request, `// By ${Meta.author}`, `Written ${Meta.date}`) : ``}
             ${await LightDarkToggle(Request)}
             `
-        )}
+        , BuildData)}
         `
     }
 }

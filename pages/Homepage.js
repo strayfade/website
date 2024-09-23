@@ -9,10 +9,10 @@ const LightDarkToggle = require('../components/LightDarkToggle').LightDarkToggle
 
 const { ConvertToEncrypted } = require("../components/EncryptedTextUtil")
 
-const Homepage = async (Request) => {
+const Homepage = async (Request, BuildData) => {
     return `
         ${await HTML(Request)}
-        ${await Head(Request, 'Home', 'official strayfade website (real)')}
+        ${await Head(Request, 'Home', 'official strayfade website (real)', BuildData)}
         ${await Body(
         Request,
         `
@@ -75,7 +75,7 @@ const Homepage = async (Request) => {
         })()}`, `Copyright (c) Strayfade 2024`)}
             ${await LightDarkToggle(Request)}
             `
-    )}
+    , BuildData)}
     `
 }
 module.exports = { Homepage }

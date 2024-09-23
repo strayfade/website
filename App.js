@@ -15,7 +15,7 @@ const WrapAsync = (Function) => {
 }
 
 // Run build
-require('./Build')
+const { CurrentStylesheet, CurrentScript } = require('./Build')
 
 // Basic Security
 require('./security/Security').Setup(App)
@@ -51,19 +51,28 @@ const Post = require('./pages/Post').Post
 App.get(
     '/R',
     WrapAsync(async (Request, Response) => {
-        Response.send(await Re(Request))
+        Response.send(await Re(Request, {
+            stylesheet: CurrentStylesheet,
+            script: CurrentScript
+        }))
     })
 )
 App.get(
     '/',
     WrapAsync(async (Request, Response) => {
-        Response.send(await Homepage(Request))
+        Response.send(await Homepage(Request, {
+            stylesheet: CurrentStylesheet,
+            script: CurrentScript
+        }))
     })
 )
 App.get(
     '/:path',
     WrapAsync(async (Request, Response) => {
-        const ValidPost = await Post(Request)
+        const ValidPost = await Post(Request, {
+            stylesheet: CurrentStylesheet,
+            script: CurrentScript
+        })
         if (!ValidPost) {
             Response.status(404).send(
                 await Post({
@@ -90,6 +99,9 @@ App.get(
             await Post({
                 path: '/404',
                 cookies: Request.cookies
+            }, {
+                stylesheet: CurrentStylesheet,
+                script: CurrentScript
             })
         )
     })

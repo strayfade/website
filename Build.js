@@ -63,6 +63,9 @@ const CSSProcessorOptions = {
 const CSSProcessor = require('clean-css')
 const JSProcessor = require('javascript-obfuscator')
 
+let CurrentStylesheet = "";
+let CurrentScript = "";
+
 const PackStylesheets = async () => {
     Log('[BUILD] - Merging CSS files...')
     let Stylesheet = ''
@@ -87,6 +90,8 @@ const PackStylesheets = async () => {
     let OutputFile = path.join(__dirname, '/build/prod.css')
     fs.writeFileSync(OutputFile, Stylesheet)
 
+    CurrentStylesheet = Stylesheet
+
     Log(`[BUILD] - Finished file: ${OutputFile}`, LogColors.Success)
 }
 
@@ -103,14 +108,18 @@ const PackScripts = async () => {
         }
     }
 
-    Script = JSProcessor.obfuscate(Script, JSProcessorOptions).getObfuscatedCode()
+    //Script = JSProcessor.obfuscate(Script, JSProcessorOptions).getObfuscatedCode()
 
     fs.mkdir('./build', (err) => {})
     let OutputFile = path.join(__dirname, '/build/prod.js')
     fs.writeFileSync(OutputFile, Script, { recursive: true })
+    
+    CurrentScript = Script
 
     Log(`[BUILD] - Finished file: ${OutputFile}`, LogColors.Success)
 }
 
 PackStylesheets()
 PackScripts()
+
+module.exports = { CurrentStylesheet, CurrentScript }

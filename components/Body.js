@@ -1,4 +1,4 @@
-const Body = async (Request, Inner) => {
+const Body = async (Request, Inner, BuildData) => {
     return `
     <body${(Request.cookies && Request.cookies.lightMode && (Request.cookies.lightMode == "true")) ? ` style="--foreground: var(--light);--background: var(--dark);"` : ``}>
         <noscript>    
@@ -7,7 +7,9 @@ const Body = async (Request, Inner) => {
             </div>
         </noscript>
         ${Inner}
-        <script src="/prod.js"></script>
+        <script>
+        ${BuildData.script}
+        </script>
     </body>
     `
 }

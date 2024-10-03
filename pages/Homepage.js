@@ -7,7 +7,7 @@ const Body = require('../components/Body').Body
 const Footer = require('../components/Footer').Footer
 const LightDarkToggle = require('../components/LightDarkToggle').LightDarkToggle
 
-const { ConvertToEncrypted } = require("../components/EncryptedTextUtil")
+const { ConvertToEncrypted, GenDecryptText } = require("../components/EncryptedTextUtil")
 
 const Homepage = async (Request, BuildData) => {
     return `
@@ -47,13 +47,14 @@ const Homepage = async (Request, BuildData) => {
 
             let Output = ``
             for (const Post of AllPosts) {
+                
                 Output += `
                                 <a class="post${Post.data.pinned ? ` post-pinned` : ``}" href="/${Post.file.split(".")[0]}">
                                     <div class="post-header">
-                                        <h3 class="decrypt-text" decrypted="${Post.data.title}">${ConvertToEncrypted(Post.data.title)}</h3>
-                                        <p class="decrypt-text" decrypted="${Post.data.date}">${ConvertToEncrypted(Post.data.date)}</p>
+                                        ${GenDecryptText("h3", Post.data.title)}
+                                        ${GenDecryptText("p", Post.data.date)}
                                     </div>
-                                    <p class="decrypt-text" decrypted="${Post.data.description}">${ConvertToEncrypted(Post.data.description)}</p>
+                                    ${GenDecryptText("p", Post.data.description)}
                                 </a>
                             `
             }

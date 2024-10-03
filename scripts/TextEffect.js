@@ -3,7 +3,7 @@ const GetElements = () => {
     let Found = document.getElementsByClassName('decrypt-text')
     for (let y = 0; y < Found.length; y++) {
         Found[y].style.willChange = 'content'
-        if (Found[y].children.length == 1) {
+        if (Found[y].children.length == 2) {
             if (Found[y].textContent != '') {
                 Output.push(Found[y])
             }
@@ -29,7 +29,6 @@ const DecryptElements = async (Elements) => {
     }
 
     const DecryptLoop = async () => {
-        const DecryptChance = 0.25
         let Charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         //Charset += `▓▒░`
         //Charset += `____________________________`

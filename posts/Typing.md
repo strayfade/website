@@ -1,6 +1,6 @@
 {
 "title": "Typewriter",
-"description": "Writing a bot to complete my typing homework",
+"description": "Writing a script to complete my homework",
 "tags": ["NodeJS"],
 "author": "Strayfade",
 "date": "4/19/2023",
@@ -44,7 +44,7 @@ _So, that's why I decided to try..._
 
 **Selenium Webdriver** is a package for NodeJS that allows developers to create web tests by creating a contained, automated browser and sending commands to it. _This is perfect for what I am trying to accomplish!_
 
-Selenium solves every single problem that the Python version had, and as a bonus, I can make Selenium auto-progress through all of the typing challenges on its own by detecting the "next lesson" button.
+Selenium solves every single problem that the Python version had, and as a bonus, I can make Selenium auto-progress through all of the typing challenges on its own by detecting and automatically clicking the "next lesson" button.
 
 So, with this knowledge, I rewrote the task at hand using Selenium. Keys would be detected via browser Javascript, as before, but now I could send the keypresses from Selenium. The only downside to this method is that (since Selenium Webdriver creates a sandboxed browser) I would have to re-login to my Typing.com account every time I wished to test the code, but this only ended up being a minor issue as multiple lessons could be completed at once after logging in.
 

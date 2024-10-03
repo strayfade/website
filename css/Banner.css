@@ -1,8 +1,10 @@
-.banner {
+.noscript-banner {
+    color: white;
+    background: black;
     font-family: var(--font-family-mono);
+    font-size: 12px;
+    padding: 10px;
+    margin-top: -15px;
     font-weight: bold;
-    background: var(--foreground);
-    color: var(--background);
-    padding: 4px;
-    text-align: center;
+    font-style: italic;
 }

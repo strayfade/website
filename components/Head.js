@@ -27,13 +27,6 @@ const Head = async (Request, Title, Description, BuildData) => {
         ` : ``}
         
         <link rel="dns-prefetch" href="https://strayfade.com">
-
-        ${Request.path != "/" ? `
-        <script type="module">
-            import { LaTeXJSComponent } from "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.mjs"
-            customElements.define("latex-js", LaTeXJSComponent)
-        </script>
-        ` : ``}
         
         <style>
         ${BuildData.stylesheet}

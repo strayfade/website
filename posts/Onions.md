@@ -6,8 +6,7 @@
 "date": "9/10/2024",
 "showTitle": true,
 "indexed": false,
-"pinned": true,
-"tex": false
+"pinned": true
 }
 
 ### Introduction

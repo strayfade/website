@@ -5,9 +5,8 @@
 "author": "Strayfade",
 "date": "8/19/2024",
 "showTitle": true,
-"indexed": true,
-"pinned": true,
-"tex": false
+"indexed": false,
+"pinned": true
 }
 
 > This document will explain the importance of correctly implemented heuristic detection vectors in anti-cheat software. Furthermore, the document explores ways that these detection vectors could be evaded by video game cheats, primarily by generating human-looking mouse movement curves using neural networks.

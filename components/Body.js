@@ -1,9 +1,9 @@
 const { cacheFunc } = require("../Cache")
 
 const Body = async (Request, Inner, BuildData) => {
-    const InnerFn = (Cookies) => {
+    const InnerFn = () => {
         return `
-        <body${(Cookies && Cookies.lightMode && (Cookies.lightMode == "true")) ? ` style="--foreground: var(--light);--background: var(--dark);"` : ``}>
+        <body>
             ${Inner}
             <script>
             ${BuildData.script}
@@ -12,7 +12,6 @@ const Body = async (Request, Inner, BuildData) => {
         `
     }
     return cacheFunc(InnerFn, {
-        cookies: Request.cookies, 
         path: Request.path
     })
 }

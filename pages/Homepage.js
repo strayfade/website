@@ -5,9 +5,8 @@ const HTML = require('../components/HTML').HTML
 const Head = require('../components/Head').Head
 const Body = require('../components/Body').Body
 const Footer = require('../components/Footer').Footer
-const LightDarkToggle = require('../components/LightDarkToggle').LightDarkToggle
 
-const { ConvertToEncrypted, GenDecryptText } = require("../components/EncryptedTextUtil")
+const { GenDecryptText } = require("../components/EncryptedTextUtil")
 
 const Homepage = async (Request, BuildData) => {
     return `
@@ -74,7 +73,6 @@ const Homepage = async (Request, BuildData) => {
             ]
             return FooterOpts[Math.floor(Math.random() * FooterOpts.length)];
         })()}`, `Copyright (c) Strayfade 2024`)}
-            ${await LightDarkToggle(Request)}
             `
     , BuildData)}
     `

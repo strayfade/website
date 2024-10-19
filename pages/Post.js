@@ -59,7 +59,6 @@ const Head = require('../components/Head').Head
 const Body = require('../components/Body').Body
 const Footer = require('../components/Footer').Footer
 const BackButton = require('../components/BackButton').BackButton
-const LightDarkToggle = require('../components/LightDarkToggle').LightDarkToggle
 
 const { ConvertToEncrypted, GenDecryptText } = require('../components/EncryptedTextUtil')
 
@@ -119,7 +118,6 @@ const Post = async (Request, BuildData) => {
                 </div>
             </div>
             ${Meta.showTitle ? await Footer(Request, `// By ${Meta.author}`, `Written ${Meta.date}`) : ``}
-            ${await LightDarkToggle(Request)}
             `
         , BuildData)}
         `

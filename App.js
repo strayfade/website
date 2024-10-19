@@ -21,10 +21,6 @@ require('./security/Security').Setup(App)
 const RequestBlocking = require('./RequestBlocking')
 App.use(RequestBlocking.Middleware)
 
-// Use cookie-parser
-const cookieParser = require('cookie-parser');
-App.use(cookieParser());
-
 // Static Directories
 App.use('/assets', express.static('assets'))
 App.use('/', express.static('build'))
@@ -61,8 +57,7 @@ App.get('/:path', WrapAsync(async (Request, Response) => {
     if (!ValidPost) {
         Response.status(404).send(
             await Post({
-                path: '/404',
-                cookies: Request.cookies
+                path: '/404'
             })
         )
     } else {
@@ -79,8 +74,7 @@ App.use((Error, Request, Response, Next) => {
 App.get('*', WrapAsync(async (Request, Response) => {
     Response.send(
         await Post({
-            path: '/404',
-            cookies: Request.cookies
+            path: '/404'
         }, {
             stylesheet: CurrentStylesheet,
             script: CurrentScript

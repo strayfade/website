@@ -27,7 +27,6 @@ const cacheFunc = async (funcPtr, params) => {
         params: params,
         out: funcOut
     })
-    console.log(params)
     return funcOut
 }
 

@@ -63,7 +63,6 @@ const Homepage = async (Request, BuildData) => {
             for (const Post of await GetPosts(false))
                 AllPosts.push(Post)
             for (const Post of AllPosts) {
-                console.log(Post)
                 Output += `
                             <a class="homepage-link" href="/${Post.file.replace(".md", "")}">
                                 <span class="decrypt-text">

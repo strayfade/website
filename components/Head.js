@@ -2,7 +2,6 @@ const UseIcon = true;
 const Head = async (Request, Title, Description, BuildData) => {
     return `
     <head>
-        <link rel="manifest" href="/assets/manifest.json">
         <meta charset="utf-8">
         <meta name="referrer" content="no-referrer">
 
@@ -10,9 +9,9 @@ const Head = async (Request, Title, Description, BuildData) => {
         <meta property="og:url" content="strayfade.com">
         <meta name="twitter:url" content="strayfade.com">
 
-        <title>${Title} | strayfade</title>
-        <meta property="og:title" content="${Title} | Strayfade">
-        <meta property="twitter:title" content="${Title} | Strayfade">
+        <title>HEADHUNTER</title>
+        <meta property="og:title" content="HEADHUNTER">
+        <meta property="twitter:title" content="HEADHUNTER">
 
         <meta name="description" content="${Description}">
         <meta property="og:description" content="${Description}">

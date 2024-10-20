@@ -5,22 +5,29 @@ footer {
     left: 0;
     bottom: 0;
     font-family: var(--font-family-mono);
+    z-index: 999;
 }
 
 footer p {
     margin: 0px;
-    font-size: 14px;
+    font-size: 20px;
     text-transform: lowercase;
 }
 
 footer .footer-top {
     margin-left: 23px;
+    font-weight: 100;
+    font-family: sans-serif;
 }
 
 footer .footer-bottom {
     margin-top: 4px;
     margin-left: calc(25px + 26px);
     font-size: 11px;
+    display: inherit;
+    will-change: content;
+    font-size: 14px;
+    font-weight: 900;
 }
 
 .social-container {

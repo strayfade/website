@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'HEADHUNTER';
+    src: url('/assets/headhunter.otf') format('opentype');
+}
+
+.randomized {
+    font-family: monospace;
+    font-weight: 100;
+    position: absolute;
+    z-index: 999;
+    text-transform: lowercase;
+    font-size: 10px;
+}
+
+#counter-1 {
+    position: absolute;
+    color: var(--foreground);
+    z-index: 9999;
+    font-weight: 100;
+    font-size: 55px;
+    top: 30vh;
+    left: 5vw;
+    transform: scaleY(500);
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+#counter-2 {
+    position: absolute;
+    color: var(--foreground);
+    z-index: 9999;
+    font-weight: 100;
+    font-size: 55px;
+    top: 30vh;
+    left: 5vw;
+    transform: scaleY(0.3);
+}

@@ -1,8 +1,6 @@
 :root {
     --font-family: Georgia, serif;
     --font-family-mono: monospace;
-    --foreground: var(--dark);
-    --background: var(--light);
-    --dark: black;
-    --light: white;
+    --foreground: red;
+    --background: black;
 }

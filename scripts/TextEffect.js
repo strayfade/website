@@ -113,6 +113,23 @@ const Placement = async () => {
             New.style.opacity = `${GenRng(20, 75)}%`
             JunkCont.appendChild(New)
         }
+        for (let i = 0; i < 500; i++) {
+            let New = document.createElement("div")
+            New.style.left = `${GenRng(50, 100)}vw`
+            New.style.top = `${GenRng(50, 100)}vh`
+            New.className = "dot"
+            New.style.background = "black"
+            JunkCont.appendChild(New)
+        }
+        for (let i = 0; i < 500; i++) {
+            let New = document.createElement("div")
+            New.style.left = `${GenRng(50, 100)}vw`
+            New.style.top = `${GenRng(50, 100)}vh`
+            New.className = "dot"
+            New.style.background = "red"
+            New.style.opacity = "0.2"
+            JunkCont.appendChild(New)
+        }
     }
 }
 

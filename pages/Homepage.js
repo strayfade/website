@@ -52,13 +52,13 @@ const Homepage = async (Request, BuildData) => {
 
                 <div style="position: absolute;
   z-index: 1;
-  width: 100vw;
-  height: 100vh;
+  width: 1000px;
+  height: 1000px;
   pointer-events: none;
   transform: scale3d(01, -1, 1);
   filter: brightness(1) contrast(1);
   left: 700px;">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 5000 5000" width="100vw" height="100vw"><defs><linearGradient gradientTransform="rotate(-314, 0.5, 0.5)" x1="50%" y1="0%" x2="50%" y2="100%" id="gggrain-gradient2"><stop stop-color="hsla(0, 0%, 0%, 1.00)" stop-opacity="1" offset="-0%"></stop><stop stop-color="black" stop-opacity="0" offset="100%"></stop></linearGradient><linearGradient gradientTransform="rotate(314, 0.5, 0.5)" x1="50%" y1="0%" x2="50%" y2="100%" id="gggrain-gradient3"><stop stop-color="black" stop-opacity="1"></stop><stop stop-color="black" stop-opacity="0" offset="100%"></stop></linearGradient><filter id="gggrain-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 5000 5000" width="1000px" height="1000px"><defs><linearGradient gradientTransform="rotate(-314, 0.5, 0.5)" x1="50%" y1="0%" x2="50%" y2="100%" id="gggrain-gradient2"><stop stop-color="hsla(0, 0%, 0%, 1.00)" stop-opacity="1" offset="-0%"></stop><stop stop-color="black" stop-opacity="0" offset="100%"></stop></linearGradient><linearGradient gradientTransform="rotate(314, 0.5, 0.5)" x1="50%" y1="0%" x2="50%" y2="100%" id="gggrain-gradient3"><stop stop-color="black" stop-opacity="1"></stop><stop stop-color="black" stop-opacity="0" offset="100%"></stop></linearGradient><filter id="gggrain-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
   <feTurbulence type="fractalNoise" baseFrequency="1.25" numOctaves="2" seed="2" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence"></feTurbulence>
   <feColorMatrix type="saturate" values="0" x="0%" y="0%" width="100%" height="100%" in="turbulence" result="colormatrix"></feColorMatrix>
   <feComponentTransfer x="0%" y="0%" width="100%" height="100%" in="colormatrix" result="componentTransfer">

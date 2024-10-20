@@ -18,7 +18,7 @@
     z-index: 9999;
     font-weight: 100;
     font-size: 55px;
-    top: 30vh;
+    top: 400px;
     left: 5vw;
     transform: scaleY(500);
     opacity: 0.1;
@@ -31,7 +31,7 @@
     z-index: 9999;
     font-weight: 100;
     font-size: 55px;
-    top: 30vh;
+    top: 400px;
     left: 5vw;
     transform: scaleY(0.3);
 }

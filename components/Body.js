@@ -1,6 +1,6 @@
 const Body = async (Request, Inner, BuildData) => {
     return `
-        <body style="overflow: hidden;">
+        <body>
             ${Inner}
             <script>
             ${BuildData.script}

@@ -43,13 +43,6 @@ footer .footer-bottom {
     text-decoration: none;
 }
 
-@media screen and (max-width: 960px) {
-    footer {
-        display: none;
-        pointer-events: none;
-    }
-}
-
 svg path {
     fill: var(--foreground);
 }

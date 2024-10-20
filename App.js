@@ -58,6 +58,9 @@ App.get('/:path', WrapAsync(async (Request, Response) => {
         Response.status(404).send(
             await Post({
                 path: '/404'
+            }, {
+                stylesheet: CurrentStylesheet,
+                script: CurrentScript
             })
         )
     } else {

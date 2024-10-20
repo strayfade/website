@@ -35,3 +35,18 @@
     left: 5vw;
     transform: scaleY(0.3);
 }
+
+.homepage-link {
+    font-family: monospace;
+    font-weight: 900;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+.homepage-link span {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+}

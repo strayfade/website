@@ -1,21 +1,10 @@
 const GetElements = () => {
-    let Output = []
-    let Found = document.getElementsByClassName('decrypt-text')
-    for (let y = 0; y < Found.length; y++) {
-        Found[y].style.willChange = 'content'
-        if (Found[y].children.length == 2) {
-            if (Found[y].textContent != '') {
-                Output.push(Found[y])
-            }
-        }
-    }
-    return Output
+    return document.getElementsByClassName('decrypt-text')
 }
 const GenRng = (Median, Scale) => {
     return Math.random() * Scale + Median - (Scale / 2)
 }
 const Placement = async () => {
-    let Elements = [];
     const Phrases = [
         "What you fear loves you",
         "Sleep is overrated anyway",
@@ -113,51 +102,26 @@ const Placement = async () => {
         "Brace for inevitable chaos"
     ]
     const JunkCont = document.getElementById("junk")
-    for (const i of Phrases) {
-        let New = document.createElement("span")
-        New.textContent = i
-        New.className = "randomized"
-        New.style.transform = `scaleY(${GenRng(30, 20)}%) scaleX(${GenRng(100, 100)}%)`
-        New.style.left = `${GenRng(25, 50)}vw`
-        New.style.top = `${GenRng(50, 100)}vh`
-        New.style.opacity = `${GenRng(20, 75)}%`
-        JunkCont.appendChild(New)
+    if (JunkCont) {
+        for (const i of Phrases) {
+            let New = document.createElement("span")
+            New.textContent = i
+            New.className = "randomized"
+            New.style.transform = `scaleY(${GenRng(30, 20)}%) scaleX(${GenRng(100, 100)}%)`
+            New.style.left = `${GenRng(25, 50)}vw`
+            New.style.top = `${GenRng(50, 100)}vh`
+            New.style.opacity = `${GenRng(20, 75)}%`
+            JunkCont.appendChild(New)
+        }
     }
 }
 
 const DecryptElements = async (Elements) => {
-    let SavedStrings = []
-    let InitialStrings = []
-
-    for (let x = 0; x < Elements.length; x++) {
-        let FoundString = Elements[x].getAttribute("decrypted")
-        SavedStrings.push(FoundString)
-        InitialStrings.push(Elements[x].textContent)
-        Elements[x].removeAttribute("decrypted")
+    for (let el = 0; el < Elements.length; el++) {
+        Elements[el].style.transform = `scaleY(${GenRng(50, 20)}%) translate(${GenRng(0, 20)}px, ${GenRng(0, 20)}px)`
     }
-
-    let LongestString = 0
-    for (let x = 0; x < SavedStrings.length; x++) {
-        if (SavedStrings[x].length > LongestString) LongestString = SavedStrings[x].length
-    }
-
-    const DecryptLoop = async () => {
-        let Charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        //Charset += `▓▒░`
-        //Charset += `____________________________`
-        Charset += `............................`
-        Charset += `                            `
-        for (let el = 0; el < Elements.length; el++) {
-            //await new Promise(r => setTimeout(r, 50));
-            (async () => {
-                Elements[el].innerHTML = SavedStrings[el]
-                Elements[el].style.transform = `scaleY(${GenRng(50, 20)}%) translate(${GenRng(0, 20)}px, ${GenRng(0, 20)}px)`
-            })()
-        }
-    }
-    await DecryptLoop()
 }
-function startCountdown() {
+function StartCountdown() {
     let targetTime = new Date(1731733200000)
     let countdownInterval = setInterval(() => {
         let nowTime = new Date(Date.now() + 1000 * 60 * 60);
@@ -186,8 +150,7 @@ function startCountdown() {
     }, 1);
 }
 document.addEventListener('DOMContentLoaded', async () => {
-    let Elements = GetElements()
-    DecryptElements(Elements)
-    Placement()
-    startCountdown();
+    await DecryptElements(GetElements())
+    await Placement()
+    StartCountdown();
 })

@@ -9,6 +9,7 @@ const ConvertToEncrypted = (String) => {
     return Output
 }
 const GenDecryptText = ((TagName, Text, Classes = "") => {
+    /*
     const GenId = (() => {
         const Charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
         let Output = ""
@@ -29,5 +30,11 @@ const GenDecryptText = ((TagName, Text, Classes = "") => {
             ${Text}
         </${TagName}>
     </noscript>`
+    */
+    return `
+        <${TagName} class="decrypt-text ${Classes}">
+            ${Text}
+        </${TagName}>
+        `
 })
 module.exports = { ConvertToEncrypted, GenDecryptText }

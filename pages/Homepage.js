@@ -15,7 +15,66 @@ const Homepage = async (Request, BuildData) => {
         ${await Body(
         Request,
         `
-            <div>
+            <div style="position: relative;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;">
+
+                <div style="background-image: url(/assets/crt.png);
+    background-repeat: repeat;
+    background-size: 5px 5px;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 99999;
+    filter: blur(0.6px);
+    pointer-events: none;"></div>
+
+                <div style="position: absolute;
+    z-index: 999;
+    margin: 40px;
+    bottom: 0;
+    right: 0;">
+                ${await (async () => {
+            let Output = ""
+            const GetPosts = async (Pinned) => {
+                let Posts = []
+
+                let filenames = await fs.readdir(path.join(__dirname, `../posts`))
+                for (let x = 0; x < filenames.length; x++) {
+                    if (filenames[x].endsWith('.md')) {
+                        let Metadata = await fs.readFile(path.join(__dirname, `../posts/${filenames[x]}`), {
+                            encoding: 'utf-8',
+                        })
+                        let Current = JSON.parse(Metadata.split('}')[0] + '}')
+                        if (Current.indexed && ((Pinned && Current.pinned) || (!Pinned && !Current.pinned))) {
+                            Posts.push({ data: Current, file: filenames[x] })
+                        }
+                    }
+                }
+                Posts.sort((a, b) => {
+                    const FirstDate = new Date(a.data.date)
+                    const SecondDate = new Date(b.data.date)
+                    return SecondDate - FirstDate
+                })
+                return Posts
+            }
+            let AllPosts = await GetPosts(true)
+            for (const Post of await GetPosts(false))
+                AllPosts.push(Post)
+            for (const Post of AllPosts) {
+                console.log(Post)
+                Output += `
+                            <a class="homepage-link" href="/${Post.file.replace(".md", "")}">
+                                <span class="decrypt-text">
+                                    ${Post.data.title}
+                                </span>
+                            </a>
+                        `
+            }
+            return Output
+        })()}
+                </div>
                 <div style="position: absolute;z-index: 1;transform: scale(5, 5); opacity: 0.2; pointer-events: none;">
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 700 700" width="700" height="700" opacity="1"><defs><filter id="nnnoise-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="linearRGB">
                     <feTurbulence type="turbulence" numOctaves="4" seed="15" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence" baseFrequency="0.5"></feTurbulence>
@@ -53,7 +112,8 @@ const Homepage = async (Request, BuildData) => {
                 <div style="position: absolute;
   z-index: 1;
   width: 1000px;
-  height: 1000px;
+  height: 100vh;
+  position: absolute;
   pointer-events: none;
   transform: scale3d(01, -1, 1);
   filter: brightness(1) contrast(1);
@@ -78,36 +138,13 @@ const Homepage = async (Request, BuildData) => {
                 <div id="junk">
                 </div>
 
-                <span id="counter-1"></span>
-                <span id="counter-2"></span>
+                <div style="height: 100vh; overflow-y: hidden; position: relative;">
+                    <span id="counter-1"></span>
+                    <span id="counter-2"></span>
+                </div>
 
-                <div class="article-content" style="margin: 0px; padding: 50px; width: calc(100% - 100px); position: absolute; z-index: 9999;">
+                <div class="article-content" style="margin: 0px; padding: 50px; width: calc(100% - 100px); position: relative; top: -100vh; z-index: 9999;">
                     ${await (async () => {
-            const GetPosts = async (Pinned) => {
-                let Posts = []
-
-                let filenames = await fs.readdir(path.join(__dirname, `../posts`))
-                for (let x = 0; x < filenames.length; x++) {
-                    if (filenames[x].endsWith('.md')) {
-                        let Metadata = await fs.readFile(path.join(__dirname, `../posts/${filenames[x]}`), {
-                            encoding: 'utf-8',
-                        })
-                        let Current = JSON.parse(Metadata.split('}')[0] + '}')
-                        if (Current.indexed && ((Pinned && Current.pinned) || (!Pinned && !Current.pinned))) {
-                            Posts.push({ data: Current, file: filenames[x] })
-                        }
-                    }
-                }
-                Posts.sort((a, b) => {
-                    const FirstDate = new Date(a.data.date)
-                    const SecondDate = new Date(b.data.date)
-                    return SecondDate - FirstDate
-                })
-                return Posts
-            }
-            let AllPosts = await GetPosts(true)
-            for (const Post of await GetPosts(false))
-                AllPosts.push(Post)
 
             let Output = ``
             let Songs = [

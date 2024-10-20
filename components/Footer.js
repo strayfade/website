@@ -2,7 +2,7 @@ const { ConvertToEncrypted, GenDecryptText } = require('../components/EncryptedT
 
 const Footer = async (Request, Author, LastEdited = "") => {
     return `
-    <footer style="${Request.path == "/" ? "width: 100vw;" : ""}">
+    <footer>
         <div>
             ${GenDecryptText("p", Author, "footer-top")}
             ${GenDecryptText("p", LastEdited, "footer-bottom")}

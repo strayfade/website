@@ -53,4 +53,5 @@ svg path {
     margin-bottom: 10px;
     font-size: 10px;
     text-transform: lowercase;
+    display: inline-block;
 }

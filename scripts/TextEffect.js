@@ -141,7 +141,7 @@ const DecryptElements = async (Elements) => {
 function StartCountdown() {
     let targetTime = new Date(1731733200000)
     let countdownInterval = setInterval(() => {
-        let nowTime = new Date(Date.now() + 1000 * 60 * 60);
+        let nowTime = new Date(Date.now());
         let timeDifference = targetTime - nowTime
 
         // Calculate days, hours, minutes, seconds, milliseconds

@@ -61,7 +61,7 @@ Understanding how real people interact with video games is crucial in understand
 
 As the movement speed is one of the more sensitive detection vectors, I first started by writing a program in C++ that would calculate my mouse's movement speed over time, for each movement starting at zero, and write the raw data to a CSV file. This graph shows my mouse movement speed over time:
 
-<img invertable src="/assets/images/FeedForward3.png"/>    
+<img invertable src="/assets/images/FeedForward3.webp"/>    
 <p class="image-caption">The speed (Y) of my mouse cursor for various movement curves over time (X).</p>
 
 What is notable about this graph is that the movement speed follows an inverted-U curve, with a bit of randomness added. In video game cheats, movement speed is usually either a linear or exponentially decreasing graph. If an anti-cheat tracks the movement speed of the mouse over time, it would theoretically be very easy to identify cheating players.

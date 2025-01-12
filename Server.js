@@ -3,12 +3,14 @@ const { App } = require('./App')
 const { Log } = require('./Log')
 
 const Server = http.createServer(App)
+let Port = 3000;
 if (process.argv[2])
-    Server.listen(process.argv[2])
+    Port = process.argv[2]
 else if (process.env.PORT)
-    Server.listen(process.env.PORT)
+    Port = process.env.PORT
 else 
-    Server.listen(3000);
+    Port = 3000
+Server.listen(Port)
 
 Server.on('listening', () => {
     const Address = Server.address()

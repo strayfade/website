@@ -9,7 +9,7 @@ footer {
 
 footer p {
     margin: 0px;
-    font-size: 14px;
+    font-size: 16px;
     text-transform: lowercase;
 }
 
@@ -20,7 +20,8 @@ footer .footer-top {
 footer .footer-bottom {
     margin-top: 4px;
     margin-left: calc(25px + 26px);
-    font-size: 11px;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 .social-container {
@@ -48,9 +49,12 @@ svg path {
 }
 
 .footer-link {
-    opacity: 0.5;
     margin-right: 10px;
     margin-bottom: 10px;
-    font-size: 10px;
+    font-size: 13px;
     text-transform: lowercase;
+    background-color: var(--background);
+}
+.footer-link:hover {
+    filter: invert(1);
 }

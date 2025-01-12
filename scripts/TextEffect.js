@@ -30,23 +30,13 @@ const DecryptElements = async (Elements) => {
 
     const DecryptLoop = async () => {
         let Charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        //Charset += `▓▒░`
-        //Charset += `____________________________`
         Charset += `............................`
         Charset += `                            `
         for (let el = 0; el < Elements.length; el++) {
             await new Promise(r => setTimeout(r, 50));
             (async () => {
                 // Iterate through string
-                const StringLengthMod = (SavedStrings[el].length / 20)
                 for (let i = 0; i < SavedStrings[el].length; i++) {
-
-                    // Decrypt chance 
-                    /*if (Math.random() <= DecryptChance) {
-                        await new Promise(r => setTimeout(r, 20 / StringLengthMod));
-                        i--
-                        continue;
-                    }*/
 
                     // Build new string
                     let NewString = ""

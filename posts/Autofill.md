@@ -16,7 +16,7 @@
 
 _Well, mostly working on music._ But when I'm not doing that, I'm usually doing work for school. Here is an example of the "**Foundations in Personal Finance**" class, taken through the **RamseyClassroom** website:
 
-<img src="/assets/images/Autofill1.png"/>
+<img src="/assets/images/Autofill1.webp"/>
 <p class="image-caption">In this portion of the assignment, we have to watch a video and fill in the blanks using what is explained in the video.</p>
 
 Originally, my first idea was to grab the transcript (closed captions) for the video and then search for the content before and after the blanks. This would have worked because the sentences used in the fill-in-the-blank questions are pulled directly from the video's dialogue. However, there was a better solution.
@@ -25,7 +25,7 @@ Originally, my first idea was to grab the transcript (closed captions) for the v
 
 By checking DevTools, I noticed JSON responses coming from an API that had basically all of the class content. **And, for whatever reason, this included all of the answers to the questions.**
 
-<img src="/assets/images/Autofill2.png"/>
+<img src="/assets/images/Autofill2.webp"/>
 <p class="image-caption">Why?</p>
 
 As soon as I saw this, I knew that all I had to do was replay that request, capture the answers from the JSON response, and autofill them in the `input` textboxes using some everyday browser Javascript.

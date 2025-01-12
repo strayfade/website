@@ -1,6 +1,8 @@
 // Function output cache
 let rtFuncCache = []
 
+var minify = require('html-minifier').minify;
+
 // Function responsible for caching single outputs of a function (by reference)
 const cacheFunc = async (funcPtr, params) => {
 
@@ -22,7 +24,7 @@ const cacheFunc = async (funcPtr, params) => {
     }
 
     // Entry was not found
-    let funcOut = await funcPtr(params)
+    let funcOut = minify(await funcPtr(params))
     rtFuncCache.push({
         params: params,
         out: funcOut

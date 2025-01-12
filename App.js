@@ -43,23 +43,27 @@ App.get('/R', WrapAsync(async (Request, Response) => {
         script: CurrentScript
     }))
 }))
+
+let Port = 3000;
+if (process.argv[2])
+    Port = process.argv[2]
+else if (process.env.PORT)
+    Port = process.env.PORT
+else 
+    Port = 3000
 App.get('/', WrapAsync(async (Request, Response) => {
     Response.send(await Homepage(Request, {
         stylesheet: CurrentStylesheet,
         script: CurrentScript
-    }))
+    }, Port))
 }))
-App.get('/:path', WrapAsync(async (Request, Response) => {
+App.get('/:path', WrapAsync(async (Request, Response, Next) => {
     const ValidPost = await Post(Request, {
         stylesheet: CurrentStylesheet,
         script: CurrentScript
     })
     if (!ValidPost) {
-        Response.status(404).send(
-            await Post({
-                path: '/404'
-            })
-        )
+        Next();
     } else {
         Response.send(ValidPost)
     }
@@ -72,14 +76,7 @@ App.use((Error, Request, Response, Next) => {
     Next(Error)
 })
 App.get('*', WrapAsync(async (Request, Response) => {
-    Response.send(
-        await Post({
-            path: '/404'
-        }, {
-            stylesheet: CurrentStylesheet,
-            script: CurrentScript
-        })
-    )
+    Response.sendStatus(404);
 }))
 App.use((err, req, res, next) => {
     console.error(err.stack)

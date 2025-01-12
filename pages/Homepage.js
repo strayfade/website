@@ -62,17 +62,7 @@ const Homepage = async (Request, BuildData) => {
         })()}
                 </div>
             </div>
-            ${await Footer(Request, `// ${(() => {
-            const FooterOpts = [
-                `Made by Me`,
-                `Designed by Noah`,
-                `Strayfade`,
-                `Version Five`,
-                `Made with <3 by Noah`,
-                `I did that!`,
-            ]
-            return FooterOpts[Math.floor(Math.random() * FooterOpts.length)];
-        })()}`, `Copyright (c) Strayfade 2024`)}
+            ${await Footer(Request, `// Made by Noah`, `Copyright (c) Strayfade 2024`)}
             `
     , BuildData)}
     `

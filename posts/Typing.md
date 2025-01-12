@@ -16,7 +16,7 @@
 -   **Fact 1**: I know how to type already.
 -   **Fact 2**: I don't want to type more than I already do daily.
 
-<img src="/assets/images/Typing1.png"/>
+<img src="/assets/images/Typing1.webp"/>
 <p class="image-caption">I'm not typing randomized strings hundreds of times. Absolutely wild.</p>
 
 ### How do we approach this challenge?
@@ -36,7 +36,7 @@ Using OCR, I could capture a section of the screen and detect letters from it. T
 -   Python is a notoriously slow interpreted language.
 -   Each section I wanted to type had to be manually selected/screenshotted, which became time-consuming and tedious when completing multiple lessons at once.
 -   This all had to work cross-platform since I use Windows, MacOS, and Linux, which wasn't easy to do in Python.
--   Some characters simply couldn't be recognized by Tesseract, such as Typing.com's newline character (`⏎`) which requires the user to press `enter` to continue.
+-   Some characters simply couldn't be recognized by Tesseract, such as Typing.com's newline character which requires the user to press `enter` to continue.
 
 _So, that's why I decided to try..._
 
@@ -50,7 +50,7 @@ So, with this knowledge, I rewrote the task at hand using Selenium. Keys would b
 
 I wrote further code to simulate typing mistakes, which would then press backspace and re-type the correct letter, and I also added logic to type at different speeds (in "words per minute"). Without these limiters, it's incredible what times the script can achieve.
 
-<img src="/assets/images/Typing2.png"/>
+<img src="/assets/images/Typing2.webp"/>
 <p class="image-caption">Uh, I accidentally did this on my school account...</p>
 
 > The source code for this project is available at the repository [Strayfade/Typewriter](https://github.com/Strayfade/Typewriter/blob/main/index.js)

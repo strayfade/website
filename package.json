@@ -14,6 +14,7 @@
         "express": "^4.18.2",
         "express-session": "^1.17.3",
         "helmet": "^6.0.1",
+        "html-minifier": "^4.0.0",
         "http": "^0.0.1-security",
         "javascript-obfuscator": "^4.1.0",
         "markdown": "^0.5.0",

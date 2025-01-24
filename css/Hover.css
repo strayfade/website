@@ -1,0 +1,6 @@
+a {
+    background-color: var(--background);
+}
+a:hover {
+    filter:invert(1);
+}

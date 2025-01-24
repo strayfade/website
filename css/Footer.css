@@ -9,12 +9,13 @@ footer {
 
 footer p {
     margin: 0px;
-    font-size: 16px;
+    font-size: 14px;
     text-transform: lowercase;
 }
 
 footer .footer-top {
     margin-left: 23px;
+    font-weight: 400;
 }
 
 footer .footer-bottom {
@@ -28,13 +29,19 @@ footer .footer-bottom {
     display: flex;
     margin-left: calc(25px + 26px);
     margin-bottom: calc(25px + 26px - 10px);
-    margin-top: 15px;
+    margin-top: 5px;
     width: 50%;
     flex-wrap: wrap;
 }
 
 .social-container a {
     text-decoration: none;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 2px;
+    font-size: 13px;
+    text-transform: lowercase;
+    background-color: var(--background);
 }
 
 @media screen and (max-width: 960px) {
@@ -46,15 +53,4 @@ footer .footer-bottom {
 
 svg path {
     fill: var(--foreground);
-}
-
-.footer-link {
-    margin-right: 10px;
-    margin-bottom: 10px;
-    font-size: 13px;
-    text-transform: lowercase;
-    background-color: var(--background);
-}
-.footer-link:hover {
-    filter: invert(1);
 }

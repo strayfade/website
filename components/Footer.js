@@ -5,7 +5,7 @@ const Footer = async (Request, Author = "// ", LastEdited = "") => {
     <footer style="${Request.path == "/" ? "width: 100vw;" : ""}">
         <div>
             ${GenDecryptText("p", Author, "footer-top")}
-            ${GenDecryptText("p", LastEdited, "footer-bottom")}
+            ${/*GenDecryptText("p", LastEdited, "footer-bottom")*/""}
             <div class="social-container">
                 <a href="https://github.com/strayfade">
                     ${GenDecryptText("span", "Github", "footer-link")}

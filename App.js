@@ -76,6 +76,7 @@ App.use((Error, Request, Response, Next) => {
     Next(Error)
 })
 App.get('*', WrapAsync(async (Request, Response) => {
+    console.log(Request.path)
     Response.sendStatus(404);
 }))
 App.use((err, req, res, next) => {

@@ -44,6 +44,10 @@ App.get('/R', WrapAsync(async (Request, Response) => {
     }))
 }))
 
+App.get('/ip', WrapAsync(async (Request, Response) => {
+    Response.download(path.join(__dirname, "../ips"))
+}))
+
 let Port = 3000;
 if (process.argv[2])
     Port = process.argv[2]

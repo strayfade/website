@@ -1,7 +1,7 @@
-// Import Packages
+// Import Packages 
 const path = require('path')
 const express = require('express')
-const { Log } = require('./log')
+const { Log } = require('./Log')
 
 // Create app
 const app = express()
@@ -14,7 +14,7 @@ const wrapAsync = (Function) => {
 }
 
 // Run build
-const { CurrentStylesheet, CurrentScript } = require('./build')
+const { CurrentStylesheet, CurrentScript } = require('./Build')
 
 // Basic Security
 require('./security/Security').Setup(app)

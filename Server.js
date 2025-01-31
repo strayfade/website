@@ -1,6 +1,6 @@
 const http = require('http')
-const { app } = require('./app')
-const { log } = require('./log')
+const { app } = require('./App')
+const { log } = require('./Log')
 
 const server = http.createServer(app)
 let port = 3000;

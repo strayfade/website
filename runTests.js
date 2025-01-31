@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs').promises
 const path = require('path')
-const { log, logColors } = require('./log')
+const { log, logColors } = require('./Log')
 
 const fetchStatusCode = async (url) => {
     try {

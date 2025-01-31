@@ -1,4 +1,4 @@
-// Function output cache
+// Function cache
 let rtFuncCache = []
 
 // Function responsible for caching single outputs of a function (by reference)

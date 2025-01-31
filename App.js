@@ -1,12 +1,12 @@
 // Import Packages
 const path = require('path')
 const express = require('express')
-const { Log } = require('./Log')
+const { Log } = require('./log')
 
-// Create App
-const App = express()
+// Create app
+const app = express()
 
-const WrapAsync = (Function) => {
+const wrapAsync = (Function) => {
     return (Request, Response, Next) => {
         const FunctionOut = Function(Request, Response, Next)
         return Promise.resolve(FunctionOut).catch(Next)
@@ -14,22 +14,20 @@ const WrapAsync = (Function) => {
 }
 
 // Run build
-const { CurrentStylesheet, CurrentScript } = require('./Build')
+const { CurrentStylesheet, CurrentScript } = require('./build')
 
 // Basic Security
-require('./security/Security').Setup(App)
-const RequestBlocking = require('./RequestBlocking')
-App.use(RequestBlocking.Middleware)
+require('./security/Security').Setup(app)
 
 // Static Directories
-App.use('/assets', express.static('assets'))
-App.use('/', express.static('build'))
+app.use('/assets', express.static('assets'))
+app.use('/', express.static('build'))
 
 // Sources
-App.get('/favicon.ico', WrapAsync(async (Request, Response) => {
+app.get('/favicon.ico', wrapAsync(async (Request, Response) => {
     Response.sendFile(path.resolve(__dirname, 'assets/Icon.ico'))
 }))
-App.get('/robots.txt', WrapAsync(async (Request, Response) => {
+app.get('/robots.txt', wrapAsync(async (Request, Response) => {
     Response.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
 }))
 
@@ -37,31 +35,20 @@ App.get('/robots.txt', WrapAsync(async (Request, Response) => {
 const Re = require('./pages/Re').Re
 const Homepage = require('./pages/Homepage').Homepage
 const Post = require('./pages/Post').Post
-App.get('/R', WrapAsync(async (Request, Response) => {
+app.get('/R', wrapAsync(async (Request, Response) => {
     Response.send(await Re(Request, {
         stylesheet: CurrentStylesheet,
         script: CurrentScript
     }))
 }))
 
-App.get('/ip', WrapAsync(async (Request, Response) => {
-    Response.download(path.join(__dirname, "../ips"))
-}))
-
-let Port = 3000;
-if (process.argv[2])
-    Port = process.argv[2]
-else if (process.env.PORT)
-    Port = process.env.PORT
-else 
-    Port = 3000
-App.get('/', WrapAsync(async (Request, Response) => {
+app.get('/', wrapAsync(async (Request, Response) => {
     Response.send(await Homepage(Request, {
         stylesheet: CurrentStylesheet,
         script: CurrentScript
-    }, Port))
+    }))
 }))
-App.get('/:path', WrapAsync(async (Request, Response, Next) => {
+app.get('/:path', wrapAsync(async (Request, Response, Next) => {
     const ValidPost = await Post(Request, {
         stylesheet: CurrentStylesheet,
         script: CurrentScript
@@ -74,18 +61,18 @@ App.get('/:path', WrapAsync(async (Request, Response, Next) => {
 }))
 
 // Error Handling
-App.use((Error, Request, Response, Next) => {
+app.use((Error, Request, Response, Next) => {
     Log('Error: ')
     console.log(Error)
     Next(Error)
 })
-App.get('*', WrapAsync(async (Request, Response) => {
+app.get('*', wrapAsync(async (Request, Response) => {
     console.log(Request.path)
     Response.sendStatus(404);
 }))
-App.use((err, req, res, next) => {
+app.use((err, req, res, next) => {
     console.error(err.stack)
     res.sendStatus(404)
 })
 
-module.exports = { App }
+module.exports = { app }

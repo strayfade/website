@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const { Log, LogColors } = require('./Log')
+const { log, logColors } = require('./log')
 
 const JSProcessorOptions = {
     compact: true,
@@ -67,7 +67,7 @@ let CurrentStylesheet = "";
 let CurrentScript = "";
 
 const PackStylesheets = async () => {
-    Log('[BUILD] - Merging CSS files...')
+    log('[BUILD] - Merging CSS files...')
     let Stylesheet = ''
     let filenames = fs.readdirSync(__dirname + '/css')
     for (let x = 0; x < filenames.length; x++) {
@@ -92,11 +92,11 @@ const PackStylesheets = async () => {
 
     CurrentStylesheet = Stylesheet
 
-    Log(`[BUILD] - Finished file: ${OutputFile}`, LogColors.Success)
+    log(`[BUILD] - Finished file: ${OutputFile}`, logColors.Success)
 }
 
 const PackScripts = async () => {
-    Log('[BUILD] - Merging Javascript files...')
+    log('[BUILD] - Merging Javascript files...')
     let Script = ''
     let filenames = fs.readdirSync(__dirname + '/scripts')
     for (let x = 0; x < filenames.length; x++) {
@@ -116,7 +116,7 @@ const PackScripts = async () => {
     
     CurrentScript = Script
 
-    Log(`[BUILD] - Finished file: ${OutputFile}`, LogColors.Success)
+    log(`[BUILD] - Finished file: ${OutputFile}`, logColors.Success)
 }
 
 PackStylesheets()

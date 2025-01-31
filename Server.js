@@ -1,24 +1,26 @@
 const http = require('http')
-const { App } = require('./App')
-const { Log } = require('./Log')
+const { app } = require('./app')
+const { log } = require('./log')
 
-const Server = http.createServer(App)
-let Port = 3000;
+const server = http.createServer(app)
+let port = 3000;
 if (process.argv[2])
-    Port = process.argv[2]
+    port = process.argv[2]
 else if (process.env.PORT)
-    Port = process.env.PORT
+    port = process.env.PORT
 else 
-    Port = 3000
-Server.listen(Port)
+    port = 3000
+server.listen(port)
 
-Server.on('listening', () => {
-    const Address = Server.address()
+server.on('listening', () => {
+    const Address = server.address()
     const Binding = typeof Address === 'string' ? `pipe ${Address}` : `port ${Address.port}`
     if (Address.port < 10000) {
-        Log(`Listening on ${Binding}`)
-        Log(`Local address: http://127.0.0.1:${Address.port}`)
+        log(`Listening on ${Binding}`)
+        log(`Local address: http://127.0.0.1:${Address.port}`)
     }
+
+    require('./runTests').runTests(port)
 })
 
-module.exports = { Server }
+module.exports = { server }

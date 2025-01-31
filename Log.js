@@ -22,7 +22,7 @@ const ColorsBackground = Object.freeze({
     Gray: 100
 });
 
-const LogColors = Object.freeze({
+const logColors = Object.freeze({
     Default: {
         fg: null,
         bg: null
@@ -41,14 +41,14 @@ const LogColors = Object.freeze({
     }
 });
 
-const LogPrivate = (String, Colors = LogColors.Default) => {
+const LogPrivate = (String, Colors = logColors.Default) => {
     const ControlCode = (Code) => {
         return `\x1b[${Code}m`
     }
-    console.log(`${Colors.fg ? ControlCode(Colors.fg) : ""}${Colors.bg ? ControlCode(Colors.bg) : ""}${Colors != LogColors.Default ? ControlCode(1) : ""}${String.toString()}${ControlCode(0)}`)
+    console.log(`${Colors.fg ? ControlCode(Colors.fg) : ""}${Colors.bg ? ControlCode(Colors.bg) : ""}${Colors != logColors.Default ? ControlCode(1) : ""}${String.toString()}${ControlCode(0)}`)
 }
 
-const Log = (String, Colors = LogColors.Default) => {
+const log = (String, Colors = logColors.Default) => {
     const GenerateTimestamp = () => {
         const P = (Input, Length = 2) => {
             let Output = Input.toString();
@@ -62,4 +62,4 @@ const Log = (String, Colors = LogColors.Default) => {
     LogPrivate(`[${GenerateTimestamp()}] ${String}`, Colors)
 }
 
-module.exports = { ColorsForeground, ColorsBackground, LogColors, Log };
+module.exports = { ColorsForeground, ColorsBackground, logColors, log };

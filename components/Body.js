@@ -1,4 +1,4 @@
-const { cacheFunc } = require("../Cache")
+const { cacheFunc } = require("../cache")
 
 const Body = async (Request, Inner, BuildData) => {
     const InnerFn = () => {

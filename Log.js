@@ -28,24 +28,37 @@ const logColors = Object.freeze({
         bg: null
     },
     Warning: {
+        fg: ColorsForeground.Yellow,
+        bg: null
+    },
+    WarningVisible: {
         fg: ColorsForeground.Black,
         bg: ColorsBackground.Yellow
     },
     Error: {
+        fg: ColorsForeground.Red,
+        bg: null
+    },
+    ErrorVisible: {
         fg: ColorsForeground.White,
         bg: ColorsBackground.Red
     },
     Success: {
         fg: ColorsForeground.Green,
         bg: null
+    },
+    SuccessVisible: {
+        fg: ColorsForeground.Black,
+        bg: ColorsBackground.Green
     }
 });
 
 const LogPrivate = (String, Colors = logColors.Default) => {
-    const ControlCode = (Code) => {
+    const cC = (Code) => {
         return `\x1b[${Code}m`
     }
-    console.log(`${Colors.fg ? ControlCode(Colors.fg) : ""}${Colors.bg ? ControlCode(Colors.bg) : ""}${Colors != logColors.Default ? ControlCode(1) : ""}${String.toString()}${ControlCode(0)}`)
+    const shouldBold = Colors == logColors.successVisible || Colors == logColors.warningVisible || Colors == logColors.errorVisible
+    console.log(`${Colors.fg ? cC(Colors.fg) : ""}${Colors.bg ? cC(Colors.bg) : ""}${shouldBold ? cC(1) : ""}${String.toString()}${cC(0)}`)
 }
 
 const log = (String, Colors = logColors.Default) => {

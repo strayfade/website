@@ -6,7 +6,7 @@ const BackButton = async (Request) => {
                     <path d="M360-240 120-480l240-240 56 56-144 144h568v80H272l144 144-56 56Z"/>
                 </svg>
             </p>
-            <p class="back-text">
+            <p class="back-text" style="margin: 2px 4px 0px 0px;">
                 back
             </p>
         </a>

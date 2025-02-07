@@ -60,12 +60,12 @@ const Body = require('../components/Body').Body
 const Footer = require('../components/Footer').Footer
 const BackButton = require('../components/BackButton').BackButton
 
-const { ConvertToEncrypted, GenDecryptText } = require('../components/EncryptedTextUtil')
+const { GenDecryptText } = require('../components/EncryptedTextUtil')
 
-const Post = async (Request, BuildData) => {
+const Post = async (Request, Path, BuildData) => {
     let Failed = false
     let TargetExists = false
-    const TargetPath = path.join(__dirname, `../posts${Request.path}.md`)
+    const TargetPath = path.join(__dirname, `../posts/${Path}.md`)
     try {
         await fs.stat(TargetPath)
         TargetExists = true

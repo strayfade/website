@@ -6,9 +6,7 @@
     font-family: var(--font-family-mono);
     display: flex;
     font-size: 14px;
-}
-.back-button p {
-    margin: 0;
+    height: 20px;
 }
 .back-button .back-icon {
     margin-right: 10px;

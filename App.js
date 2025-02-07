@@ -49,7 +49,20 @@ app.get('/', wrapAsync(async (Request, Response) => {
     }))
 }))
 app.get('/:path', wrapAsync(async (Request, Response, Next) => {
-    const ValidPost = await Post(Request, {
+    const ValidPost = await Post(Request, Request.params.path, {
+        stylesheet: CurrentStylesheet,
+        script: CurrentScript
+    })
+    if (!ValidPost) {
+        Next();
+    } else {
+        Response.send(ValidPost)
+    }
+}))
+
+// Support for old links
+app.get('/:lang/:path', wrapAsync(async (Request, Response, Next) => {
+    const ValidPost = await Post(Request, Request.params.path, {
         stylesheet: CurrentStylesheet,
         script: CurrentScript
     })

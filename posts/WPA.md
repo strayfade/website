@@ -1,5 +1,5 @@
 {
-"title": "WPA2 Failure",
+"title": "wpa2 failure",
 "description": "Learning about WPA2 to break into my school's secure private network",
 "tags": ["Hacking", "Linux", "WPA"],
 "author": "Strayfade",

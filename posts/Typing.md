@@ -1,5 +1,5 @@
 {
-"title": "Typewriter",
+"title": "typewriter",
 "description": "Writing a script to complete my homework",
 "tags": ["NodeJS"],
 "author": "Strayfade",

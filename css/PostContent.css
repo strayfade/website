@@ -1,4 +1,4 @@
-.article-content p img {
+.article-content p img, .article-content img {
     max-width: 100%;
     max-height: 500px;
     margin: 0px auto;
@@ -35,8 +35,6 @@ blockquote {
 }
 
 .post-description {
-    font-style: italic;
-    margin-bottom: 25px;
     margin-top: 5px;
 }
 

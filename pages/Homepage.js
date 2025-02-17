@@ -48,7 +48,7 @@ const Homepage = async (Request, BuildData) => {
             for (const Post of AllPosts) {
                 
                 Output += `
-                                <a class="post${Post.data.pinned ? ` post-pinned` : ``}" href="/${Post.file.split(".")[0]}">
+                                <a class="no-hover post${Post.data.pinned ? ` post-pinned` : ``}" href="/${Post.file.split(".")[0]}" id="post${AllPosts.indexOf(Post)}" onmouseover="SetHighlight('post${AllPosts.indexOf(Post)}')">
                                     <div class="post-header">
                                         ${GenDecryptText("h3", Post.data.title)}
                                         ${GenDecryptText("p", Post.data.date)}
@@ -63,6 +63,7 @@ const Homepage = async (Request, BuildData) => {
                 </div>
             </div>
             ${await Footer(Request, `// Made by Noah`, `Copyright (c) Strayfade 2024`)}
+            <div id="highlight"></div>
             `
     , BuildData)}
     `

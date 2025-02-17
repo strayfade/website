@@ -2,5 +2,25 @@ a {
     background-color: var(--background);
 }
 a:hover {
-    filter:invert(1);
+    filter: invert(1);
+}
+.no-hover:hover {
+    filter: invert(0);
+}
+#highlight {
+    backdrop-filter: invert(1);
+    position: absolute;
+    z-index: 3;
+    transition: 0.25s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    pointer-events: none;
+    display: block;
+}
+@media screen and (max-width: 1000px) {
+    #highlight {
+        display: none;
+    }    
+    .no-hover:hover {
+        filter: invert(1);
+    }
 }

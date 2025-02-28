@@ -2,7 +2,7 @@
 "title": "autofill",
 "description": "Cheating in online classes using an unsecured API",
 "tags": ["Browser", "Javascript", "APIs"],
-"author": "Strayfade",
+"author": "strayfade",
 "date": "11/14/2023",
 "showTitle": true,
 "indexed": true,
@@ -50,7 +50,7 @@ The original version of this code looked like this:
         }
     });
 
-Later on, I added a button to the website that would run this code and autofill the answers. The script is available as a [TamperMonkey Userscript](https://gist.github.com/Strayfade/2975e2f5fa2566b53f5bb2dbae3b5be9/raw/b0ef862645d3ffd42c9feda25bcf5d397d33c3e6/RamseyClassroom.user.js), and the raw code is also available [here](https://gist.github.com/Strayfade/2975e2f5fa2566b53f5bb2dbae3b5be9).
+Later on, I added a button to the website that would run this code and autofill the answers. The script is available as a [TamperMonkey Userscript](https://gist.github.com/strayfade/2975e2f5fa2566b53f5bb2dbae3b5be9/raw/b0ef862645d3ffd42c9feda25bcf5d397d33c3e6/RamseyClassroom.user.js), and the raw code is also available [here](https://gist.github.com/strayfade/2975e2f5fa2566b53f5bb2dbae3b5be9).
 
 > **Moral of the story**
 >

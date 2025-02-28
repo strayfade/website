@@ -2,7 +2,7 @@
 "title": "Cheat vs. Anti-cheat",
 "description": "Learning heuristic detection vectors to make smarter cheats (and anti-cheats)",
 "tags": ["Anti-cheat", "Math", "C++"],
-"author": "Strayfade",
+"author": "strayfade",
 "date": "8/19/2024",
 "showTitle": true,
 "indexed": false,

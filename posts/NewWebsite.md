@@ -2,7 +2,7 @@
 "title": "New Website",
 "description": "Some interesting things about how my website was made",
 "tags": ["JavaScript", "NodeJS", "Web"],
-"author": "Strayfade",
+"author": "strayfade",
 "date": "8/31/2022",
 "showTitle": true,
 "indexed": false
@@ -10,7 +10,7 @@
 
 ### UPDATE
 
-> As of 2/14/2023, the "new" website that this article is referring to is not the current version. The version of **strayfade.com** discussed in this article is completely different than the current version. To see the old version, download it from [this](https://github.com/Strayfade/Website/tree/48a463ccbb64c59ec4f5dc9cbb690d05ea4b87b6) GitHub link.
+> As of 2/14/2023, the "new" website that this article is referring to is not the current version. The version of **strayfade.com** discussed in this article is completely different than the current version. To see the old version, download it from [this](https://github.com/strayfade/website/tree/48a463ccbb64c59ec4f5dc9cbb690d05ea4b87b6) GitHub link.
 >
 > Although, most of the optimization and things I learned in this article do still apply to the new website.
 
@@ -52,4 +52,4 @@ The only files requested by the page are [Production.css](/build/production.css)
 
 ### Open-source
 
-The code for this website is completely open-source and available on [Strayfade/Website](https://github.com/Strayfade/Website) (Github)
+The code for this website is completely open-source and available on [strayfade/website](https://github.com/strayfade/website) (Github)

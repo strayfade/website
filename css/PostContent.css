@@ -32,6 +32,7 @@ blockquote {
     margin-top: 10px;
     font-size: 36px;
     font-weight: 200;
+    font-family: var(--font-family-mono);
 }
 
 .post-description {
@@ -39,9 +40,9 @@ blockquote {
 }
 
 .post-author {
-    margin-top: 0px;
+    margin: 0px;
     font-size: 12px;
     font-style: normal;
-    display: none;
     text-align: right;
+    opacity: 0;
 }

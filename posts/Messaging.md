@@ -2,7 +2,7 @@
 "title": "iMessage",
 "description": "Exploiting a jailbroken iPhone to allow iMessage support on any platform",
 "tags": ["iOS", "Exploit", "Web"],
-"author": "Strayfade",
+"author": "strayfade",
 "date": "9/17/2024",
 "showTitle": true,
 "indexed": false,

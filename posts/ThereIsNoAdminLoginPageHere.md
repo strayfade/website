@@ -1,7 +1,7 @@
 {
 "title": "Secret Admin Login Page",
 "description": "There is nothing here!",
-"author": "Strayfade",
+"author": "strayfade",
 "date": "2/3/2023",
 "showTitle": false,
 "indexed": false

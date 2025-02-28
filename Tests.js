@@ -41,6 +41,8 @@ const runTests = async (port) => {
         log(`[LogTests] All tests passed!`, logColors.SuccessVisible)
     else
         log(`[LogTests] One or more tests failed!`, logColors.ErrorVisible)
+    log(`Local address: http://127.0.0.1:${port}`)
+
 }
 
 module.exports = { runTests }

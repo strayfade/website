@@ -1,6 +1,6 @@
 const { ConvertToEncrypted, GenDecryptText } = require('../components/EncryptedTextUtil')
 
-const Footer = async (Request, Author = "// ", LastEdited = "") => {
+const Footer = async (Request, Author = "// by strayfade", LastEdited = "") => {
     return `
     <footer style="${Request.path == "/" ? "width: 100vw;" : ""}">
         <div>

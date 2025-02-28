@@ -62,7 +62,7 @@ const Homepage = async (Request, BuildData) => {
         })()}
                 </div>
             </div>
-            ${await Footer(Request, `// Made by Noah`, `Copyright (c) Strayfade 2024`)}
+            ${await Footer(Request, "// by strayfade", `Copyright (c) strayfade 2024`)}
             <div id="highlight"></div>
             `
     , BuildData)}

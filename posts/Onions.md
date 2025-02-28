@@ -2,7 +2,7 @@
 "title": "Like An Onion",
 "description": "Rewriting my cheat to operate without an internet connection (for now)",
 "tags": ["Anti-cheat", "Security", "C++"],
-"author": "Strayfade",
+"author": "strayfade",
 "date": "9/10/2024",
 "showTitle": true,
 "indexed": false,

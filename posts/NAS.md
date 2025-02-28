@@ -2,7 +2,7 @@
 "title": "Cloud Storage",
 "description": "Turning a Raspberry Pi and spare SSDs into a private cloud storage solution",
 "tags": ["Raspberry Pi", "Linux"],
-"author": "Strayfade",
+"author": "strayfade",
 "date": "12/7/2023",
 "showTitle": true,
 "indexed": false,

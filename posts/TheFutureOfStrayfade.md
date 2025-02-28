@@ -1,7 +1,7 @@
 {
-"title": "The Future of Strayfade",
+"title": "The Future of strayfade",
 "description": "Let's talk about things, shall we?",
-"author": "Strayfade",
+"author": "strayfade",
 "date": "6/4/2022",
 "showTitle": true,
 "indexed": false
@@ -29,4 +29,4 @@ As always, thanks to all of you for sticking around for this long. I hope to pro
 
 See you in July.
 
-_-Strayfade_
+_-strayfade_

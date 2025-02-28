@@ -20,6 +20,7 @@
     margin-right: 10px;
     font-size: 24px;
     font-weight: 200;
+    font-family: var(--font-family-mono);
 }
 .post-header p {
     margin-top: 8px;

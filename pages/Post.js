@@ -104,11 +104,6 @@ const Post = async (Request, Path, BuildData) => {
                                         ${GenDecryptText("h1", Meta.title)}
                                         ${GenDecryptText("p", Meta.description, "post-description")}
                                         ${GenDecryptText("p", `by ${Meta.author}`, "post-author")}
-                                        <noscript>
-                                            <p class="noscript-banner">
-                                                Some elements in this article may not render correctly without Javascript enabled.
-                                            </p>
-                                        </noscript>
                                     </div>
                                     `
                 }

@@ -2,7 +2,7 @@
 "title": "typewriter",
 "description": "Writing a script to complete my homework",
 "tags": ["NodeJS"],
-"author": "Strayfade",
+"author": "strayfade",
 "date": "4/19/2023",
 "showTitle": true,
 "indexed": true,
@@ -53,4 +53,4 @@ I wrote further code to simulate typing mistakes, which would then press backspa
 <img src="/assets/images/Typing2.webp"/>
 <p class="image-caption">Uh, I accidentally did this on my school account...</p>
 
-> The source code for this project is available at the repository [Strayfade/Typewriter](https://github.com/Strayfade/Typewriter/blob/main/index.js)
+> The source code for this project is available at the repository [strayfade/typewriter](https://github.com/strayfade/typewriter/blob/main/index.js)

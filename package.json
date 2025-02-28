@@ -1,13 +1,13 @@
 {
     "name": "website",
     "version": "1.0.0",
-    "description": "The public source code of Strayfade.com",
+    "description": "The public source code of strayfade.com",
     "main": "App.js",
     "scripts": {
         "develop": "nodemon --exec \"node Server 8080\" --ignore \"build/\" --ext \"\"",
         "build": "node Build"
     },
-    "author": "Strayfade",
+    "author": "strayfade",
     "license": "MIT",
     "dependencies": {
         "axios": "^1.7.9",

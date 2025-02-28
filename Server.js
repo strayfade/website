@@ -17,10 +17,9 @@ server.on('listening', () => {
     const Binding = typeof Address === 'string' ? `pipe ${Address}` : `port ${Address.port}`
     if (Address.port < 10000) {
         log(`Listening on ${Binding}`)
-        log(`Local address: http://127.0.0.1:${Address.port}`)
     }
 
-    require('./runTests').runTests(port)
+    require('./Tests').runTests(port)
 })
 
 module.exports = { server }

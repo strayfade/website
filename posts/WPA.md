@@ -2,7 +2,7 @@
 "title": "wpa2 failure",
 "description": "Learning about WPA2 to break into my school's secure private network",
 "tags": ["Hacking", "Linux", "WPA"],
-"author": "Strayfade",
+"author": "strayfade",
 "date": "11/8/2022",
 "showTitle": true,
 "indexed": true,

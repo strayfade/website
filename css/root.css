@@ -1,6 +1,6 @@
 :root {
-    --font-family: Georgia Regular, serif;
-    --font-family-mono: monospace;
+    --font-family: Georgia, serif;
+    --font-family-mono: Reddit Mono, monospace;
     --foreground: var(--dark);
     --background: var(--light);
     --dark: black;

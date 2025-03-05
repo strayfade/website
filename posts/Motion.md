@@ -7,5 +7,5 @@
 "showTitle": true,
 "indexed": false,
 "disableHighlighting": true,
-"pinned": true
+"pinned": false
 }

@@ -7,7 +7,7 @@
 "showTitle": true,
 "indexed": true,
 "disableHighlighting": false,
-"pinned": true
+"pinned": false
 }
 
 > *I do not condone cheating in online classes.*

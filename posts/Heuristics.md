@@ -1,15 +1,13 @@
 {
-"title": "Cheat vs. Anti-cheat",
-"description": "Learning heuristic detection vectors to make smarter cheats (and anti-cheats)",
+"title": "detection vectors",
+"description": "Understanding heuristic detection vectors to make smarter cheats",
 "tags": ["Anti-cheat", "Math", "C++"],
 "author": "strayfade",
 "date": "8/19/2024",
 "showTitle": true,
-"indexed": false,
-"pinned": true
+"indexed": true,
+"pinned": false
 }
-
-> This document will explain the importance of correctly implemented heuristic detection vectors in anti-cheat software. Furthermore, the document explores ways that these detection vectors could be evaded by video game cheats, primarily by generating human-looking mouse movement curves using neural networks.
 
 ### Introduction
 
@@ -40,15 +38,13 @@ Just by scrolling through open-source repositories on the internet, it's easy to
 
 This is the equation for the most common "smoothing" used in video game cheats, with x₁ being the starting mouse coordinate, x₂ being the target coordinate, and C being the smoothing coefficient:
 
-<latex>
-$$
-\Delta x=x_1+\frac{x_2-x_1}{C}
-$$
-</latex>
+<p style="text-align: center;">
+x = x₁ + (x₂ - x₁) / C
+</p>
 
 This equation is a very simple, yet effective form of making sure that the mouse does not instantly snap from its current position to the target. By implementing this smoothing function, the mouse movements look slightly more realistic. However, there are still many issues even after implementing smoothing which could be detected by a highly heuristic anti-cheat:
 
-- Each movement will have a lower distance than the previous movement.
+- Each mouse movement will likely have a lower distance than the previous movement.
 - The movement direction reacts instantly to changes in the target's direction.
 
 Another attempt to make the movement look more human relies on randomization. This could take the form of a randomized value being added to each mouse coordinate, a randomized movement speed, or a randomized amount of smoothing. However, as smoothing is only added onto a pre-calculated smoothing curve, it would still be trivially easy to detect.
@@ -62,7 +58,7 @@ Understanding how real people interact with video games is crucial in understand
 As the movement speed is one of the more sensitive detection vectors, I first started by writing a program in C++ that would calculate my mouse's movement speed over time, for each movement starting at zero, and write the raw data to a CSV file. This graph shows my mouse movement speed over time:
 
 <img invertable src="/assets/images/FeedForward3.webp"/>    
-<p class="image-caption">The speed (Y) of my mouse cursor for various movement curves over time (X).</p>
+<p class="image-caption">The speed (in pixels) of my mouse cursor for various movements over time.</p>
 
 What is notable about this graph is that the movement speed follows an inverted-U curve, with a bit of randomness added. In video game cheats, movement speed is usually either a linear or exponentially decreasing graph. If an anti-cheat tracks the movement speed of the mouse over time, it would theoretically be very easy to identify cheating players.
 
@@ -72,13 +68,13 @@ The mouse cannot realistically move in a constant direction, and it cannot chang
 
 One example of this can be found in the changes made to controller aim assist in Fortnite throughout 2019 and 2020. While aim assist used to shift your crosshair toward the nearest enemy when aiming down sights (which is very similar to a traditional aimbot-style cheat), aim assist was updated to instead adjust the controller's sensitivity to prefer movements in a specific direction. This way, the player is still in control of the movements, but aim assist makes it easier to move in the correct direction and makes movements away from targets slower.
 
-This implementation of aim assist is actually a great solution to "humanize" the movement direction and speed of the mouse. If a cheat is able to intercept and modify mouse events, they could be adjusted to prefer movements toward the target player.
+This implementation of aim assist is actually a great solution to "humanize" the movement direction and speed of the mouse. If a cheat is able to intercept and modify mouse events, they could be adjusted to prefer movements toward the target.
 
 ### Movement Target
 
 Lastly, it's important to pay attention to where the crosshair is actually aiming. For example, if the crosshair is always aiming within a distance of a specific bone (let's say `spine_02` for example) then it is very easy for an anti-cheat to identify suspicious behavior.
 
-Some cheats implement a "smart-bone" system which aims at the part of the player which is already closest to the crosshair. Although this is better, it's still not a perfect solution because line traces from the crosshair still intercept exact bone locations.
+Some cheats implement a "smart" system which aims at the part of the player which is already closest to the crosshair. Although this is better, it's still not a perfect solution because line traces from the crosshair still intercept exact bone locations.
 
 The solution to these problems is to have the cheat aim at the nearest bone, and also add a bit of randomness as an offset to that location, so that the crosshair never directly intercepts the bone's position on-screen.
 
@@ -90,6 +86,10 @@ It is, of course, possible to account for this by adding a delay or queueing sys
 
 > *"I also think it'd be worth more of Vanguard's time to detect everyone, despite how good their mouse setup is, by simply looking for unrealistic aiming, reaction time, and stats, which I don't doubt they've already done extensively."*
 
+<p style="font-size: 12px; font-style: italic;">
+("Mouse setup" refers to the system used to send mouse movements to the game client, such as usermode or kernelmode code, or a physical HID device like an Arduino.)
+</p>
+
 In short, with some anti-cheats, you are much more likely to be banned based on an account trust system and suspicious gameplay heuristics. Remember that the best cheaters are already decent at the game.
 
 ### Making a Heuristically Undetectable Cheat
@@ -100,4 +100,4 @@ In terms of ways that the game is interacted with, a "heuristically undetectable
 - Mouse movement events are correctly modified by preferring movements towards the target.
 - Never prefer movement events *directly* toward a target bone position
 
-Once all of these conditions are met, a correctly-developed cheat would be much harder to detect than a cheat which triggers heuristic detections.
+Once all of these conditions are met, a correctly-developed cheat would be much harder to detect than a cheat which triggers basic, commonly-overlooked heuristic detections.

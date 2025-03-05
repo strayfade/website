@@ -6,7 +6,7 @@
 "date": "9/17/2024",
 "showTitle": true,
 "indexed": false,
-"pinned": true
+"pinned": false
 }
 
 ### What is iMessage?

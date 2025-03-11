@@ -13,7 +13,7 @@ const Setup = (App) => {
             contentSecurityPolicy: {
                 directives: {
                     ...Helmet.contentSecurityPolicy.getDefaultDirectives(),
-                    'script-src': ["'self'", "'unsafe-inline'", "cdn.jsdelivr.net"],
+                    'script-src': ["'self'", "'unsafe-inline'", "'wasm-unsafe-eval'"],
                     'script-src-attr': null, // Fixes errors in some browsers (I'm looking at you, Firefox)
                 },
             },

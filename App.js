@@ -1,7 +1,7 @@
 // Import Packages 
 const path = require('path')
 const express = require('express')
-const { Log } = require('./Log')
+const { log } = require('./Log')
 
 // Create app
 const app = express()
@@ -75,7 +75,7 @@ app.get('/:lang/:path', wrapAsync(async (Request, Response, Next) => {
 
 // Error Handling
 app.use((Error, Request, Response, Next) => {
-    Log('Error: ')
+    log('Error: ')
     console.log(Error)
     Next(Error)
 })

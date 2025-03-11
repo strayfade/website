@@ -32,10 +32,12 @@ const runTests = async (port) => {
 
     let allPassed = true;
     for (let i = 0; i < urls.length; i++) {
+        const startTime = Date.now();
         const statusCode = await fetchStatusCode(`http://localhost:${port}${urls[i]}`)
         if (statusCode != 200)
             allPassed = false
-        log(`[LogTests] ${urls[i]} returned status ${statusCode}`, statusCode == 200 ? logColors.Success : logColors.Error)
+        const endTime = Date.now();
+        log(`[LogTests] ${urls[i]} returned status ${statusCode} (${endTime - startTime}ms)`, statusCode == 200 ? logColors.Success : logColors.Error)
     }
     if (allPassed)
         log(`[LogTests] All tests passed!`, logColors.SuccessVisible)

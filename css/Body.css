@@ -6,7 +6,7 @@ body {
     color: var(--foreground);
     font-size: 14px;
     height: 100vh;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 code {

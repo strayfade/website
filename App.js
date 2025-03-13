@@ -31,21 +31,6 @@ app.get('/robots.txt', wrapAsync(async (Request, Response) => {
     Response.sendFile(path.resolve(__dirname, 'assets/robots.txt'))
 }))
 
-// C++
-const baseImguiPath = "pages/cpp/examples/example_glfw_opengl3"
-app.get('/imgui.data', wrapAsync(async (Request, Response) => {
-    Response.sendFile(path.resolve(__dirname, `${baseImguiPath}/imgui.data`))
-}))
-app.get('/imgui.wasm', wrapAsync(async (Request, Response) => {
-    Response.sendFile(path.resolve(__dirname, `${baseImguiPath}/imgui.wasm`))
-}))
-app.get('/imgui.js', wrapAsync(async (Request, Response) => {
-    Response.sendFile(path.resolve(__dirname, `${baseImguiPath}/imgui.js`))
-}))
-app.get('/imgui', wrapAsync(async (Request, Response) => {
-    Response.sendFile(path.resolve(__dirname, `${baseImguiPath}/imgui.html`))
-}))
-
 // Routing
 const Re = require('./pages/Re').Re
 const Homepage = require('./pages/Homepage').Homepage

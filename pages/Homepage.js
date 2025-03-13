@@ -15,10 +15,8 @@ const Homepage = async (Request, BuildData) => {
         ${await Body(
         Request,
         `
-            <div class="cpp-cover">
-            
-            <div style="width: max-content;">
-                <div class="article-content" style="margin: 0px; padding: 50px; width: max-content;">
+            <div>
+                <div class="article-content" style="margin: 0px; padding: 50px; width: calc(100% - 100px);">
                     ${await (async () => {
             const GetPosts = async (Pinned) => {
                 let Posts = []
@@ -66,36 +64,6 @@ const Homepage = async (Request, BuildData) => {
             </div>
             ${await Footer(Request, "// by strayfade", `Copyright (c) strayfade 2024`)}
             <div id="highlight"></div>
-
-            </div>
-            
-            <canvas class="cpp-cover" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
-            
-            <script>
-            ${BuildData.script}
-            </script>
-
-            <script type='text/javascript'>
-                var Module = {
-                    preRun: [],
-                    postRun: [],
-                    print: (function () { })(),
-                    printErr: function (text) { },
-                    canvas: (function () {
-                    var canvas = document.getElementById('canvas');
-                    canvas.addEventListener("webglcontextlost", function (e) {
-                        console.error('WebGL context lost. You will need to reload the page.');
-                        e.preventDefault();
-                    }, false);
-                    return canvas;
-                    })(),
-                    setStatus: function (text) { },
-                    totalDependencies: 0,
-                    monitorRunDependencies: function (left) { }
-                };
-                window.addEventListener('resize', js_resizeCanvas, false);
-            </script>
-            <script async type="text/javascript" src="./imgui.js"></script>
             `
     , BuildData)}
     `

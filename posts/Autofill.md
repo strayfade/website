@@ -5,7 +5,7 @@
 "author": "strayfade",
 "date": "11/14/2023",
 "showTitle": true,
-"indexed": true,
+"indexed": false,
 "disableHighlighting": false,
 "pinned": false
 }

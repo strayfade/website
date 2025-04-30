@@ -16,7 +16,7 @@ a:hover {
     pointer-events: none;
     display: block;
 }
-@media screen and (max-width: 1000px) {
+@media (hover: none) and (pointer: coarse) {
     #highlight {
         display: none;
     }    

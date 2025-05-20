@@ -85,6 +85,10 @@ const Post = async (Request, Path, BuildData) => {
         }
     }
 
+    if (!Meta.indexed) {
+        return 404
+    }
+
     if (Failed) {
         return null;
     } else {

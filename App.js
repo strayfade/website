@@ -53,7 +53,10 @@ app.get('/:path', wrapAsync(async (Request, Response, Next) => {
         stylesheet: CurrentStylesheet,
         script: CurrentScript
     })
-    if (!ValidPost) {
+    if (ValidPost == 404) {
+        Response.sendStatus(404);
+    }
+    else if (!ValidPost) {
         Next();
     } else {
         Response.send(ValidPost)
@@ -66,7 +69,10 @@ app.get('/:lang/:path', wrapAsync(async (Request, Response, Next) => {
         stylesheet: CurrentStylesheet,
         script: CurrentScript
     })
-    if (!ValidPost) {
+    if (ValidPost == 404) {
+        Response.sendStatus(404);
+    }
+    else if (!ValidPost) {
         Next();
     } else {
         Response.send(ValidPost)

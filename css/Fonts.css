@@ -1,62 +1,62 @@
 @font-face {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Georgia Regular'), url('/assets/fonts/georgia.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Georgia';
-    font-style: italic;
-    font-weight: normal;
-    src: local('Georgia Italic'), url('/assets/fonts/georgiai.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Georgia';
-    font-style: normal;
-    font-weight: bold;
-    src: local('Georgia Bold'), url('/assets/fonts/georgiab.woff') format('woff');
-}
-
-@font-face {
-    font-family: 'Georgia';
-    font-style: italic;
-    font-weight: bold;
-    src: local('Georgia Bold Italic'), url('/assets/fonts/georgiaz.woff') format('woff');
-}
-
-@font-face {
     font-family: 'Mono';
     font-style: normal;
     font-weight: 400;
-    src: local('Mono Regular'), url('/assets/fonts/Monospace-Regular.woff') format('woff');
+    src: url('/assets/fonts/Monospace-Regular.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Mono';
     font-style: normal;
     font-weight: 300;
-    src: local('Mono Light'), url('/assets/fonts/Monospace-Light.woff') format('woff');
+    src: url('/assets/fonts/Monospace-Light.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Mono';
     font-style: normal;
     font-weight: 500;
-    src: local('Mono SemiBold'), url('/assets/fonts/Monospace-SemiBold.woff') format('woff');
+    src: url('/assets/fonts/Monospace-SemiBold.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Mono';
     font-style: normal;
     font-weight: bold;
-    src: local('Mono Bold'), url('/assets/fonts/Monospace-Bold.woff') format('woff');
+    src: url('/assets/fonts/Monospace-Bold.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Mono';
     font-style: normal;
     font-weight: 900;
-    src: local('Mono ExtraBold'), url('/assets/fonts/Monospace-ExtraBold.woff') format('woff');
+    src: url('/assets/fonts/Monospace-ExtraBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/assets/fonts/AtkinsonHyperlegible-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    font-style: italic;
+    font-weight: bold;
+    src: url('/assets/fonts/AtkinsonHyperlegible-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    font-style: normal;
+    font-weight: bold;
+    src: url('/assets/fonts/AtkinsonHyperlegible-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    font-style: italic;
+    font-weight: normal;
+    src: url('/assets/fonts/AtkinsonHyperlegible-Italic.ttf') format('truetype');
 }

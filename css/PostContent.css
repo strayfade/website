@@ -33,10 +33,13 @@ blockquote {
     font-size: 36px;
     font-weight: 500;
     font-family: var(--font-family-mono);
+    text-align: center;
 }
 
 .post-description {
     margin-top: 5px;
+    text-align: center;
+    opacity: 0.5;
 }
 
 .post-author {

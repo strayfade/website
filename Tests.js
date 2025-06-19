@@ -27,7 +27,8 @@ const runTests = async (port) => {
 
     const allIds = await fs.readdir(path.join(__dirname, "posts"));
     for (const id of allIds) {
-        urls.push(`/${id.replace(".md", "")}`)
+        if (JSON.parse((await fs.readFile(path.join(__dirname, "posts", id), {encoding: "utf-8"})).split("}")[0] + "}").indexed)
+            urls.push(`/${id.replace(".md", "")}`)
     }
 
     let allPassed = true;

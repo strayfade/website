@@ -27,36 +27,36 @@
 }
 
 @font-face {
-    font-family: 'Reddit Mono';
+    font-family: 'Mono';
     font-style: normal;
     font-weight: 400;
-    src: local('Reddit Mono Regular'), url('/assets/fonts/RedditMono-Regular-BF6516379b8367d.woff') format('woff');
+    src: local('Mono Regular'), url('/assets/fonts/Monospace-Regular.woff') format('woff');
 }
 
 @font-face {
-    font-family: 'Reddit Mono';
+    font-family: 'Mono';
     font-style: normal;
     font-weight: 300;
-    src: local('Reddit Mono Light'), url('/assets/fonts/RedditMono-Light-BF6516379b8f026.woff') format('woff');
+    src: local('Mono Light'), url('/assets/fonts/Monospace-Light.woff') format('woff');
 }
 
 @font-face {
-    font-family: 'Reddit Mono';
+    font-family: 'Mono';
     font-style: normal;
     font-weight: 500;
-    src: local('Reddit Mono SemiBold'), url('/assets/fonts/RedditMono-SemiBold-BF6516379b99a41.woff') format('woff');
+    src: local('Mono SemiBold'), url('/assets/fonts/Monospace-SemiBold.woff') format('woff');
 }
 
 @font-face {
-    font-family: 'Reddit Mono';
+    font-family: 'Mono';
     font-style: normal;
     font-weight: bold;
-    src: local('Reddit Mono Bold'), url('/assets/fonts/RedditMono-Bold-BF6516379b990d5.woff') format('woff');
+    src: local('Mono Bold'), url('/assets/fonts/Monospace-Bold.woff') format('woff');
 }
 
 @font-face {
-    font-family: 'Reddit Mono';
+    font-family: 'Mono';
     font-style: normal;
     font-weight: 900;
-    src: local('Reddit Mono ExtraBold'), url('/assets/fonts/RedditMono-ExtraBold-BF6516379b9ea3f.woff') format('woff');
+    src: local('Mono ExtraBold'), url('/assets/fonts/Monospace-ExtraBold.woff') format('woff');
 }

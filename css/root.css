@@ -1,8 +1,10 @@
 :root {
     --font-family: Georgia, serif;
-    --font-family-mono: Reddit Mono, monospace;
-    --foreground: var(--dark);
-    --background: var(--light);
-    --dark: black;
-    --light: white;
+    --font-family-mono: Mono, monospace;
+    --foreground: var(--light);
+    --background: var(--dark);
+    --dark: rgb(0, 0, 0);
+    --black: black;
+    --light: rgb(240, 240, 240);
+    --white: white;
 }

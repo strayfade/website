@@ -1,19 +1,31 @@
 .post {
     display: block;
     text-decoration: none;
-    width: max-content;
-    padding: 2px 40px;
-    margin-bottom: 20px;
-    max-width: calc(100% - 20px * 2);
+    padding: 20px;
+    max-width: calc(100vw - 40px);
     cursor: pointer;
     background: var(--background);
+    width: calc(100% - 40px);
 }
+
+.homepage-content {
+    margin: 0px;
+    padding: 50px;
+    width: calc(100vw - 100px);
+}
+
 .post p {
     margin: 0;
 }
+
+.post-date {
+    opacity: 0;
+}
+
 .post-header {
     display: flex;
 }
+
 .post-header h3 {
     margin: 0;
     margin-bottom: 0;
@@ -22,6 +34,7 @@
     font-weight: 500;
     font-family: var(--font-family-mono);
 }
+
 .post-header p {
     margin-top: 8px;
     margin-bottom: 0;

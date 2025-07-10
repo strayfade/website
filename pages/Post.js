@@ -116,7 +116,6 @@ const Post = async (Request, Path, BuildData) => {
                     ${await Rewrite(Content, Meta.tex)}
                 </div>
             </div>
-            ${Meta.showTitle ? await Footer(Request, `// By ${Meta.author}`, `Written ${Meta.date}`) : ``}
             `
         , BuildData)}
         `

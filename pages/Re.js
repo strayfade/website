@@ -10,9 +10,10 @@ const Re = async (Request, BuildData) => {
     ${await HTML(Request)}
     ${await Head(Request, "secret", "a thing for you to find", BuildData)}
     ${await Body(Request, `
-        <div class="SecretPage">
-            <pre class="SecretContainer">
+        <div class="SecretPage" style="background-color: black;">
+            <pre class="SecretContainer" style="font-size: 10px;">
                 ${(await fs.readFile(path.join(__dirname, "../assets/rem"), { encoding: "utf-8" }))}
+                <p style="color: white; text-align: center;">what are you doing here?</p>
             </pre>
         </div>
     `, BuildData)}

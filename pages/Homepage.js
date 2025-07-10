@@ -16,7 +16,7 @@ const Homepage = async (Request, BuildData) => {
         Request,
         `
             <div>
-                <div class="article-content" style="margin: 0px; padding: 50px; width: calc(100% - 100px);">
+                <div class="article-content homepage-content">
                     ${await (async () => {
             const GetPosts = async (Pinned) => {
                 let Posts = []
@@ -44,14 +44,16 @@ const Homepage = async (Request, BuildData) => {
             for (const Post of await GetPosts(false))
                 AllPosts.push(Post)
 
-            let Output = ``
+            let Output = `
+                ${await Footer(Request, "strayfade", `Copyright (c) strayfade 2024`)}
+            `
             for (const Post of AllPosts) {
                 
                 Output += `
-                                <a class="no-hover post${Post.data.pinned ? ` post-pinned` : ``}" href="/${Post.file.split(".")[0]}" id="post${AllPosts.indexOf(Post)}" onmouseover="SetHighlight('post${AllPosts.indexOf(Post)}')">
+                                <a class="post${Post.data.pinned ? ` post-pinned` : ``}" href="/${Post.file.split(".")[0]}" id="post${AllPosts.indexOf(Post)}" onmouseover="SetHighlight('post${AllPosts.indexOf(Post)}')">
                                     <div class="post-header">
                                         ${GenDecryptText("h3", Post.data.title)}
-                                        ${GenDecryptText("p", Post.data.date)}
+                                        ${GenDecryptText("p", Post.data.date, "post-date")}
                                     </div>
                                     ${GenDecryptText("p", Post.data.description)}
                                 </a>
@@ -62,7 +64,6 @@ const Homepage = async (Request, BuildData) => {
         })()}
                 </div>
             </div>
-            ${await Footer(Request, "// by strayfade", `Copyright (c) strayfade 2024`)}
             <div id="highlight"></div>
             `
     , BuildData)}

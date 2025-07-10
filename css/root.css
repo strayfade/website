@@ -1,8 +1,8 @@
 :root {
     --font-family: Atkinson Hyperlegible, sans-serif;
     --font-family-mono: Mono, monospace;
-    --foreground: var(--light);
-    --background: var(--dark);
+    --foreground: var(--dark);
+    --background: var(--light);
     --dark: rgb(0, 0, 0);
     --black: black;
     --light: rgb(240, 240, 240);

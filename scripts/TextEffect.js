@@ -1,3 +1,10 @@
+let Charset = ""
+//Charset += `ZYTSPLJIFEBzyxvtsrlkjifeca`; // These are the thinner-width characters of the alphabet (i chose an arbitrary max width)
+//Charset += `............................`
+Charset += `░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
+Charset += `▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒`
+Charset += `▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓`
+
 const GetElements = () => {
     let Output = []
     let Found = document.getElementsByClassName('decrypt-text')
@@ -29,8 +36,6 @@ const DecryptElements = async (Elements) => {
     }
 
     const DecryptLoop = async () => {
-        let Charset = "ZYTSPLJIFEBzyxvtsrlkjifeca"; // These are the thinner-width characters of the alphabet (i chose an arbitrary max width)
-        Charset += `............................`
         for (let el = 0; el < Elements.length; el++) {
             await new Promise(r => setTimeout(r, 50));
             (async () => {
@@ -60,7 +65,7 @@ const DecryptElements = async (Elements) => {
                     Elements[el].innerHTML = NewString
 
                     // Wait
-                    const TimeoutLength = Math.pow(i / SavedStrings[el].length, 3) * 10
+                    const TimeoutLength = Math.pow(i / SavedStrings[el].length, 2.5) * 30
                     await new Promise(r => setTimeout(r, TimeoutLength));
                 }
                 Elements[el].innerHTML = SavedStrings[el]

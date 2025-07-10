@@ -1,5 +1,6 @@
 let lastId = ""
 const SetHighlight = async (id) => {
+    return;
     if (id == lastId) return;
     lastId = id;
 
@@ -12,7 +13,7 @@ const SetHighlight = async (id) => {
     highlightElement.style.height = `${targetBounds.bottom - targetBounds.top}px`
     highlightElement.style.transform = `scaleX(${110}%) scaleY(${130}%)`
     await new Promise(r => setTimeout(r, 250 / 4));
-    highlightElement.style.transform = `scaleX(${100}%) scaleY(${120}%)`
+    highlightElement.style.transform = `scaleX(${100}%) scaleY(${100}%)`
 }
 
 // Move selection up and down with arrows
@@ -39,7 +40,6 @@ if (window.location.pathname == "/") {
 }
 else {
     document.addEventListener("keydown", async (event) => {
-        console.log(event.code)
         switch(event.code) {
             case "Backspace":
                 document.getElementsByClassName("back-button")[0].click()

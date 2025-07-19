@@ -40,20 +40,21 @@ const DecryptElements = async (Elements) => {
             await new Promise(r => setTimeout(r, 50));
             (async () => {
                 // Iterate through string
-                for (let i = 0; i < SavedStrings[el].length; i++) {
+                for (let i = 0; i < SavedStrings[el].length / 2; i++) {
+                    const newIter = i * 2
 
                     // Build new string
                     let NewString = ""
                     for (let x = 0; x < SavedStrings[el].length; x++) {
-                        if (x == i) {
+                        if (x == newIter) {
                             NewString += `<span style="border: 1px dashed var(--foreground); color: var(--background); padding: 1px;">`
                             NewString += SavedStrings[el][x];
                             NewString += `</span>`
                         }
-                        else if (x < i) {
+                        else if (x < newIter) {
                             NewString += SavedStrings[el][x]
                         }
-                        else if (x > i + SavedStrings[el].length / 2) {
+                        else if (x > newIter + SavedStrings[el].length / 2) {
                             NewString += InitialStrings[el][x]
                         }
                         else {

@@ -8,6 +8,7 @@
 .image-caption {
     text-align: center;
     font-style: italic;
+    opacity: 0.66;
 }
 
 a,

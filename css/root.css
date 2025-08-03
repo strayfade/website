@@ -5,6 +5,6 @@
     --background: var(--light);
     --dark: rgb(0, 0, 0);
     --black: black;
-    --light: rgb(240, 240, 240);
+    --light: white;
     --white: white;
 }

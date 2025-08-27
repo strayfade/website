@@ -14,7 +14,7 @@
 <img src="/assets/images/teapot1.webp"/>
 <p class="image-caption">ESP32 webserver running on a teapot.</p>
 
-The webserver is *currently* accessible at [teapot.strayfade.com](https://teapot.strayfade.com), although who knows how long it will stay there. Moving from place to place and keeping track of the constantly-changing IP address of an actual teapot might be too much for me.
+The webserver (if you're lucky) is currently accessible at [teapot.strayfade.com](https://teapot.strayfade.com), although who knows how long it will stay there. Moving from place to place and keeping track of the constantly-changing IP address of an actual teapot might be too much for me.
 
 <img src="/assets/images/teapot2.webp"/>
 <p class="image-caption">Top view</p>

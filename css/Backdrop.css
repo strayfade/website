@@ -1,0 +1,4 @@
+#detail-backdrop {
+    background-image: url("/assets/cross.png");
+    filter: invert(1);
+}

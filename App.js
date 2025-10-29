@@ -35,6 +35,7 @@ app.get('/robots.txt', wrapAsync(async (Request, Response) => {
 const Re = require('./pages/Re').Re
 const Homepage = require('./pages/Homepage').Homepage
 const Post = require('./pages/Post').Post
+const Birthday = require('./pages/Birthday').Birthday
 app.get('/R', wrapAsync(async (Request, Response) => {
     Response.send(await Re(Request, {
         stylesheet: CurrentStylesheet,
@@ -44,6 +45,13 @@ app.get('/R', wrapAsync(async (Request, Response) => {
 
 app.get('/', wrapAsync(async (Request, Response) => {
     Response.send(await Homepage(Request, {
+        stylesheet: CurrentStylesheet,
+        script: CurrentScript
+    }))
+}))
+
+app.get('/gifts', wrapAsync(async (Request, Response) => {
+    Response.send(await Birthday(Request, {
         stylesheet: CurrentStylesheet,
         script: CurrentScript
     }))

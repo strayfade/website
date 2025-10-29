@@ -5,6 +5,8 @@ const Body = async (Request, Inner, BuildData) => {
         return `
         <body>
             ${Inner}
+            <div id="detail-backdrop">
+            </div>
             <script>
             ${BuildData.script}
             </script>

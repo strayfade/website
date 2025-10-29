@@ -25,6 +25,8 @@ const Head = async (Request, Title, Description, BuildData) => {
             <link rel="icon" href="/assets/Icon.svg" color="#ffffff">
             <link rel="mask-icon" href="/assets/Icon.svg" color="#ffffff">
         ` : ``}
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         
         <link rel="dns-prefetch" href="https://strayfade.com">
         

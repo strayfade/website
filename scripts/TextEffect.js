@@ -37,7 +37,7 @@ const DecryptElements = async (Elements) => {
 
     const DecryptLoop = async () => {
         for (let el = 0; el < Elements.length; el++) {
-            await new Promise(r => setTimeout(r, 50));
+            await new Promise(r => setTimeout(r, window.location.pathname == "/gifts" ? 300 : 50));
             (async () => {
                 // Iterate through string
                 for (let i = 0; i < SavedStrings[el].length / 2; i++) {
@@ -66,7 +66,7 @@ const DecryptElements = async (Elements) => {
                     Elements[el].innerHTML = NewString
 
                     // Wait
-                    const TimeoutLength = Math.pow(i / SavedStrings[el].length, 2.5) * 30
+                    const TimeoutLength = Math.pow(i / SavedStrings[el].length, 2.5) * window.location.pathname == "/gifts" ? 300 : 30
                     await new Promise(r => setTimeout(r, TimeoutLength));
                 }
                 Elements[el].innerHTML = SavedStrings[el]

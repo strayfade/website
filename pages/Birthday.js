@@ -60,6 +60,7 @@ const Birthday = async (Request, BuildData) => {
                 ${(() => {
             const GiftList = [
                 ["Electronics"],
+                ['iPhone 14 Pro OEM Display Replacement', 'https://selfservicerepair.com/en-US/iphone-14-pro/display'],
                 ['NEIKO 01408A Digital Caliper', 'https://www.amazon.com/Neiko-01408A-Electronic-Digital-Caliper/dp/B000NEA0P8'],
                 ['Dremel 8220 Battery', 'https://www.amazon.com/s?k=Dremel+8220+Battery'],
                 //['SMD Resistor Binder (0-10M Ohm)', 'https://www.amazon.com/s?k=Dremel+8220+Battery'],

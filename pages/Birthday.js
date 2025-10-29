@@ -68,6 +68,7 @@ const Birthday = async (Request, BuildData) => {
                 ["Robotics"],
                 ['SO-ARM101 robotic arm development kit (Package 3)', 'https://shop.wowrobo.com/products/so-arm101-diy-kit-assembled-version-1?variant=46588641607897'],
                 ["Car Stuff"],
+                ['VViViD+ Gloss Black Vinyl Wrap (3ft x 5ft)', 'https://www.amazon.com/VViViD-Replacement-Technology-Stretchable-Protective/dp/B08KYJYSPX'],
                 ['Burger Motorsports JB4 for Kia 1.6T Smartstream 4-cylinder V3', 'https://burgertuning.com/products/jb4-for-kia-hyundai-1-6l'],
                 ['F1R F103 19x9 +35 Wheels', 'https://www.fitmentindustries.com/buy-wheel-offset/F1031995114GB35/f1r-f103-19x9-35'],
                 ['Summit Ultramax HP Tires', 'https://www.fitmentindustries.com/buy-wheel-offset2/SMT10294/summit-ultramax-hp-245-40r19-tires?year=2023&make=Kia&model=K5&drive=FWD&trim=GT-Line'],

@@ -19,7 +19,7 @@ const Birthday = async (Request, BuildData) => {
 
                 <style>
                     .gift-text {
-                        font-size: 24px;
+                        font-size: 18px;
                         width: 100%;
                         text-align: center;
                     }
@@ -37,7 +37,7 @@ const Birthday = async (Request, BuildData) => {
                         transform: scale(100%);
                     }
                     .gift-heading {
-                        font-size: 40px;
+                        font-size: 22px;
                         text-align: center;
                         margin-top: 30px;
                         margin-bottom: 0px;

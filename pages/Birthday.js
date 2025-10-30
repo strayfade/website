@@ -72,6 +72,7 @@ const Birthday = async (Request, BuildData) => {
                 ['KDM Accessories Rear Diffuser for 21-24 Kia K5 GT/GT-line', 'https://kdmaccessories.com/products/kia-k5-diffuser-2021-2024'],
                 ['KDM Accessories Duckbill Style Spoiler (21-24 Kia K5)', 'https://kdmaccessories.com/products/kia-k5-duckbill-style-spoiler-2021-2024?variant=44480493650084&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic'],
                 ['KDM Accessories Signature Air Freshener', 'https://kdmaccessories.com/products/air-fresheners-by-kdm-sleek-design-quickly-swappable?variant=51031375151268'],
+                ['Ark Performance 2021-2025 Kia K5 GT-S Lowering Springs', 'https://arkperformance.com/products/kia-k5-optima-2021-all-models-gt-s-lowering-springs?variant=42315215700215&country=US&currency=USD&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic'],
                 ["Car performance"],
                 ['Burger Motorsports JB4 for Kia 1.6T Smartstream 4-cylinder V3', 'https://burgertuning.com/products/jb4-for-kia-hyundai-1-6l'],
                 ['F1R F103 19x9 +35 Wheels', 'https://www.fitmentindustries.com/buy-wheel-offset/F1031995114GB35/f1r-f103-19x9-35'],

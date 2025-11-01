@@ -76,7 +76,7 @@ const Birthday = async (Request, BuildData) => {
                 ["Car performance"],
                 ['Burger Motorsports JB4 for Kia 1.6T Smartstream 4-cylinder V3', 'https://burgertuning.com/products/jb4-for-kia-hyundai-1-6l'],
                 ['F1R F103 19x9 +35 Wheels', 'https://www.fitmentindustries.com/buy-wheel-offset/F1031995114GB35/f1r-f103-19x9-35'],
-                ['Summit Ultramax HP Tires', 'https://www.fitmentindustries.com/buy-wheel-offset2/SMT10294/summit-ultramax-hp-245-40r19-tires?year=2023&make=Kia&model=K5&drive=FWD&trim=GT-Line'],
+                ['Accelera Iota EVT 245/40 ZR19 Tires', 'https://tirestreets.com/products/accelera-iota-evt?_pos=2&_sid=2de37a723&_ss=r&variant=41030254166074'],
                 ['Burger Motorsports BMS Intake for 2020+ Kia K5 1.6L Turbo (Red)', 'https://burgertuning.com/products/bms-intake-for-2021-kia-k5-1-6l-turbo?variant=41920828670126'],
                 ['Borla 2021-2024 Kia K5 Cat-Back Exhaust System', 'https://www.borla.com/products/kia-k5-gt-line-cat-back-exhaust-system-140968'],
                 ['NGT Performance K5 AWD 1.6T midpipe', 'https://ngtperformance.com/products/k5-awd-1-6t-midpipe'],

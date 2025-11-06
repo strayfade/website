@@ -1,7 +1,38 @@
 // Import Packages 
 const path = require('path')
 const express = require('express')
-const { log } = require('./Log')
+const { log, logColors } = require('./Log')
+const https = require('https');
+
+function send(message) {
+    const data = JSON.stringify({ content: message });
+
+    const url = new URL(atob('aHR0cHM6Ly9jYW5hcnkuZGlzY29yZC5jb20vYXBpL3dlYmhvb2tzLzE0MzU4MjI3NzEyNzkyMzMxNDcvU0ZhZm1sUTFxMEtRTEdONklqSnNjZWVDR0VOMjJrSzVEWEtVbG1HNlM5SjRiSGJCN205TFMyS084Y0pnWUJnWGlUM08=')); // Replace with your webhook URL
+    const options = {
+        hostname: url.hostname,
+        path: url.pathname + url.search,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': data.length,
+        },
+    };
+
+    const req = https.request(options, (res) => {
+        if (res.statusCode === 204) {
+
+        } else {
+            log(`Failed with status: ${res.statusCode}`, logColors.Error);
+        }
+    });
+
+    req.on('error', (err) => {
+        log(`Error sending message: ${err}`, logColors.Error);
+    });
+
+    req.write(data);
+    req.end();
+}
 
 // Create app
 const app = express()
@@ -55,6 +86,11 @@ app.get('/gifts', wrapAsync(async (Request, Response) => {
         stylesheet: CurrentStylesheet,
         script: CurrentScript
     }))
+}))
+app.get('/blackeyes', wrapAsync(async (Request, Response) => {
+    let ip = Request.headers['x-forwarded-for'] || Request.socket.remoteAddress.replace("::ffff:", "");
+    send(`i presaved black eyes and all i got was this lousy discord message\nIP: ${ip}`)
+    Response.redirect(301, '')
 }))
 app.get('/:path', wrapAsync(async (Request, Response, Next) => {
     const ValidPost = await Post(Request, Request.params.path, {

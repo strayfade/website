@@ -4,34 +4,49 @@ const express = require('express')
 const { log, logColors } = require('./Log')
 const https = require('https');
 
-function send(message) {
-    const data = JSON.stringify({ content: message });
+async function sendDiscordWebhook(content, webhookUrl = atob('aHR0cHM6Ly9jYW5hcnkuZGlzY29yZC5jb20vYXBpL3dlYmhvb2tzLzE0MzU4MjUwMDIzNjM2MTc0MzIvMlFjLXBKN3c4NGVxdXpvNEdoYzRBYVgtZG1VZWJHbDB3QVMtWHM4QWRuNHk5eVFHVGdPY3JoXzJwOE5xSE9NRzdOdHE=')) {
+  return new Promise((resolve, reject) => {
+    try {
+      const data = JSON.stringify({ content });
 
-    const url = new URL(atob('aHR0cHM6Ly9jYW5hcnkuZGlzY29yZC5jb20vYXBpL3dlYmhvb2tzLzE0MzU4MjI3NzEyNzkyMzMxNDcvU0ZhZm1sUTFxMEtRTEdONklqSnNjZWVDR0VOMjJrSzVEWEtVbG1HNlM5SjRiSGJCN205TFMyS084Y0pnWUJnWGlUM08=')); // Replace with your webhook URL
-    const options = {
+      const url = new URL(webhookUrl);
+      const options = {
         hostname: url.hostname,
         path: url.pathname + url.search,
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': data.length,
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(data),
         },
-    };
+      };
 
-    const req = https.request(options, (res) => {
-        if (res.statusCode === 204) {
+      const req = https.request(options, (res) => {
+        let responseData = '';
 
-        } else {
-            log(`Failed with status: ${res.statusCode}`, logColors.Error);
-        }
-    });
+        res.on('data', (chunk) => {
+          responseData += chunk;
+        });
 
-    req.on('error', (err) => {
-        log(`Error sending message: ${err}`, logColors.Error);
-    });
+        res.on('end', () => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            resolve();
+          } else {
+            reject(
+              new Error(
+                `Discord webhook request failed: ${res.statusCode} ${res.statusMessage} - ${responseData}`
+              )
+            );
+          }
+        });
+      });
 
-    req.write(data);
-    req.end();
+      req.on('error', (err) => reject(err));
+      req.write(data);
+      req.end();
+    } catch (err) {
+      reject(err);
+    }
+  });
 }
 
 // Create app
@@ -89,8 +104,19 @@ app.get('/gifts', wrapAsync(async (Request, Response) => {
 }))
 app.get('/blackeyes', wrapAsync(async (Request, Response) => {
     let ip = Request.headers['x-forwarded-for'] || Request.socket.remoteAddress.replace("::ffff:", "");
-    send(`i presaved black eyes and all i got was this lousy discord message\nIP: ${ip}`)
-    Response.redirect(301, '')
+    console.log(ip)
+    await sendDiscordWebhook(`i presaved black eyes and all i got was this lousy discord message\nIP: ${ip}`)
+    Response.send(`
+        
+        <!DOCTYPE html>
+        <html>
+        <body>
+            <script>
+            setTimeout(() => location.href = "https://distrokid.com/hyperfollow/strayfade/black-eyes", 1000);
+            </script>
+        </body>
+        </html>
+    `)
 }))
 app.get('/:path', wrapAsync(async (Request, Response, Next) => {
     const ValidPost = await Post(Request, Request.params.path, {

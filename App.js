@@ -3,50 +3,51 @@ const path = require('path')
 const express = require('express')
 const { log, logColors } = require('./Log')
 const https = require('https');
+const fs = require('fs').promises
 
 async function sendDiscordWebhook(content, webhookUrl = atob('aHR0cHM6Ly9jYW5hcnkuZGlzY29yZC5jb20vYXBpL3dlYmhvb2tzLzE0MzU4MjUwMDIzNjM2MTc0MzIvMlFjLXBKN3c4NGVxdXpvNEdoYzRBYVgtZG1VZWJHbDB3QVMtWHM4QWRuNHk5eVFHVGdPY3JoXzJwOE5xSE9NRzdOdHE=')) {
-  return new Promise((resolve, reject) => {
-    try {
-      const data = JSON.stringify({ content });
+    return new Promise((resolve, reject) => {
+        try {
+            const data = JSON.stringify({ content });
 
-      const url = new URL(webhookUrl);
-      const options = {
-        hostname: url.hostname,
-        path: url.pathname + url.search,
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Content-Length': Buffer.byteLength(data),
-        },
-      };
+            const url = new URL(webhookUrl);
+            const options = {
+                hostname: url.hostname,
+                path: url.pathname + url.search,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Content-Length': Buffer.byteLength(data),
+                },
+            };
 
-      const req = https.request(options, (res) => {
-        let responseData = '';
+            const req = https.request(options, (res) => {
+                let responseData = '';
 
-        res.on('data', (chunk) => {
-          responseData += chunk;
-        });
+                res.on('data', (chunk) => {
+                    responseData += chunk;
+                });
 
-        res.on('end', () => {
-          if (res.statusCode >= 200 && res.statusCode < 300) {
-            resolve();
-          } else {
-            reject(
-              new Error(
-                `Discord webhook request failed: ${res.statusCode} ${res.statusMessage} - ${responseData}`
-              )
-            );
-          }
-        });
-      });
+                res.on('end', () => {
+                    if (res.statusCode >= 200 && res.statusCode < 300) {
+                        resolve();
+                    } else {
+                        reject(
+                            new Error(
+                                `Discord webhook request failed: ${res.statusCode} ${res.statusMessage} - ${responseData}`
+                            )
+                        );
+                    }
+                });
+            });
 
-      req.on('error', (err) => reject(err));
-      req.write(data);
-      req.end();
-    } catch (err) {
-      reject(err);
-    }
-  });
+            req.on('error', (err) => reject(err));
+            req.write(data);
+            req.end();
+        } catch (err) {
+            reject(err);
+        }
+    });
 }
 
 // Create app
@@ -60,7 +61,7 @@ const wrapAsync = (Function) => {
 }
 
 // Run build
-const { CurrentStylesheet, CurrentScript } = require('./Build')
+const { CurrentStylesheet, CurrentScript } = require('./Build');
 
 // Basic Security
 require('./security/Security').Setup(app)
@@ -101,6 +102,9 @@ app.get('/gifts', wrapAsync(async (Request, Response) => {
         stylesheet: CurrentStylesheet,
         script: CurrentScript
     }))
+}))
+app.get('/drl', wrapAsync(async (Request, Response) => {
+    Response.send(await fs.readFile(path.join(__dirname, "pages/drlconfig.html"), { encoding: "utf-8" }))
 }))
 app.get('/blackeyes', wrapAsync(async (Request, Response) => {
     let ip = Request.headers['x-forwarded-for'] || Request.socket.remoteAddress.replace("::ffff:", "");

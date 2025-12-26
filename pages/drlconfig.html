@@ -2,31 +2,14 @@
 <html>
 
 <head>
-    <!-- ios development... -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono" />
     <style>
-        body {
-            font-family: 'Atkinson Hyperlegible';
+        :root {
+            --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
-        .material-symbols-outlined {
-            font-family: 'Material Symbols Outlined';
-            font-weight: normal;
-            font-style: normal;
-            font-size: 24px;
-            line-height: 1;
-            letter-spacing: normal;
-            text-transform: none;
-            display: inline-block;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            -moz-font-feature-settings: 'liga';
-            -moz-osx-font-smoothing: grayscale;
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+        body {
+            font-family: var(--font-family);
         }
     </style>
 </head>
@@ -75,6 +58,9 @@
                 let v = this.interp(y - yf, xt, xb);
                 this.memory[[x, y]] = v;
                 return v;
+            },
+            clearMemory: function () {
+                this.memory = {};
             }
         }
     </script>
@@ -144,21 +130,35 @@
             }
 
             .settings-container {
-                width: calc(100% - var(--settings-container-margin) * 4);
-                height: calc(100% - var(--settings-container-margin) * 4);
-                margin: var(--settings-container-margin);
-                padding: var(--settings-container-margin);
+                width: calc(100% - 100px);
+                height: 100%;
+                margin: 0px auto;
             }
         </style>
         <div class="settings-container">
-            <div style="display: flex; width: 100%; height: 100%;">
-                <div style="width: 33.33%; height: 100%; position: relative;">
+            <style>
+                .flex-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+                    align-content: center;
+                    gap: 10%;
+                }
+
+                .flex-container .box {
+                    flex: 1 1 300px;
+                    width: min-content;
+                }
+            </style>
+            <div class="flex-container" style="width: 100%; height: 100%;">
+                <div class="box">
                     <style>
                         .button-object span {
                             font-size: 50px;
                         }
 
-                        .button-object .material-symbols-outlined {
+                        .button-object .chevron {
                             aspect-ratio: 1/1;
                             display: block;
                             height: max-content;
@@ -175,8 +175,7 @@
                             margin: 0px 20px;
                         }
                     </style>
-                    <div
-                        style="width: 100%; height: max-content; position: absolute; top: 50%; transform: translateY(-50%);">
+                    <div>
 
                         <script>
                             const availableModes = [
@@ -198,9 +197,12 @@
                                 <script>
                                     let selectedMode = 0
                                 </script>
-                                <span class="material-symbols-outlined" onclick="setMode(selectedMode - 1)"
+                                <span class="chevron" onclick="setMode(selectedMode - 1)"
                                     style="margin: 0; padding: 0; margin-right: auto;">
-                                    chevron_left
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="56px" viewBox="0 -960 960 960"
+                                        width="48px" fill="#e8eaed">
+                                        <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
+                                    </svg>
                                 </span>
                                 <span class="mode-test"
                                     style="font-weight: lighter; font-size: 30px; margin: 0; padding-right: 10px; padding-top: 10px; padding-left: 10px;">
@@ -209,9 +211,12 @@
                                 <span class="mode-test" id="mode-entry"
                                     style="font-weight: bold; font-size: 30px; margin: 0; padding-top: 10px; padding-right: 10px;">
                                 </span>
-                                <span class="material-symbols-outlined" onclick="setMode(selectedMode + 1)"
+                                <span class="chevron" onclick="setMode(selectedMode + 1)"
                                     style="margin: 0; padding: 0; margin-left: auto;">
-                                    chevron_right
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="56px" viewBox="0 -960 960 960"
+                                        width="48px" fill="#e8eaed">
+                                        <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+                                    </svg>
                                 </span>
                             </p>
                         </div>
@@ -271,32 +276,21 @@
                         </div>
                     </div>
                 </div>
-                <div style="width: 66.66%; height: 100%; position: relative;">
-
-                    <style>
-                        .status-container {
-                            position: absolute;
-                            left: 50%;
-                            top: 50%;
-                            width: max-content;
-                            height: max-content;
-                            transform: translateX(-50%) translateY(-50%);
-                        }
-                    </style>
-                    <div class="status-container">
+                <div class="box">
+                    <div>
                         <p id="mode-select"
-                            style="font-weight: bold; font-size: 50px; text-align: left; transform: translateY(30%); padding: 0px 20px; margin: 0; ">
+                            style="font-weight: bold; font-size: 50px; text-align: left; transform: translateY(30%); padding: 0px 20px; width: calc(100% - 40px); margin: 0; ">
                             solid
                         </p>
                         <p class="color-select" id="color-select"
-                            style="transition-duration: 0.25s; font-family: 'Atkinson Hyperlegible Mono', monospace; text-transform: lowercase; font-weight: lighter; font-size: 100px;display: inline-block; text-align: left; padding: 0px 20px;">
+                            style="transition-duration: 0.25s; font-weight: 300; text-transform: lowercase; font-size: 100px;display: inline-block; text-align: center; padding: 0px 20px; width: calc(100% - 40px);">
                         </p>
                     </div>
                     <style>
                         .color-select {
-                            margin: 0;
                             position: relative;
                             z-index: -1;
+                            margin: 0px auto;
                         }
 
                         .disabled {
@@ -305,6 +299,9 @@
                         }
                     </style>
                     <script>
+                        const log = (str) => {
+                            window.webkit?.messageHandlers?.log.postMessage(str.toString());
+                        }
                         let stateNeedsToUpdate = false;
                         let stateLastUpdatedTime = 0;
                         let stateMessage = {
@@ -324,7 +321,7 @@
                             if (document.getElementById("color-select").textContent.trim().length <= 0) return;
                             const message = {
                                 a: selectedMode,
-                                b: `0x${document.getElementById("color-select").textContent.substring(1)}`
+                                b: `0x${document.getElementById("color-select").textContent}`
                             }
                             stateMessage = message;
                             stateNeedsToUpdate = true;
@@ -371,19 +368,79 @@
                         }
                         updateColor()
                         const sliders = document.getElementsByClassName("color-picker");
+
+                        // Create shared event handlers to prevent accumulation
+                        const onUp = (click) => {
+                            try {
+                                Array.from(sliders).forEach(slider => {
+                                    slider.setAttribute("pressed", "0");
+                                });
+                            }
+                            catch (e) {
+                                log(e)
+                            }
+                        }
+
+                        const onMove = (click) => {
+                            try {
+                                if (click.changedTouches) {
+                                    for (const changedTouch of click.changedTouches) {
+                                        click.clientX = changedTouch.pageX
+                                        click.clientY = changedTouch.pageY
+                                    }
+                                }
+                                Array.from(sliders).forEach(slider => {
+                                    if (slider.getAttribute("pressed") == "1") {
+                                        const bounds = slider.getBoundingClientRect();
+                                        const percentX = Math.min(1, Math.max(0, (click.clientX - bounds.left) / (bounds.right - bounds.left)))
+                                        slider.children[0].style.left = `${Math.max(Math.min(percentX * 100, 99), 1)}%`
+                                        if (slider.classList.contains("color-picker-hue")) {
+                                            document.documentElement.style.setProperty('--saved-color-hue', `${Math.floor(percentX * 360)}deg`);
+                                        }
+                                        else if (slider.classList.contains("color-picker-saturation")) {
+                                            document.documentElement.style.setProperty('--saved-color-saturation', `${Math.floor(percentX * 100)}%`);
+                                        }
+                                        else if (slider.classList.contains("color-picker-value")) {
+                                            document.documentElement.style.setProperty('--saved-color-value', `${Math.floor(percentX * 100)}%`);
+                                            if (percentX > 0.5) {
+                                                document.getElementById("color-select").style.color = "black"
+                                            }
+                                            else if (percentX <= 0.5) {
+                                                document.getElementById("color-select").style.color = "white"
+                                            }
+                                        }
+                                        updateColor()
+                                    }
+                                });
+                            }
+                            catch (e) {
+                                log(e)
+                            }
+                        }
+
+                        // Add shared event listeners only once
+                        document.addEventListener("mouseup", onUp)
+                        document.addEventListener("touchend", onUp)
+                        document.addEventListener("mousemove", onMove)
+                        document.addEventListener("touchmove", onMove)
+
                         for (let i = 0; i < sliders.length; i++) {
                             const slider = sliders[i]
+                            const onDown = (click) => {
+                                try {
+                                    slider.setAttribute("pressed", "1")
+                                }
+                                catch (e) {
+                                    log(e)
+                                }
+                            }
                             slider.setAttribute("pressed", "0");
-                            slider.addEventListener("mousedown", (click) => {
-                                slider.setAttribute("pressed", "1")
-                            })
-                            document.addEventListener("mouseup", (click) => {
-                                slider.setAttribute("pressed", "0");
-                            })
-                            document.addEventListener("mousemove", (click) => {
-                                if (slider.getAttribute("pressed") == "1") {
+                            slider.addEventListener("mousedown", onDown)
+                            slider.addEventListener("touchstart", onDown)
+                            slider.addEventListener("click", (click) => {
+                                try {
                                     const bounds = slider.getBoundingClientRect();
-                                    const percentX = Math.min(1, Math.max(0, (click.clientX - bounds.left) / (bounds.right - bounds.left)))
+                                    const percentX = (click.clientX - bounds.left) / (bounds.right - bounds.left)
                                     slider.children[0].style.left = `${Math.max(Math.min(percentX * 100, 99), 1)}%`
                                     if (slider.classList.contains("color-picker-hue")) {
                                         document.documentElement.style.setProperty('--saved-color-hue', `${Math.floor(percentX * 360)}deg`);
@@ -396,21 +453,9 @@
                                     }
                                     updateColor()
                                 }
-                            })
-                            slider.addEventListener("click", (click) => {
-                                const bounds = slider.getBoundingClientRect();
-                                const percentX = (click.clientX - bounds.left) / (bounds.right - bounds.left)
-                                slider.children[0].style.left = `${Math.max(Math.min(percentX * 100, 99), 1)}%`
-                                if (slider.classList.contains("color-picker-hue")) {
-                                    document.documentElement.style.setProperty('--saved-color-hue', `${Math.floor(percentX * 360)}deg`);
+                                catch (e) {
+                                    log(e)
                                 }
-                                else if (slider.classList.contains("color-picker-saturation")) {
-                                    document.documentElement.style.setProperty('--saved-color-saturation', `${Math.floor(percentX * 100)}%`);
-                                }
-                                else if (slider.classList.contains("color-picker-value")) {
-                                    document.documentElement.style.setProperty('--saved-color-value', `${Math.floor(percentX * 100)}%`);
-                                }
-                                updateColor()
                             })
                         }
                     </script>
@@ -438,6 +483,7 @@
         const noiseScale = 25
         perlin.seed();
 
+        let frameCount = 0;
         const draw = () => {
             ctx.clearRect(0, 0, width, height);
             for (let x = -10; x <= pointsX + 10; x++) {
@@ -458,8 +504,13 @@
                     ctx.fill();
                 }
             }
+            // Clear perlin memory every 30 frames to prevent memory leak
+            frameCount++;
+            if (frameCount % 30 === 0) {
+                perlin.clearMemory();
+            }
         }
-        setInterval(draw, 10);
+        const drawInterval = setInterval(draw, 10);
 
 
     </script>

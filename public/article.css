@@ -22,6 +22,7 @@
 #article h3 {
   margin-top: 0px;
   padding: 0px;
+  font-family: var(--font-family);
 }
 
 section#article p {

@@ -64,7 +64,7 @@ a {
 }
 
 a:hover {
-    filter: invert(1);
+    text-shadow: 0px 0px 10px white;
 }
 
 #posts>a>p {

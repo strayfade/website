@@ -11,6 +11,7 @@ header {
 }
 header > div:first-child {
     margin-right: auto;
+    text-transform: none;
 }
 @media screen and (max-width: 500px) {
     header > div {
@@ -24,6 +25,7 @@ header > div {
     padding: 2px 12px;
     cursor: pointer;
     font-size: 24px;
+    text-transform: lowercase;
 }
 header a  {
     text-decoration: none;

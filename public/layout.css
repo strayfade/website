@@ -5,6 +5,7 @@ main {
     left: 0;
     width: 100vw;
     display: flex;
+    background-color: black;
 }
 
 main>div {

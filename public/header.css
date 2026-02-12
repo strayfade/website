@@ -2,12 +2,12 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: sticky;
+    position: absolute;
     width: 100vw;
     left: 0;
     top: 0;
     mix-blend-mode: exclusion;
-    background-color: white;
+    background-color: black;
 }
 header > div:first-child {
     margin-right: auto;
@@ -29,7 +29,7 @@ header > div {
 }
 header a  {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 header span {
     margin-right: 10px;

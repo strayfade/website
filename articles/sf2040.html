@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="keywords" content="automation, AI, nodegraph, netsocket, developer, portfolio, strayfade">
+    <meta name="author" content="Noah Taylor">
+    <meta property="og:site_name" content="strayfade.com">
+    <meta property="og:url" content="strayfade.com">
+    <meta name="twitter:url" content="strayfade.com">
+
+    <meta property="og:title" content="sf2040 | Noah Taylor">
+    <meta property="twitter:title" content="sf2040 | Noah Taylor">
+    <title>sf2040 | Noah Taylor</title>
+    <meta name="description" content="An open-source 76-key mechanical keyboard using the RP2040 microcontroller">
+    <meta property="og:description" content="An open-source 76-key mechanical keyboard using the RP2040 microcontroller">
+    <meta property="twitter:description" content="An open-source 76-key mechanical keyboard using the RP2040 microcontroller">
+
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="article.css">
+    <script type="text/javascript" src="perlin.js" defer></script>
+    <script type="text/javascript" src="effects.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div>
+            <span><a href="/">Noah Taylor</a></span>
+            <span class="slash">/</span>
+            <span class="page-title">sf2040</span>
+        </div>
+        <div>
+            <a href="/">Back</a>
+        </div>
+    </header>
+    <canvas></canvas>
+    <main>
+        <section id="article">
+            <blockquote>
+                <p>This page is a modified version of the README from the <a
+                        href="https://github.com/strayfade/sf2040">GitHub repository</a>, and may become outdated. For
+                    the most recent version of this page, read the <a href="https://github.com/strayfade/sf2040">GitHub
+                        README</a> instead.</p>
+            </blockquote>
+            <img src="/images/sf20401.webp">
+            <h3 id="about">About</h3>
+            <p>The sf2040 is a mechanical 76-key keyboard based on the <a
+                    href="https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf">RP2040</a> microcontroller
+                from Raspberry Pi.</p>
+            <blockquote>
+                <p>This project has been certified by the OSHWA as open source hardware.</p>
+                <pre><code>[OSHW] US002610 | <span class="hljs-type">Certified</span> open source hardware | <span class="hljs-type">oshwa</span>.org/cert
+</code></pre>
+            </blockquote>
+            <h3 id="features">Features</h3>
+            <ul>
+                <li>USB Type-C Port</li>
+                <li>Fully open-source/open-hardware design and firmware files</li>
+                <li><strong>No LED backlight</strong></li>
+                <li><strong>No Bluetooth/wireless connectivity</strong></li>
+            </ul>
+            <h3 id="assembly-mechanical-information">Assembly/Mechanical Information</h3>
+            <p><strong>Required</strong> parts:</p>
+            <ul>
+                <li>PCB</li>
+                <li>3D-printed case</li>
+                <li>Keyswitch plate</li>
+                <li><em>Your choice of 76 full-size MX-style keyswitches</em></li>
+                <li>MX-style Hot Swap Switch Mounts (<a href="https://www.amazon.com/gp/product/B0B4W9YMGM">Amazon</a>)
+                </li>
+                <li>Screw-in PCB Mount Stabilizers (<a href="https://www.amazon.com/gp/product/B0CN38CXQ3">Amazon</a>)
+                </li>
+            </ul>
+            <p><strong>Optional, but recommended</strong> parts:</p>
+            <ul>
+                <li>0.5mm Foam Switch Dampeners (<a href="https://www.amazon.com/gp/product/B0B942VCMV">Amazon</a>)</li>
+                <li>Krytox 205 Grade 0 Lubricant</li>
+                <li>Switch disassembly tools</li>
+                <li>Case filler (I used polyester fiber)</li>
+            </ul>
+            <h3 id="firmware">Firmware</h3>
+            <p>This keyboard runs standard <a href="https://docs.qmk.fm/#/">QMK firmware</a>, configuration for which is
+                included in this repository.</p>
+            <p>Build with support for VIA enabled:</p>
+            <pre><code class="lang-sh">qmk <span class="hljs-keyword">compile</span> -kb sf2040 -km via
+</code></pre>
+            <p>The RP2040&#39;s bootloader can be accessed by holding the <strong>ESC</strong> key while plugging in the
+                keyboard. Then, simply drag-and-drop the output <code>.uf2</code> firmware into the bootloader folder.
+            </p>
+            <p>This keyboard has been merged into the <a
+                    href="https://github.com/qmk/qmk_firmware/tree/master/keyboards">QMK repository</a> and <a
+                    href="https://github.com/the-via/keyboards">VIA&#39;s keyboard repository</a>, meaning that it is
+                fully compatible with the VIA online keyboard configuration software (<a
+                    href="https://usevia.app">usevia.app</a>)</p>
+            <blockquote>
+                <p>For more information about setting up and working with <a href="https://docs.qmk.fm/#/">QMK</a>
+                    keyboard firmware, read the QMK documentation (<a
+                        href="https://docs.qmk.fm">https://docs.qmk.fm</a>).</p>
+            </blockquote>
+            <h3 id="license">License</h3>
+            <p>The sf2040 keyboard design and firmware is released under the GPL3 license. Contributions and pull
+                requests to this repository are always welcome!</p>
+            <h3>Gallery</h3>
+            <img src="/images/sf20402.webp">
+            <img src="/images/sf20403.webp">
+            <img src="/images/sf20404.webp">
+            <img src="/images/sf20405.webp">
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,23 +1,18 @@
 {
-    "name": "website",
-    "version": "1.0.0",
-    "description": "The public source code of strayfade.com",
-    "main": "App.js",
-    "scripts": {
-        "develop": "nodemon --exec \"node Server 8080\" --ignore \"build/\" --ext \"\"",
-        "build": "node Build"
-    },
-    "author": "strayfade",
-    "license": "MIT",
-    "dependencies": {
-        "axios": "^1.7.9",
-        "clean-css": "^5.3.3",
-        "express": "^4.18.2",
-        "express-session": "^1.17.3",
-        "helmet": "^6.0.1",
-        "http": "^0.0.1-security",
-        "javascript-obfuscator": "^4.1.0",
-        "markdown": "^0.5.0",
-        "nodemon": "^3.1.0"
-    }
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "develop": "node index.js",
+    "develop-nodemon": "nodemon --exec \"node index.js\" --ext \"\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1",
+    "path": "^0.12.7"
+  }
 }

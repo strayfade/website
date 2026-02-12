@@ -1,0 +1,41 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    mix-blend-mode: exclusion;
+}
+header > div:first-child {
+    margin-right: auto;
+}
+@media screen and (max-width: 500px) {
+    header > div {
+        display: none;
+    }
+    header > div:first-child {
+        display: block;
+    }
+}
+header > div {
+    padding: 2px 12px;
+    cursor: pointer;
+    font-size: 24px;
+}
+header a  {
+    text-decoration: none;
+}
+header span, header a {
+    color: var(--col-bg);
+}
+header span {
+    margin-right: 10px;
+}
+header .slash {
+    font-size: 20px;
+}
+header a:hover {
+    filter: none;
+}

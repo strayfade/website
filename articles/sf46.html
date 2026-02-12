@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="keywords" content="automation, AI, nodegraph, netsocket, developer, portfolio, strayfade">
+    <meta name="author" content="Noah Taylor">
+    <meta property="og:site_name" content="strayfade.com">
+    <meta property="og:url" content="strayfade.com">
+    <meta name="twitter:url" content="strayfade.com">
+
+    <meta property="og:title" content="sf46 | strayfade">
+    <meta property="twitter:title" content="sf46 | strayfade">
+    <title>sf46 | strayfade</title>
+    <meta name="description" content="An open-source 46-key split ergonomic keyboard">
+    <meta property="og:description" content="An open-source 46-key split ergonomic keyboard">
+    <meta property="twitter:description" content="An open-source 46-key split ergonomic keyboard">
+
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="article.css">
+    <script type="text/javascript" src="perlin.js" defer></script>
+    <script type="text/javascript" src="effects.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div>
+            <span><a href="/">Noah Taylor</a></span>
+            <span class="slash">/</span>
+            <span class="page-title">sf46</span>
+        </div>
+        <div>
+            <a href="/">Back</a>
+        </div>
+    </header>
+    <canvas></canvas>
+    <main>
+        <section id="article">
+            <blockquote>
+                <p>This page is a modified version of the README from the <a
+                        href="https://github.com/strayfade/sf46">GitHub repository</a>, and may become outdated. For the
+                    most recent version of this page, read the <a href="https://github.com/strayfade/sf46">GitHub
+                        README</a> instead.</p>
+            </blockquote>
+            <img src="/images/sf461.webp">
+            <h3 id="about">About</h3>
+            <p>The <strong>sf46</strong> is an ergonomic 46-key split mechanical keyboard based on the ESP32 family of
+                chips by Espressif</p>
+            <blockquote>
+                <p>This project has been certified by the OSHWA as open source hardware.</p>
+                <pre><code>[OSHW] US002721 | <span class="hljs-type">Certified</span> open source hardware | <span class="hljs-type">oshwa</span>.org/cert
+</code></pre>
+            </blockquote>
+            <h3 id="features">Features</h3>
+            <ul>
+                <li>USB Type-C Port</li>
+                <li>Fully open-source/open-hardware design and firmware files</li>
+                <li>Bluetooth/BLE wireless connectivity</li>
+                <li>3300mAh rechargeable battery (for each side)</li>
+            </ul>
+            <h3 id="assembly-mechanical-information">Assembly/Mechanical Information</h3>
+            <p><strong>Required parts:</strong></p>
+            <ul>
+                <li>PCB (<a
+                        href="https://raw.githubusercontent.com/strayfade/sf46/refs/heads/main/pcb/Gerber_sf46.zip">Download
+                        Gerber</a>)<ul>
+                        <li>Repo includes <a
+                                href="https://raw.githubusercontent.com/strayfade/sf46/refs/heads/main/pcb/EasyEDA_sf46.json">design
+                                files</a> for importing into EasyEDA</li>
+                    </ul>
+                </li>
+                <li>3D-printed case (<a
+                        href="https://raw.githubusercontent.com/strayfade/sf46/refs/heads/main/cad/case_v5.step">Download
+                        .STEP</a>)</li>
+                <li>Keyswitch plate (<a
+                        href="https://raw.githubusercontent.com/strayfade/sf46/refs/heads/main/cad/plate_v3.step">Download
+                        .STEP</a>)</li>
+                <li><strong>46x</strong> Full-size MX-style keyswitches</li>
+                <li><strong>46x</strong> MX-style Hot Swap Switch Mounts</li>
+                <li><strong>46x</strong> switch diodes (<a
+                        href="https://www.lcsc.com/product-detail/Schottky-Diodes_MDD-Microdiode-Semiconductor-SS210_C14996.html">C14996</a>)
+                </li>
+                <li><strong>2x</strong> 2U Screw-in PCB Mount Stabilizers</li>
+                <li><strong>2x</strong> ESP32 Supermini</li>
+                <li><strong>2x</strong> Lithium battery charger/boost converter</li>
+                <li><strong>2x</strong> 60x50x6mm (or similar) rechargeable battery</li>
+            </ul>
+            <p><strong>Optional, but recommended parts:</strong></p>
+            <ul>
+                <li>Krytox 205 Grade 0 lubricant</li>
+                <li>Switch disassembly tool</li>
+                <li>Case filler/sound dampening (I used polyester fiber and foam pads)</li>
+            </ul>
+            <h3 id="firmware">Firmware</h3>
+            <p>The firmware is <a href="https://github.com/strayfade/sf46/tree/main/firmware">available for download</a>
+                and can be compiled/uploaded to the ESP32s using <a href="https://platformio.org/">PlatformIO</a>.</p>
+            <h3 id="license-credits">License + Credits</h3>
+            <p>The <strong>sf46</strong> keyboard design and CAD files are released under the <strong>GPLv3</strong>
+                license.</p>
+            <p>
+            <h3>Gallery</h3>
+            <img src="/images/sf462.webp">
+            <img src="/images/sf463.webp">
+            <img src="/images/sf464.webp">
+        </section>
+    </main>
+</body>
+
+</html>

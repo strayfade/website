@@ -1,5 +1,5 @@
-
-const ColorsForeground = Object.freeze({
+let currentLog = ""
+const colorsForeground = Object.freeze({
     Black: 30,
     Red: 31,
     Green: 32,
@@ -10,7 +10,7 @@ const ColorsForeground = Object.freeze({
     White: 37,
     Gray: 90
 });
-const ColorsBackground = Object.freeze({
+const colorsBackground = Object.freeze({
     Black: 40,
     Red: 41,
     Green: 42,
@@ -28,41 +28,46 @@ const logColors = Object.freeze({
         bg: null
     },
     Warning: {
-        fg: ColorsForeground.Yellow,
+        fg: colorsForeground.Yellow,
         bg: null
     },
     WarningVisible: {
-        fg: ColorsForeground.Black,
-        bg: ColorsBackground.Yellow
+        fg: colorsForeground.Black,
+        bg: colorsBackground.Yellow
     },
     Error: {
-        fg: ColorsForeground.Red,
+        fg: colorsForeground.Red,
         bg: null
     },
     ErrorVisible: {
-        fg: ColorsForeground.White,
-        bg: ColorsBackground.Red
+        fg: colorsForeground.White,
+        bg: colorsBackground.Red
     },
     Success: {
-        fg: ColorsForeground.Green,
+        fg: colorsForeground.Green,
         bg: null
     },
     SuccessVisible: {
-        fg: ColorsForeground.Black,
-        bg: ColorsBackground.Green
+        fg: colorsForeground.Black,
+        bg: colorsBackground.Green
     }
 });
 
-const LogPrivate = (String, Colors = logColors.Default) => {
+let onPushLog = null
+
+const logPriv = (string, colors = logColors.Default) => {
     const cC = (Code) => {
         return `\x1b[${Code}m`
     }
-    const shouldBold = Colors == logColors.successVisible || Colors == logColors.warningVisible || Colors == logColors.errorVisible
-    console.log(`${Colors.fg ? cC(Colors.fg) : ""}${Colors.bg ? cC(Colors.bg) : ""}${shouldBold ? cC(1) : ""}${String.toString()}${cC(0)}`)
+    const shouldBold = colors == logColors.successVisible || colors == logColors.warningVisible || colors == logColors.errorVisible
+    currentLog += `${string}\n`
+    if (onPushLog)
+        onPushLog(string)
+    console.log(`${colors.fg ? cC(colors.fg) : ""}${colors.bg ? cC(colors.bg) : ""}${shouldBold ? cC(1) : ""}${string.toString()}${cC(0)}`)
 }
 
-const log = (String, Colors = logColors.Default) => {
-    const GenerateTimestamp = () => {
+const log = (string, colors = logColors.Default) => {
+    const getTime = () => {
         const P = (Input, Length = 2) => {
             let Output = Input.toString();
             while (Output.length < Length) 
@@ -72,7 +77,21 @@ const log = (String, Colors = logColors.Default) => {
         let N = new Date(Date.now());
         return `${P(N.getMonth() + 1)}/${P(N.getDate())}/${P(N.getFullYear(), 4)} ${P(N.getHours() > 12 ? N.getHours() - 12 : N.getHours())}:${P(N.getMinutes())}:${P(N.getSeconds())}.${P(N.getMilliseconds(), 4)} ${N.getHours() >= 12 ? "PM" : "AM"}`
     }
-    LogPrivate(`[${GenerateTimestamp()}] ${String}`, Colors)
+    logPriv(`[${getTime()}] ${string}`, colors)
 }
 
-module.exports = { ColorsForeground, ColorsBackground, logColors, log };
+const setOnPushLog = (func) => {
+    onPushLog = func
+}
+
+const getLines = (lineCount = 1) => {
+    // Return the last `lineCount` lines from `currentLog` as an array of strings.
+    if (!Number.isFinite(lineCount) || lineCount <= 0) return [];
+    const lines = currentLog.split('\n');
+    // Remove trailing empty line caused by final newline
+    if (lines.length && lines[lines.length - 1] === '') lines.pop();
+    if (lineCount >= lines.length) return lines.slice();
+    return lines.slice(-lineCount);
+}
+
+module.exports = { colorsForeground, colorsBackground, logColors, log, getLines, setOnPushLog };

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="keywords" content="automation, AI, nodegraph, netsocket, developer, portfolio, strayfade">
+    <meta name="author" content="Noah Taylor">
+    <meta property="og:site_name" content="strayfade.com">
+    <meta property="og:url" content="strayfade.com">
+    <meta name="twitter:url" content="strayfade.com">
+
+    <meta property="og:title" content="typewriter | strayfade">
+    <meta property="twitter:title" content="typewriter | strayfade">
+    <title>typewriter | strayfade</title>
+    <meta name="description" content="Writing a script to complete my homework">
+    <meta property="og:description" content="Writing a script to complete my homework">
+    <meta property="twitter:description" content="Writing a script to complete my homework">
+
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="article.css">
+    <script type="text/javascript" src="perlin.js" defer></script>
+    <script type="text/javascript" src="effects.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div>
+            <span><a href="/">Noah Taylor</a></span>
+            <span class="slash">/</span>
+            <span class="page-title">typing</span>
+        </div>
+        <div>
+            <a href="/">Back</a>
+        </div>
+    </header>
+    <canvas></canvas>
+    <main>
+        <section id="article">
+            <h3 id="the-basics">The Basics</h3>
+            <ul>
+                <li><a href="https://typing.com">Typing.com</a> is a website that offers challenge sets to practice your
+                    typing.</li>
+                <li>Typing.com has an optional teacher/student system, where a "teacher" user can view the
+                    progress that assigned student accounts have made.</li>
+                <li><strong>Fact 1</strong>: I know how to type already.</li>
+                <li><strong>Fact 2</strong>: I don't want to type more than I already do daily.</li>
+            </ul>
+            <img src="/images/Typing1.webp" />
+            <p class="image-caption">I'm not typing randomized strings hundreds of times. Absolutely wild.</p>
+
+            <h3 id="how-do-we-approach-this-challenge-">How do we approach this challenge?</h3>
+            <p>Initially, I thought that the best way to approach this would be to write a browser script that could be
+                executed by a Firefox extension such as <a
+                    href="https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/">TamperMonkey</a>. By using
+                DevTools on the site, I could see that all of the characters to type had the class name
+                <code>letter</code>. I started out with the following code:
+            </p>
+            <pre><code><span class="hljs-attribute">let characters</span> = document.getElementsByClassName(<span class="hljs-string">"letter"</span>);
+</code></pre>
+            <p><em>Simple enough, right?</em> However, I quickly encountered a problem: Typing.com seems to have some
+                sort of protection against injected keystrokes. I couldn&#39;t use browser Javascript to execute the
+                keypresses to type the letters; the keypresses had to be sent from elsewhere.</p>
+            <h3 id="solution-1">Solution 1</h3>
+            <p>After this, I took what I learned and moved to Python. With no way to easily and directly get the letters
+                to type from an external program (such as Python), I decided that the best solution would be to use OCR
+                (Optical Character Recognition).</p>
+            <p>Using OCR, I could capture a section of the screen and detect letters from it. To do this, I used the
+                <code>pytesseract</code> package for Python and installed the Tesseract CLI. Ultimately, this solution
+                worked, but it had many pitfalls.
+            </p>
+            <ul>
+                <li>Python is a notoriously slow interpreted language.</li>
+                <li>Each section I wanted to type had to be manually selected/screenshotted, which became time-consuming
+                    and tedious when completing multiple lessons at once.</li>
+                <li>This all had to work cross-platform since I use Windows, MacOS, and Linux, which wasn&#39;t easy to
+                    do in Python.</li>
+                <li>Some characters simply couldn&#39;t be recognized by Tesseract, such as Typing.com&#39;s newline
+                    character which requires the user to press <code>enter</code> to continue.</li>
+            </ul>
+            <p><em>So, that&#39;s why I decided to try...</em></p>
+            <h3 id="solution-2">Solution 2</h3>
+            <p><strong>Selenium Webdriver</strong> is a package for NodeJS that allows developers to create web tests by
+                creating a contained, automated browser and sending commands to it. <em>This is perfect for what I am
+                    trying to accomplish!</em></p>
+            <p>Selenium solves every single problem that the Python version had, and as a bonus, I can make Selenium
+                auto-progress through all of the typing challenges on its own by detecting and automatically clicking
+                the &quot;next lesson&quot; button.</p>
+            <p>So, with this knowledge, I rewrote the task at hand using Selenium. Keys would be detected via browser
+                Javascript, as before, but now I could send the keypresses from Selenium. The only downside to this
+                method is that (since Selenium Webdriver creates a sandboxed browser) I would have to re-login to my
+                Typing.com account every time I wished to test the code, but this only ended up being a minor issue as
+                multiple lessons could be completed at once after logging in.</p>
+            <p>I wrote further code to simulate typing mistakes, which would then press backspace and re-type the
+                correct letter, and I also added logic to type at different speeds (in &quot;words per minute&quot;).
+                Without these limiters, it&#39;s incredible what times the script can achieve.</p>
+            <p><img src="/images/Typing2.webp" /></p>
+            <p class="image-caption">Uh, I accidentally did this on my school account...</p>
+
+            <blockquote>
+                <p>The source code for this project is available at the repository <a
+                        href="https://github.com/strayfade/typewriter/blob/main/index.js">strayfade/typewriter</a></p>
+            </blockquote>
+        </section>
+    </main>
+</body>
+
+</html>

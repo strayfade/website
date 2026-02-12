@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 let width, height;
 
 const divisions = 20;
-const noiseSpeed = 10;
+const noiseSpeed = 7.5;
 const noiseScale = 25;
 let pointsXSpacing, pointsYSpacing
 function resize() {
@@ -11,11 +11,10 @@ function resize() {
     height = canvas.height = window.innerHeight;
     pointsXSpacing = Math.max(width, height) / divisions
     pointsYSpacing = Math.max(width, height) / divisions
-    console.log(width, height)
     ctx.fillStyle = `white`;
 }
 
-window.addEventListener('resize', resize);
+//window.addEventListener('resize', resize);
 resize();
 
 perlin.seed();

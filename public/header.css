@@ -7,6 +7,7 @@ header {
     left: 0;
     top: 0;
     mix-blend-mode: exclusion;
+    background-color: white;
 }
 header > div:first-child {
     margin-right: auto;
@@ -26,9 +27,7 @@ header > div {
 }
 header a  {
     text-decoration: none;
-}
-header span, header a {
-    color: var(--col-bg);
+    color: black;
 }
 header span {
     margin-right: 10px;

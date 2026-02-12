@@ -34,7 +34,10 @@
             <span class="page-title"></span>
         </div>
         <div>
-            <a href="#about">About Me</a>
+            <a href="#experience">Experience</a>
+        </div>
+        <div>
+            <a href="#skills">Skills</a>
         </div>
         <div>
             <a href="#projects">Projects</a>
@@ -53,35 +56,76 @@
             </section>
             <section id="experience">
                 <h1>Experience</h1>
-                <p><strong>5 years</strong> of professional desktop and embedded systems experience using
+                <p style="font-size: 12px; margin-bottom: 12px; margin-top: 0px; font-style: italic;">(click an item to expand)</p>
+                <p class="dropdown"><strong>5 years</strong> of professional desktop and embedded systems development experience using
                     <strong>C++11</strong> and <strong>C++20</strong>
                 </p>
-                <p><strong>4 years</strong> of experience using web development technologies <strong>(HTML, CSS,
+                <div class="dropdown-detail">
+                    <ul>
+                        <li>Designed and implemented a custom <strong>websocket library</strong> for <strong>C++</strong>, enabling secure communication from low-level code</li>
+                        <li>Developed an <strong>open-source framework</strong> for quickly implementing <strong>neural networks</strong> for value prediction algorithms in <strong>C++</strong></li>
+                        <li>Developed robust, modular firmware compatible with a wide range of <strong>Bluetooth keyboards</strong> (both existing and custom)</li>
+                        <li>Designed and implemented a filtering algorithm for <strong>preventing false-positives</strong> in low-latency video object detection workflows in <strong>OpenCV (C++)</strong></li>
+                        <li>Designed and deployed software <strong>debugging tools</strong> utilizing <strong>immediate-mode GUI</strong> libraries such as <strong>imgui</strong></li>
+                        <li>Familiar with graphics APIs such as <strong>DirectX 9, 11, 12</strong>, and <strong>OpenGL 3</strong></li>
+                    </ul>
+                </div>
+                <p class="dropdown"><strong>4 years</strong> of experience using web development technologies <strong>(HTML, CSS,
                         JavaScript)</strong></p>
-                <p>Very experienced with web servers/hosting <strong>(AWS, Azure, etc.)</strong>, databases
-                    <strong>(MongoDB, MySQL)</strong>, backend security, and CI/CD automations
+                <div class="dropdown-detail">
+                    <ul>
+                        <li>Designed many aesthetically-pleasing pages using modern web technologies</li>
+                        <li>Created multiple highly successful webapps, handling hundreds of users at times</li>
+                    </ul>
+                </div>
+                <p class="dropdown">Web applications, servers/hosting <strong>(AWS, Azure, etc.)</strong>, databases
+                    <strong>(MongoDB, MySQL)</strong>, backend infrastructure/security, and CI/CD automations
                 </p>
-                <p>Capable UI/UX designer</p>
-                <p>Proficient in C++, Java, JavaScript, C#, and Python</p>
-                <p>Experienced with popular IDEs <strong>(Visual Studio Code, Visual Studio, IntelliJ)</strong></p>
-                <p>Experienced with source control platforms and concepts <strong>(git, Github, GitLab)</strong></p>
-                <p>Hardware engineer familiar with CAD tools <strong>(Autodesk Fusion, Inventor)</strong></p>
+                <div class="dropdown-detail">
+                    <ul>
+                        <li>Designed and utilized robust backend infrastructure responsible for managing many servers at a time</li>
+                        <li>Implemented CI/CD automations so that servers automatically pull updated code from source control platforms when needed</li>
+                        <li>Implemented a capable load-balancing system for databases in MongoDB</li>
+                        <li>Created and deployed automations to audit code for known vulnerabilities, and automatically push fixes when necessary</li>
+                        <li>Used best-practices when designing webserver infrastructure, resulting in servers capable of handling thousands of requests per minute</li>
+                        <li>Deployed URL blacklists and IP-based rate limiting to prevent common web scrapers and other unwanted traffic</li>
+                    </ul>
+                </div>
+            </section>
+            <section id="skills">
+                <h1>Skills</h1>
+                <p>Proficient in <strong>C++, Java, JavaScript, C#, and Python</strong></p>
+                <p>Proficient in markup languages such as <strong>HTML, Markdown, etc.</strong></p>
+                <p>Very experienced with modern IDEs <strong>(Visual Studio Code, Visual Studio, IntelliJ)</strong></p>
+                <p>Experienced with source control platforms <strong>(git, Github, GitLab)</strong></p>
+                <p>Experienced with configuration formats such as <strong>YAML, XML, Plist, and pkl (Pickle)</strong></p>
+                <p>Familiar with server management and the Linux terminal <strong>(Arch Linux, Debian)</strong></p>
+                <p>Capable of <strong>imaging systems</strong> using tools like <strong>BalenaEtcher, Rufus, etc.</strong></p>
+                <p>Familiar with CAD/EDA tools <strong>(Autodesk Fusion, Inventor, Altium Designer, CircuitMaker, EasyEDA)</strong></p>
+                <p>Familiar with scene descriptor formats commonly used in robotics applications <strong>(USD, XACRO, URDF, STL)</strong></p>
+                <p>Somewhat familiar with reverse-engineering and offensive/defensive security concepts</p>
             </section>
             <section id="projects">
                 <h1>Personal Projects</h1>
-                <p>*<strong><a href="https://netsocket.strayfade.com">netsocket</a></strong> - it's a smart home
-                    automation network like Google Home, but easily expandable, self-hosted, and private.</p>
+                <p class="dropdown">*<strong><a href="https://netsocket.strayfade.com">netsocket</a></strong> - it's a smart home
+                    automation network like Google Home, but easily expandable, self-hosted, and private</p>
+                <div class="dropdown-detail">
+                    <ul>
+                        <li>Automations are defined using a nodegraph-based language, with each node corresponding to a server-side function</li>
+                        <li>Currently implemented are APIs such as Philips Hue and OpenWeatherMap</li>
+                    </ul>
+                </div>
                 <p>*<strong>a2</strong> - a cost-effective quadruped robotics platform using innovative self-designed
                     actuators</p>
-                <p><strong><a href="https://github.com/strayfade/sf2040">sf2040</a></strong> - a custom-layout
-                    mechanical keyboard that caters to software engineers</p>
+                <p><strong><a href="https://github.com/strayfade/sf2040">sf2040</a></strong> - a custom
+                    mechanical keyboard with a layout catering to software engineers</p>
                 <p><strong>fnn</strong> - a lightweight feed-forward neural network library for C++</p>
                 <p><strong><a href="https://github.com/strayfade/nms2">nms2</a></strong> - an algorithm for reducing
                     false-positives in video object detection pipelines in OpenCV (C++)</p>
                 <p><strong>XAuth</strong> <em>(discontinued)</em> - a paid software protection-as-a-service package for
                     C++ programs, preventing reverse-engineering and offering DRM/license-based access functionality</p>
 
-                <p style="font-size: 12px; margin-top: 6px;"><em>* - work in progress</em></p>
+                <p style="font-size: 12px; margin-top: 6px; font-style: italic;">* - work in progress</p>
             </section>
             <section id="contact">
                 <h1>Contact</h1>

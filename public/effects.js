@@ -44,7 +44,7 @@ const draw = () => {
             );
             let newCircleX = (width * percentPosition[0]) + perlinValue * 50;
             let newCircleY = (height * percentPosition[1]) + perlinValue * 50;
-            drawBall(newCircleX, newCircleY, (perlinValue + 0.5) * (pointsXSpacing / 2) + (pointsXSpacing / 2))
+            drawBall(newCircleX, newCircleY, (perlinValue + 0.75) * (pointsXSpacing / 2) + (pointsXSpacing / 2))
         }
     }
 
@@ -54,3 +54,23 @@ const draw = () => {
     }
 }
 setInterval(draw, 1);
+
+const dropdowns = document.getElementsByClassName("dropdown")
+for (let d = 0; d < dropdowns.length; d++) {
+    const x = dropdowns[d]
+    x.addEventListener("click", (e) => {
+        const x2 = x;
+        const containerElements = x2.parentElement.children;
+        for (i in containerElements) {
+            if (containerElements[i] == x2) {
+                const nextSibling = containerElements[parseInt(i) + 1]
+                if (nextSibling.classList.contains("dropdown-visible"))
+                    nextSibling.classList.remove("dropdown-visible")
+                else
+                    nextSibling.classList.add("dropdown-visible")
+                console.log(x2.style)
+                x2.style.listStyle = (x2.style.listStyle == "disclosure-open") ? "disclosure-closed" : "disclosure-open"
+            }
+        }
+    })
+}

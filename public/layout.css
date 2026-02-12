@@ -36,7 +36,6 @@ section>h1 {
     margin: 0px;
     background-color: black;
     width: max-content;
-    border-radius: 10px;
 }
 
 section>p {
@@ -45,7 +44,6 @@ section>p {
     max-width: min(800px, 100%);
     width: max-content;
     padding: 2px 10px;
-    border-radius: 10px;
 }
 
 #posts>a {
@@ -60,11 +58,9 @@ section>p {
 }
 
 a {
-    background-color: black;
     color: white;
     padding: 2px 4px;
     margin-left: -2px;
-    border-radius: 10px;
 }
 
 a:hover {
@@ -112,4 +108,36 @@ a:hover {
     section>p {
         width: unset;
     }
+}
+
+li {
+    background-color: black;
+}
+
+.dropdown {
+    list-style: disclosure-closed;
+    display: list-item;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropdown-detail ul {
+    margin: 0;
+}
+
+.dropdown-detail>* {
+    overflow: hidden;
+}
+
+.dropdown-detail {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s;
+    border-left: 2px solid white;
+    margin-bottom: 0px;
+}
+
+.dropdown-visible {
+    grid-template-rows: 1fr;
+    margin-bottom: 30px;
 }

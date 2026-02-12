@@ -5,7 +5,6 @@ const port = 3000
 
 const { log, logColors } = require('./log')
 
-
 app.get(`/teapot`, (req, res) => {
   res.status(200).sendFile(path.join(__dirname, `articles/teapot.html`))
 })

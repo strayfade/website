@@ -13,7 +13,7 @@ header > div:first-child {
     margin-right: auto;
     text-transform: none;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
     header > div {
         display: none;
     }

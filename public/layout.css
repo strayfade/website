@@ -1,5 +1,5 @@
 main {
-    height: calc(100vh - 34px);
+    height: max-content;
     position: absolute;
     top: 34px;
     left: 0;

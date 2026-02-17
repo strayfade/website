@@ -2,7 +2,7 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext('2d');
 let width, height;
 
-const divisions = 20;
+const divisions = 25;
 const noiseSpeed = 7.5;
 const noiseScale = 25;
 let pointsXSpacing, pointsYSpacing
@@ -11,10 +11,7 @@ function resize() {
     height = canvas.height = window.innerHeight;
     pointsXSpacing = Math.max(width, height) / divisions
     pointsYSpacing = Math.max(width, height) / divisions
-    ctx.fillStyle = `white`;
 }
-
-//window.addEventListener('resize', resize);
 resize();
 
 perlin.seed();
@@ -27,8 +24,8 @@ const drawBall = (x, y, size) => {
     ctx.fill();
 }
 
-ctx.fillStyle = `white`;
 const draw = () => {
+ctx.fillStyle = `black`;
     ctx.clearRect(0, 0, width, height);
     const time = Date.now();
     for (let x = -pointsXSpacing; x <= width + pointsXSpacing; x += pointsXSpacing) {
@@ -43,7 +40,7 @@ const draw = () => {
             );
             let newCircleX = (width * percentPosition[0]) + perlinValue * 50;
             let newCircleY = (height * percentPosition[1]) + perlinValue * 50;
-            drawBall(newCircleX, newCircleY, (perlinValue + 0.75) * (pointsXSpacing / 2) + (pointsXSpacing / 2))
+            drawBall(newCircleX, newCircleY, (perlinValue + 0.7) * (pointsXSpacing / 2) + (pointsYSpacing / 2))
         }
     }
 

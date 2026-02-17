@@ -6,4 +6,5 @@ canvas {
     height: 100vh;
     mix-blend-mode: exclusion;
     pointer-events: none;
+    background-color: white;
 }

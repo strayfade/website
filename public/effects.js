@@ -51,6 +51,18 @@ ctx.fillStyle = `black`;
 }
 setInterval(draw, 1000 / 30);
 
+const navToggle = document.getElementById("nav-toggle")
+const scrollButtons = document.querySelectorAll(".nav-link-btn")
+for (let b = 0; b < scrollButtons.length; b++) {
+    scrollButtons[b].addEventListener("click", () => {
+        const target = document.getElementById(scrollButtons[b].dataset.scrollTarget)
+        if (target)
+            target.scrollIntoView({ behavior: "smooth", block: "start" })
+        if (navToggle)
+            navToggle.checked = false
+    })
+}
+
 const dropdowns = document.getElementsByClassName("dropdown")
 for (let d = 0; d < dropdowns.length; d++) {
     const x = dropdowns[d]

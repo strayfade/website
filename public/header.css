@@ -1,45 +1,139 @@
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: calc(100vw - 24px);
-    padding: 2px 12px;
-    left: 0;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100vw;
+    height: var(--header-height);
+    box-sizing: border-box;
     filter: invert(1);
     background-color: black;
+    z-index: 1000;
+    transform: translateZ(0);
+    will-change: transform;
 }
-header a:hover {
-    text-shadow: 0px 0px 10px black;
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 24px;
+    max-width: 880px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
-header > div:first-child {
-    margin-right: auto;
-    text-transform: none;
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
 }
-@media screen and (max-width: 700px) {
-    header > div {
-        display: none;
-    }
-    header > div:first-child {
-        display: block;
-    }
-}
-header > div {
-    cursor: pointer;
-    font-size: 24px;
-    text-transform: lowercase;
-}
-header a  {
+
+.nav-link-btn {
+    background: none;
+    border: none;
+    appearance: none;
+    font-family: inherit;
     text-decoration: none;
     color: white;
+    font-size: 15px;
+    text-transform: lowercase;
+    padding: 2px 4px;
+    margin: 0;
+    cursor: pointer;
 }
-header span {
-    margin-right: 10px;
-}
-header .slash {
-    font-size: 20px;
-}
-header a:hover {
+
+.nav-links .nav-link-btn:hover {
     filter: none;
+    text-shadow: 0px 0px 10px black;
+}
+
+.nav-toggle,
+.nav-toggle-label {
+    display: none;
+}
+
+/* Article page header: back link + article title */
+.article-navbar {
+    justify-content: space-between;
+}
+
+.article-navbar .back-link {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    text-transform: lowercase;
+    padding: 2px 4px;
+    margin: 0;
+}
+
+.article-navbar .back-link:hover {
+    filter: none;
+    text-shadow: 0px 0px 10px black;
+}
+
+.article-navbar .article-title {
+    font-family: var(--font-family);
+    font-size: 15px;
+    text-transform: lowercase;
+    opacity: 0.7;
+}
+
+/* Mobile menu drawer: a top-level element (not nested in header) so it
+   paints above <canvas>/<main> in stacking order instead of being clipped
+   inside header's filtered stacking context. */
+.nav-drawer {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .navbar .nav-links {
+        display: none;
+    }
+
+    .nav-toggle-label {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 28px;
+        height: 24px;
+        cursor: pointer;
+    }
+
+    .nav-toggle-label span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: white;
+    }
+
+    .nav-drawer {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100vw;
+        box-sizing: border-box;
+        background-color: black;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s;
+    }
+
+    .nav-drawer .nav-link-btn {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 14px 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    .nav-toggle:checked~.nav-drawer {
+        max-height: 400px;
+    }
 }

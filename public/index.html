@@ -27,25 +27,39 @@
 </head>
 
 <body>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
     <header>
-        <div>
-            <a href="#contact">my email is at the bottom of the page</a>
-        </div>
+        <nav class="navbar">
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </label>
+            <div class="nav-links">
+                <button type="button" class="nav-link-btn" data-scroll-target="experience">Experience</button>
+                <button type="button" class="nav-link-btn" data-scroll-target="skills">Skills</button>
+                <button type="button" class="nav-link-btn" data-scroll-target="projects">Projects</button>
+                <button type="button" class="nav-link-btn" data-scroll-target="articles">Articles</button>
+                <button type="button" class="nav-link-btn" data-scroll-target="interests">Interests</button>
+                <button type="button" class="nav-link-btn" data-scroll-target="contact">Contact</button>
+            </div>
+        </nav>
     </header>
     <canvas></canvas>
     <main>
-        <div align="left">
-            <section id="personal">
-                <h1>About Me</h1>
-                <p>I'm Noah, 20 years old, and I'm currently finishing my sophomore year in college and studying CIT with emphasis on computer application development.</p>
-                <p>On the side, I like taking on projects involving software, mechanical and electrical design, and I enjoy pushing myself to learn new things (bet you've never heard that one before).</p>
+        <div class="content" id="top">
+            <section id="hero" class="hero">
+                <p>I'm Noah, and I'm in my junior year of college, studying CIT with an emphasis on computer
+                    application development.</p>
+                <p>On the side, I take on projects involving software, mechanical and electrical design, and I enjoy
+                    pushing myself to learn new things (bet you've never heard that one before).</p>
+                <p class="hero-links"><a href="#projects">See my projects</a> &middot; <a href="#contact">Get in touch</a></p>
             </section>
+
             <section id="experience">
-                <h1>Experience</h1>
-                <p style="font-size: 12px; margin-bottom: 12px; margin-top: 0px; font-style: italic; width: max-content;">(click an item to expand)</p>
-                <p class="dropdown"><strong>5 years</strong> of professional desktop and embedded systems development experience using
-                    <strong>C++11</strong> and <strong>C++20</strong>
-                </p>
+                <h2 class="section-title">experience</h2>
+                <p class="note">(click an item to expand)</p>
+
+                <p class="dropdown"><strong>5 years</strong> of professional desktop and embedded systems development
+                    experience using <strong>C++11</strong> and <strong>C++20</strong></p>
                 <div class="dropdown-detail">
                     <ul>
                         <li>Designed and implemented a custom <strong>websocket library</strong> for <strong>C++</strong>, enabling secure communication from low-level code</li>
@@ -56,17 +70,18 @@
                         <li>Familiar with graphics APIs such as <strong>DirectX 9, 11, 12</strong>, and <strong>OpenGL 3</strong></li>
                     </ul>
                 </div>
-                <p class="dropdown"><strong>4 years</strong> of experience using web development technologies <strong>(HTML, CSS,
-                        JavaScript)</strong></p>
+
+                <p class="dropdown"><strong>4 years</strong> of experience using web development technologies
+                    <strong>(HTML, CSS, JavaScript)</strong></p>
                 <div class="dropdown-detail">
                     <ul>
                         <li>Designed many aesthetically-pleasing pages using modern web technologies</li>
                         <li>Created multiple highly successful webapps, handling hundreds of users at times</li>
                     </ul>
                 </div>
+
                 <p class="dropdown">Web applications, servers/hosting <strong>(AWS, Azure, etc.)</strong>, databases
-                    <strong>(MongoDB, MySQL)</strong>, backend infrastructure/security, and CI/CD automations
-                </p>
+                    <strong>(MongoDB, MySQL)</strong>, backend infrastructure/security, and CI/CD automations</p>
                 <div class="dropdown-detail">
                     <ul>
                         <li>Designed and utilized robust backend infrastructure responsible for managing many servers at a time</li>
@@ -78,81 +93,126 @@
                     </ul>
                 </div>
             </section>
-            <section id="skills">
-                <h1>Skills</h1>
-                <p>Proficient in <strong>C++, Java, JavaScript, C#, and Python</strong></p>
-                <p>Proficient in markup languages such as <strong>HTML, Markdown, etc.</strong></p>
-                <p>Very experienced with modern IDEs <strong>(Visual Studio Code, Visual Studio, IntelliJ)</strong></p>
-                <p>Experienced with source control platforms <strong>(git, Github, GitLab)</strong></p>
-                <p>Experienced with configuration formats such as <strong>YAML, XML, Plist, and pkl (Pickle)</strong></p>
-                <p>Familiar with server management and the Linux command line <strong>(Arch Linux, Debian)</strong></p>
-                <p>Capable of <strong>imaging</strong> desktop and embedded systems using tools like <strong>BalenaEtcher, Rufus, etc.</strong></p>
-                <p>Familiar with CAD/EDA software packages <strong>(Autodesk Fusion, Inventor, Altium Designer, CircuitMaker, EasyEDA)</strong></p>
-                <p>Familiar with software and scene descriptor formats commonly used in robotics/AI applications <strong>(NVIDIA Omniverse, Isaac Lab, USD, XACRO, URDF, STL)</strong></p>
-                <p>Somewhat familiar with reverse-engineering and offensive/defensive security concepts</p>
-            </section>
-            <section id="projects">
-                <h1>Personal Projects</h1>
-                <p class="dropdown">*<strong><a href="https://netsocket.strayfade.com">netsocket</a></strong> - a smart home
-                    automation network like Google Home, but easily expandable, self-hosted, and private</p>
-                <div class="dropdown-detail">
-                    <ul>
-                        <li>Automations are defined using a nodegraph-based language, with each node corresponding to a server-side function</li>
-                        <li>Currently implemented are APIs such as Philips Hue and OpenWeatherMap</li>
-                    </ul>
-                </div>
-                <p>*<strong>a2</strong> - a cost-effective quadruped robotics platform using innovative self-designed
-                    actuators</p>
-                <p><strong><a href="/sf2040">sf2040</a></strong> - a custom
-                    mechanical keyboard with a layout catering to software engineers</p>
-                <p><strong>fnn</strong> - a lightweight feed-forward neural network library for C++</p>
-                <p><strong><a href="https://github.com/strayfade/nms2">nms2</a></strong> - an algorithm for reducing
-                    false-positives in video object detection pipelines in OpenCV (C++)</p>
-                <p><strong>XAuth</strong> <em>(discontinued)</em> - a paid software protection-as-a-service package for
-                    C++ programs, preventing reverse-engineering and offering DRM/license-based access functionality</p>
 
-                <p style="font-size: 12px; margin-top: 6px; font-style: italic; width: max-content;">* - work in progress</p>
+            <section id="skills">
+                <h2 class="section-title">skills</h2>
+                <ul class="plain-list">
+                    <li>Proficient in <strong>C++, Java, JavaScript, C#, and Python</strong></li>
+                    <li>Experienced with modern IDEs <strong>(Visual Studio Code, Visual Studio, IntelliJ)</strong></li>
+                    <li>Experienced with source control platforms <strong>(git, GitHub, GitLab)</strong></li>
+                    <li>Experienced administering Linux servers and infrastructure <strong>(Arch Linux, Debian)</strong></li>
+                    <li>Familiar with CAD/EDA software packages <strong>(Autodesk Fusion, Inventor, Altium Designer, CircuitMaker, EasyEDA)</strong></li>
+                    <li>Familiar with robotics simulation tooling and scene-description formats <strong>(NVIDIA Omniverse, Isaac Lab, URDF)</strong></li>
+                    <li>Familiar with reverse-engineering and software protection techniques</li>
+                </ul>
             </section>
+
+            <section id="projects">
+                <h2 class="section-title">projects</h2>
+                <div class="card-grid">
+                    <article class="tile">
+                        <div class="tile-header">
+                            <h3><a href="https://github.com/strayfade/netsocket">netsocket</a></h3>
+                            <span class="badge">in progress</span>
+                        </div>
+                        <p>A smart home automation network like Google Home, but easily expandable, self-hosted, and
+                            private.</p>
+                    </article>
+
+                    <article class="tile">
+                        <div class="tile-header">
+                            <h3>a2</h3>
+                            <span class="badge">in progress</span>
+                        </div>
+                        <p>A cost-effective quadruped robotics platform using innovative self-designed actuators.</p>
+                    </article>
+
+                    <article class="tile">
+                        <div class="tile-header">
+                            <h3><a href="/sf2040">sf2040</a></h3>
+                        </div>
+                        <p>A custom mechanical keyboard with a layout catering to software engineers.</p>
+                    </article>
+
+                    <article class="tile">
+                        <div class="tile-header">
+                            <h3>fnn</h3>
+                        </div>
+                        <p>A lightweight feed-forward neural network library for C++.</p>
+                    </article>
+
+                    <article class="tile">
+                        <div class="tile-header">
+                            <h3><a href="https://github.com/strayfade/nms2">nms2</a></h3>
+                        </div>
+                        <p>An algorithm for reducing false-positives in video object detection pipelines in OpenCV
+                            (C++).</p>
+                    </article>
+
+                    <article class="tile">
+                        <div class="tile-header">
+                            <h3><a href="https://xauth.strayfade.com">XAuth</a></h3>
+                        </div>
+                        <p>A paid software protection-as-a-service package for C++ programs, preventing
+                            reverse-engineering and offering DRM/license-based access functionality.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="articles">
+                <h2 class="section-title">articles</h2>
+                <div class="card-grid">
+                    <a class="tile tile-link" href="/sf2040">
+                        <h3>sf2040</h3>
+                        <p>Open-source mechanical keyboard using the RP2040 microcontroller.</p>
+                    </a>
+                    <a class="tile tile-link" href="/sf46">
+                        <h3>sf46</h3>
+                        <p>An open-source 46-key split ergonomic keyboard.</p>
+                    </a>
+                    <a class="tile tile-link" href="/typing">
+                        <h3>typewriter</h3>
+                        <p>Writing a script to complete my homework.</p>
+                    </a>
+                    <a class="tile tile-link" href="/wpa">
+                        <h3>wpa2 failure</h3>
+                        <p>Learning about WPA2 to get into my high school's private network.</p>
+                    </a>
+                    <a class="tile tile-link" href="/teapot">
+                        <h3>418</h3>
+                        <p>Webserver running inside a teapot.</p>
+                    </a>
+                </div>
+            </section>
+
             <section id="interests">
-                <h1>Personal Interests</h1>
-                <p style="font-size: 12px; margin-bottom: 12px; margin-top: 0px; font-style: italic; width: max-content;">(at least, what will fit on the page)</p>
-                <p>Neon Genesis Evangelion</p>
-                <p>CNC Machining</p>
-                <p>NieR (Automata, of course, but also the others)</p>
-                <p>Home Robots</p>
+                <h2 class="section-title">interests</h2>
+                <p class="note">(at least, what will fit on the page)</p>
+                <ul class="pill-list">
+                    <li>Neon Genesis Evangelion</li>
+                    <li>CNC Machining</li>
+                    <li>Nier Automata</li>
+                    <li>Home Robots</li>
+                </ul>
             </section>
+
             <section id="contact">
-                <h1>Contact</h1>
-                <p><strong>Email</strong> - <a href="mailto:noah@strayfade.com">noah@strayfade.com</a></p>
-                <p><strong>Github</strong> - <a href="https://github.com/strayfade">https://github.com/strayfade</a></p>
-            </section>
-        </div>
-        <div align="right">
-            <section id="posts">
-                <h1>Articles</h1>
-                <a href="/sf2040">
-                    <p>sf2040</p>
-                    <p>open-source mechanical keyboard using the RP2040 microcontroller</p>
-                </a>
-                <a href="/sf46">
-                    <p>sf46</p>
-                    <p>an open-source 46-key split ergonomic keyboard</p>
-                </a>
-                <a href="/typing">
-                    <p>typewriter</p>
-                    <p>writing a script to complete my homework</p>
-                </a>
-                <a href="/wpa">
-                    <p>wpa2 failure</p>
-                    <p>learning about WPA2 to get into my high school's private network</p>
-                </a>
-                <a href="/teapot">
-                    <p>418</p>
-                    <p>webserver running inside a teapot</p>
-                </a>
+                <h2 class="section-title">contact</h2>
+                <ul class="plain-list contact-list">
+                    <li><span class="label">Email</span><a href="mailto:noah@strayfade.com">noah@strayfade.com</a></li>
+                    <li><span class="label">GitHub</span><a href="https://github.com/strayfade">github.com/strayfade</a></li>
+                </ul>
             </section>
         </div>
     </main>
+    <nav class="nav-drawer">
+        <button type="button" class="nav-link-btn" data-scroll-target="experience">Experience</button>
+        <button type="button" class="nav-link-btn" data-scroll-target="skills">Skills</button>
+        <button type="button" class="nav-link-btn" data-scroll-target="projects">Projects</button>
+        <button type="button" class="nav-link-btn" data-scroll-target="articles">Articles</button>
+        <button type="button" class="nav-link-btn" data-scroll-target="interests">Interests</button>
+        <button type="button" class="nav-link-btn" data-scroll-target="contact">Contact</button>
+    </nav>
 </body>
 
 </html>

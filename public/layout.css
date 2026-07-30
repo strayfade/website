@@ -47,14 +47,15 @@ section>p {
 }
 
 #posts>a {
-    display: flex;
     justify-content: right;
     align-items: center;
     background-color: black;
     text-decoration: none;
-    margin: 20px 0px;
     padding: 2px 10px;
-    width: 200px;
+    width: max-content;
+    margin-right: 10px;
+    display: block;
+    margin-bottom: 10px;
 }
 
 a {
@@ -72,8 +73,9 @@ a:hover {
 }
 
 #posts>a>p:first-child {
-    margin-right: 10px;
     text-decoration: underline;
+    font-style: italic;
+    font-size: 18px;
 }
 
 #posts>a>p:last-child {

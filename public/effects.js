@@ -49,7 +49,7 @@ ctx.fillStyle = `black`;
         perlin.clearMemory();
     }
 }
-setInterval(draw, 1);
+setInterval(draw, 1000 / 30);
 
 const dropdowns = document.getElementsByClassName("dropdown")
 for (let d = 0; d < dropdowns.length; d++) {

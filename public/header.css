@@ -3,7 +3,8 @@ header {
     justify-content: center;
     align-items: center;
     position: absolute;
-    width: 100vw;
+    width: calc(100vw - 24px);
+    padding: 2px 12px;
     left: 0;
     top: 0;
     filter: invert(1);
@@ -25,7 +26,6 @@ header > div:first-child {
     }
 }
 header > div {
-    padding: 2px 12px;
     cursor: pointer;
     font-size: 24px;
     text-transform: lowercase;

@@ -53,6 +53,7 @@ body {
   margin: 0;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {

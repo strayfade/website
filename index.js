@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const port = process.argv[2] || process.env.PORT || 3000
 
-const { log, logColors } = require('./log')
+const { log, logColors } = require('./Log')
 
 app.get(`/teapot`, (req, res) => {
   res.status(200).sendFile(path.join(__dirname, `articles/teapot.html`))

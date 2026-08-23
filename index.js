@@ -1,7 +1,7 @@
 const path = require('path')
 const express = require('express')
 const app = express()
-const port = process.argv[2] || 3000
+const port = process.argv[2] || process.env.PORT || 3000
 
 const { log, logColors } = require('./log')
 

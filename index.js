@@ -23,6 +23,9 @@ app.get(`/wpa`, (req, res) => {
 app.get(`/unpaired`, (req, res) => {
   res.status(200).sendFile(path.join(__dirname, `articles/unpaired.html`))
 })
+app.get(`/gifts`, (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, `articles/birthday.html`))
+})
 
 app.get('/favicon.ico', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, "public/icons/favicon.ico"))

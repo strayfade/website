@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="keywords" content="automation, AI, nodegraph, netsocket, developer, portfolio, strayfade">
+    <meta name="author" content="Noah">
+    <meta property="og:site_name" content="strayfade.com">
+    <meta property="og:url" content="strayfade.com">
+    <meta name="twitter:url" content="strayfade.com">
+
+    <meta property="og:title" content="gifts | Noah">
+    <meta property="twitter:title" content="gifts | Noah">
+    <title>gifts | Noah</title>
+    <meta name="description" content="Christmas list">
+    <meta property="og:description" content="Christmas list">
+    <meta property="twitter:description" content="Christmas list">
+
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="effects.css">
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="article.css">
+    <script type="text/javascript" src="perlin.js" defer></script>
+    <script type="text/javascript" src="effects.js" defer></script>
+    <style>
+        .gift-text {
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .gift {
+            text-align: left;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0px;
+            margin: 0px;
+            max-width: 100%;
+            word-wrap: anywhere;
+            transition-duration: 0.3s;
+            transform: scale(100%);
+            transform-origin: left center;
+        }
+
+        .gift-with-note {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            margin-bottom: 18.72px;
+        }
+
+        .gift-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        section#article p.gift-note,
+        section#article p.gift-row {
+            margin: 0;
+        }
+
+        .gift-note {
+            text-align: left;
+            font-size: 14px;
+            margin-left: 28px;
+            opacity: 0.7;
+        }
+
+        .gift-note::before {
+            content: "– ";
+        }
+
+        .gift:hover {
+            padding: 20px 0px;
+            transform: scale(120%);
+        }
+
+        .gift a {
+            width: auto;
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar article-navbar">
+            <a href="/" class="back-link">&larr; back</a>
+            <span class="article-title">gifts</span>
+        </nav>
+    </header>
+    <canvas></canvas>
+    <main>
+        <section id="article">
+            <p class="gift">
+                <a class="gift-text" href="https://www.amazon.com/Geekstory-AntennaTTL-38400bps-Raspberry-Controller/dp/B0BV5TGFD4" target="_blank" rel="noopener noreferrer">BE180 GPS Module</a>
+                <span>↗</span>
+            </p>
+            <p class="gift">
+                <a class="gift-text" href="https://www.amazon.com/THIRDREALITY-Real-time-Monitoring-Compatible-SmartThings/dp/B0BPY5D1KC" target="_blank" rel="noopener noreferrer">Zigbee Smart Plug</a>
+                <span>↗</span>
+            </p>
+            <div class="gift gift-with-note">
+                <p class="gift-row">
+                    <a class="gift-text" href="https://steadywin-motor.com/products/planetary-reduction-motor-robot-dog-humanoid-robot-joint-module-flat-thin-large-torque?_pos=2&amp;_psq=8&amp;_psid=36171a703&amp;_ss=e&amp;variant=47398300352650" target="_blank" rel="noopener noreferrer">SteadyWin GIM8108-8 Motors</a>
+                    <span>↗</span>
+                </p>
+                <p class="gift-note">GIM8108-8 Standard Version, GDS68 Driver with 2EZ68 secondary encoder</p>
+            </div>
+            <p class="gift">
+                <a class="gift-text" href="https://www.amazon.com/HiLetgo-Palstance-Accelerometer-Gyroscope-Acceleration/dp/B082KQ7L97" target="_blank" rel="noopener noreferrer">BMI160 6-Axis IMU</a>
+                <span>↗</span>
+            </p>
+            <p class="gift">
+                <a class="gift-text" href="https://www.amazon.com/Microphone-Raspberry-Omnidirectional-ZTS6631-Included/dp/B0HBBPW9KR" target="_blank" rel="noopener noreferrer">I2S MEMS Microphone Module</a>
+                <span>↗</span>
+            </p>
+            <p class="gift">
+                <a class="gift-text" href="https://www.amazon.com/NULLLAB-I2S-Audio-Amplifier-Module/dp/B0FSZQRWSF" target="_blank" rel="noopener noreferrer">MAX98357A I2S Speaker Module</a>
+                <span>↗</span>
+            </p>
+            <p class="gift">
+                <a class="gift-text" href="https://www.amazon.com/Development-Interaction-Temperature-Monitoring-Communication/dp/B0FS1LKNZT" target="_blank" rel="noopener noreferrer">waveshare ESP32-S3 1.54" E-Ink Development Board</a>
+                <span>↗</span>
+            </p>
+            <p class="gift">
+                <a class="gift-text" href="https://www.amazon.com/KLAYERS-ESP32-S3-2-16inch-Development-Microphones/dp/B0GT9RBRF8" target="_blank" rel="noopener noreferrer">ESP32-S3 AMOLED Development Board</a>
+                <span>↗</span>
+            </p>
+            <p class="gift">
+                <a class="gift-text" href="https://www.ifixit.com/products/ifixit-precision-bit-driver-aluminum" target="_blank" rel="noopener noreferrer">iFixit Precision Bit Driver</a>
+                <span>↗</span>
+            </p>
+            <p class="gift">
+                <a class="gift-text" href="https://www.amazon.com/Liquid-Dropper-Soldering-Electrical-Electronics/dp/B0CN29BZKV" target="_blank" rel="noopener noreferrer">Liquid Soldering Flux</a>
+                <span>↗</span>
+            </p>
+            <p class="gift">
+                <a class="gift-text" href="https://www.amazon.com/Fanttik-Screwdriver-Precision-E1-MAX/dp/B0BGWRWRX2" target="_blank" rel="noopener noreferrer">Fanttik E1 Max Electric Screwdriver</a>
+                <span>↗</span>
+            </p>
+            <p class="gift">
+                <a class="gift-text" href="https://www.amazon.com/YIHUA-Desoldering-nozzles-929D-V-desoldering/dp/B0CFDY4VGX" target="_blank" rel="noopener noreferrer">YIHUA Desoldering Nozzles Replacement</a>
+                <span>↗</span>
+            </p>
+        </section>
+    </main>
+</body>
+
+</html>
